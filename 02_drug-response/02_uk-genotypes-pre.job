@@ -1,0 +1,32 @@
+#!/bin/bash
+#$ -S /bin/bash
+#$ -pe smp 56
+#$ -q JM,CCOM,UI,all.q
+#$ -cwd
+#$ -j y
+#$ -ckpt user
+#$ -o logs/$JOB_NAME.$TASK_ID.log 
+#$ -ckpt user
+#$ -N uk-genotypes-pre
+#$ -t 1-16
+
+# this script takes the UK-biobank PLINK files and does the following: 
+# 1. combine all chromosomes
+# 2. keeps samples of interest
+# 3. keeps variants of interest
+
+
+conda activate EGA
+
+PROJECT_DIR=/Dedicated/jmichaelson-wdata/msmuhammad/projects/drug-response/02_drug-response
+cd /Dedicated/jmichaelson-sdata/UK_Biobank/phenotypes/../genotypes/imputed_v3/plink
+
+/Dedicated/jmichaelson-wdata/trthomas/bin/gcta/gcta_1.93.2beta/gcta64 \
+  --bfile ukb_imp_chr${SGE_TASK_ID}_v3 \
+  --keep /Dedicated/jmichaelson-wdata/msmuhammad/projects/drug-response/02_drug-response/data/derivatives/uk-sample.fam \
+  --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Inhibitory-UK_37-FDR-sig \
+  --thread-num 52 \
+  --recode  \
+  --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/drug-response/02_drug-response/data/derivatives/uk-genotypes-sample/uk-Inhibitory-FDR-sig-chr${SGE_TASK_ID}
+
+

@@ -1,0 +1,16 @@
+#! /bin/bash
+#$ -cwd
+#$ -q CCOM
+#$ -pe smp 56
+#$ -N pipeline-run_02
+#$ -M muhammad-elsadany@uiowa.edu
+#$ -o logs/$JOB_NAME.log
+#$ -j y
+#$ -ckpt user
+
+conda activate tximpute2
+PROJECT_DIR=/Dedicated/jmichaelson-wdata/msmuhammad/projects/drug-response
+
+RSCRIPT_F=${PROJECT_DIR}/02_pipeline-run.R
+
+Rscript $RSCRIPT_F

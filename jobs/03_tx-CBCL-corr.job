@@ -1,0 +1,17 @@
+#! /bin/bash
+#$ -cwd
+#$ -q JM
+#$ -pe smp 14
+#$ -N tx-CBCL-corr_03
+#$ -M muhammad-elsadany@uiowa.edu
+#$ -o logs/$JOB_NAME.$TASK_ID.log
+#$ -j y
+#$ -ckpt user
+#$ -t 7-16
+
+conda activate tximpute2
+PROJECT_DIR=/Dedicated/jmichaelson-wdata/msmuhammad/projects/tx-imputation/02_tx-imputation
+
+RSCRIPT_F=${PROJECT_DIR}/03_tx-CBCL-corr.R
+
+Rscript $RSCRIPT_F ${SGE_TASK_ID} 
