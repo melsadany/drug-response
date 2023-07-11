@@ -220,6 +220,35 @@ left_join(corr.table(mh.c %>% select(tmp$med), mh.c%>%select(-c(IID, eventname, 
                                   "*: p-value < 0.05", "\n",
                                   "**: p-value < 0.001"))
 ################################################################################
+# wanted to check correlation between PGS and taking medications
+abcd.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
+  rename_all(.funs = function(x) sub("corrected_", "", x)) %>%
+  select(IID, "ADHD-Demontis", contains("cog")&contains("UKB")) %>%
+  rename_all(.funs = function(x) str_replace_all(x, "-UKB-2020", ""))
+
+pgs.c <- inner_join(abcd.pgs, abcd.meds) %>%
+  # filter(eventname == "baseline_year_1_arm_1") %>%
+  select(IID, eventname, 
+         tmp$med, 
+         colnames(abcd.pgs)[-1]
+  )%>%
+  # drop_na() %>%
+  mutate_all(.funs = function(x) ifelse(x %in% c(999,666,777), NA, x))
+corr.table(pgs.c %>% select(tmp$med), 
+           pgs.c%>%select(-c(IID, eventname, tmp$med))) %>%
+  filter(V1 %in% tmp$med, !V2 %in% tmp$med, V1 != "1151133 pill") %>%
+  ggplot(aes(x=factor(V1,levels = clusters$name), y=V2, fill=r, label=ifelse(pval<0.05, ifelse(pval<0.001, "**","*"), "")))+
+  geom_tile()+
+  geom_text(size=2)+
+  scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "ρ")+
+  # facet_grid(rows = vars(V2), space = "free", scales = "free", )+
+  theme(strip.text.y.right = element_text(angle = 0))+
+  my.guides+labs(x="", y="", title =  "correlation between taking meds and PGS",
+                 caption = paste0("n(samples): ", nrow(pgs.c), "\n",
+                                  "*: p-value < 0.05", "\n",
+                                  "**: p-value < 0.001"))
+
+################################################################################
 
 ################################################################################
 

@@ -114,10 +114,11 @@ gc()
 ################################################################################
 ################################## plots #######################################
 # scatter plot for before and after score for raw, age&sex corrected, and age&sex&meds corrected
-p1.s <- sst.r1.tom.all %>%
+p1.s <- inner_join(sst.r1.tom.all, abcd.pgs) %>%
+  mutate(ADHD_decile = as.factor(ntile(`ADHD-Demontis`, 10))) %>%
   mutate(question = as.factor(sub("e_.*?_","",question))) %>%
   mutate(value_type = as.factor(value_type)) %>%
-  ggplot(aes(x=`1`, y=`0`, color = sex))+
+  ggplot(aes(x=`1`, y=`0`, alpha = ADHD_decile))+
   geom_point(position = "jitter", size=1) +
   scale_color_manual(values = redblu.col)+
   geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
@@ -255,12 +256,13 @@ gc()
 ################################################################################
 ################################## plots #######################################
 # scatter plot for before and after score for raw, age&sex corrected, and age&sex&meds corrected
-p2.s.syn <- cbcl.tom.all %>%
+p2.s.syn <- inner_join(cbcl.tom.all, abcd.pgs) %>%
+  mutate(ADHD_decile = as.factor(ntile(`ADHD-Demontis`, 10))) %>%
   filter(subscale=="syn") %>%
   mutate(question = as.factor(ifelse(grepl("syn", question), sub("syn_.*?_", "syn_", question),
                                      sub("dsm5_.*?_", "dsm5_", question)))) %>%
   mutate(value_type = as.factor(value_type)) %>%
-  ggplot(aes(x=`1`, y=`0`, color = sex))+
+  ggplot(aes(x=`1`, y=`0`, alpha = ADHD_decile))+
   geom_point(position = "jitter", size=1) +
   scale_color_manual(values = redblu.col)+
   geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
@@ -268,12 +270,13 @@ p2.s.syn <- cbcl.tom.all %>%
   facet_grid2(cols = vars(question), rows = vars(value_type), scales = "free", 
               independent = T) +
   labs(x="on - MPH", y = "off - MPH")
-p2.s.dsm5 <- cbcl.tom.all %>%
+p2.s.dsm5 <- inner_join(cbcl.tom.all, abcd.pgs) %>%
+  mutate(ADHD_decile = as.factor(ntile(`ADHD-Demontis`, 10))) %>%
   filter(subscale=="dsm5") %>%
   mutate(question = as.factor(ifelse(grepl("syn", question), sub("syn_.*?_", "syn_", question),
                                      sub("dsm5_.*?_", "dsm5_", question)))) %>%
   mutate(value_type = as.factor(value_type)) %>%
-  ggplot(aes(x=`1`, y=`0`, color = sex))+
+  ggplot(aes(x=`1`, y=`0`, alpha = ADHD_decile))+
   geom_point(position = "jitter", size=1) +
   scale_color_manual(values = redblu.col)+
   geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
@@ -431,10 +434,11 @@ gc()
 ################################################################################
 ################################## plots #######################################
 # scatter plot for before and after score for raw, age&sex corrected, and age&sex&meds corrected
-p3.s <- bpm.tom.all %>%
+p3.s <- inner_join(bpm.tom.all, abcd.pgs) %>%
+  mutate(ADHD_decile = as.factor(ntile(`ADHD-Demontis`, 10))) %>%
   mutate(question = as.factor(sub("bpm_.*?_","",question))) %>%
   mutate(value_type = as.factor(value_type)) %>%
-  ggplot(aes(x=`1`, y=`0`, color = sex))+
+  ggplot(aes(x=`1`, y=`0`, alpha = ADHD_decile))+
   geom_point(position = "jitter", size=1) +
   scale_color_manual(values = redblu.col)+
   geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
@@ -573,12 +577,13 @@ gc()
 ################################################################################
 ################################## plots #######################################
 # scatter plot for before and after score for raw, age&sex corrected, and age&sex&meds corrected
-p4.s.syn <- asr.tom.all %>%
+p4.s.syn <- inner_join(asr.tom.all, abcd.pgs) %>%
+  mutate(ADHD_decile = as.factor(ntile(`ADHD-Demontis`, 10))) %>%
   filter(subscale=="syn") %>%
   mutate(question = as.factor(ifelse(grepl("syn", question), sub("syn_.*?_", "syn_", question),
                                      sub("dsm5_.*?_", "dsm5_", question)))) %>%
   mutate(value_type = as.factor(value_type)) %>%
-  ggplot(aes(x=`1`, y=`0`, color = sex))+
+  ggplot(aes(x=`1`, y=`0`, alpha = ADHD_decile))+
   geom_point(position = "jitter", size=1) +
   scale_color_manual(values = redblu.col)+
   geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
@@ -586,12 +591,13 @@ p4.s.syn <- asr.tom.all %>%
   facet_grid2(cols = vars(question), rows = vars(value_type), scales = "free", 
               independent = T) +
   labs(x="on - MPH", y = "off - MPH")
-p4.s.dsm5 <- asr.tom.all %>%
+p4.s.dsm5 <- inner_join(asr.tom.all, abcd.pgs) %>%
+  mutate(ADHD_decile = as.factor(ntile(`ADHD-Demontis`, 10))) %>%
   filter(subscale=="dsm5") %>%
   mutate(question = as.factor(ifelse(grepl("syn", question), sub("syn_.*?_", "syn_", question),
                                      sub("dsm5_.*?_", "dsm5_", question)))) %>%
   mutate(value_type = as.factor(value_type)) %>%
-  ggplot(aes(x=`1`, y=`0`, color = sex))+
+  ggplot(aes(x=`1`, y=`0`, alpha = ADHD_decile))+
   geom_point(position = "jitter", size=1) +
   scale_color_manual(values = redblu.col)+
   geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
@@ -736,10 +742,11 @@ gc()
 ################################################################################
 ################################## plots #######################################
 # scatter plot for before and after score for raw, age&sex corrected, and age&sex&meds corrected
-p5.s <- ce.tom.all %>%
+p5.s <- inner_join(ce.tom.all, abcd.pgs) %>%
+  mutate(ADHD_decile = as.factor(ntile(`ADHD-Demontis`, 10))) %>%
   mutate(question = as.factor(sub("ce_.*?_","",question))) %>%
   mutate(value_type = as.factor(value_type)) %>%
-  ggplot(aes(x=`1`, y=`0`, color = sex))+
+  ggplot(aes(x=`1`, y=`0`, alpha = ADHD_decile))+
   geom_point(position = "jitter", size=1) +
   scale_color_manual(values = redblu.col)+
   geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
@@ -788,7 +795,7 @@ p5.p <- corr.table(abcd.c.5%>%select(predicted), abcd.c.5 %>% select(starts_with
   facet_grid2(rows = vars(value_type), scales = "free_y", independent = "y") +
   my.guides+labs(x="", y="", caption = paste0("n(samples): ", nrow(abcd.c.5%>%distinct(IID))))
 ################################################################################
-pdf("figs/abcd5/sst-cbcl-asr-ce-mph-on-off-s-plots.pdf", width = 15)
+pdf("figs/abcd5/sst-cbcl-asr-ce-mph-on-off-s-alpha-plots.pdf", width = 15)
 print(p1.s+labs(title = "SST"));print(p2.s.dsm5+labs(title = "CBCL DSM5 by parent"))
 print(p2.s.syn+labs(title = "CBCL syndromes by parent"));print(p3.s+labs(title = "BPM by youth"))
 print(p4.s.dsm5+labs(title = "ASR DSM5 by parent"));print(p4.s.syn+labs(title = "ASR syndromes by parent"))
@@ -916,6 +923,38 @@ patchwork::wrap_plots(p1.p.p+labs(title = "SST"),
                       p5.p.p+labs(title = "Culture & Environment"), 
                       nrow = 1)
 ################################################################################
+# same scatterplots as before, but change the colors to be ADHD pgs deciles
+library(ggtern)
+inner_join(sst.r1.tom.all, abcd.pgs) %>%
+  mutate(ADHD_decile = as.factor(ntile(`ADHD-Demontis`, 10))) %>%
+  mutate(question = as.factor(sub("ce_.*?_","",question))) %>%
+  mutate(value_type = as.factor(value_type)) %>%
+  mutate(ADHD_decile = as.factor(ntile(`ADHD-Demontis`, 10))) %>%
+  ggtern(aes(x=`1`, y=`0`, z = `ADHD-Demontis`))+
+  # ggplot(aes(x=`ADHD-Demontis`, y=ADHD_decile, alpha = ADHD_decile))+
+  geom_point(size=1) +
+  # scale_color_manual(values = redblu.col)+
+  # geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
+  # geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  facet_grid2(cols = vars(question), rows = vars(value_type), scales = "free", 
+              independent = T) +
+  labs(x="on - MPH", y = "off - MPH", z = "ADHD PGS") +
+  theme_rgbw() +
+  theme_hidetitles()
+  theme_hidelabels()
+  tlr2xy(coord = coord_tern(expand = F))
+  coord_tern(expand = F)
+  geom_Tline(Tintercept = 0)
+
+pgs.pred <- inner_join(abcd.pgs,abcd.pred)
+corr.table(pgs.pred %>% select(predicted),
+           pgs.pred %>%select(colnames(abcd.pgs)[-1]), method = "spearman") %>%
+  filter(V1 == "predicted", V2 != V1) %>%
+  ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(pval < 0.05, "*", "")))+
+  geom_tile()+
+  geom_text(size=3)+
+  scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "ρ")+
+  my.guides+labs(x="", y="")
 ################################################################################
 ################################################################################
 ################################################################################
