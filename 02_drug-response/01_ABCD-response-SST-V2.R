@@ -22,6 +22,10 @@ abcd.pred <- read_rds("../data/derivatives/m-outputs/abcd/all-samples/model-cell
   rename(predicted = m) %>%
   # filter(IID %in% sst.r1.deltas$IID) %>%
   mutate(predicted = scale(-predicted, scale = T, center = T)[,1])
+abcd.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
+  rename_all(.funs = function(x) sub("corrected_", "", x)) %>%
+  select(IID, "ADHD-Demontis", contains("cog")&contains("UKB")) %>%
+  rename_all(.funs = function(x) str_replace_all(x, "-UKB-2020", ""))
 #########################
 abcd.raw.dir <- "/Dedicated/jmichaelson-sdata/ABCD/abcd_release_5_0/core"
 age <- read_csv(paste0(abcd.raw.dir, "/abcd-general/abcd_y_lt.csv")) %>% 
@@ -837,12 +841,17 @@ p1.p.p <- corr.table(abcd.p.1%>%select(colnames(abcd.pgs)[-1]),
                                                                             "corrected for age, sex, interaction, and other ADHD meds")), 
                              levels = c("raw data", "corrected for age, sex, and interaction", 
                                         "corrected for age, sex, interaction, and other ADHD meds"))) %>%
-  ggplot(aes(x=V1, y=question, fill = r, label = ifelse(pval < 0.05, "*", ""))) +
+  group_by(value_type) %>%
+  mutate(FDR = p.adjust(pval, method = "fdr")) %>%
+  ggplot(aes(x=V1, y=question, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
   geom_text(size = 3)+
   scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "ρ")+
   facet_grid2(rows = vars(value_type), scales = "free_y", independent = "y") +
   my.guides+labs(x="", y="", caption = paste0("n(samples): ", nrow(abcd.p.1%>%distinct(IID)), "\n",
+                                              "* pval < 0.05", "\n", 
+                                              "** pval < 0.01", "\n", 
+                                              "*** FDR < 0.05", "\n", 
                                               det.cap))
 # correlation between pgs and participants performance in SST whether data is corrected or not
 abcd.p.2 <- inner_join(abcd.pgs, cbcl.tom.all %>% select(-c(`0`,`1`))%>% pivot_wider(names_from = "question", values_from = "delta"))
@@ -856,7 +865,9 @@ p2.p.p <- corr.table(abcd.p.2%>%select(colnames(abcd.pgs)[-1]),
                                                                           "corrected for age, sex, interaction, and other ADHD meds")), 
                              levels = c("raw data", "corrected for age, sex, and interaction", 
                                         "corrected for age, sex, interaction, and other ADHD meds"))) %>%
-  ggplot(aes(x=V1, y=question, fill = r, label = ifelse(pval < 0.05, "*", ""))) +
+  group_by(value_type) %>%
+  mutate(FDR = p.adjust(pval, method = "fdr")) %>%
+  ggplot(aes(x=V1, y=question, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
   geom_text(size = 3)+
   scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "ρ")+
@@ -873,7 +884,9 @@ p3.p.p <- corr.table(abcd.p.3%>%select(colnames(abcd.pgs)[-1]),
                                                                               "corrected for age, sex, interaction, and other ADHD meds")), 
                              levels = c("raw data", "corrected for age, sex, and interaction", 
                                         "corrected for age, sex, interaction, and other ADHD meds"))) %>%
-  ggplot(aes(x=V1, y=question, fill = r, label = ifelse(pval < 0.05, "*", ""))) +
+  group_by(value_type) %>%
+  mutate(FDR = p.adjust(pval, method = "fdr")) %>%
+  ggplot(aes(x=V1, y=question, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
   geom_text(size = 3)+
   scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "ρ")+
@@ -891,7 +904,9 @@ p4.p.p <- corr.table(abcd.p.4%>%select(colnames(abcd.pgs)[-1]),
                                                                           "corrected for age, sex, interaction, and other ADHD meds")), 
                              levels = c("raw data", "corrected for age, sex, and interaction", 
                                         "corrected for age, sex, interaction, and other ADHD meds"))) %>%
-  ggplot(aes(x=V1, y=question, fill = r, label = ifelse(pval < 0.05, "*", ""))) +
+  group_by(value_type) %>%
+  mutate(FDR = p.adjust(pval, method = "fdr")) %>%
+  ggplot(aes(x=V1, y=question, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
   geom_text(size = 3)+
   scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "ρ")+
@@ -908,7 +923,9 @@ p5.p.p <- corr.table(abcd.p.5%>%select(colnames(abcd.pgs)[-1]),
                                                                              "corrected for age, sex, interaction, and other ADHD meds")), 
                              levels = c("raw data", "corrected for age, sex, and interaction", 
                                         "corrected for age, sex, interaction, and other ADHD meds"))) %>%
-  ggplot(aes(x=V1, y=question, fill = r, label = ifelse(pval < 0.05, "*", ""))) +
+  group_by(value_type) %>%
+  mutate(FDR = p.adjust(pval, method = "fdr")) %>%
+  ggplot(aes(x=V1, y=question, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
   geom_text(size = 3)+
   scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "ρ")+
@@ -955,6 +972,24 @@ corr.table(pgs.pred %>% select(predicted),
   geom_text(size=3)+
   scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "ρ")+
   my.guides+labs(x="", y="")
+################################################################################
+################################################################################
+################################################################################
+# check correlation between cbcl and bpm
+cbcl.bpm <- inner_join(abcd.cbcl.filt, abcd.bpm)
+corr.table(cbcl.bpm %>% select(starts_with("bpm")), 
+           cbcl.bpm %>% select(syn_raw_attention, syn_raw_external, syn_raw_internal, syn_raw_totprob),
+           method = "spearman") %>%
+  filter(V2 %in% c("syn_raw_attention", "syn_raw_external", "syn_raw_internal", "syn_raw_totprob"), 
+         grepl("bpm", V1)) %>%
+  ggplot(aes(x=V1, y=V2, fill=r, label = ifelse(pval < 1e-25, paste0(rho, ": ", round(r, 3), "\n",
+                                                                     "p: *"), ""))) +
+  geom_tile()+
+  geom_text(size=3)+
+  redblu.col.gradient + null_labs + my.guides +
+  labs(caption = paste0("n(samples): ", nrow(cbcl.bpm), "\n", 
+                        "* pval < 1e-25"))
+
 ################################################################################
 ################################################################################
 ################################################################################
@@ -1027,3 +1062,5 @@ p7 <-  corr.table(abcd.c.7%>%select(predicted), abcd.c.7 %>% select(ends_with("d
   scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "ρ")+
   my.guides+labs(x="", y="", caption = paste0("n(samples): ", nrow(abcd.c.7)))
 ################################################################################
+################################################################################
+
