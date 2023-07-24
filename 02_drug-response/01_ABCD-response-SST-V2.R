@@ -1229,6 +1229,19 @@ adhd.meds.deltas %>%
   scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "average delta (on_drug - off_drug)")+
   labs(title = "median of deltas for cbcl problems per drug")
 ################################################################################
+# correlation between predicted response and pgs
+pgs.pred <- inner_join(abcd.pred, abcd.pgs)
+corr.table(pgs.pred %>% select(predicted),
+           pgs.pred %>% select(colnames(abcd.pgs)[-1]),
+           method = "spearman") %>%
+  filter(V1 == "predicted", V1 != V2) %>%
+  ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(pval<0.05, paste0(rho, ": ", round(r, 3), "\n",
+                                                                    "p: ", round(pval, 5)), "")))+
+  geom_tile() + geom_text(size=3)+
+  my.guides+redblu.col.gradient+null_labs+
+  labs(caption = paste0("n(samples): ", nrow(pgs.pred)),
+       title = "correlation between predicted MPH response and PGS")+
+  theme(plot.title = element_text(size=9, hjust = 1.3))
 ################################################################################
 ################################################################################
 ################################################################################
