@@ -5,6 +5,7 @@ rm(list = ls())
 gc()
 source("/Dedicated/jmichaelson-wdata/msmuhammad/msmuhammad-source.R")
 library(heatmap3)
+library(ggpubr);library(ggExtra);library(ggh4x)
 ################################################################################
 project.dir <- "/Dedicated/jmichaelson-wdata/msmuhammad/projects/drug-response/02_drug-response"
 setwd(project.dir)
@@ -249,7 +250,132 @@ corr.table(pgs.c %>% select(tmp$med),
                                   "**: p-value < 0.001"))
 
 ################################################################################
+# correlation between PGS and cbcl
+abcd.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
+  rename_all(.funs = function(x) sub("corrected_", "", x)) %>%
+  select(IID, "ADHD-Demontis", contains("cog")&contains("UKB")) %>%
+  rename_all(.funs = function(x) str_replace_all(x, "-UKB-2020", ""))
+abcd.cbcl <- read_csv(paste0(abcd.raw.dir, "/mental-health/mh_p_cbcl.csv"))
+abcd.cbcl.filt <- abcd.cbcl %>%
+  select(IID = src_subject_id, eventname, 
+         syn_raw_attention = cbcl_scr_syn_attention_r,
+         syn_raw_anxdep = cbcl_scr_syn_anxdep_r,
+         syn_raw_withdep = cbcl_scr_syn_withdep_r,
+         syn_raw_somatic = cbcl_scr_syn_somatic_r,
+         syn_raw_social = cbcl_scr_syn_social_r,
+         syn_raw_thought = cbcl_scr_syn_thought_r,
+         syn_raw_rulebreak = cbcl_scr_syn_rulebreak_r,
+         syn_raw_aggressive = cbcl_scr_syn_aggressive_r,
+         syn_raw_internal = cbcl_scr_syn_internal_r,
+         syn_raw_external = cbcl_scr_syn_external_r,
+         syn_raw_totprob = cbcl_scr_syn_totprob_r,
+         dsm5_raw_depress = cbcl_scr_dsm5_depress_r,
+         dsm5_raw_anxdisord = cbcl_scr_dsm5_anxdisord_r,
+         dsm5_raw_somaticpr = cbcl_scr_dsm5_somaticpr_r,
+         dsm5_raw_adhd = cbcl_scr_dsm5_adhd_r,
+         dsm5_raw_opposit = cbcl_scr_dsm5_opposit_r,
+         dsm5_raw_conduct = cbcl_scr_dsm5_conduct_r) %>%
+  drop_na()
 
+abcd.cbcl.filt <- inner_join(abcd.cbcl.filt, demo) %>% select(IID, eventname, interview_age,sex, 
+                                                                     starts_with("syn"), starts_with("dsm5")) %>%
+  drop_na()
+#########################
+# correct for age, sex, their interaction
+# age-sex only
+cbcl.as.corrected <- cbind(abcd.cbcl.filt %>% select(IID, interview_age, sex, eventname), 
+                               apply(abcd.cbcl.filt %>% 
+                                       select(starts_with("syn"), starts_with("dsm5")), 
+                                     MARGIN = 2, FUN = function(x) {
+                                       residuals(glm(y ~ interview_age + sex + interview_age:sex, 
+                                                     data = abcd.cbcl.filt %>% mutate(y = x), 
+                                                     family = poisson()))
+                                     }))
+# combine raw and corrected sst data
+cbcl.all <- inner_join(abcd.cbcl.filt,
+                           cbcl.as.corrected %>% rename_at(.vars = vars(starts_with("syn"), starts_with("dsm5")), 
+                                                                          .funs = function(x) ifelse(grepl("syn", x), sub("syn_raw_", "syn_as_", x),
+                                                                                                     sub("dsm5_raw_", "dsm5_as_", x))))
+pgs.cbcl <- left_join(cbcl.all, abcd.pgs)
+corr.table(pgs.cbcl %>% select(starts_with("syn"), starts_with("dsm")),
+           pgs.cbcl %>% select(colnames(abcd.pgs), -IID),
+           method = "spearman") %>%
+  filter(V1 %in% colnames(abcd.pgs), !V2 %in% colnames(abcd.pgs)) %>%
+  mutate(value_type = factor(ifelse(grepl("raw_", V2), "raw data", ifelse(grepl("as_", V2), 
+                                                                                "corrected for age, sex, and interaction", 
+                                                                                "corrected for age, sex, interaction, and other ADHD meds")), 
+                             levels = c("raw data", "corrected for age, sex, and interaction", 
+                                        "corrected for age, sex, interaction, and other ADHD meds"))) %>%
+  mutate(subscale = ifelse(grepl("dsm5", V2), "dsm5", "syn")) %>%
+  group_by(value_type) %>%
+  mutate(FDR = p.adjust(pval, method = "fdr")) %>%
+  ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
+  geom_tile()+
+  geom_text(size = 3) +
+  redblu.col.gradient+my.guides+null_labs +
+  facet_grid2(rows = vars(value_type), scales = "free_y", independent = "y") +
+  labs(caption = paste0("n(samples): ", nrow(pgs.cbcl), "\n",
+                        "* pval < 0.05", "\n", 
+                        "** pval < 0.01", "\n", 
+                        "*** FDR < 0.05"))
+#########################
+# make same figure, but by item level and not syn
+tt <- read_rds("/wdata/msmuhammad/data/ABCD/cbcl-scales.rds")
+abcd.cbcl.filt.item <- inner_join(abcd.cbcl, demo) %>% select(IID, eventname, interview_age,sex, 
+                                                              starts_with("cbcl_q")) %>%
+  drop_na() 
+################################################################################
+# correlation between PGS and participants performance in SST run 1
+abcd.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
+  rename_all(.funs = function(x) sub("corrected_", "", x)) %>%
+  select(IID, "ADHD-Demontis", contains("cog")&contains("UKB")) %>%
+  rename_all(.funs = function(x) str_replace_all(x, "-UKB-2020", ""))
+demo <- read_csv(paste0(abcd.deriv.dir, "/age-sex-by-eventname.csv"))
+sst.raw <- read_csv(paste0(abcd.raw.dir, "/imaging/mri_y_tfmr_sst_beh.csv"))
+question.dict <- data.frame(q0 = colnames(sst.raw), description = t(sst.raw)[,1], row.names = NULL)
+sst.r1 <- left_join(sst.raw[-1,] %>%
+                      select(IID = src_subject_id, eventname,
+                             e_raw_correct_go = tfmri_sst_r1_beh_crgo_nt,
+                             e_raw_correct_stop = tfmri_sst_r1_beh_crs_nt,
+                             e_raw_stop_doesnot_stop = tfmri_sst_r1_beh_ssds_nt,
+                             e_raw_no_response_on_go = tfmri_sst_r1_beh_nrgo_nt,
+                             tfmri_sst_beh_switchflag) %>%
+                      filter(is.na(tfmri_sst_beh_switchflag) == F),
+                    demo) %>% drop_na() %>%
+  mutate_at(.vars = vars(3:7, interview_age), .funs = function(x) as.numeric(x))
+# correct for age, sex, their interaction
+sst.r1.as.corrected <- cbind(sst.r1 %>% select(IID, interview_age, sex, eventname), 
+                                 apply(sst.r1 %>% 
+                                         select(starts_with("e_")), 
+                                       MARGIN = 2, FUN = function(x) {
+                                         residuals(glm(y ~ interview_age + sex + interview_age:sex, 
+                                                       data = sst.r1 %>% mutate(y = x), 
+                                                       family = poisson()))
+                                       }))
+sst.r1.all <- inner_join(sst.r1,
+                             sst.r1.as.corrected %>% rename_at(.vars = vars(starts_with("e_")), 
+                                                               .funs = function(x) sub("e_raw_", "e_as_", x)))
+pgs.sst <- inner_join(abcd.pgs, sst.r1.all)
+corr.table(pgs.sst %>% select(starts_with("e_")),
+           pgs.sst %>% select(colnames(abcd.pgs), -IID),
+           method = "spearman") %>%
+  filter(V1 %in% colnames(abcd.pgs), !V2 %in% colnames(abcd.pgs)) %>%
+  mutate(value_type = factor(ifelse(grepl("raw_", V2), "raw data", ifelse(grepl("as_", V2), 
+                                                                          "corrected for age, sex, and interaction", 
+                                                                          "corrected for age, sex, interaction, and other ADHD meds")), 
+                             levels = c("raw data", "corrected for age, sex, and interaction", 
+                                        "corrected for age, sex, interaction, and other ADHD meds"))) %>%
+  group_by(value_type) %>%
+  mutate(FDR = p.adjust(pval, method = "fdr")) %>%
+  ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
+  geom_tile()+
+  geom_text(size = 3) +
+  redblu.col.gradient+my.guides+null_labs +
+  facet_grid2(rows = vars(value_type), scales = "free_y", independent = "y") +
+  labs(caption = paste0("n(samples): ", nrow(pgs.sst), "\n",
+                        "* pval < 0.05", "\n", 
+                        "** pval < 0.01", "\n", 
+                        "*** FDR < 0.05"))
 ################################################################################
 
 ################################################################################

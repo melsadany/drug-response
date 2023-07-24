@@ -38,9 +38,9 @@ demo <- full_join(age, sex)
 #########################
 # meds
 adhd.meds <- data.frame(drug = c("methylphenidate", "adderall", "concerta", "vyvanse", 
-                                 "dextroamphetamine",  "ritalin", "intuniv", "straterra",
+                                 "dextroamphetamine",  "ritalin", "intuniv", "strattera",
                                  "tenex", "amphetamine", "dexmethylphenidate", "lisdexamfetamine",
-                                 "atomexetine", "clonidine", "guanfacine"
+                                 "atomoxetine", "clonidine", "guanfacine"
                                  ))
 abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
   as.data.frame() %>%
@@ -992,10 +992,242 @@ corr.table(cbcl.bpm %>% select(starts_with("bpm")),
 
 ################################################################################
 ################################################################################
+# get correlation between cbcl deltas by item and pgs
+abcd.cbcl <- read_csv(paste0(abcd.raw.dir, "/mental-health/mh_p_cbcl.csv"))
+cbcl.scales <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/cbcl-scales.rds")
+abcd.cbcl.filt <- abcd.cbcl %>%
+  select(IID = src_subject_id, eventname, 
+         starts_with("cbcl_q")) %>%
+  drop_na()
+abcd.cbcl.filt <- inner_join(inner_join(abcd.cbcl.filt, 
+                                        abcd.meds), demo) %>% select(IID, eventname, interview_age,sex, 
+                                                                     starts_with("cbcl_q"), 
+                                                                     colnames(abcd.meds)) %>%
+  drop_na()
+colnames(abcd.cbcl.filt)[5:123] <- paste0("cbcl_", cbcl.scales$cbcl_item)
+#########################
+# get participants with 2 or more measurements
+cbcl.tom <- abcd.cbcl.filt %>%
+  group_by(IID) %>%
+  filter(n_distinct(eventname) >= 2, n_distinct(methylphenidate) >= 2) %>%
+  ungroup()
+# correct for age, sex, their interaction, other meds
+# age-sex only
+cbcl.tom.as.corrected <- cbind(cbcl.tom %>% select(IID, interview_age, sex, eventname, methylphenidate), 
+                               apply(cbcl.tom %>% 
+                                       select(starts_with("cbcl_q")), 
+                                     MARGIN = 2, FUN = function(x) {
+                                       residuals(glm(y ~ interview_age + sex + interview_age:sex, 
+                                                     data = cbcl.tom %>% mutate(y = x), 
+                                                     family = poisson()))
+                                     }))
+# age, sex, interaction, and other ADHD meds
+cbcl.tom.asmeds.corrected <- cbind(cbcl.tom %>% select(IID, interview_age, sex, eventname, methylphenidate), 
+                                   apply(cbcl.tom %>% 
+                                           select(starts_with("cbcl_q")), 
+                                         MARGIN = 2, FUN = function(x) {
+                                           residuals(glm(y ~ interview_age + sex + interview_age:sex
+                                                         + clonidine + adderall + concerta + vyvanse + ritalin +
+                                                           intuniv + tenex + guanfacine + dexmethylphenidate
+                                                         , 
+                                                         data = cbcl.tom %>% mutate(y = x), 
+                                                         family = poisson()))
+                                         }))
+# combine raw and corrected sst data
+cbcl.tom.all <- inner_join(cbcl.tom,
+                           inner_join(cbcl.tom.as.corrected %>% rename_at(.vars = vars(starts_with("cbcl_q")), 
+                                                                          .funs = function(x) sub("cbcl_", "cbcl_as_", x)),
+                                      cbcl.tom.asmeds.corrected %>% rename_at(.vars = vars(starts_with("cbcl_q")), 
+                                                                              .funs = function(x) sub("cbcl_", "cbcl_asmeds_", x)))) %>% 
+  group_by(IID) %>%
+  filter(n_distinct(methylphenidate)==2) %>%
+  group_by(IID, methylphenidate) %>%
+  mutate_at(.vars = vars(starts_with("cbcl_")), .funs = function(x) mean(x)) %>%
+  ungroup() %>%
+  distinct(IID, methylphenidate, .keep_all = T) %>%
+  pivot_longer(cols = c(starts_with("cbcl_")), names_to = "question", values_to = "val") %>%
+  arrange(IID, question, methylphenidate) %>%
+  mutate(methylphenidate = as.factor(methylphenidate)) %>%
+  pivot_wider(names_from = methylphenidate, values_from = val, id_cols = c(IID, sex, question)) %>%
+  mutate(value_type = factor(ifelse(grepl("cbcl_q", question), "raw data", ifelse(grepl("as_", question), 
+                                                                                "corrected for age, sex, and interaction", 
+                                                                                "corrected for age, sex, interaction, and other ADHD meds")), 
+                             levels = c("raw data", "corrected for age, sex, and interaction", 
+                                        "corrected for age, sex, interaction, and other ADHD meds"))) %>%
+  mutate(delta = `1` - `0`) # being on MPH - not being on MPH
+###
+rm(cbcl.tom.asmeds.corrected)
+rm(cbcl.tom.as.corrected)
+gc()
+###
 ################################################################################
+################################## plots
+# correlation between predicted response to MPH and participants cbcl whether data is corrected or not
+abcd.c.2 <- inner_join(abcd.pred, cbcl.tom.all %>% select(-c(`0`,`1`))%>% 
+                         pivot_wider(names_from = "question", values_from = "delta"))
+corr.table(abcd.c.2%>%select(predicted), abcd.c.2 %>% select(starts_with("cbcl_")), method = "spearman") %>%
+  filter(V1 == "predicted", V1 != V2) %>%
+  mutate(question = V2) %>%
+  mutate(value_type = factor(ifelse(grepl("cbcl_q", V2), "raw data", ifelse(grepl("as_", V2), 
+                                                                          "corrected for age, sex, and interaction", 
+                                                                          "corrected for age, sex, interaction, and other ADHD meds")), 
+                             levels = c("raw data", "corrected for age, sex, and interaction", 
+                                        "corrected for age, sex, interaction, and other ADHD meds"))) %>%
+  filter(grepl("cbcl_q", V2)) %>%
+  ggplot(aes(x=V1, y=question, fill = r, label = ifelse(pval < 0.05, paste0("ρ: ", round(r, 3), ",  p: ", round(pval, 5)), ""))) +
+  geom_tile()+
+  geom_text(size = 3)+
+  scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "ρ")+
+  facet_grid2(rows = vars(value_type), scales = "free_y", independent = "y") +
+  my.guides+labs(x="", y="", caption = paste0("n(samples): ", nrow(abcd.c.2%>%distinct(IID))))
+
 ################################################################################
+# correlation between cbcl items delta and pgs
+abcd.c.10 <- inner_join(abcd.pgs, cbcl.tom.all %>% select(-c(`0`,`1`))%>% 
+                         pivot_wider(names_from = "question", values_from = "delta"))
+corr.table(abcd.c.10%>%select(colnames(abcd.pgs)[-1]), abcd.c.10 %>% select(starts_with("cbcl_")), method = "spearman") %>%
+  filter(V1 %in% colnames(abcd.pgs)[-1], ! V2 %in% colnames(abcd.pgs)[-1]) %>%
+  mutate(question = V2) %>%
+  mutate(value_type = factor(ifelse(grepl("cbcl_q", V2), "raw data", ifelse(grepl("as_", V2), 
+                                                                            "corrected for age, sex, and interaction", 
+                                                                            "corrected for age, sex, interaction, and other ADHD meds")), 
+                             levels = c("raw data", "corrected for age, sex, and interaction", 
+                                        "corrected for age, sex, interaction, and other ADHD meds"))) %>%
+  filter(grepl("cbcl_q", V2)) %>%
+  ggplot(aes(x=V1, y=question, fill = r, label = ifelse(pval < 0.05, paste0("ρ: ", round(r, 3), ",  p: ", round(pval, 5)), ""))) +
+  geom_tile()+
+  geom_text(size = 3)+
+  scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "ρ")+
+  facet_grid2(rows = vars(value_type), scales = "free_y", independent = "y") +
+  my.guides+labs(x="", y="", caption = paste0("n(samples): ", nrow(abcd.c.10%>%distinct(IID))))+
+  theme(axis.text.y.left = element_text(size=7), 
+        axis.text.x.bottom = element_text(angle = 0, hjust = 0.5))
 ################################################################################
+# correlation between taking the drug and cbcl
+abcd.cbcl <- read_csv(paste0(abcd.raw.dir, "/mental-health/mh_p_cbcl.csv"))
+abcd.cbcl.filt <- abcd.cbcl %>%
+  select(IID = src_subject_id, eventname, 
+         syn_raw_attention = cbcl_scr_syn_attention_r,
+         syn_raw_anxdep = cbcl_scr_syn_anxdep_r,
+         syn_raw_withdep = cbcl_scr_syn_withdep_r,
+         syn_raw_somatic = cbcl_scr_syn_somatic_r,
+         syn_raw_social = cbcl_scr_syn_social_r,
+         syn_raw_thought = cbcl_scr_syn_thought_r,
+         syn_raw_rulebreak = cbcl_scr_syn_rulebreak_r,
+         syn_raw_aggressive = cbcl_scr_syn_aggressive_r,
+         syn_raw_internal = cbcl_scr_syn_internal_r,
+         syn_raw_external = cbcl_scr_syn_external_r,
+         syn_raw_totprob = cbcl_scr_syn_totprob_r,
+         dsm5_raw_depress = cbcl_scr_dsm5_depress_r,
+         dsm5_raw_anxdisord = cbcl_scr_dsm5_anxdisord_r,
+         dsm5_raw_somaticpr = cbcl_scr_dsm5_somaticpr_r,
+         dsm5_raw_adhd = cbcl_scr_dsm5_adhd_r,
+         dsm5_raw_opposit = cbcl_scr_dsm5_opposit_r,
+         dsm5_raw_conduct = cbcl_scr_dsm5_conduct_r) %>%
+  drop_na()
+abcd.cbcl.filt <- inner_join(inner_join(abcd.cbcl.filt, 
+                                        abcd.meds), demo) %>% select(IID, eventname, interview_age,sex, 
+                                                                     starts_with("syn"), starts_with("dsm5"), 
+                                                                     colnames(abcd.meds)) %>%
+  drop_na()
+#########################
+# correct for age, sex, their interaction
+# age-sex only
+cbcl.as.corrected <- cbind(abcd.cbcl.filt %>% select(IID, interview_age, sex, eventname), 
+                           apply(abcd.cbcl.filt %>% 
+                                   select(starts_with("syn"), starts_with("dsm5")), 
+                                 MARGIN = 2, FUN = function(x) {
+                                   residuals(glm(y ~ interview_age + sex + interview_age:sex, 
+                                                 data = abcd.cbcl.filt %>% mutate(y = x), 
+                                                 family = poisson()))
+                                 }))
+# combine raw and corrected sst data
+cbcl.all <- inner_join(abcd.cbcl.filt,
+                       cbcl.as.corrected %>% rename_at(.vars = vars(starts_with("syn"), starts_with("dsm5")), 
+                                                       .funs = function(x) ifelse(grepl("syn", x), sub("syn_raw_", "syn_as_", x),
+                                                                                  sub("dsm5_raw_", "dsm5_as_", x))))
+############ plot
+corr.table(cbcl.all %>% select(colnames(abcd.meds)[-c(1:2)]),
+           cbcl.all %>% select(starts_with("syn"), starts_with("dsm5")),
+           method = "spearman") %>%
+  filter(V1 %in% colnames(abcd.meds)[-c(1:2)], ! V2 %in% colnames(abcd.meds)[-c(1:2)]) %>%
+  mutate(value_type = factor(ifelse(grepl("raw_", V2), "raw data", ifelse(grepl("as_", V2), 
+                                                                          "corrected for age, sex, and interaction", 
+                                                                          "corrected for age, sex, interaction, and other ADHD meds")), 
+                             levels = c("raw data", "corrected for age, sex, and interaction", 
+                                        "corrected for age, sex, interaction, and other ADHD meds"))) %>%
+  group_by(value_type) %>%
+  mutate(FDR = p.adjust(pval, method = "fdr")) %>%
+  ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
+  geom_tile()+
+  geom_text(size = 3)+
+  facet_grid2(rows = vars(value_type), scales = "free_y", independent = "y") +
+  redblu.col.gradient+my.guides+null_labs +
+  labs(caption = paste0("n(samples): ", nrow(cbcl.all), "\n",
+                        "* pval < 0.05", "\n", 
+                        "** pval < 0.01", "\n", 
+                        "*** FDR < 0.05"), 
+       title = "correlation of taking a medication and cbcl")
 ################################################################################
+# get cbcl deltas by drug status for participants
+adhd.meds.deltas <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) %dopar% {
+  d <- adhd.meds$drug[i]
+  # print(i)
+  n <- nrow(cbcl.all %>%
+                rename(drug = which(colnames(cbcl.all)==d)) %>%
+                group_by(IID) %>%
+                filter(n_distinct(eventname) >= 2, n_distinct(drug) >= 2) %>%
+                ungroup() %>%
+                distinct(IID))
+  t <- cbcl.all %>%
+    rename(drug = which(colnames(cbcl.all)==d)) %>%
+    group_by(IID) %>%
+    filter(n_distinct(eventname) >= 2, n_distinct(drug) >= 2) %>%
+    ungroup() %>%
+    group_by(IID, drug) %>%
+    mutate_at(.vars = vars(starts_with("syn"), starts_with("dsm5")), .funs = function(x) mean(x)) %>%
+    ungroup() %>%
+    distinct(IID, drug, .keep_all = T) %>%
+    pivot_longer(cols = c(starts_with("syn"), starts_with("dsm5")), names_to = "question", values_to = "val") %>%
+    arrange(IID, question, drug) %>%
+    mutate(drug = as.factor(drug)) %>%
+    pivot_wider(names_from = drug, values_from = val, id_cols = c(IID, sex, question)) %>%
+    mutate(delta = `1` - `0`) %>% 
+    mutate(drug = d) %>%
+    mutate(n_samples = n)
+  return(t)
+}
+# plot average delta per drug per cbcl
+adhd.meds.deltas %>%
+  group_by(question, drug) %>%
+  summarise_at(.vars = vars(delta, n_samples), .funs = function(x) mean(x)) %>%
+  mutate(value_type = factor(ifelse(grepl("raw_", question), "raw data", ifelse(grepl("as_", question), 
+                                                                          "corrected for age, sex, and interaction", 
+                                                                          "corrected for age, sex, interaction, and other ADHD meds")), 
+                             levels = c("raw data", "corrected for age, sex, and interaction", 
+                                        "corrected for age, sex, interaction, and other ADHD meds"))) %>%
+  ggplot(aes(x=drug, y=question, fill = delta)) +
+  geom_tile()+
+  geom_point(aes(size = n_samples), alpha = 0.1) +
+  my.guides+null_labs+
+  facet_grid2(rows = vars(value_type), scales = "free_y", independent = "y") +
+  scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "average delta (on_drug - off_drug)")+
+  labs(title = "average deltas for cbcl problems per drug")
+adhd.meds.deltas %>%
+  group_by(question, drug) %>%
+  summarise_at(.vars = vars(delta, n_samples), .funs = function(x) median(x)) %>%
+  mutate(value_type = factor(ifelse(grepl("raw_", question), "raw data", ifelse(grepl("as_", question), 
+                                                                                "corrected for age, sex, and interaction", 
+                                                                                "corrected for age, sex, interaction, and other ADHD meds")), 
+                             levels = c("raw data", "corrected for age, sex, and interaction", 
+                                        "corrected for age, sex, interaction, and other ADHD meds"))) %>%
+  ggplot(aes(x=drug, y=question, fill = delta)) +
+  geom_tile()+
+  geom_point(aes(size = n_samples), alpha = 0.1) +
+  my.guides+null_labs+
+  facet_grid2(rows = vars(value_type), scales = "free_y", independent = "y") +
+  scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "average delta (on_drug - off_drug)")+
+  labs(title = "median of deltas for cbcl problems per drug")
 ################################################################################
 ################################################################################
 ################################################################################
