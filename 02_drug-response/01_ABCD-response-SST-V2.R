@@ -17,6 +17,18 @@ det.cap <- paste0("delta per question = score_on_MPH - score_off_MPH", "\n",
                   "\tritalin + intuniv +tenex + ", "\n", 
                   "\tamphetamine+ guanfacine +","\n",
                   "\tlisdexamfetamine + dexmethylphenidate")
+asmed.cap <- paste0("delta per question = score_on_the_drug - score_off_the_drug", "\n", 
+                    "corrected for:", "\n",
+                    "\tinterview_age + sex + interview_age:sex","\n",
+                    "\tclonidine + adderall + concerta + ", "\n",
+                    "\tvyvanse + dextroamphetamine +", "\n",
+                    "\tritalin + intuniv +tenex + ", "\n", 
+                    "\tamphetamine+ guanfacine +","\n",
+                    "\tlisdexamfetamine + dexmethylphenidate +","\n",
+                    "\tstrattera + atomoxetine")
+as.cap <- paste0("delta per question = score_on_the_drug - score_off_the_drug", "\n", 
+                 "corrected for:", "\n",
+                 "\tinterview_age + sex + interview_age:sex")
 ################################################################################
 abcd.pred <- read_rds("../data/derivatives/m-outputs/abcd/all-samples/model-celltype-all-FALSE-TRUE-1.rds") %>%
   rename(predicted = m) %>%
@@ -203,7 +215,7 @@ abcd.cbcl.filt <- inner_join(inner_join(abcd.cbcl.filt,
 # get participants with 2 or more measurements
 cbcl.tom <- abcd.cbcl.filt %>%
   group_by(IID) %>%
-  filter(n_distinct(eventname) >= 2, n_distinct(methylphenidate) >= 2) %>%
+  filter(n_distinct(eventname) >= 2& n_distinct(methylphenidate) >1) %>%
   ungroup()
 # correct for age, sex, their interaction, other meds
 # age-sex only
@@ -238,7 +250,7 @@ cbcl.tom.all <- inner_join(cbcl.tom,
   group_by(IID) %>%
   filter(n_distinct(methylphenidate)==2) %>%
   group_by(IID, methylphenidate) %>%
-  mutate_at(.vars = vars(starts_with("e_")), .funs = function(x) mean(x)) %>%
+  mutate_at(.vars = vars(starts_with("syn"), starts_with("dsm5")), .funs = function(x) mean(x)) %>%
   ungroup() %>%
   distinct(IID, methylphenidate, .keep_all = T) %>%
   pivot_longer(cols = c(starts_with("syn"), starts_with("dsm5")), names_to = "question", values_to = "val") %>%
@@ -339,7 +351,7 @@ p2.b.dsm5 <- cbcl.tom.all %>%
   theme_minimal() +
   stat_compare_means(paired = T, size = 3, method = "t.test")
 # correlation between predicted response to MPH and participants performance in SST whether data is corrected or not
-abcd.c.2 <- inner_join(abcd.pred, cbcl.tom.all %>% select(-c(`0`,`1`))%>% pivot_wider(names_from = "question", values_from = "delta"))
+abcd.c.2 <- inner_join(abcd.pred, cbcl.tom.all %>% select(-c(`0`,`1`))%>% pivot_wider(names_from = "question", values_from = "delta", id_cols = c("IID", "sex")))
 p2.p <- corr.table(abcd.c.2%>%select(predicted), abcd.c.2 %>% select(starts_with("syn"), starts_with("dsm5")), method = "spearman") %>%
   filter(V1 == "predicted", V1 != V2) %>%
   mutate(question = as.factor(ifelse(grepl("syn", V2), sub("syn_.*?_", "syn_", V2),
