@@ -228,18 +228,21 @@ sst.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) 
   return(ret)
 }
 sst.meds.deltas.pgs %>%
+  filter(drug == "methylphenidate") %>%
   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
   geom_text(size = 3)+
   facet_grid2(rows = vars(value_type), cols = vars(drug), scales = "free_y") +
   redblu.col.gradient+my.guides+null_labs +
   labs(caption = paste0("n(samples): ", "\n\t",
-                        paste(apply(sst.meds.deltas.pgs%>%ungroup()%>%select(drug, n_samples)%>%distinct(), 
+                        # paste(apply(sst.meds.deltas.pgs%>%ungroup()%>%select(drug, n_samples)%>%distinct(), 
+                        paste(apply(sst.meds.deltas.pgs[1,]%>%ungroup()%>%select(drug, n_samples)%>%distinct(), 
                                     1, function(x) paste(x[1], ":", x[2])), collapse = "\n\t"), "\n",
-                        "* pval < 0.05", "\n", 
-                        "** pval < 0.01", "\n", 
+                        "* pval < 0.05 & not FDR sig", "\n", 
+                        "** pval < 0.01 & not FDR sig", "\n", 
                         "*** FDR < 0.05"), 
-       title = "correlation of sst score change (delta) per drug with PGS")
+       # title = "correlation of sst score change (delta) per drug with PGS")
+       title = "correlation of sst score change (delta) with PGS")
 ####
 # SST deltas of MPH and predicted MPH response ---------------------------
 sst.pred <- inner_join(sst.meds.deltas %>% 
