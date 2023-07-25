@@ -1336,6 +1336,41 @@ sst.meds.deltas %>%
   scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "average delta (on_drug - off_drug)")+
   labs(title = "average deltas for SST per drug")
 ################################################################################
+# correlation between sst deltas per drug and pgs
+sst.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) %dopar% {
+  d = adhd.meds$drug[i]
+  t <- inner_join(sst.meds.deltas %>% filter(drug == d) %>% pivot_wider(names_from = question, 
+                                                                   values_from = delta, 
+                                                                   id_cols = c(IID, sex, drug)),
+             abcd.pgs)
+  ret <- corr.table(t %>% select(colnames(abcd.pgs)[-1]),
+             t %>% select(starts_with("e_")),
+             method = "spearman") %>%
+    filter(V1 %in% colnames(abcd.pgs)[-1], !V2 %in% colnames(abcd.pgs)[-1]) %>%
+    mutate(value_type = factor(ifelse(grepl("raw_", V2), "raw data", ifelse(grepl("as_", V2), 
+                                                                            "corrected for age, sex, and interaction", 
+                                                                            "corrected for age, sex, interaction, and other ADHD meds")), 
+                               levels = c("raw data", "corrected for age, sex, and interaction", 
+                                          "corrected for age, sex, interaction, and other ADHD meds"))) %>%
+    group_by(value_type) %>%
+    mutate(FDR = p.adjust(pval, method = "fdr")) %>%
+    mutate(drug = d)
+  return(ret)
+}
+
+sst.deltas.pgs %>%
+  ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
+  geom_tile()+
+  geom_text(size = 3)+
+  facet_grid2(rows = vars(value_type), cols = vars(drug), scales = "free_y") +
+  redblu.col.gradient+my.guides+null_labs +
+  labs(caption = paste0("n(samples): ", nrow(t), "\n",
+                        "* pval < 0.05", "\n", 
+                        "** pval < 0.01", "\n", 
+                        "*** FDR < 0.05"), 
+       title = "correlation of taking a medication and cbcl")
+
+################################################################################
 ################################################################################
 ################################################################################
 ################################################################################
