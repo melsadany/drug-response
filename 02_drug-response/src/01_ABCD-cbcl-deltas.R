@@ -26,14 +26,27 @@ demo <- full_join(age, sex)
 ####
 # ABCD meds ---------------------------------------------------------------
 # list of adhd meds of interest
-adhd.meds <- data.frame(drug = c("methylphenidate", "adderall", "concerta", "vyvanse", 
+all.adhd.meds <- data.frame(drug = c("methylphenidate", "adderall", "concerta", "vyvanse", 
                                  "dextroamphetamine",  "ritalin", "intuniv", "strattera",
                                  "tenex", "amphetamine", "dexmethylphenidate", "lisdexamfetamine",
                                  "atomoxetine", "clonidine", "guanfacine"
-                                 ))
+))
+adhd.meds <- data.frame(drug = c("methylphenidate",
+                                 "concerta",
+                                 "dextroamphetamine", 
+                                 "amphetamine", "dexmethylphenidate", "lisdexamfetamine",
+                                 "atomoxetine", "clonidine", "guanfacine"
+))
 abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
   as.data.frame() %>%
-  select(c(1:2), any_of(adhd.meds$drug))
+  select(c(1:2), any_of(all.adhd.meds$drug)) %>%
+  # mutate(methylphenidate = ifelse((methylphenidate+ritalin+concerta)>=1,1,0),
+  mutate(methylphenidate = ifelse((methylphenidate+ritalin)>=1,1,0),
+         amphetamine = ifelse((adderall+amphetamine)>=1,1,0),
+         lisdexamfetamine = ifelse((vyvanse+lisdexamfetamine)>=1,1,0),
+         guanfacine = ifelse((guanfacine+tenex+intuniv)>=1,1,0),
+         atomoxetine = ifelse((atomoxetine+strattera)>=1,1,0)) %>% 
+  select(-c(ritalin, adderall, tenex, strattera,intuniv, vyvanse))
 ####
 # ABCD PGS file -----------------------------------------------------------
 abcd.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
@@ -241,6 +254,7 @@ cbcl.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind)
 }
 cbcl.meds.deltas.pgs %>%
   filter(drug == "methylphenidate") %>%
+  filter(grepl("as", V2)) %>%
   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
   geom_text(size = 3)+
@@ -248,8 +262,12 @@ cbcl.meds.deltas.pgs %>%
   redblu.col.gradient+my.guides+null_labs +
   labs(caption = paste0("n(samples): ", "\n\t",
                         # paste(apply(cbcl.meds.deltas.pgs%>%ungroup()%>%select(drug, n_samples)%>%distinct(), 
-                        paste(apply(cbcl.meds.deltas.pgs[1,]%>%ungroup()%>%select(drug, n_samples)%>%distinct(), 
-                                    1, function(x) paste(x[1], ":", x[2])), collapse = "\n\t"), "\n",
+                        "methylphenidate: ", cbcl.meds.deltas.pgs %>%ungroup()%>% filter(drug=="methylphenidate")%>%distinct(n_samples), "\n",
+                        # "methylphenidate/ritalin/concerta: ", cbcl.meds.deltas.pgs %>%ungroup()%>% filter(drug=="methylphenidate")%>%distinct(n_samples), "\n",
+                        # "methylphenidate/ritalin: ", cbcl.meds.deltas.pgs %>%ungroup()%>% filter(drug=="methylphenidate")%>%distinct(n_samples), "\n",
+                        # "concerta: ", cbcl.meds.deltas.pgs %>%ungroup()%>% filter(drug=="concerta")%>%distinct(n_samples), "\n",
+                        # "guanfacine/tenex/intuniv: ", cbcl.meds.deltas.pgs %>%ungroup()%>% filter(drug=="guanfacine")%>%distinct(n_samples), "\n",
+                        # "amphetamine/adderall: ", cbcl.meds.deltas.pgs %>%ungroup()%>% filter(drug=="amphetamine")%>%distinct(n_samples), "\n",
                         "* pval < 0.05 & not FDR sig", "\n", 
                         "** pval < 0.01 & not FDR sig", "\n", 
                         "*** FDR < 0.05"), 
@@ -274,13 +292,15 @@ corr.table(cbcl.pred %>% select(predicted),
                                         "corrected for age, sex, and interaction"))) %>%
   group_by(value_type) %>%
   mutate(FDR = p.adjust(pval, method = "fdr")) %>%
-  ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(pval<0.05, paste0(rho, ": ", round(r, 3),
+  filter(grepl("as", V2)) %>%
+  ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(pval<0.1, paste0(rho, ": ", round(r, 3),
                                                                     ", p: ", round(pval, 5)), ""))) +
   geom_tile()+
   geom_text(size = 3)+
   facet_grid2(rows = vars(value_type), scales = "free_y") +
   redblu.col.gradient+my.guides+null_labs +
-  labs(caption = paste0("n(samples): ", nrow(cbcl.pred)), 
+  labs(caption = paste0("n(samples): ", nrow(cbcl.pred), "\n",
+                        "\tmethylphenidate"), 
        title = "correlation of cbcl score change (delta) of MPH with predicted MPH response") + 
   theme(plot.title = element_text(hjust = 1, size = 9),axis.text.x.bottom = element_text(angle = 0))
 ####
