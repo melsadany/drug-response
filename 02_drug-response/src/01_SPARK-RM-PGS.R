@@ -61,7 +61,9 @@ spark.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
   select(IID, "ADHD-Demontis", contains("cog")&contains("UKB")) %>%
   rename_all(.funs = function(x) str_replace_all(x, "-UKB-2020", ""))
 pgs.rm <- inner_join(spark.rm.filt %>% select(IID = ParticipantID, ends_with("yn"), ends_with("effect")),
-                     spark.pgs)
+                     spark.pgs) %>%
+  filter(!is.na(ch_med_antihist_yn))
+samples <- colSums(pgs.rm %>% select(starts_with("ch_med"), -contains("PM")), na.rm = T) %>% as.data.frame() %>% rename(count = 1) %>% rownames_to_column("q")
 corr.table(pgs.rm %>% select(colnames(spark.pgs)[-1]), 
            pgs.rm %>% select(ends_with("yn"), ends_with("effect")),
            method = "spearman") %>%
@@ -73,7 +75,9 @@ corr.table(pgs.rm %>% select(colnames(spark.pgs)[-1]),
   geom_tile()+
   geom_text(size = 3) +
   redblu.col.gradient+my.guides+null_labs +
-  labs(caption = paste0("n(samples): ", nrow(pgs.rm), "\n",
+  labs(caption = paste0("n(samples): ", nrow(pgs.rm), "\n\t",
+                        paste(apply(samples, 
+                                    1, function(x) paste(sub("ch_med_", "", x[1]), " answering yes:", x[2])), collapse = "\n\t"), "\n",
                         "* pval < 0.05 & not FDR sig", "\n", 
                         "** pval < 0.01 & not FDR sig", "\n", 
                         "*** FDR < 0.05"))
@@ -91,4 +95,20 @@ corr.table(pgs.rm %>% select(colnames(spark.pgs)[-1]),
   redblu.col.gradient+my.guides+null_labs +
   labs(caption = paste0("n(samples): ", nrow(pgs.rm))) +
   theme(axis.text.x.bottom = element_text(angle = 0, hjust = 0.5))
+####
+
+
+####
+# supplementary figures ---------------------------------------------------
+pgs.rm %>% 
+  pivot_longer(cols = c(starts_with("ch_med"), -contains("PM")), names_to = "q", values_to = "answer") %>%
+  select(IID, q, answer) %>%
+  drop_na() %>%
+  mutate(answer = ifelse(answer==1, "yes", "no")) %>%
+  ggplot(aes(x=answer))+
+  geom_bar(position = "identity") +
+  facet_wrap("q", scales = "free_y", ncol = 4)+
+  theme(axis.text.x.bottom = element_text(angle = 0, hjust = 0.5))
+
+
 ####
