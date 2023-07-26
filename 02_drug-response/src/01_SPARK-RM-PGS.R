@@ -93,7 +93,7 @@ corr.table(pgs.rm %>% select(colnames(spark.pgs)[-1]),
   geom_tile()+
   geom_text(size = 3) +
   redblu.col.gradient+my.guides+null_labs +
-  labs(caption = paste0("n(samples): ", nrow(pgs.rm))) +
+  labs(caption = paste0("n(samples): ", nrow(pgs.rm%>%drop_na(ch_med_methyl_effect)))) +
   theme(axis.text.x.bottom = element_text(angle = 0, hjust = 0.5))
 ####
 
