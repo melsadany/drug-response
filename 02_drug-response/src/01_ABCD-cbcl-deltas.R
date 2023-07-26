@@ -286,9 +286,47 @@ corr.table(cbcl.pred %>% select(predicted),
 ####
 
 
-
-
-
+####
+# supplementary figures ---------------------------------------------------
+# scatterplot for CBCL scores on and off MPH
+cbcl.meds.deltas %>%
+  filter(grepl("raw", question), drug == "methylphenidate", !grepl("totprob", question)) %>%
+  ggplot(aes(x=`0`, y=`1`)) +
+  geom_point(size=0.6)+
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +
+  facet_wrap("question", scales = "free")+
+  labs(x="off-MPH", y="on-MPH", 
+       caption = paste0("n(samples): ", nrow(cbcl.meds.deltas %>% filter(drug == "methylphenidate") %>% distinct(IID)), "\n",
+                        "the red dashed line represents a line with a slope of 1 and intercepts with the origin (0,0)"))
+# histogram for PGS distribution
+inner_join(cbcl.meds.deltas %>% 
+             filter(drug == "methylphenidate") %>% 
+             pivot_wider(names_from = question, 
+                         values_from = delta, 
+                         id_cols = c(IID, sex)),
+           abcd.pgs) %>%
+  pivot_longer(colnames(abcd.pgs)[-1], names_to = "PGS", values_to = "score") %>%
+  ggplot(aes(x=score))+
+  geom_histogram()+
+  facet_wrap("PGS", scales = "free")+
+  labs(x="PGS", 
+       title = "distribution of PGS for CBCL samples", 
+       caption = paste0("n(samples): ", nrow(cbcl.meds.deltas %>% filter(drug == "methylphenidate") %>% distinct(IID))))
+# histogram for predicted response distribution for CBCL samples
+cbcl.pred %>% 
+  ggplot(aes(x=predicted)) +
+  geom_histogram()+
+  labs(title = "distribution of predicted MPH response for CBCL samples", 
+       caption = paste0("n(samples): ", nrow(cbcl.pred  %>% distinct(IID))))
+# deltas boxplot for distribution
+cbcl.meds.deltas %>% 
+  filter(drug == "methylphenidate", grepl("raw", question), !grepl("totprob", question)) %>%
+  ggplot(aes(x=question, y=delta, fill = question))+
+  geom_boxplot(outlier.size = 0.3, show.legend = F) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red")+
+  labs(y="score delta")+
+  labs(title = "distribution of CBCL deltas for MPH samples", x="",
+       caption = paste0("n(samples): ", nrow(cbcl.meds.deltas %>% filter(drug=="methylphenidate")%>% distinct(IID))))
 ####
 # Extras ------------------------------------------------------------------
 as.cap <- paste0("delta per question = score_on_the_drug - score_off_the_drug", "\n", 
