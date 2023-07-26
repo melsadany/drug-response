@@ -1,0 +1,121 @@
+V1,V2,r,pval,value_type,FDR
+methylphenidate,e_raw_correct_go,-0.017116244905186304,0.010431197672784664,raw data,0.07823398254588498
+methylphenidate,e_raw_correct_stop,-0.009295452847069957,0.16426854880322384,raw data,0.4693387108663538
+methylphenidate,e_raw_stop_doesnot_stop,0.011430524982938239,0.08720250189265166,raw data,0.30777353609171176
+methylphenidate,e_raw_no_response_on_go,-6.619535159347732e-4,0.9211029421663366,raw data,0.9868960094639321
+methylphenidate,e_as_correct_go,-0.002036394376396087,0.7605985589711839,"corrected for age, sex, and interaction",0.9101002295084206
+methylphenidate,e_as_correct_stop,-0.001729576200236468,0.7957994192144833,"corrected for age, sex, and interaction",0.9101002295084206
+methylphenidate,e_as_stop_doesnot_stop,0.0027838777672865105,0.677016945056947,"corrected for age, sex, and interaction",0.9101002295084206
+methylphenidate,e_as_no_response_on_go,-0.008652844031885534,0.19542306460003256,"corrected for age, sex, and interaction",0.7816922584001302
+adderall,e_raw_correct_go,-0.041528165334180356,5.08969977275342e-10,raw data,3.053819863652052e-8
+adderall,e_raw_correct_stop,-0.01590228043442054,0.017335123077828474,raw data,0.10779222695722002
+adderall,e_raw_stop_doesnot_stop,0.01204971281740975,0.07138851811032976,raw data,0.28067588047240355
+adderall,e_raw_no_response_on_go,0.0236711493279125,3.966828325343563e-4,raw data,0.005950242488015345
+adderall,e_as_correct_go,-0.0319752373475488,1.705592768797004e-6,"corrected for age, sex, and interaction",1.0233556612782024e-4
+adderall,e_as_correct_stop,-0.009622040264648598,0.14994477084646207,"corrected for age, sex, and interaction",0.7261087954854103
+adderall,e_as_stop_doesnot_stop,0.009450983594038011,0.15732357235517225,"corrected for age, sex, and interaction",0.7261087954854103
+adderall,e_as_no_response_on_go,0.021982494530821694,0.0010035918342272687,"corrected for age, sex, and interaction",0.020071836684545374
+concerta,e_raw_correct_go,-0.01988897150493422,0.002918707593152048,raw data,0.02501749365558898
+concerta,e_raw_correct_stop,0.003605951417660704,0.5895139316717679,raw data,0.7711669945201364
+concerta,e_raw_stop_doesnot_stop,0.02311521660431885,5.420529631925408e-4,raw data,0.00650463555831049
+concerta,e_raw_no_response_on_go,0.009468138118035319,0.1565713976807861,raw data,0.4693387108663538
+concerta,e_as_correct_go,-0.011160615281053079,0.09492850048830093,"corrected for age, sex, and interaction",0.6561644741184555
+concerta,e_as_correct_stop,0.010403953655809452,0.11953488684929114,"corrected for age, sex, and interaction",0.6601550190831675
+concerta,e_as_stop_doesnot_stop,0.019789685800448008,0.003063310400994279,"corrected for age, sex, and interaction",0.045949656014914186
+concerta,e_as_no_response_on_go,0.007736064592358838,0.24705901409864262,"corrected for age, sex, and interaction",0.8632892626769602
+vyvanse,e_raw_correct_go,-0.014874985211680777,0.026028532206062494,raw data,0.14197381203306814
+vyvanse,e_raw_correct_stop,-0.010294368006305916,0.12347974326074351,raw data,0.3899360313497164
+vyvanse,e_raw_stop_doesnot_stop,8.454002101097105e-4,0.8993419811878418,raw data,0.9811003431140092
+vyvanse,e_raw_no_response_on_go,-2.4228178785859518e-4,0.9710819820067189,raw data,0.9971276420314141
+vyvanse,e_as_correct_go,-0.0044350064506269195,0.5069533872151879,"corrected for age, sex, and interaction",0.9101002295084206
+vyvanse,e_as_correct_stop,-0.003946142355897742,0.5548943635054371,"corrected for age, sex, and interaction",0.9101002295084206
+vyvanse,e_as_stop_doesnot_stop,-0.005390360334691405,0.41993386441742775,"corrected for age, sex, and interaction",0.9101002295084206
+vyvanse,e_as_no_response_on_go,-0.006083101075646582,0.3627225488555945,"corrected for age, sex, and interaction",0.9101002295084206
+dextroamphetamine,e_raw_correct_go,-0.005890485959630522,0.3781182177644382,raw data,0.7711669945201364
+dextroamphetamine,e_raw_correct_stop,-0.005108657765365391,0.4446375441632333,raw data,0.7711669945201364
+dextroamphetamine,e_raw_stop_doesnot_stop,2.4060056345831995e-5,0.9971276420314141,raw data,0.9971276420314141
+dextroamphetamine,e_raw_no_response_on_go,-0.004026743841195714,0.5468399674718571,raw data,0.7711669945201364
+dextroamphetamine,e_as_correct_go,-0.0010698383682750314,0.8728226962358208,"corrected for age, sex, and interaction",0.9351671745383794
+dextroamphetamine,e_as_correct_stop,-0.004965706755836929,0.4574840293727078,"corrected for age, sex, and interaction",0.9101002295084206
+dextroamphetamine,e_as_stop_doesnot_stop,-4.748857878319713e-4,0.9433543271221465,"corrected for age, sex, and interaction",0.9593433835140472
+dextroamphetamine,e_as_no_response_on_go,-0.00722371012485718,0.27976013538835565,"corrected for age, sex, and interaction",0.8632892626769602
+ritalin,e_raw_correct_go,-0.015814138938382336,0.01796537115953667,raw data,0.10779222695722002
+ritalin,e_raw_correct_stop,-0.003242752963478253,0.627536848305335,raw data,0.7844210603816687
+ritalin,e_raw_stop_doesnot_stop,-1.2232603287298428e-4,0.9853971539545368,raw data,0.9971276420314141
+ritalin,e_raw_no_response_on_go,0.002142491669487838,0.748536519874841,raw data,0.8982438238498093
+ritalin,e_as_correct_go,-0.006235471940459299,0.35082583990767313,"corrected for age, sex, and interaction",0.9101002295084206
+ritalin,e_as_correct_stop,-7.861499656665244e-4,0.9063629432237448,"corrected for age, sex, and interaction",0.937616837817667
+ritalin,e_as_stop_doesnot_stop,-0.004804021691691743,0.47226191738027223,"corrected for age, sex, and interaction",0.9101002295084206
+ritalin,e_as_no_response_on_go,-0.0031384745344358645,0.6386451594971616,"corrected for age, sex, and interaction",0.9101002295084206
+intuniv,e_raw_correct_go,-0.006928622168034382,0.29987369754609117,raw data,0.7196968741106188
+intuniv,e_raw_correct_stop,-0.004149149188572185,0.5347199250373265,raw data,0.7711669945201364
+intuniv,e_raw_stop_doesnot_stop,0.0034656049610176467,0.6040808123741068,raw data,0.7711669945201364
+intuniv,e_raw_no_response_on_go,0.004283851497722152,0.5215407397856149,raw data,0.7711669945201364
+intuniv,e_as_correct_go,-0.0027954771654851883,0.675747692894662,"corrected for age, sex, and interaction",0.9101002295084206
+intuniv,e_as_correct_stop,0.001572388536629332,0.8140006983211137,"corrected for age, sex, and interaction",0.9101002295084206
+intuniv,e_as_stop_doesnot_stop,0.0037306979378945527,0.5767038142124306,"corrected for age, sex, and interaction",0.9101002295084206
+intuniv,e_as_no_response_on_go,0.004468157888740665,0.5037829842486057,"corrected for age, sex, and interaction",0.9101002295084206
+strattera,e_raw_correct_go,-0.005684897801961013,0.3949876803052168,raw data,0.7711669945201364
+strattera,e_raw_correct_stop,-0.0027766610323476165,0.6778070921916577,raw data,0.829967867989785
+strattera,e_raw_stop_doesnot_stop,9.55548408748381e-4,0.8863110988134957,raw data,0.9811003431140092
+strattera,e_raw_no_response_on_go,0.005488945533875824,0.4114827639082841,raw data,0.7711669945201364
+strattera,e_as_correct_go,0.00211701387627286,0.7514275683107483,"corrected for age, sex, and interaction",0.9101002295084206
+strattera,e_as_correct_stop,-0.0014318651268696557,0.8303581450255897,"corrected for age, sex, and interaction",0.9101002295084206
+strattera,e_as_stop_doesnot_stop,-0.0057581496190081275,0.3889255218024945,"corrected for age, sex, and interaction",0.9101002295084206
+strattera,e_as_no_response_on_go,0.002138569513296171,0.748981350773658,"corrected for age, sex, and interaction",0.9101002295084206
+tenex,e_raw_correct_go,-0.003508632494313245,0.5995977172641789,raw data,0.7711669945201364
+tenex,e_raw_correct_stop,0.013773923872387196,0.03930164273299397,raw data,0.16843561171283128
+tenex,e_raw_stop_doesnot_stop,0.014525353892990082,0.02974541994192137,raw data,0.14872709970960685
+tenex,e_raw_no_response_on_go,3.4732359569869477e-4,0.9585540865744138,raw data,0.9971276420314141
+tenex,e_as_correct_go,0.002188867635265782,0.74328317619761,"corrected for age, sex, and interaction",0.9101002295084206
+tenex,e_as_correct_stop,0.015769862646396855,0.01828947221463051,"corrected for age, sex, and interaction",0.15676690469683294
+tenex,e_as_stop_doesnot_stop,0.01104423754974408,0.09842467111776831,"corrected for age, sex, and interaction",0.6561644741184555
+tenex,e_as_no_response_on_go,-0.002006935843821925,0.7639581455277353,"corrected for age, sex, and interaction",0.9101002295084206
+amphetamine,e_raw_correct_go,-0.005357449636983899,0.42277764429038434,raw data,0.7711669945201364
+amphetamine,e_raw_correct_stop,0.005118073012040142,0.4437987156132861,raw data,0.7711669945201364
+amphetamine,e_raw_stop_doesnot_stop,0.0036983271914028215,0.5800153074028123,raw data,0.7711669945201364
+amphetamine,e_raw_no_response_on_go,-0.0037316448450487316,0.5766070809385897,raw data,0.7711669945201364
+amphetamine,e_as_correct_go,-7.457071022366751e-7,0.9999109751727793,"corrected for age, sex, and interaction",0.9999109751727793
+amphetamine,e_as_correct_stop,0.005964669237754567,0.37214172483683994,"corrected for age, sex, and interaction",0.9101002295084206
+amphetamine,e_as_stop_doesnot_stop,0.002997356906518697,0.6538074476936395,"corrected for age, sex, and interaction",0.9101002295084206
+amphetamine,e_as_no_response_on_go,-0.008987185910762065,0.17871224168399058,"corrected for age, sex, and interaction",0.7659096072171024
+dexmethylphenidate,e_raw_correct_go,-0.008668755299351856,0.19460269656578322,raw data,0.5307346269975906
+dexmethylphenidate,e_raw_correct_stop,-9.845340156210017e-4,0.8828869647108835,raw data,0.9811003431140092
+dexmethylphenidate,e_raw_stop_doesnot_stop,-0.003611603290868426,0.5889307176484071,raw data,0.7711669945201364
+dexmethylphenidate,e_raw_no_response_on_go,0.0013607217595049544,0.838668087499834,raw data,0.967693947115193
+dexmethylphenidate,e_as_correct_go,-0.0022562248928255165,0.7356744258096413,"corrected for age, sex, and interaction",0.9101002295084206
+dexmethylphenidate,e_as_correct_stop,0.001694072650668473,0.7999011728434602,"corrected for age, sex, and interaction",0.9101002295084206
+dexmethylphenidate,e_as_stop_doesnot_stop,-0.005199903735621393,0.4365463683869746,"corrected for age, sex, and interaction",0.9101002295084206
+dexmethylphenidate,e_as_no_response_on_go,-0.0015571939914718772,0.815765629652268,"corrected for age, sex, and interaction",0.9101002295084206
+lisdexamfetamine,e_raw_correct_go,-0.006484414468810463,0.3319280393873525,raw data,0.747406342435107
+lisdexamfetamine,e_raw_correct_stop,0.00427447921377562,0.5224522790531245,raw data,0.7711669945201364
+lisdexamfetamine,e_raw_stop_doesnot_stop,-0.003542461995670116,0.5960835914523364,raw data,0.7711669945201364
+lisdexamfetamine,e_raw_no_response_on_go,0.007352590470001322,0.2712699243502945,raw data,0.6781748108757363
+lisdexamfetamine,e_as_correct_go,-8.954284612489092e-4,0.8934199001780687,"corrected for age, sex, and interaction",0.937616837817667
+lisdexamfetamine,e_as_correct_stop,0.0071060317193900515,0.2876685571665558,"corrected for age, sex, and interaction",0.8632892626769602
+lisdexamfetamine,e_as_stop_doesnot_stop,-0.003130556036935213,0.6394920447878392,"corrected for age, sex, and interaction",0.9101002295084206
+lisdexamfetamine,e_as_no_response_on_go,0.006155206936598844,0.35706156396405886,"corrected for age, sex, and interaction",0.9101002295084206
+atomoxetine,e_raw_correct_go,-0.010409432596975592,0.11934027826276039,raw data,0.3899360313497164
+atomoxetine,e_raw_correct_stop,-0.0044318751388088854,0.5072533878736647,raw data,0.7711669945201364
+atomoxetine,e_raw_stop_doesnot_stop,0.004499607296829288,0.5007850536626544,raw data,0.7711669945201364
+atomoxetine,e_raw_no_response_on_go,0.006261877096052232,0.34878962646971656,raw data,0.747406342435107
+atomoxetine,e_as_correct_go,-0.004228323241941023,0.5269532756368702,"corrected for age, sex, and interaction",0.9101002295084206
+atomoxetine,e_as_correct_stop,-0.003188853958694385,0.633268137666148,"corrected for age, sex, and interaction",0.9101002295084206
+atomoxetine,e_as_stop_doesnot_stop,0.0040052655632448414,0.5489805944473718,"corrected for age, sex, and interaction",0.9101002295084206
+atomoxetine,e_as_no_response_on_go,0.003778045808129982,0.5718762940898292,"corrected for age, sex, and interaction",0.9101002295084206
+clonidine,e_raw_correct_go,-0.025746308335965275,1.1671852979544539e-4,raw data,0.002334370595908908
+clonidine,e_raw_correct_stop,-0.01390798436626883,0.03742692567619388,raw data,0.16843561171283128
+clonidine,e_raw_stop_doesnot_stop,-0.0015453881960941032,0.8171375847222868,raw data,0.9613383349673963
+clonidine,e_raw_no_response_on_go,0.011905389190168758,0.07484690145930761,raw data,0.28067588047240355
+clonidine,e_as_correct_go,-0.0170399172218028,0.01077925504789734,"corrected for age, sex, and interaction",0.1077925504789734
+clonidine,e_as_correct_stop,-0.010362136121947751,0.1210284201652474,"corrected for age, sex, and interaction",0.6601550190831675
+clonidine,e_as_stop_doesnot_stop,-0.00765976824439506,0.2517512805500288,"corrected for age, sex, and interaction",0.8632892626769602
+clonidine,e_as_no_response_on_go,0.007104638404952226,0.2877630875589867,"corrected for age, sex, and interaction",0.8632892626769602
+guanfacine,e_raw_correct_go,-0.033775334995034975,4.302537179867727e-7,raw data,1.2907611539603181e-5
+guanfacine,e_raw_correct_stop,-0.00817473863877384,0.22126856681750717,raw data,0.577222348219584
+guanfacine,e_raw_stop_doesnot_stop,0.006330134326700602,0.34356089106123955,raw data,0.747406342435107
+guanfacine,e_raw_no_response_on_go,0.0204529765934574,0.0022090347516647846,raw data,0.022090347516647846
+guanfacine,e_as_correct_go,-0.025407948904196738,1.4337855875901084e-4,"corrected for age, sex, and interaction",0.004301356762770325
+guanfacine,e_as_correct_stop,-0.0013984531859791798,0.8342585437160523,"corrected for age, sex, and interaction",0.9101002295084206
+guanfacine,e_as_stop_doesnot_stop,0.002484119123956497,0.7101268508432255,"corrected for age, sex, and interaction",0.9101002295084206
+guanfacine,e_as_no_response_on_go,0.01790799853961238,0.007369020903003509,"corrected for age, sex, and interaction",0.08842825083604211

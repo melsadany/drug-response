@@ -1,0 +1,9 @@
+V1,V2,r,pval,value_type,FDR
+predicted,e_as_correct_go,0.1012544963742327,0.13616052111542798,"corrected for age, sex, and interaction",0.27232104223085596
+predicted,e_as_correct_stop,0.07119664255183039,0.2953344282773067,"corrected for age, sex, and interaction",0.3105358699954093
+predicted,e_as_no_response_on_go,-0.06899818928763975,0.3105358699954093,"corrected for age, sex, and interaction",0.3105358699954093
+predicted,e_as_stop_doesnot_stop,-0.1654020901569015,0.014486959168853453,"corrected for age, sex, and interaction",0.05794783667541381
+predicted,e_raw_correct_go,0.06673380855536964,0.3267200227387228,raw data,0.4356266969849637
+predicted,e_raw_correct_stop,0.07813924673183566,0.2506233083510043,raw data,0.4356266969849637
+predicted,e_raw_no_response_on_go,-0.01355877502957006,0.8422227492683731,raw data,0.8422227492683731
+predicted,e_raw_stop_doesnot_stop,-0.12324091961701013,0.06935527766185734,raw data,0.27742111064742936

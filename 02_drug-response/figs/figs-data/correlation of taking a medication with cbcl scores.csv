@@ -1,0 +1,511 @@
+V1,V2,r,pval,value_type,FDR
+methylphenidate,syn_raw_attention,0.12933183975027715,0,raw data,0
+methylphenidate,syn_raw_anxdep,0.04833766135622362,0,raw data,0
+methylphenidate,syn_raw_withdep,0.02927952295133413,1.0639946701473946e-9,raw data,1.6344496439011181e-9
+methylphenidate,syn_raw_somatic,0.016168251668654047,7.580801535618242e-4,raw data,8.6686295586666e-4
+methylphenidate,syn_raw_social,0.07089601173269452,0,raw data,0
+methylphenidate,syn_raw_thought,0.08409282488825406,0,raw data,0
+methylphenidate,syn_raw_rulebreak,0.06611812806940114,0,raw data,0
+methylphenidate,syn_raw_aggressive,0.07362473737371526,0,raw data,0
+methylphenidate,syn_raw_internal,0.043420387716419005,0,raw data,0
+methylphenidate,syn_raw_external,0.0754190878864364,0,raw data,0
+methylphenidate,syn_raw_totprob,0.09443611567522107,0,raw data,0
+methylphenidate,syn_as_attention,0.12052086788604856,0,"corrected for age, sex, and interaction",0
+methylphenidate,syn_as_anxdep,0.04828427027322687,0,"corrected for age, sex, and interaction",0
+methylphenidate,syn_as_withdep,0.03631579102646913,3.8413716652030416e-14,"corrected for age, sex, and interaction",8.162914788556463e-14
+methylphenidate,syn_as_somatic,0.021183922522779265,1.021470634077204e-5,"corrected for age, sex, and interaction",1.3289541412739132e-5
+methylphenidate,syn_as_social,0.05411751572775903,0,"corrected for age, sex, and interaction",0
+methylphenidate,syn_as_thought,0.06936475528693678,0,"corrected for age, sex, and interaction",0
+methylphenidate,syn_as_rulebreak,0.043966354550123765,0,"corrected for age, sex, and interaction",0
+methylphenidate,syn_as_aggressive,0.06320373729969797,0,"corrected for age, sex, and interaction",0
+methylphenidate,syn_as_internal,0.04429612905778796,0,"corrected for age, sex, and interaction",0
+methylphenidate,syn_as_external,0.06654163908378583,0,"corrected for age, sex, and interaction",0
+methylphenidate,syn_as_totprob,0.0887675882842073,0,"corrected for age, sex, and interaction",0
+methylphenidate,dsm5_raw_depress,0.06453667581479562,0,raw data,0
+methylphenidate,dsm5_raw_anxdisord,0.0491511642710881,0,raw data,0
+methylphenidate,dsm5_raw_somaticpr,0.011476113427398212,0.01683613278374496,raw data,0.0180387136968696
+methylphenidate,dsm5_raw_adhd,0.13084645317772411,0,raw data,0
+methylphenidate,dsm5_raw_opposit,0.07053967199072497,0,raw data,0
+methylphenidate,dsm5_raw_conduct,0.06572273802712351,0,raw data,0
+methylphenidate,dsm5_as_depress,0.0651552027011897,0,"corrected for age, sex, and interaction",0
+methylphenidate,dsm5_as_anxdisord,0.04430618324092904,0,"corrected for age, sex, and interaction",0
+methylphenidate,dsm5_as_somaticpr,0.013856242565219558,0.0039011232506855897,"corrected for age, sex, and interaction",0.004401709862499228
+methylphenidate,dsm5_as_adhd,0.12122062002542784,0,"corrected for age, sex, and interaction",0
+methylphenidate,dsm5_as_opposit,0.05702985339485553,0,"corrected for age, sex, and interaction",0
+methylphenidate,dsm5_as_conduct,0.03951522925873893,2.220446049250313e-16,"corrected for age, sex, and interaction",5.194621491365411e-16
+adderall,syn_raw_attention,0.11633609306913267,0,raw data,0
+adderall,syn_raw_anxdep,0.0464661310943361,0,raw data,0
+adderall,syn_raw_withdep,0.04307438451524005,0,raw data,0
+adderall,syn_raw_somatic,0.0336926389442081,2.2293278334473143e-12,raw data,3.97537480789556e-12
+adderall,syn_raw_social,0.06697604629585759,0,raw data,0
+adderall,syn_raw_thought,0.07577076780273383,0,raw data,0
+adderall,syn_raw_rulebreak,0.07396731507193066,0,raw data,0
+adderall,syn_raw_aggressive,0.07786303721202363,0,raw data,0
+adderall,syn_raw_internal,0.04967058724530891,0,raw data,0
+adderall,syn_raw_external,0.0810820767791082,0,raw data,0
+adderall,syn_raw_totprob,0.0901039242613373,0,raw data,0
+adderall,syn_as_attention,0.10884302370860474,0,"corrected for age, sex, and interaction",0
+adderall,syn_as_anxdep,0.046103495653097584,0,"corrected for age, sex, and interaction",0
+adderall,syn_as_withdep,0.04868900520736377,0,"corrected for age, sex, and interaction",0
+adderall,syn_as_somatic,0.03580080257435127,8.72635297355373e-14,"corrected for age, sex, and interaction",1.809121957931871e-13
+adderall,syn_as_social,0.05287129427347229,0,"corrected for age, sex, and interaction",0
+adderall,syn_as_thought,0.06309106606123574,0,"corrected for age, sex, and interaction",0
+adderall,syn_as_rulebreak,0.055700554848681805,0,"corrected for age, sex, and interaction",0
+adderall,syn_as_aggressive,0.0701570362758857,0,"corrected for age, sex, and interaction",0
+adderall,syn_as_internal,0.05022411746648772,0,"corrected for age, sex, and interaction",0
+adderall,syn_as_external,0.07434676683930971,0,"corrected for age, sex, and interaction",0
+adderall,syn_as_totprob,0.08586706193098104,0,"corrected for age, sex, and interaction",0
+adderall,dsm5_raw_depress,0.059782014233217745,0,raw data,0
+adderall,dsm5_raw_anxdisord,0.05222977214009978,0,raw data,0
+adderall,dsm5_raw_somaticpr,0.02358171761828423,9.007544603534257e-7,raw data,1.2025779444509084e-6
+adderall,dsm5_raw_adhd,0.11919691568473122,0,raw data,0
+adderall,dsm5_raw_opposit,0.07868516939352704,0,raw data,0
+adderall,dsm5_raw_conduct,0.07512143676702031,0,raw data,0
+adderall,dsm5_as_depress,0.06227405648996316,0,"corrected for age, sex, and interaction",0
+adderall,dsm5_as_anxdisord,0.0479110392820034,0,"corrected for age, sex, and interaction",0
+adderall,dsm5_as_somaticpr,0.023176705311306462,1.3806482335176895e-6,"corrected for age, sex, and interaction",1.94511215219343e-6
+adderall,dsm5_as_adhd,0.11048919331369945,0,"corrected for age, sex, and interaction",0
+adderall,dsm5_as_opposit,0.0689645079484295,0,"corrected for age, sex, and interaction",0
+adderall,dsm5_as_conduct,0.05380437058379952,0,"corrected for age, sex, and interaction",0
+concerta,syn_raw_attention,0.10749758782396698,0,raw data,0
+concerta,syn_raw_anxdep,0.0320353644075355,2.4912738538773738e-11,raw data,4.3215975016240157e-11
+concerta,syn_raw_withdep,0.023122751314545213,1.4607160969681843e-6,raw data,1.9101672037276255e-6
+concerta,syn_raw_somatic,0.016781193491045874,4.734402020032391e-4,raw data,5.438164482469639e-4
+concerta,syn_raw_social,0.06060851782545215,0,raw data,0
+concerta,syn_raw_thought,0.06948419833665588,0,raw data,0
+concerta,syn_raw_rulebreak,0.06094707449728922,0,raw data,0
+concerta,syn_raw_aggressive,0.06265560457498943,0,raw data,0
+concerta,syn_raw_internal,0.031865124674837056,3.171152229697327e-11,raw data,5.463809584951476e-11
+concerta,syn_raw_external,0.06533501783641718,0,raw data,0
+concerta,syn_raw_totprob,0.07864318644102207,0,raw data,0
+concerta,syn_as_attention,0.09988784594277918,0,"corrected for age, sex, and interaction",0
+concerta,syn_as_anxdep,0.03304509815219131,5.8051341511600185e-12,"corrected for age, sex, and interaction",1.0649706536300754e-11
+concerta,syn_as_withdep,0.026772149106186426,2.4474341886460138e-8,"corrected for age, sex, and interaction",3.876370919905177e-8
+concerta,syn_as_somatic,0.02195006415121532,4.82626015951837e-6,"corrected for age, sex, and interaction",6.546257131261619e-6
+concerta,syn_as_social,0.04855711199924026,0,"corrected for age, sex, and interaction",0
+concerta,syn_as_thought,0.05733719559368851,0,"corrected for age, sex, and interaction",0
+concerta,syn_as_rulebreak,0.04377980801087653,0,"corrected for age, sex, and interaction",0
+concerta,syn_as_aggressive,0.054213477826842826,0,"corrected for age, sex, and interaction",0
+concerta,syn_as_internal,0.0329319438309891,6.849409928122441e-12,"corrected for age, sex, and interaction",1.2475710940508732e-11
+concerta,syn_as_external,0.057787355122162216,0,"corrected for age, sex, and interaction",0
+concerta,syn_as_totprob,0.07414525435484538,0,"corrected for age, sex, and interaction",0
+concerta,dsm5_raw_depress,0.04406696286648067,0,raw data,0
+concerta,dsm5_raw_anxdisord,0.0385898831552149,8.881784197001252e-16,raw data,1.826495943738161e-15
+concerta,dsm5_raw_somaticpr,0.010592835710073795,0.027364025060191866,raw data,0.028597649140774287
+concerta,dsm5_raw_adhd,0.10959000210260782,0,raw data,0
+concerta,dsm5_raw_opposit,0.061851366030781944,0,raw data,0
+concerta,dsm5_raw_conduct,0.060842999672461096,0,raw data,0
+concerta,dsm5_as_depress,0.04483672787593776,0,"corrected for age, sex, and interaction",0
+concerta,dsm5_as_anxdisord,0.03663394204814284,2.3092638912203256e-14,"corrected for age, sex, and interaction",4.990358408993077e-14
+concerta,dsm5_as_somaticpr,0.01414303114303712,0.003221331493735935,"corrected for age, sex, and interaction",0.003650842359567393
+concerta,dsm5_as_adhd,0.10098105480168564,0,"corrected for age, sex, and interaction",0
+concerta,dsm5_as_opposit,0.051219652706945173,0,"corrected for age, sex, and interaction",0
+concerta,dsm5_as_conduct,0.040519382333017676,0,"corrected for age, sex, and interaction",0
+vyvanse,syn_raw_attention,0.11127633387643798,0,raw data,0
+vyvanse,syn_raw_anxdep,0.037940026260565266,2.6645352591003757e-15,raw data,5.350051110792093e-15
+vyvanse,syn_raw_withdep,0.041443342228704425,0,raw data,0
+vyvanse,syn_raw_somatic,0.03506703682338749,2.7555735471196385e-13,raw data,5.019080389396484e-13
+vyvanse,syn_raw_social,0.0662585044428461,0,raw data,0
+vyvanse,syn_raw_thought,0.08301266433714424,0,raw data,0
+vyvanse,syn_raw_rulebreak,0.07056809521254494,0,raw data,0
+vyvanse,syn_raw_aggressive,0.07294989263206045,0,raw data,0
+vyvanse,syn_raw_internal,0.04700350578231629,0,raw data,0
+vyvanse,syn_raw_external,0.07485339353030937,0,raw data,0
+vyvanse,syn_raw_totprob,0.09141821614325314,0,raw data,0
+vyvanse,syn_as_attention,0.10413471173255366,0,"corrected for age, sex, and interaction",0
+vyvanse,syn_as_anxdep,0.03869049758213936,8.881784197001252e-16,"corrected for age, sex, and interaction",2.004296433836566e-15
+vyvanse,syn_as_withdep,0.04766934427991777,0,"corrected for age, sex, and interaction",0
+vyvanse,syn_as_somatic,0.038094904325400344,2.220446049250313e-15,"corrected for age, sex, and interaction",4.88115295309336e-15
+vyvanse,syn_as_social,0.05207915848324474,0,"corrected for age, sex, and interaction",0
+vyvanse,syn_as_thought,0.07141555674023031,0,"corrected for age, sex, and interaction",0
+vyvanse,syn_as_rulebreak,0.05370773727642664,0,"corrected for age, sex, and interaction",0
+vyvanse,syn_as_aggressive,0.06536095433310347,0,"corrected for age, sex, and interaction",0
+vyvanse,syn_as_internal,0.04816868806548892,0,"corrected for age, sex, and interaction",0
+vyvanse,syn_as_external,0.06856074780566825,0,"corrected for age, sex, and interaction",0
+vyvanse,syn_as_totprob,0.08765084323576443,0,"corrected for age, sex, and interaction",0
+vyvanse,dsm5_raw_depress,0.06766818034998982,0,raw data,0
+vyvanse,dsm5_raw_anxdisord,0.04367084275594263,0,raw data,0
+vyvanse,dsm5_raw_somaticpr,0.023151383049914473,1.4176863558645891e-6,raw data,1.8634537151828362e-6
+vyvanse,dsm5_raw_adhd,0.11420724681852334,0,raw data,0
+vyvanse,dsm5_raw_opposit,0.06868213688918853,0,raw data,0
+vyvanse,dsm5_raw_conduct,0.07426429318548827,0,raw data,0
+vyvanse,dsm5_as_depress,0.06906072496333128,0,"corrected for age, sex, and interaction",0
+vyvanse,dsm5_as_anxdisord,0.040414513070552174,0,"corrected for age, sex, and interaction",0
+vyvanse,dsm5_as_somaticpr,0.0227672724121474,2.1112846528836826e-6,"corrected for age, sex, and interaction",2.92596514394206e-6
+vyvanse,dsm5_as_adhd,0.10663331432416363,0,"corrected for age, sex, and interaction",0
+vyvanse,dsm5_as_opposit,0.05886009439044101,0,"corrected for age, sex, and interaction",0
+vyvanse,dsm5_as_conduct,0.055016945027590386,0,"corrected for age, sex, and interaction",0
+dextroamphetamine,syn_raw_attention,0.036964268654202326,1.3322676295501878e-14,raw data,2.6335522909713017e-14
+dextroamphetamine,syn_raw_anxdep,0.010974616947857334,0.022265504199917574,raw data,0.023657098212412422
+dextroamphetamine,syn_raw_withdep,0.00836661615266074,0.08140561378095956,raw data,0.08370335287961568
+dextroamphetamine,syn_raw_somatic,0.009643750087654904,0.044579643906558664,raw data,0.04602351901284397
+dextroamphetamine,syn_raw_social,0.013777874349512931,0.004108305067981544,raw data,0.00455485996667519
+dextroamphetamine,syn_raw_thought,0.02621301373686556,4.749154314254156e-8,raw data,6.9599675295104e-8
+dextroamphetamine,syn_raw_rulebreak,0.022892821091550098,1.854843114657001e-6,raw data,2.400939057043326e-6
+dextroamphetamine,syn_raw_aggressive,0.024110994611367217,5.101677933438964e-7,raw data,6.919829111845404e-7
+dextroamphetamine,syn_raw_internal,0.011911895776424184,0.013100011106341736,raw data,0.014163384551651533
+dextroamphetamine,syn_raw_external,0.024302803078414724,4.139778670975147e-7,raw data,5.645152733147928e-7
+dextroamphetamine,syn_raw_totprob,0.026542896435039407,3.216992361387838e-8,raw data,4.741809550022536e-8
+dextroamphetamine,syn_as_attention,0.03436081465325675,8.149037000748649e-13,"corrected for age, sex, and interaction",1.5742457842355346e-12
+dextroamphetamine,syn_as_anxdep,0.011838487829996518,0.013672743414875566,"corrected for age, sex, and interaction",0.014588073517963469
+dextroamphetamine,syn_as_withdep,0.009761924565382565,0.042030922344791666,"corrected for age, sex, and interaction",0.043392247764865895
+dextroamphetamine,syn_as_somatic,0.012450274629182492,0.009509238560023059,"corrected for age, sex, and interaction",0.010497211397428052
+dextroamphetamine,syn_as_social,0.007697707868077535,0.10887631308919099,"corrected for age, sex, and interaction",0.11149983870579801
+dextroamphetamine,syn_as_thought,0.021398821176753,8.29786484279893e-6,"corrected for age, sex, and interaction",1.0906987293369728e-5
+dextroamphetamine,syn_as_rulebreak,0.015803835613304073,9.956595726179351e-4,"corrected for age, sex, and interaction",0.001170014705150108
+dextroamphetamine,syn_as_aggressive,0.02144041747208116,7.968908640965111e-6,"corrected for age, sex, and interaction",1.0528868929772556e-5
+dextroamphetamine,syn_as_internal,0.01266162153051437,0.008359213298521517,"corrected for age, sex, and interaction",0.009267823439665162
+dextroamphetamine,syn_as_external,0.02197222805499982,4.720983230566134e-6,"corrected for age, sex, and interaction",6.437704405317454e-6
+dextroamphetamine,syn_as_totprob,0.0247948876775274,2.405023531437678e-7,"corrected for age, sex, and interaction",3.5044628600949015e-7
+dextroamphetamine,dsm5_raw_depress,0.021116334858604823,1.0900350224662958e-5,raw data,1.3692558163985489e-5
+dextroamphetamine,dsm5_raw_anxdisord,0.012209165067398515,0.010991801946029556,raw data,0.012029654490289856
+dextroamphetamine,dsm5_raw_somaticpr,0.008286706912678049,0.08435748827491274,raw data,0.08639019883575402
+dextroamphetamine,dsm5_raw_adhd,0.03610662099318127,5.3734794391857577e-14,raw data,1.0225651171584837e-13
+dextroamphetamine,dsm5_raw_opposit,0.025545193237755663,1.0303122888188909e-7,raw data,1.4607144320037219e-7
+dextroamphetamine,dsm5_raw_conduct,0.023162363044355042,1.4015103992903732e-6,raw data,1.8517365379225138e-6
+dextroamphetamine,dsm5_as_depress,0.0207607655542848,1.5293668068183663e-5,"corrected for age, sex, and interaction",1.9597413856215247e-5
+dextroamphetamine,dsm5_as_anxdisord,0.012057704829399551,0.012024978553432986,"corrected for age, sex, and interaction",0.01299309123358225
+dextroamphetamine,dsm5_as_somaticpr,0.010913706193530603,0.023018920228387918,"corrected for age, sex, and interaction",0.02415565702978979
+dextroamphetamine,dsm5_as_adhd,0.03325936253298682,4.2379433295991475e-12,"corrected for age, sex, and interaction",7.888142693779436e-12
+dextroamphetamine,dsm5_as_opposit,0.02216689567805293,3.886175330869435e-6,"corrected for age, sex, and interaction",5.32782101812745e-6
+dextroamphetamine,dsm5_as_conduct,0.014411516727874468,0.002684630715662051,"corrected for age, sex, and interaction",0.0030698692040081747
+ritalin,syn_raw_attention,0.0644440903206524,0,raw data,0
+ritalin,syn_raw_anxdep,0.029466605299137697,8.330862666383609e-10,raw data,1.295347548736476e-9
+ritalin,syn_raw_withdep,0.024331700586554643,4.010964023137831e-7,raw data,5.498902289785735e-7
+ritalin,syn_raw_somatic,0.004357026219837621,0.3641613740066405,raw data,0.36704012004621867
+ritalin,syn_raw_social,0.03966260934592639,0,raw data,0
+ritalin,syn_raw_thought,0.04512721617639379,0,raw data,0
+ritalin,syn_raw_rulebreak,0.03919493067670346,4.440892098500626e-16,raw data,9.206727521281786e-16
+ritalin,syn_raw_aggressive,0.04051890729165763,0,raw data,0
+ritalin,syn_raw_internal,0.025725275727318746,8.376722204772591e-8,raw data,1.2000360461893318e-7
+ritalin,syn_raw_external,0.04328296025000944,0,raw data,0
+ritalin,syn_raw_totprob,0.051020576574241076,0,raw data,0
+ritalin,syn_as_attention,0.06073464694152107,0,"corrected for age, sex, and interaction",0
+ritalin,syn_as_anxdep,0.02923143773085764,1.132776095147392e-9,"corrected for age, sex, and interaction",1.9003809490959535e-9
+ritalin,syn_as_withdep,0.027305773638496428,1.2840636998134869e-8,"corrected for age, sex, and interaction",2.085581168486874e-8
+ritalin,syn_as_somatic,0.007122746718157168,0.13793914586818135,"corrected for age, sex, and interaction",0.14069792878554496
+ritalin,syn_as_social,0.031164317819291514,8.452061273089839e-11,"corrected for age, sex, and interaction",1.4863969825089027e-10
+ritalin,syn_as_thought,0.03840578211875498,1.3322676295501878e-15,"corrected for age, sex, and interaction",2.9800723292569994e-15
+ritalin,syn_as_rulebreak,0.029520345074740512,7.763367726454362e-10,"corrected for age, sex, and interaction",1.3110322981760677e-9
+ritalin,syn_as_aggressive,0.036042811078584994,5.950795411990839e-14,"corrected for age, sex, and interaction",1.2540932479815403e-13
+ritalin,syn_as_internal,0.026253723754934028,4.527389974029461e-8,"corrected for age, sex, and interaction",7.082726646487807e-8
+ritalin,syn_as_external,0.039405281013810405,2.220446049250313e-16,"corrected for age, sex, and interaction",5.194621491365411e-16
+ritalin,syn_as_totprob,0.0485988802360225,0,"corrected for age, sex, and interaction",0
+ritalin,dsm5_raw_depress,0.03334309547256449,3.745448395875428e-12,raw data,6.586823041022305e-12
+ritalin,dsm5_raw_anxdisord,0.031110656959987305,9.103073850269539e-11,raw data,1.5171789750449233e-10
+ritalin,dsm5_raw_somaticpr,0.0024826031304399144,0.6051107089509407,raw data,0.6074930345767318
+ritalin,dsm5_raw_adhd,0.06573808021024961,0,raw data,0
+ritalin,dsm5_raw_opposit,0.039650460812847454,0,raw data,0
+ritalin,dsm5_raw_conduct,0.03509182926896712,2.651212582804874e-13,raw data,4.863735313778725e-13
+ritalin,dsm5_as_depress,0.03454683173577404,6.137312880127865e-13,"corrected for age, sex, and interaction",1.194667774376035e-12
+ritalin,dsm5_as_anxdisord,0.02788277606789225,6.306665412125767e-9,"corrected for age, sex, and interaction",1.0375481807045617e-8
+ritalin,dsm5_as_somaticpr,0.003540418987352663,0.4608892988605484,"corrected for age, sex, and interaction",0.4645326925274302
+ritalin,dsm5_as_adhd,0.06145118015356072,0,"corrected for age, sex, and interaction",0
+ritalin,dsm5_as_opposit,0.034029395988484146,1.3455903058456897e-12,"corrected for age, sex, and interaction",2.5229818234606682e-12
+ritalin,dsm5_as_conduct,0.02308416068922288,1.5207037149522762e-6,"corrected for age, sex, and interaction",2.1306563039166504e-6
+intuniv,syn_raw_attention,0.06209514908490335,0,raw data,0
+intuniv,syn_raw_anxdep,0.03533982845277801,1.8030021919912542e-13,raw data,3.3559529850932104e-13
+intuniv,syn_raw_withdep,0.02377812523163944,7.304392186657793e-7,raw data,9.803263197882828e-7
+intuniv,syn_raw_somatic,0.025544532442738386,1.0310925402379212e-7,raw data,1.4607144320037219e-7
+intuniv,syn_raw_social,0.04564505691557231,0,raw data,0
+intuniv,syn_raw_thought,0.05423970711164428,0,raw data,0
+intuniv,syn_raw_rulebreak,0.05236642269901603,0,raw data,0
+intuniv,syn_raw_aggressive,0.05560940166988074,0,raw data,0
+intuniv,syn_raw_internal,0.034143387373588484,1.1330936189324348e-12,raw data,2.0492118640267437e-12
+intuniv,syn_raw_external,0.05728445597739284,0,raw data,0
+intuniv,syn_raw_totprob,0.058059469899045625,0,raw data,0
+intuniv,syn_as_attention,0.05669029108367086,0,"corrected for age, sex, and interaction",0
+intuniv,syn_as_anxdep,0.03514886825971664,2.426947531830592e-13,"corrected for age, sex, and interaction",4.834934536068758e-13
+intuniv,syn_as_withdep,0.024821311369729142,2.3352270583920642e-7,"corrected for age, sex, and interaction",3.4223155166090596e-7
+intuniv,syn_as_somatic,0.028741997768615402,2.1311956643899066e-9,"corrected for age, sex, and interaction",3.551992773983178e-9
+intuniv,syn_as_social,0.0389795954903395,4.440892098500626e-16,"corrected for age, sex, and interaction",1.0110959688550533e-15
+intuniv,syn_as_thought,0.04728408777220637,0,"corrected for age, sex, and interaction",0
+intuniv,syn_as_rulebreak,0.04077313757744184,0,"corrected for age, sex, and interaction",0
+intuniv,syn_as_aggressive,0.05090082007289618,0,"corrected for age, sex, and interaction",0
+intuniv,syn_as_internal,0.03475421742782811,4.46753745109163e-13,"corrected for age, sex, and interaction",8.831178682390431e-13
+intuniv,syn_as_external,0.05306738164707618,0,"corrected for age, sex, and interaction",0
+intuniv,syn_as_totprob,0.05518710923903929,0,"corrected for age, sex, and interaction",0
+intuniv,dsm5_raw_depress,0.03833641739321191,1.3322676295501878e-15,raw data,2.7178259642823833e-15
+intuniv,dsm5_raw_anxdisord,0.039730074266664556,0,raw data,0
+intuniv,dsm5_raw_somaticpr,0.017057032222564276,3.811355541685213e-4,raw data,4.417707559680588e-4
+intuniv,dsm5_raw_adhd,0.06401385639975286,0,raw data,0
+intuniv,dsm5_raw_opposit,0.0532204009159684,0,raw data,0
+intuniv,dsm5_raw_conduct,0.05669676491385243,0,raw data,0
+intuniv,dsm5_as_depress,0.037250292952633136,8.43769498715119e-15,"corrected for age, sex, and interaction",1.838984804891926e-14
+intuniv,dsm5_as_anxdisord,0.038151947700867266,1.7763568394002505e-15,"corrected for age, sex, and interaction",3.938878209104903e-15
+intuniv,dsm5_as_somaticpr,0.02110491942495609,1.1020408062556442e-5,"corrected for age, sex, and interaction",1.4264995207877628e-5
+intuniv,dsm5_as_adhd,0.05834463385676623,0,"corrected for age, sex, and interaction",0
+intuniv,dsm5_as_opposit,0.04667481142759372,0,"corrected for age, sex, and interaction",0
+intuniv,dsm5_as_conduct,0.04381022324643236,0,"corrected for age, sex, and interaction",0
+strattera,syn_raw_attention,0.05559333663058694,0,raw data,0
+strattera,syn_raw_anxdep,0.030064191305459367,3.7755132353822773e-10,raw data,5.979850155419135e-10
+strattera,syn_raw_withdep,0.02269058510792678,2.284324537082938e-6,raw data,2.9419331159401474e-6
+strattera,syn_raw_somatic,0.023065168484197606,1.551089142015627e-6,raw data,2.01799862864278e-6
+strattera,syn_raw_social,0.04231883818910036,0,raw data,0
+strattera,syn_raw_thought,0.04644791185878558,0,raw data,0
+strattera,syn_raw_rulebreak,0.030477318321613368,2.1652191151133593e-10,raw data,3.5393004766276065e-10
+strattera,syn_raw_aggressive,0.03952148787696812,2.220446049250313e-16,raw data,4.679452417841569e-16
+strattera,syn_raw_internal,0.0317873171012924,3.539435411425984e-11,raw data,6.057423019554537e-11
+strattera,syn_raw_external,0.03888828774049889,4.440892098500626e-16,raw data,9.206727521281786e-16
+strattera,syn_raw_totprob,0.04801439481460222,0,raw data,0
+strattera,syn_as_attention,0.05234577483983577,0,"corrected for age, sex, and interaction",0
+strattera,syn_as_anxdep,0.0286395275253802,2.429572321105411e-9,"corrected for age, sex, and interaction",4.022993129103116e-9
+strattera,syn_as_withdep,0.026845703057471353,2.240835650368922e-8,"corrected for age, sex, and interaction",3.5713318177754694e-8
+strattera,syn_as_somatic,0.021911267796726516,5.015974870126172e-6,"corrected for age, sex, and interaction",6.731966273064073e-6
+strattera,syn_as_social,0.035900050385809054,7.460698725481052e-14,"corrected for age, sex, and interaction",1.5594083401620232e-13
+strattera,syn_as_thought,0.04188874702252025,0,"corrected for age, sex, and interaction",0
+strattera,syn_as_rulebreak,0.021932579039722223,4.910896006737886e-6,"corrected for age, sex, and interaction",6.625812072582863e-6
+strattera,syn_as_aggressive,0.03571321773478747,1.0036416142611415e-13,"corrected for age, sex, and interaction",2.063940416424122e-13
+strattera,syn_as_internal,0.031491969269558766,5.358491428353318e-11,"corrected for age, sex, and interaction",9.488995237709e-11
+strattera,syn_as_external,0.03560775091051785,1.1834977442504169e-13,"corrected for age, sex, and interaction",2.4143353982708503e-13
+strattera,syn_as_totprob,0.04633888808367076,0,"corrected for age, sex, and interaction",0
+strattera,dsm5_raw_depress,0.044585662297772645,0,raw data,0
+strattera,dsm5_raw_anxdisord,0.029625961455131473,6.755813686254442e-10,raw data,1.0634151172807918e-9
+strattera,dsm5_raw_somaticpr,0.01590028895722249,9.268355977691822e-4,raw data,0.0010531365991541068
+strattera,dsm5_raw_adhd,0.055421337688388965,0,raw data,0
+strattera,dsm5_raw_opposit,0.03690419880531764,1.4876988529977098e-14,raw data,2.918178519341661e-14
+strattera,dsm5_raw_conduct,0.03157412966684156,4.7764014965423485e-11,raw data,8.119882544121992e-11
+strattera,dsm5_as_depress,0.04466047266284599,0,"corrected for age, sex, and interaction",0
+strattera,dsm5_as_anxdisord,0.026145645815378656,5.1394601463528033e-8,"corrected for age, sex, and interaction",7.991233764146128e-8
+strattera,dsm5_as_somaticpr,0.013281521907248628,0.005669082950734428,"corrected for age, sex, and interaction",0.006340421721216136
+strattera,dsm5_as_adhd,0.051768777923813125,0,"corrected for age, sex, and interaction",0
+strattera,dsm5_as_opposit,0.03176380919019753,3.658717773191711e-11,"corrected for age, sex, and interaction",6.524286938208994e-11
+strattera,dsm5_as_conduct,0.021620601683757037,6.682497693422107e-6,"corrected for age, sex, and interaction",8.910321014909961e-6
+tenex,syn_raw_attention,0.03665850774291342,2.220446049250313e-14,raw data,4.322242309609388e-14
+tenex,syn_raw_anxdep,0.02598229930984938,6.219304005128379e-8,raw data,8.960014244676477e-8
+tenex,syn_raw_withdep,0.024673270387827802,2.753104799690931e-7,raw data,3.836293573339822e-7
+tenex,syn_raw_somatic,0.011361892249307788,0.017958379821618742,raw data,0.019160614454028363
+tenex,syn_raw_social,0.030581255393614597,1.8804158230523171e-10,raw data,3.093587321795748e-10
+tenex,syn_raw_thought,0.029587187529619717,7.10993486308098e-10,raw data,1.1122904233654295e-9
+tenex,syn_raw_rulebreak,0.03112407750702532,8.93578544491902e-11,raw data,1.4990955845094407e-10
+tenex,syn_raw_aggressive,0.035591075098405936,1.2168044349891716e-13,raw data,2.2815083156046967e-13
+tenex,syn_raw_internal,0.024899839051561113,2.139158303826605e-7,raw data,2.997172348768045e-7
+tenex,syn_raw_external,0.035175127735081316,2.3292479056635784e-13,raw data,4.3040450430740035e-13
+tenex,syn_raw_totprob,0.035761208778880636,9.281464485866309e-14,raw data,1.7531655139969694e-13
+tenex,syn_as_attention,0.034123136034424524,1.1683987111155147e-12,"corrected for age, sex, and interaction",2.2234453084660917e-12
+tenex,syn_as_anxdep,0.025287443098074885,1.3822945033048484e-7,"corrected for age, sex, and interaction",2.0734417549572726e-7
+tenex,syn_as_withdep,0.024086273422039766,5.240329987721282e-7,"corrected for age, sex, and interaction",7.549627948412016e-7
+tenex,syn_as_somatic,0.01325221434956041,0.005776122636473424,"corrected for age, sex, and interaction",0.006431926953278267
+tenex,syn_as_social,0.025277773970419998,1.3975418600153944e-7,"corrected for age, sex, and interaction",2.0840536509001495e-7
+tenex,syn_as_thought,0.024682762395790966,2.7242739664146143e-7,"corrected for age, sex, and interaction",3.9471014854302655e-7
+tenex,syn_as_rulebreak,0.023336192813020375,1.167890437692165e-6,"corrected for age, sex, and interaction",1.6545114533972338e-6
+tenex,syn_as_aggressive,0.032603357671206326,1.1038281400033156e-11,"corrected for age, sex, and interaction",1.9962849340485497e-11
+tenex,syn_as_internal,0.02515410658880911,1.6074896036499808e-7,"corrected for age, sex, and interaction",2.3831967961089833e-7
+tenex,syn_as_external,0.032402555120871784,1.474198541018268e-11,"corrected for age, sex, and interaction",2.6473283659130866e-11
+tenex,syn_as_totprob,0.03411498626552681,1.1826095658307167e-12,"corrected for age, sex, and interaction",2.233818068791354e-12
+tenex,dsm5_raw_depress,0.026003087044665835,6.070558011828098e-8,raw data,8.795410755773665e-8
+tenex,dsm5_raw_anxdisord,0.023937423658893585,6.155205620750337e-7,raw data,8.304642504186963e-7
+tenex,dsm5_raw_somaticpr,0.004470957045527239,0.3517534827671398,raw data,0.35594102422865337
+tenex,dsm5_raw_adhd,0.038055177152012655,2.220446049250313e-15,raw data,4.493759861578014e-15
+tenex,dsm5_raw_opposit,0.03701660321124931,1.2434497875801753e-14,raw data,2.4771851236948805e-14
+tenex,dsm5_raw_conduct,0.03241751871227294,1.4428458428028534e-11,raw data,2.5200389720186826e-11
+tenex,dsm5_as_depress,0.02600735719876495,6.040432642961946e-8,"corrected for age, sex, and interaction",9.335214084577552e-8
+tenex,dsm5_as_anxdisord,0.02262589115972927,2.440817202575829e-6,"corrected for age, sex, and interaction",3.364369657604521e-6
+tenex,dsm5_as_somaticpr,0.006429330898029626,0.180543619129516,"corrected for age, sex, and interaction",0.18342080827899035
+tenex,dsm5_as_adhd,0.03515693978100501,2.398081733190338e-13,"corrected for age, sex, and interaction",4.815045999712883e-13
+tenex,dsm5_as_opposit,0.033247557415450144,4.312106227644108e-12,"corrected for age, sex, and interaction",7.96802237716846e-12
+tenex,dsm5_as_conduct,0.022991252306183665,1.6749976707863823e-6,"corrected for age, sex, and interaction",2.33401314781709e-6
+amphetamine,syn_raw_attention,0.04182858433724847,0,raw data,0
+amphetamine,syn_raw_anxdep,0.01579751367428615,0.001000331816121136,raw data,0.0011286929783667686
+amphetamine,syn_raw_withdep,0.013002087900914453,0.0067664515711760576,raw data,0.007437263580387476
+amphetamine,syn_raw_somatic,0.0130272244614301,0.006660449150475145,raw data,0.007352443867407628
+amphetamine,syn_raw_social,0.00764997275951737,0.11108801060174645,raw data,0.11330977081378138
+amphetamine,syn_raw_thought,0.03020626167084048,3.1209812512145163e-10,raw data,5.005347289683659e-10
+amphetamine,syn_raw_rulebreak,0.017241135376582038,3.2920265184133157e-4,raw data,3.833181562536053e-4
+amphetamine,syn_raw_aggressive,0.02833954450233661,3.5564111655617126e-9,raw data,5.398124090584742e-9
+amphetamine,syn_raw_internal,0.016950872912426716,4.1446516143128775e-4,raw data,4.782290324207166e-4
+amphetamine,syn_raw_external,0.026029178490645594,5.888733878300911e-8,raw data,8.580726508381328e-8
+amphetamine,syn_raw_totprob,0.03128702573374683,7.1297190373798e-11,raw data,1.204025400352218e-10
+amphetamine,syn_as_attention,0.03899731298693537,4.440892098500626e-16,"corrected for age, sex, and interaction",1.0110959688550533e-15
+amphetamine,syn_as_anxdep,0.016721912069673103,4.958270376675955e-4,"corrected for age, sex, and interaction",5.880739283964506e-4
+amphetamine,syn_as_withdep,0.014195616356520177,0.003109083553598957,"corrected for age, sex, and interaction",0.0035393585096773843
+amphetamine,syn_as_somatic,0.015258087778530079,0.0014826196444843731,"corrected for age, sex, and interaction",0.0017184909515614325
+amphetamine,syn_as_social,0.0018159616774045604,0.7052672907146886,"corrected for age, sex, and interaction",0.7080439335915181
+amphetamine,syn_as_thought,0.025027505452894932,1.8538879720253476e-7,"corrected for age, sex, and interaction",2.732609438534472e-7
+amphetamine,syn_as_rulebreak,0.009765156364106424,0.041962989815031326,"corrected for age, sex, and interaction",0.043392247764865895
+amphetamine,syn_as_aggressive,0.02568210073233679,8.804012541219208e-8,"corrected for age, sex, and interaction",1.336323332149344e-7
+amphetamine,syn_as_internal,0.017849274972740116,2.0092157839424196e-4,"corrected for age, sex, and interaction",2.439762023358652e-4
+amphetamine,syn_as_external,0.023562299655405055,9.195327113076246e-7,"corrected for age, sex, and interaction",1.3099488345443814e-6
+amphetamine,syn_as_totprob,0.02966689188308555,6.400671104245248e-10,"corrected for age, sex, and interaction",1.0954168668339183e-9
+amphetamine,dsm5_raw_depress,0.0267065355021482,2.6472410041833427e-8,raw data,3.924688698062514e-8
+amphetamine,dsm5_raw_anxdisord,0.015734651675107184,0.0010479070920077493,raw data,0.0011771643544580446
+amphetamine,dsm5_raw_somaticpr,0.010921662940399755,0.02291926106682518,raw data,0.024250670423404237
+amphetamine,dsm5_raw_adhd,0.04218760972816638,0,raw data,0
+amphetamine,dsm5_raw_opposit,0.02742100076935675,1.1153504120287039e-8,raw data,1.6632418424989445e-8
+amphetamine,dsm5_raw_conduct,0.019019443601033543,7.443857464384251e-5,raw data,8.828761178688298e-5
+amphetamine,dsm5_as_depress,0.02593068961557548,6.604023017331428e-8,"corrected for age, sex, and interaction",1.008398724203302e-7
+amphetamine,dsm5_as_anxdisord,0.015520913060972053,0.0012257743549475286,"corrected for age, sex, and interaction",0.0014338186262000908
+amphetamine,dsm5_as_somaticpr,0.012408291442613873,0.009753809114181333,"corrected for age, sex, and interaction",0.01067476963140017
+amphetamine,dsm5_as_adhd,0.03913549853629743,4.440892098500626e-16,"corrected for age, sex, and interaction",1.0110959688550533e-15
+amphetamine,dsm5_as_opposit,0.023826661916447292,6.933970611022744e-7,"corrected for age, sex, and interaction",9.933497223656178e-7
+amphetamine,dsm5_as_conduct,0.010238923559591363,0.032960156270508634,"corrected for age, sex, and interaction",0.03444606495483485
+dexmethylphenidate,syn_raw_attention,0.05074898054287685,0,raw data,0
+dexmethylphenidate,syn_raw_anxdep,0.022176159847056648,3.8502012222885185e-6,raw data,4.933674933083278e-6
+dexmethylphenidate,syn_raw_withdep,0.010850882027585515,0.023819102469791353,raw data,0.02509864103221816
+dexmethylphenidate,syn_raw_somatic,0.0048836972204092405,0.3090780872404515,raw data,0.31400363444747065
+dexmethylphenidate,syn_raw_social,0.024391908651215093,3.754885304907418e-7,raw data,5.203781264953216e-7
+dexmethylphenidate,syn_raw_thought,0.030461041794171886,2.2134782895477656e-10,raw data,3.59513989703618e-10
+dexmethylphenidate,syn_raw_rulebreak,0.019722495219528232,3.989215434252458e-5,raw data,4.821089742816951e-5
+dexmethylphenidate,syn_raw_aggressive,0.0205350696265006,1.890941046234218e-5,raw data,2.352146179462076e-5
+dexmethylphenidate,syn_raw_internal,0.01989649610417378,3.4077284042588474e-5,raw data,4.1379559194571715e-5
+dexmethylphenidate,syn_raw_external,0.021801069491102165,5.594590049007309e-6,raw data,7.097614241277929e-6
+dexmethylphenidate,syn_raw_totprob,0.03644942145522662,3.108624468950438e-14,raw data,5.960144658513999e-14
+dexmethylphenidate,syn_as_attention,0.0475121060029051,0,"corrected for age, sex, and interaction",0
+dexmethylphenidate,syn_as_anxdep,0.021293836527976246,9.186825296048085e-6,"corrected for age, sex, and interaction",1.2013540771755188e-5
+dexmethylphenidate,syn_as_withdep,0.014456250113568983,0.0026035998725002507,"corrected for age, sex, and interaction",0.002990621475169207
+dexmethylphenidate,syn_as_somatic,0.006131762056932763,0.20156514255647107,"corrected for age, sex, and interaction",0.20396472758690523
+dexmethylphenidate,syn_as_social,0.01743095815222664,2.826430179272421e-4,"corrected for age, sex, and interaction",3.383754439974025e-4
+dexmethylphenidate,syn_as_thought,0.025394541865996198,1.2238144897480652e-7,"corrected for age, sex, and interaction",1.8465839934068438e-7
+dexmethylphenidate,syn_as_rulebreak,0.011867670551698935,0.013442461914377812,"corrected for age, sex, and interaction",0.014402637765404798
+dexmethylphenidate,syn_as_aggressive,0.01753118599287223,2.6062235489066055e-4,"corrected for age, sex, and interaction",3.1348443630716243e-4
+dexmethylphenidate,syn_as_internal,0.019892874973206243,3.41896358402316e-5,"corrected for age, sex, and interaction",4.316018385771811e-5
+dexmethylphenidate,syn_as_external,0.018773770762487603,9.212325986496239e-5,"corrected for age, sex, and interaction",1.1348517519596815e-4
+dexmethylphenidate,syn_as_totprob,0.034212019772428985,1.021405182655144e-12,"corrected for age, sex, and interaction",1.958333244940314e-12
+dexmethylphenidate,dsm5_raw_depress,0.02520709454776015,1.5140440723371285e-7,raw data,2.133045516276065e-7
+dexmethylphenidate,dsm5_raw_anxdisord,0.024351169009648208,3.9263706064218695e-7,raw data,5.412024349392306e-7
+dexmethylphenidate,dsm5_raw_somaticpr,0.0013152051993943774,0.7841425983311865,raw data,0.7841425983311865
+dexmethylphenidate,dsm5_raw_adhd,0.04975626505241174,0,raw data,0
+dexmethylphenidate,dsm5_raw_opposit,0.017637248491919593,2.390777329637217e-4,raw data,2.796551463566469e-4
+dexmethylphenidate,dsm5_raw_conduct,0.02001751754032265,3.051783909713279e-5,raw data,3.723468406587972e-5
+dexmethylphenidate,dsm5_as_depress,0.026389745982422056,3.856870645080335e-8,"corrected for age, sex, and interaction",6.071000089478305e-8
+dexmethylphenidate,dsm5_as_anxdisord,0.02161657393634543,6.708947587696912e-6,"corrected for age, sex, and interaction",8.910321014909961e-6
+dexmethylphenidate,dsm5_as_somaticpr,0.001638337489952225,0.7329341548363142,"corrected for age, sex, and interaction",0.7329341548363142
+dexmethylphenidate,dsm5_as_adhd,0.04638658388881384,0,"corrected for age, sex, and interaction",0
+dexmethylphenidate,dsm5_as_opposit,0.013438675393660702,0.005125045638139758,"corrected for age, sex, and interaction",0.005757209857822195
+dexmethylphenidate,dsm5_as_conduct,0.011244745635546713,0.019176907434362178,"corrected for age, sex, and interaction",0.020207071883315518
+lisdexamfetamine,syn_raw_attention,0.01933863304039443,5.622187652321031e-5,raw data,6.73078803446884e-5
+lisdexamfetamine,syn_raw_anxdep,0.010510489111237033,0.028587160427363756,raw data,0.029753983301950032
+lisdexamfetamine,syn_raw_withdep,0.011910842878580142,0.013108073545842203,raw data,0.014163384551651533
+lisdexamfetamine,syn_raw_somatic,0.01171331561115906,0.014700473263913105,raw data,0.015816964904210303
+lisdexamfetamine,syn_raw_social,0.01507398241288234,0.0016911346072312483,raw data,0.0018914005475612647
+lisdexamfetamine,syn_raw_thought,0.02015035091976009,2.7018562460678908e-5,raw data,3.312371840131309e-5
+lisdexamfetamine,syn_raw_rulebreak,0.015896811724783636,9.292381757242119e-4,raw data,0.0010531365991541068
+lisdexamfetamine,syn_raw_aggressive,0.021189593054081666,1.0159093399630947e-5,raw data,1.2824598103494513e-5
+lisdexamfetamine,syn_raw_internal,0.014600102978696594,0.002357943242689231,raw data,0.002625657322645214
+lisdexamfetamine,syn_raw_external,0.020851117381196643,1.403967209112622e-5,raw data,1.7549590113907776e-5
+lisdexamfetamine,syn_raw_totprob,0.019181083651020926,6.460997112522904e-5,raw data,7.698851699501592e-5
+lisdexamfetamine,syn_as_attention,0.0173401289213149,3.040932514144501e-4,"corrected for age, sex, and interaction",3.623541079938541e-4
+lisdexamfetamine,syn_as_anxdep,0.010167557596406512,0.03420019585723355,"corrected for age, sex, and interaction",0.03559612221875329
+lisdexamfetamine,syn_as_withdep,0.012005471905568818,0.012400746541282093,"corrected for age, sex, and interaction",0.013342575392518707
+lisdexamfetamine,syn_as_somatic,0.012369922041647543,0.009982214251204269,"corrected for age, sex, and interaction",0.01087805399169696
+lisdexamfetamine,syn_as_social,0.012429012114098406,0.009632410081512166,"corrected for age, sex, and interaction",0.010587347287868974
+lisdexamfetamine,syn_as_thought,0.017707861815450338,2.256730095104853e-4,"corrected for age, sex, and interaction",2.727327840055628e-4
+lisdexamfetamine,syn_as_rulebreak,0.012249795576228911,0.01072841476734343,"corrected for age, sex, and interaction",0.011641471343287552
+lisdexamfetamine,syn_as_aggressive,0.01982275825935374,3.643574006639838e-5,"corrected for age, sex, and interaction",4.576903308833294e-5
+lisdexamfetamine,syn_as_internal,0.014814949915579408,0.0020303680170434824,"corrected for age, sex, and interaction",0.002342732327357864
+lisdexamfetamine,syn_as_external,0.019552398057069043,4.647802512458554e-5,"corrected for age, sex, and interaction",5.809753140573193e-5
+lisdexamfetamine,syn_as_totprob,0.018422052652941615,1.2445541008965222e-4,"corrected for age, sex, and interaction",1.5184750991799673e-4
+lisdexamfetamine,dsm5_raw_depress,0.01942587687882276,5.203189246505424e-5,raw data,6.258553103107939e-5
+lisdexamfetamine,dsm5_raw_anxdisord,0.01200762212766292,0.012385074767556237,raw data,0.013496555836439487
+lisdexamfetamine,dsm5_raw_somaticpr,0.010079135386062874,0.03579171177011986,raw data,0.03710116463975839
+lisdexamfetamine,dsm5_raw_adhd,0.017984115712188584,1.7971548737749643e-4,raw data,2.1118640221779532e-4
+lisdexamfetamine,dsm5_raw_opposit,0.02208468327749629,4.219847836051116e-6,raw data,5.380305990965173e-6
+lisdexamfetamine,dsm5_raw_conduct,0.02026494006777396,2.4309686989187895e-5,raw data,2.9946715856245955e-5
+lisdexamfetamine,dsm5_as_depress,0.018593796153767154,1.0752202474351158e-4,"corrected for age, sex, and interaction",1.3181786687305506e-4
+lisdexamfetamine,dsm5_as_anxdisord,0.011357790238166158,0.017999873917179388,"corrected for age, sex, and interaction",0.019045509746393127
+lisdexamfetamine,dsm5_as_somaticpr,0.009626438017121717,0.044963753416127794,"corrected for age, sex, and interaction",0.04623289161738947
+lisdexamfetamine,dsm5_as_adhd,0.01604404017223429,8.324046868595225e-4,"corrected for age, sex, and interaction",9.82699977542492e-4
+lisdexamfetamine,dsm5_as_opposit,0.020249055190743707,2.4669140203048556e-5,"corrected for age, sex, and interaction",3.145315375888691e-5
+lisdexamfetamine,dsm5_as_conduct,0.015431544568056179,0.0013080979576842733,"corrected for age, sex, and interaction",0.0015231277589474416
+atomoxetine,syn_raw_attention,0.04657886167827445,0,raw data,0
+atomoxetine,syn_raw_anxdep,0.030064830919530612,3.7722869272727166e-10,raw data,5.979850155419135e-10
+atomoxetine,syn_raw_withdep,0.020384116913234045,2.176747463655815e-5,raw data,2.6945174914186054e-5
+atomoxetine,syn_raw_somatic,0.01869315930949222,9.874341775928386e-5,raw data,1.1657209041026567e-4
+atomoxetine,syn_raw_social,0.039666133738934635,0,raw data,0
+atomoxetine,syn_raw_thought,0.03962109925893998,0,raw data,0
+atomoxetine,syn_raw_rulebreak,0.027837334022817302,6.673299246529041e-9,raw data,1.0009948869793561e-8
+atomoxetine,syn_raw_aggressive,0.033581644253847645,2.630118345336996e-12,raw data,4.657501236534263e-12
+atomoxetine,syn_raw_internal,0.02945111419493019,8.501830350837736e-10,raw data,1.3139192360385591e-9
+atomoxetine,syn_raw_external,0.033745828089158394,2.0592416660747404e-12,raw data,3.697933977810273e-12
+atomoxetine,syn_raw_totprob,0.04161791955238357,0,raw data,0
+atomoxetine,syn_as_attention,0.043718403115144445,0,"corrected for age, sex, and interaction",0
+atomoxetine,syn_as_anxdep,0.029720622852010842,5.962004223647455e-10,"corrected for age, sex, and interaction",1.0272372142095278e-9
+atomoxetine,syn_as_withdep,0.02078014847588989,1.5015970570075865e-5,"corrected for age, sex, and interaction",1.9338749976612856e-5
+atomoxetine,syn_as_somatic,0.019158015317482992,6.593332635995708e-5,"corrected for age, sex, and interaction",8.161649622227696e-5
+atomoxetine,syn_as_social,0.035569626695682956,1.2567724638756772e-13,"corrected for age, sex, and interaction",2.543468081653156e-13
+atomoxetine,syn_as_thought,0.03637947340637611,3.4638958368304884e-14,"corrected for age, sex, and interaction",7.422633936065332e-14
+atomoxetine,syn_as_rulebreak,0.020206120081354206,2.566617791677217e-5,"corrected for age, sex, and interaction",3.256156899889007e-5
+atomoxetine,syn_as_aggressive,0.030562321522909913,1.929416626467173e-10,"corrected for age, sex, and interaction",3.3469472091777493e-10
+atomoxetine,syn_as_internal,0.029568786152197764,7.284266523299721e-10,"corrected for age, sex, and interaction",1.2383253089609524e-9
+atomoxetine,syn_as_external,0.031100365720788233,9.23339182890004e-11,"corrected for age, sex, and interaction",1.6126814495681575e-10
+atomoxetine,syn_as_totprob,0.040289170859253355,0,"corrected for age, sex, and interaction",0
+atomoxetine,dsm5_raw_depress,0.03648421571968236,2.930988785010413e-14,raw data,5.6621374255882984e-14
+atomoxetine,dsm5_raw_anxdisord,0.02848282862537906,2.966045409280582e-9,raw data,4.528991493212865e-9
+atomoxetine,dsm5_raw_somaticpr,0.010676977877017286,0.02616112450956054,raw data,0.027453031892748714
+atomoxetine,dsm5_raw_adhd,0.045821738108586876,0,raw data,0
+atomoxetine,dsm5_raw_opposit,0.030368475736298355,2.5085711286010337e-10,raw data,4.048643277172554e-10
+atomoxetine,dsm5_raw_conduct,0.028037574726970566,5.198954378116127e-9,raw data,7.844576132660428e-9
+atomoxetine,dsm5_as_depress,0.034736653515935835,4.587441537751147e-13,"corrected for age, sex, and interaction",8.998443016358019e-13
+atomoxetine,dsm5_as_anxdisord,0.02721229194788112,1.4389230473810244e-8,"corrected for age, sex, and interaction",2.3156099427871666e-8
+atomoxetine,dsm5_as_somaticpr,0.01155205693520911,0.016124485574381175,"corrected for age, sex, and interaction",0.01713226592278
+atomoxetine,dsm5_as_adhd,0.04256561816603244,0,"corrected for age, sex, and interaction",0
+atomoxetine,dsm5_as_opposit,0.025982204474319637,6.219990633660188e-8,"corrected for age, sex, and interaction",9.554804889056314e-8
+atomoxetine,dsm5_as_conduct,0.019391937505426126,5.3625428770853745e-5,"corrected for age, sex, and interaction",6.670480164179368e-5
+clonidine,syn_raw_attention,0.09024563173847963,0,raw data,0
+clonidine,syn_raw_anxdep,0.06255669351426271,0,raw data,0
+clonidine,syn_raw_withdep,0.056055916274327475,0,raw data,0
+clonidine,syn_raw_somatic,0.04921511216080714,0,raw data,0
+clonidine,syn_raw_social,0.07918079732354436,0,raw data,0
+clonidine,syn_raw_thought,0.09119335284104862,0,raw data,0
+clonidine,syn_raw_rulebreak,0.07988601400287339,0,raw data,0
+clonidine,syn_raw_aggressive,0.08429474886709015,0,raw data,0
+clonidine,syn_raw_internal,0.06382611047338504,0,raw data,0
+clonidine,syn_raw_external,0.08489754864700684,0,raw data,0
+clonidine,syn_raw_totprob,0.08839340457882637,0,raw data,0
+clonidine,syn_as_attention,0.08652548208416014,0,"corrected for age, sex, and interaction",0
+clonidine,syn_as_anxdep,0.061103593158558844,0,"corrected for age, sex, and interaction",0
+clonidine,syn_as_withdep,0.05785661167660309,0,"corrected for age, sex, and interaction",0
+clonidine,syn_as_somatic,0.04847246914555972,0,"corrected for age, sex, and interaction",0
+clonidine,syn_as_social,0.06998652522321458,0,"corrected for age, sex, and interaction",0
+clonidine,syn_as_thought,0.08553564540320444,0,"corrected for age, sex, and interaction",0
+clonidine,syn_as_rulebreak,0.0695762713795921,0,"corrected for age, sex, and interaction",0
+clonidine,syn_as_aggressive,0.08030776689620334,0,"corrected for age, sex, and interaction",0
+clonidine,syn_as_internal,0.0640106702204913,0,"corrected for age, sex, and interaction",0
+clonidine,syn_as_external,0.08203708134654186,0,"corrected for age, sex, and interaction",0
+clonidine,syn_as_totprob,0.08718617857186803,0,"corrected for age, sex, and interaction",0
+clonidine,dsm5_raw_depress,0.07733347706055084,0,raw data,0
+clonidine,dsm5_raw_anxdisord,0.07145511939322811,0,raw data,0
+clonidine,dsm5_raw_somaticpr,0.03058638694159314,1.8673440571603805e-10,raw data,3.0920307439993317e-10
+clonidine,dsm5_raw_adhd,0.09394913759530936,0,raw data,0
+clonidine,dsm5_raw_opposit,0.07874850329940072,0,raw data,0
+clonidine,dsm5_raw_conduct,0.08479376545136241,0,raw data,0
+clonidine,dsm5_as_depress,0.0752756460469813,0,"corrected for age, sex, and interaction",0
+clonidine,dsm5_as_anxdisord,0.06754711069097243,0,"corrected for age, sex, and interaction",0
+clonidine,dsm5_as_somaticpr,0.027794984169970033,7.03359392950631e-9,"corrected for age, sex, and interaction",1.1497220846308391e-8
+clonidine,dsm5_as_adhd,0.08957130121468984,0,"corrected for age, sex, and interaction",0
+clonidine,dsm5_as_opposit,0.0732532840374442,0,"corrected for age, sex, and interaction",0
+clonidine,dsm5_as_conduct,0.0716690231559668,0,"corrected for age, sex, and interaction",0
+guanfacine,syn_raw_attention,0.1084121870434418,0,raw data,0
+guanfacine,syn_raw_anxdep,0.061021872171870495,0,raw data,0
+guanfacine,syn_raw_withdep,0.061266078813351645,0,raw data,0
+guanfacine,syn_raw_somatic,0.04015867352174885,0,raw data,0
+guanfacine,syn_raw_social,0.0777180116884726,0,raw data,0
+guanfacine,syn_raw_thought,0.08786374468088928,0,raw data,0
+guanfacine,syn_raw_rulebreak,0.08682884222667524,0,raw data,0
+guanfacine,syn_raw_aggressive,0.09287837684720722,0,raw data,0
+guanfacine,syn_raw_internal,0.06514829519618347,0,raw data,0
+guanfacine,syn_raw_external,0.09378931411481545,0,raw data,0
+guanfacine,syn_raw_totprob,0.09919637323661236,0,raw data,0
+guanfacine,syn_as_attention,0.10160548258460222,0,"corrected for age, sex, and interaction",0
+guanfacine,syn_as_anxdep,0.058947070007815676,0,"corrected for age, sex, and interaction",0
+guanfacine,syn_as_withdep,0.061449590598470015,0,"corrected for age, sex, and interaction",0
+guanfacine,syn_as_somatic,0.04342445387412103,0,"corrected for age, sex, and interaction",0
+guanfacine,syn_as_social,0.06568126466459363,0,"corrected for age, sex, and interaction",0
+guanfacine,syn_as_thought,0.07722604577973659,0,"corrected for age, sex, and interaction",0
+guanfacine,syn_as_rulebreak,0.06935752163250695,0,"corrected for age, sex, and interaction",0
+guanfacine,syn_as_aggressive,0.08519597117537288,0,"corrected for age, sex, and interaction",0
+guanfacine,syn_as_internal,0.06539314573011211,0,"corrected for age, sex, and interaction",0
+guanfacine,syn_as_external,0.08732412562165516,0,"corrected for age, sex, and interaction",0
+guanfacine,syn_as_totprob,0.0953457657752907,0,"corrected for age, sex, and interaction",0
+guanfacine,dsm5_raw_depress,0.0789796017451247,0,raw data,0
+guanfacine,dsm5_raw_anxdisord,0.06395321290360959,0,raw data,0
+guanfacine,dsm5_raw_somaticpr,0.023220598609850082,1.3186404830278775e-6,raw data,1.7513193915213998e-6
+guanfacine,dsm5_raw_adhd,0.11051542614839091,0,raw data,0
+guanfacine,dsm5_raw_opposit,0.09222034409267894,0,raw data,0
+guanfacine,dsm5_raw_conduct,0.08885292154061347,0,raw data,0
+guanfacine,dsm5_as_depress,0.07593492423280153,0,"corrected for age, sex, and interaction",0
+guanfacine,dsm5_as_anxdisord,0.059445476298649616,0,"corrected for age, sex, and interaction",0
+guanfacine,dsm5_as_somaticpr,0.027209480426695846,1.4438509055025861e-8,"corrected for age, sex, and interaction",2.3156099427871666e-8
+guanfacine,dsm5_as_adhd,0.1028804881609613,0,"corrected for age, sex, and interaction",0
+guanfacine,dsm5_as_opposit,0.08183331846052214,0,"corrected for age, sex, and interaction",0
+guanfacine,dsm5_as_conduct,0.06768952056988864,0,"corrected for age, sex, and interaction",0

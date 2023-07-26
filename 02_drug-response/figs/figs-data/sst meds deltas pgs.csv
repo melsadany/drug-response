@@ -1,0 +1,1081 @@
+V1,V2,r,pval,value_type,FDR,drug,n_samples
+ADHD-Demontis,e_as_correct_go,-0.009276242290792271,0.8916808887356007,"corrected for age, sex, and interaction",0.9410387294948294,methylphenidate,218
+ADHD-Demontis,e_as_correct_stop,0.010758289735407102,0.8745075467311003,"corrected for age, sex, and interaction",0.9410387294948294,methylphenidate,218
+ADHD-Demontis,e_as_no_response_on_go,-0.03258297698718796,0.6323348238818096,"corrected for age, sex, and interaction",0.7588017886581715,methylphenidate,218
+ADHD-Demontis,e_as_stop_doesnot_stop,-0.05116394900008806,0.452306065282976,"corrected for age, sex, and interaction",0.6493543079254792,methylphenidate,218
+ADHD-Demontis,e_raw_correct_go,-0.08960655655665624,0.18747962903128945,raw data,0.5624388870938684,methylphenidate,218
+ADHD-Demontis,e_raw_correct_stop,0.02413021273610999,0.7231278351138821,raw data,0.8397613569064438,methylphenidate,218
+ADHD-Demontis,e_raw_no_response_on_go,0.0327374125114135,0.6307211473636738,raw data,0.8397613569064438,methylphenidate,218
+ADHD-Demontis,e_raw_stop_doesnot_stop,-0.0031536425206108343,0.9630748121306021,raw data,0.9630748121306021,methylphenidate,218
+cog_gFactor,e_as_correct_go,-0.07913444904611133,0.2446208558190044,"corrected for age, sex, and interaction",0.5043297716502115,methylphenidate,218
+cog_gFactor,e_as_correct_stop,0.1197207223042574,0.07775855514820607,"corrected for age, sex, and interaction",0.31103422059282426,methylphenidate,218
+cog_gFactor,e_as_no_response_on_go,0.17282182422393905,0.010579873197545275,"corrected for age, sex, and interaction",0.19043771755581496,methylphenidate,218
+cog_gFactor,e_as_stop_doesnot_stop,0.06709465935795933,0.3241051123283589,"corrected for age, sex, and interaction",0.5556087639914724,methylphenidate,218
+cog_gFactor,e_raw_correct_go,-0.052015747860691075,0.4448044280868113,raw data,0.7051017061124853,methylphenidate,218
+cog_gFactor,e_raw_correct_stop,0.11411641500218797,0.0928179440112229,raw data,0.43321926795464244,methylphenidate,218
+cog_gFactor,e_raw_no_response_on_go,0.10551910438607995,0.12033868554295624,raw data,0.43321926795464244,methylphenidate,218
+cog_gFactor,e_raw_stop_doesnot_stop,0.07256016326990522,0.2861591453225065,raw data,0.6268935954025421,methylphenidate,218
+cog_matrix,e_as_correct_go,-0.1309729890326403,0.05348287230602655,"corrected for age, sex, and interaction",0.24067292537711948,methylphenidate,218
+cog_matrix,e_as_correct_stop,-0.00727933590031933,0.9148987647866398,"corrected for age, sex, and interaction",0.9410387294948294,methylphenidate,218
+cog_matrix,e_as_no_response_on_go,0.07205610109873738,0.28952850104402916,"corrected for age, sex, and interaction",0.5211513018792525,methylphenidate,218
+cog_matrix,e_as_stop_doesnot_stop,0.048963174675010414,0.47201283652073633,"corrected for age, sex, and interaction",0.6493543079254792,methylphenidate,218
+cog_matrix,e_raw_correct_go,-0.09128823995873644,0.179300657710038,raw data,0.5624388870938684,methylphenidate,218
+cog_matrix,e_raw_correct_stop,-0.014372392750177564,0.8328898185534488,raw data,0.8847635054040611,methylphenidate,218
+cog_matrix,e_raw_no_response_on_go,0.05361583472918334,0.4309050424865015,raw data,0.7051017061124853,methylphenidate,218
+cog_matrix,e_raw_stop_doesnot_stop,0.027954621293651886,0.681474154511041,raw data,0.8397613569064438,methylphenidate,218
+cog_memory,e_as_correct_go,0.07785336969621856,0.2523662648081455,"corrected for age, sex, and interaction",0.5043297716502115,methylphenidate,218
+cog_memory,e_as_correct_stop,0.1848959426780609,0.0061831431643968315,"corrected for age, sex, and interaction",0.19043771755581496,methylphenidate,218
+cog_memory,e_as_no_response_on_go,-6.121615121837483e-4,0.9928299117718595,"corrected for age, sex, and interaction",0.9928299117718595,methylphenidate,218
+cog_memory,e_as_stop_doesnot_stop,0.07563540119267514,0.26617404614872275,"corrected for age, sex, and interaction",0.5043297716502115,methylphenidate,218
+cog_memory,e_raw_correct_go,0.024946611790279762,0.7141623201597782,raw data,0.8397613569064438,methylphenidate,218
+cog_memory,e_raw_correct_stop,0.18931251360061485,0.005039447045978029,raw data,0.18142009365520906,methylphenidate,218
+cog_memory,e_raw_no_response_on_go,0.0206536044827037,0.7617176460061106,raw data,0.8569323517568744,methylphenidate,218
+cog_memory,e_raw_stop_doesnot_stop,0.07109398035245067,0.2960330867178671,raw data,0.6268935954025421,methylphenidate,218
+cog_reaction_time,e_as_correct_go,-0.09735450164449584,0.15198269934504327,"corrected for age, sex, and interaction",0.4559480980351298,methylphenidate,218
+cog_reaction_time,e_as_correct_stop,0.13917147385268805,0.040069633740291044,"corrected for age, sex, and interaction",0.24041780244174626,methylphenidate,218
+cog_reaction_time,e_as_no_response_on_go,0.09860781035850665,0.14675329757062228,"corrected for age, sex, and interaction",0.4559480980351298,methylphenidate,218
+cog_reaction_time,e_as_stop_doesnot_stop,0.13109086012666463,0.05326645547467401,"corrected for age, sex, and interaction",0.24067292537711948,methylphenidate,218
+cog_reaction_time,e_raw_correct_go,-0.13400288251326153,0.048146243603762295,raw data,0.43321926795464244,methylphenidate,218
+cog_reaction_time,e_raw_correct_stop,0.14408063752031353,0.03348650546720422,raw data,0.40183806560645063,methylphenidate,218
+cog_reaction_time,e_raw_no_response_on_go,0.10980109799117681,0.10592891037427288,raw data,0.43321926795464244,methylphenidate,218
+cog_reaction_time,e_raw_stop_doesnot_stop,0.15447571291821882,0.02252447531521784,raw data,0.40183806560645063,methylphenidate,218
+cog_symbol_digit,e_as_correct_go,-0.08945258182083538,0.18824194425990548,"corrected for age, sex, and interaction",0.473502808270122,methylphenidate,218
+cog_symbol_digit,e_as_correct_stop,0.10840471115330351,0.11047058659866504,"corrected for age, sex, and interaction",0.39769411175519415,methylphenidate,218
+cog_symbol_digit,e_as_no_response_on_go,0.14790042211345764,0.029021834572831917,"corrected for age, sex, and interaction",0.20895720892438982,methylphenidate,218
+cog_symbol_digit,e_as_stop_doesnot_stop,0.022056971097521635,0.7460634287623251,"corrected for age, sex, and interaction",0.8521161116921496,methylphenidate,218
+cog_symbol_digit,e_raw_correct_go,-0.08103999295005543,0.23340907021170754,raw data,0.6001947519729622,methylphenidate,218
+cog_symbol_digit,e_raw_correct_stop,0.10626472786775853,0.11772546330951394,raw data,0.43321926795464244,methylphenidate,218
+cog_symbol_digit,e_raw_no_response_on_go,0.12093799928046077,0.0747641665500316,raw data,0.43321926795464244,methylphenidate,218
+cog_symbol_digit,e_raw_stop_doesnot_stop,0.05137037203425121,0.45048164557186565,raw data,0.7051017061124853,methylphenidate,218
+cog_tower_rearranging,e_as_correct_go,-0.08351977130532835,0.21936734494448862,"corrected for age, sex, and interaction",0.4935765261250994,methylphenidate,218
+cog_tower_rearranging,e_as_correct_stop,0.046079487753441575,0.49853054000874275,"corrected for age, sex, and interaction",0.6493543079254792,methylphenidate,218
+cog_tower_rearranging,e_as_no_response_on_go,0.049351105901337504,0.4685053760074509,"corrected for age, sex, and interaction",0.6493543079254792,methylphenidate,218
+cog_tower_rearranging,e_as_stop_doesnot_stop,0.02103650679205142,0.7574365437263553,"corrected for age, sex, and interaction",0.8521161116921496,methylphenidate,218
+cog_tower_rearranging,e_raw_correct_go,-0.029048575334933557,0.6697280168092103,raw data,0.8397613569064438,methylphenidate,218
+cog_tower_rearranging,e_raw_correct_stop,0.03632632579664104,0.5937260376156588,raw data,0.8397613569064438,methylphenidate,218
+cog_tower_rearranging,e_raw_no_response_on_go,-0.014135052014545789,0.8356099773260577,raw data,0.8847635054040611,methylphenidate,218
+cog_tower_rearranging,e_raw_stop_doesnot_stop,-0.007640342147766237,0.9106954449315225,raw data,0.9367153147867088,methylphenidate,218
+cog_trail_making_testB,e_as_correct_go,-0.08765837575122969,0.1972928367792175,"corrected for age, sex, and interaction",0.473502808270122,methylphenidate,218
+cog_trail_making_testB,e_as_correct_stop,0.05756576899387703,0.3976846650714534,"corrected for age, sex, and interaction",0.6224629540248836,methylphenidate,218
+cog_trail_making_testB,e_as_no_response_on_go,0.14965177160526807,0.027151334450766562,"corrected for age, sex, and interaction",0.20895720892438982,methylphenidate,218
+cog_trail_making_testB,e_as_stop_doesnot_stop,0.035920111892096276,0.5978635713963887,"corrected for age, sex, and interaction",0.7421754679403446,methylphenidate,218
+cog_trail_making_testB,e_raw_correct_go,-0.06169223409849604,0.36467021374689956,raw data,0.7051017061124853,methylphenidate,218
+cog_trail_making_testB,e_raw_correct_stop,0.053110868379016234,0.43526426248128924,raw data,0.7051017061124853,methylphenidate,218
+cog_trail_making_testB,e_raw_no_response_on_go,0.10829418014941568,0.11083650769446374,raw data,0.43321926795464244,methylphenidate,218
+cog_trail_making_testB,e_raw_stop_doesnot_stop,0.05377503195203966,0.42953597346374917,raw data,0.7051017061124853,methylphenidate,218
+cog_verbal_numerical_reasoning,e_as_correct_go,-0.06469508631938142,0.3417484348572568,"corrected for age, sex, and interaction",0.5592247115846021,methylphenidate,218
+cog_verbal_numerical_reasoning,e_as_correct_stop,0.04538277034648126,0.505053350608706,"corrected for age, sex, and interaction",0.6493543079254792,methylphenidate,218
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,0.15304443209568663,0.023820423513804645,"corrected for age, sex, and interaction",0.20895720892438982,methylphenidate,218
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,0.09022943072363084,0.18441892604151677,"corrected for age, sex, and interaction",0.473502808270122,methylphenidate,218
+cog_verbal_numerical_reasoning,e_raw_correct_go,-0.027748645071665214,0.6836944982846154,raw data,0.8397613569064438,methylphenidate,218
+cog_verbal_numerical_reasoning,e_raw_correct_stop,0.038479948009540035,0.5720107768598623,raw data,0.8397613569064438,methylphenidate,218
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,0.07238375867435558,0.28733530024693765,raw data,0.6268935954025421,methylphenidate,218
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,0.08415650079863166,0.21586111569856659,raw data,0.5977692434729536,methylphenidate,218
+ADHD-Demontis,e_as_correct_go,-0.01612403569350732,0.8463033253621253,"corrected for age, sex, and interaction",0.9177162818259321,adderall,147
+ADHD-Demontis,e_as_correct_stop,0.03856470392673915,0.6428245971496542,"corrected for age, sex, and interaction",0.9177162818259321,adderall,147
+ADHD-Demontis,e_as_no_response_on_go,0.022368888318007693,0.787986055972524,"corrected for age, sex, and interaction",0.9177162818259321,adderall,147
+ADHD-Demontis,e_as_stop_doesnot_stop,-0.022839300370609317,0.783636116198466,"corrected for age, sex, and interaction",0.9177162818259321,adderall,147
+ADHD-Demontis,e_raw_correct_go,0.03285434182001704,0.6928105232319366,raw data,0.9622440001257867,adderall,147
+ADHD-Demontis,e_raw_correct_stop,0.03558763165345423,0.6687026337516233,raw data,0.9622440001257867,adderall,147
+ADHD-Demontis,e_raw_no_response_on_go,-0.02159834995628555,0.7951253894497183,raw data,0.9622440001257867,adderall,147
+ADHD-Demontis,e_raw_stop_doesnot_stop,-0.03373521071218188,0.6850060560726603,raw data,0.9622440001257867,adderall,147
+cog_gFactor,e_as_correct_go,-0.09381257130767894,0.258391334002102,"corrected for age, sex, and interaction",0.7155452326212055,adderall,147
+cog_gFactor,e_as_correct_stop,-0.11473452765037892,0.1664255338359908,"corrected for age, sex, and interaction",0.6946286923444145,adderall,147
+cog_gFactor,e_as_no_response_on_go,0.013959304565958187,0.8667320439467137,"corrected for age, sex, and interaction",0.9177162818259321,adderall,147
+cog_gFactor,e_as_stop_doesnot_stop,0.03235961083855001,0.697208078257318,"corrected for age, sex, and interaction",0.9177162818259321,adderall,147
+cog_gFactor,e_raw_correct_go,-0.06929640043797614,0.4042782070912343,raw data,0.776513249486829,adderall,147
+cog_gFactor,e_raw_correct_stop,-0.12763420694353445,0.12341910567699488,raw data,0.6347268291959737,adderall,147
+cog_gFactor,e_raw_no_response_on_go,0.015166488388421105,0.8553280001118104,raw data,0.9622440001257867,adderall,147
+cog_gFactor,e_raw_stop_doesnot_stop,-0.01033101710237388,0.9011640989464962,raw data,0.98308810794163215,adderall,147
+cog_matrix,e_as_correct_go,-0.09527461484408647,0.251011770582966,"corrected for age, sex, and interaction",0.7155452326212055,adderall,147
+cog_matrix,e_as_correct_stop,-0.06428835880890675,0.43916645602767357,"corrected for age, sex, and interaction",0.821949612555223,adderall,147
+cog_matrix,e_as_no_response_on_go,0.0494979183824585,0.5515946652208044,"corrected for age, sex, and interaction",0.9026094521794981,adderall,147
+cog_matrix,e_as_stop_doesnot_stop,-0.07431886806560689,0.37099342663076595,"corrected for age, sex, and interaction",0.7942371210973401,adderall,147
+cog_matrix,e_raw_correct_go,-0.054735824681399294,0.510239305777457,raw data,0.9184307503994227,adderall,147
+cog_matrix,e_raw_correct_stop,-0.07737758715096421,0.3515732344963616,raw data,0.776513249486829,adderall,147
+cog_matrix,e_raw_no_response_on_go,0.019539473634297196,0.814283599814162,raw data,0.9622440001257867,adderall,147
+cog_matrix,e_raw_stop_doesnot_stop,-0.10923065356233891,0.18784203274325173,raw data,0.7058049979690124,adderall,147
+cog_memory,e_as_correct_go,-0.1573377962810448,0.05701369349611429,"corrected for age, sex, and interaction",0.6386416461276151,adderall,147
+cog_memory,e_as_correct_stop,-0.10814588701085766,0.1922904705571964,"corrected for age, sex, and interaction",0.6946286923444145,adderall,147
+cog_memory,e_as_no_response_on_go,0.04339662558840641,0.6017327290795182,"corrected for age, sex, and interaction",0.9177162818259321,adderall,147
+cog_memory,e_as_stop_doesnot_stop,-0.05988539737403252,0.471204583687173,"corrected for age, sex, and interaction",0.821949612555223,adderall,147
+cog_memory,e_raw_correct_go,-0.14712850624356796,0.07535450232919327,raw data,0.6347268291959737,adderall,147
+cog_memory,e_raw_correct_stop,-0.09536924877796722,0.2505391799028742,raw data,0.7516175397086227,adderall,147
+cog_memory,e_raw_no_response_on_go,0.07950968202132255,0.33842055720844577,raw data,0.776513249486829,adderall,147
+cog_memory,e_raw_stop_doesnot_stop,-0.06848357304477831,0.4098264372291598,raw data,0.776513249486829,adderall,147
+cog_reaction_time,e_as_correct_go,0.0799250466569449,0.3358950787158741,"corrected for age, sex, and interaction",0.7942371210973401,adderall,147
+cog_reaction_time,e_as_correct_stop,-0.019029233314947602,0.8190490006717202,"corrected for age, sex, and interaction",0.9177162818259321,adderall,147
+cog_reaction_time,e_as_no_response_on_go,-0.1473150533815896,0.07498105175121905,"corrected for age, sex, and interaction",0.6386416461276151,adderall,147
+cog_reaction_time,e_as_stop_doesnot_stop,0.019333408261780365,0.8162073438458359,"corrected for age, sex, and interaction",0.9177162818259321,adderall,147
+cog_reaction_time,e_raw_correct_go,0.10272696849462948,0.21566263826830934,raw data,0.7058049979690124,adderall,147
+cog_reaction_time,e_raw_correct_stop,-0.026420460697130062,0.7507489971636443,raw data,0.9622440001257867,adderall,147
+cog_reaction_time,e_raw_no_response_on_go,-0.14123437821992293,0.08794823931747686,raw data,0.6347268291959737,adderall,147
+cog_reaction_time,e_raw_stop_doesnot_stop,-0.017202062744297288,0.8361670353184931,raw data,0.9622440001257867,adderall,147
+cog_symbol_digit,e_as_correct_go,0.07369152770326938,0.37505641829596614,"corrected for age, sex, and interaction",0.7942371210973401,adderall,147
+cog_symbol_digit,e_as_correct_stop,-0.0030449795616136126,0.9708012873215404,"corrected for age, sex, and interaction",0.9708012873215404,adderall,147
+cog_symbol_digit,e_as_no_response_on_go,-0.14536566199971288,0.07895823915822264,"corrected for age, sex, and interaction",0.6386416461276151,adderall,147
+cog_symbol_digit,e_as_stop_doesnot_stop,0.14090437282650164,0.08870022862883542,"corrected for age, sex, and interaction",0.6386416461276151,adderall,147
+cog_symbol_digit,e_raw_correct_go,0.04950066762658231,0.551572538752308,raw data,0.9455529235753852,adderall,147
+cog_symbol_digit,e_raw_correct_stop,-0.0018875814629192886,0.9818972684696678,raw data,0.9832760561164013,adderall,147
+cog_symbol_digit,e_raw_no_response_on_go,-0.11172381760475651,0.1779037990742549,raw data,0.7058049979690124,adderall,147
+cog_symbol_digit,e_raw_stop_doesnot_stop,0.1398755562431405,0.09107756772424835,raw data,0.6347268291959737,adderall,147
+cog_tower_rearranging,e_as_correct_go,-0.1953811513498402,0.01771360221206475,"corrected for age, sex, and interaction",0.637689679634331,adderall,147
+cog_tower_rearranging,e_as_correct_stop,0.00661508587144595,0.9366191564874304,"corrected for age, sex, and interaction",0.9633797038156426,adderall,147
+cog_tower_rearranging,e_as_no_response_on_go,0.10556181006278853,0.2031950186656566,"corrected for age, sex, and interaction",0.6946286923444145,adderall,147
+cog_tower_rearranging,e_as_stop_doesnot_stop,0.11671825075675707,0.15916968527018005,"corrected for age, sex, and interaction",0.6946286923444145,adderall,147
+cog_tower_rearranging,e_raw_correct_go,-0.20718828349821672,0.011803546021130318,raw data,0.42492765676069144,adderall,147
+cog_tower_rearranging,e_raw_correct_stop,0.007306095150858108,0.930014451340279,raw data,0.9832760561164013,adderall,147
+cog_tower_rearranging,e_raw_no_response_on_go,0.13892405051976703,0.09332112948154503,raw data,0.6347268291959737,adderall,147
+cog_tower_rearranging,e_raw_stop_doesnot_stop,0.10358008400369481,0.211854615193239,raw data,0.7058049979690124,adderall,147
+cog_trail_making_testB,e_as_correct_go,-0.016278929194780467,0.8448453286014339,"corrected for age, sex, and interaction",0.9177162818259321,adderall,147
+cog_trail_making_testB,e_as_correct_stop,-0.058776416897747624,0.47947060732388014,"corrected for age, sex, and interaction",0.821949612555223,adderall,147
+cog_trail_making_testB,e_as_no_response_on_go,-0.07989482353474525,0.3360784337684244,"corrected for age, sex, and interaction",0.7942371210973401,adderall,147
+cog_trail_making_testB,e_as_stop_doesnot_stop,0.02232928373839821,0.7883525837406791,"corrected for age, sex, and interaction",0.9177162818259321,adderall,147
+cog_trail_making_testB,e_raw_correct_go,0.0017437928407059073,0.9832760561164013,raw data,0.9832760561164013,adderall,147
+cog_trail_making_testB,e_raw_correct_stop,-0.07368004793623867,0.3751310200236957,raw data,0.776513249486829,adderall,147
+cog_trail_making_testB,e_raw_no_response_on_go,-0.08146268407881932,0.3266508191377808,raw data,0.776513249486829,adderall,147
+cog_trail_making_testB,e_raw_stop_doesnot_stop,-0.0254207173948416,0.7598878413688048,raw data,0.9622440001257867,adderall,147
+cog_verbal_numerical_reasoning,e_as_correct_go,-0.061028039501620716,0.4627696778961248,"corrected for age, sex, and interaction",0.821949612555223,adderall,147
+cog_verbal_numerical_reasoning,e_as_correct_stop,-0.11267179956025357,0.17422842162896557,"corrected for age, sex, and interaction",0.6946286923444145,adderall,147
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,0.10349152619211327,0.21224765599412665,"corrected for age, sex, and interaction",0.6946286923444145,adderall,147
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,-0.016373422844466263,0.8439561273955585,"corrected for age, sex, and interaction",0.9177162818259321,adderall,147
+cog_verbal_numerical_reasoning,e_raw_correct_go,-0.03207407481762101,0.6997507457267549,raw data,0.9622440001257867,adderall,147
+cog_verbal_numerical_reasoning,e_raw_correct_stop,-0.13061230688452946,0.11483377023423413,raw data,0.6347268291959737,adderall,147
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,0.08408307212498631,0.311277778589377,raw data,0.776513249486829,adderall,147
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,-0.031014566109871758,0.7092145067931064,raw data,0.9622440001257867,adderall,147
+ADHD-Demontis,e_as_correct_go,0.03643422305394137,0.6657344764864908,"corrected for age, sex, and interaction",0.8559443269112025,concerta,143
+ADHD-Demontis,e_as_correct_stop,0.09068748153255196,0.28140524567144465,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+ADHD-Demontis,e_as_no_response_on_go,0.021668472372697724,0.7972766353014029,"corrected for age, sex, and interaction",0.9567319623616835,concerta,143
+ADHD-Demontis,e_as_stop_doesnot_stop,0.04694635303438344,0.5776800061504614,"corrected for age, sex, and interaction",0.799864623900639,concerta,143
+ADHD-Demontis,e_raw_correct_go,0.05959914447051289,0.47951932321482604,raw data,0.870489678338073,concerta,143
+ADHD-Demontis,e_raw_correct_stop,0.07527895760980459,0.37155017977628546,raw data,0.8359879044966423,concerta,143
+ADHD-Demontis,e_raw_no_response_on_go,0.00889923471418447,0.9159890262634061,raw data,0.9857826517246808,concerta,143
+ADHD-Demontis,e_raw_stop_doesnot_stop,0.023990963906463648,0.776093729759411,raw data,0.9857826517246808,concerta,143
+cog_gFactor,e_as_correct_go,-0.09457795725401359,0.26119028436563285,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_gFactor,e_as_correct_stop,-0.07567549821070947,0.3690288712577714,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_gFactor,e_as_no_response_on_go,0.06399175941429462,0.44767749246089217,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_gFactor,e_as_stop_doesnot_stop,-0.006578522130697727,0.9378454836468759,"corrected for age, sex, and interaction",0.989210391884833,concerta,143
+cog_gFactor,e_raw_correct_go,-0.04984965463909311,0.5543522130454004,raw data,0.870489678338073,concerta,143
+cog_gFactor,e_raw_correct_stop,-0.0917754120617045,0.2756494209495408,raw data,0.834496231671103,concerta,143
+cog_gFactor,e_raw_no_response_on_go,0.0039746350976244404,0.9624233602699386,raw data,0.9857826517246808,concerta,143
+cog_gFactor,e_raw_stop_doesnot_stop,-0.0015033556779455606,0.9857826517246808,raw data,0.9857826517246808,concerta,143
+cog_matrix,e_as_correct_go,-0.0684239469450737,0.41679028969401477,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_matrix,e_as_correct_stop,0.031505466364621294,0.7087490038775246,"corrected for age, sex, and interaction",0.8798263496410651,concerta,143
+cog_matrix,e_as_no_response_on_go,-0.0011408779014412816,0.989210391884833,"corrected for age, sex, and interaction",0.989210391884833,concerta,143
+cog_matrix,e_as_stop_doesnot_stop,-0.11386834953175576,0.1756964239432688,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_matrix,e_raw_correct_go,-0.08531316733536069,0.3110164087176661,raw data,0.834496231671103,concerta,143
+cog_matrix,e_raw_correct_stop,0.033807447053793876,0.6885344702782632,raw data,0.9857826517246808,concerta,143
+cog_matrix,e_raw_no_response_on_go,0.0035181586404735734,0.9667363042420052,raw data,0.9857826517246808,concerta,143
+cog_matrix,e_raw_stop_doesnot_stop,-0.10840051706176584,0.1975004133655287,raw data,0.834496231671103,concerta,143
+cog_memory,e_as_correct_go,0.057823631767293736,0.49272851471386225,"corrected for age, sex, and interaction",0.7712272404216974,concerta,143
+cog_memory,e_as_correct_stop,-0.04974720115565186,0.5551675964478051,"corrected for age, sex, and interaction",0.7994413388848394,concerta,143
+cog_memory,e_as_no_response_on_go,-0.06573180340785975,0.4354006871635674,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_memory,e_as_stop_doesnot_stop,0.14295871392567394,0.08851309713190281,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_memory,e_raw_correct_go,0.07909812413335246,0.3477067631962929,raw data,0.834496231671103,concerta,143
+cog_memory,e_raw_correct_stop,-0.059778049785675205,0.47819901512443064,raw data,0.870489678338073,concerta,143
+cog_memory,e_raw_no_response_on_go,-0.10018630134332811,0.23383539204643755,raw data,0.834496231671103,concerta,143
+cog_memory,e_raw_stop_doesnot_stop,0.14846421406470728,0.07679172108897347,raw data,0.834496231671103,concerta,143
+cog_reaction_time,e_as_correct_go,0.1294321875307791,0.12339278868993664,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_reaction_time,e_as_correct_stop,0.040599658557405036,0.630204646447786,"corrected for age, sex, and interaction",0.8402728619303812,concerta,143
+cog_reaction_time,e_as_no_response_on_go,-0.08367805903017171,0.3204148959666915,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_reaction_time,e_as_stop_doesnot_stop,0.06844043267226824,0.4166777754254962,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_reaction_time,e_raw_correct_go,0.10971562725236066,0.1920853857912208,raw data,0.834496231671103,concerta,143
+cog_reaction_time,e_raw_correct_stop,0.04299362730094911,0.6101547702599053,raw data,0.9152321553898579,concerta,143
+cog_reaction_time,e_raw_no_response_on_go,-0.09078329756607174,0.28089510327258616,raw data,0.834496231671103,concerta,143
+cog_reaction_time,e_raw_stop_doesnot_stop,0.0868161767788284,0.3025375672542858,raw data,0.834496231671103,concerta,143
+cog_symbol_digit,e_as_correct_go,-0.23396615121967235,0.0049170708266284,"corrected for age, sex, and interaction",0.09870313532887565,concerta,143
+cog_symbol_digit,e_as_correct_stop,0.009689254407564267,0.9085621102272079,"corrected for age, sex, and interaction",0.989210391884833,concerta,143
+cog_symbol_digit,e_as_no_response_on_go,0.23111395646606914,0.005483507518270869,"corrected for age, sex, and interaction",0.09870313532887565,concerta,143
+cog_symbol_digit,e_as_stop_doesnot_stop,0.049849849233677655,0.5543506649021193,"corrected for age, sex, and interaction",0.7994413388848394,concerta,143
+cog_symbol_digit,e_raw_correct_go,-0.12725649885221613,0.12988004923486685,raw data,0.834496231671103,concerta,143
+cog_symbol_digit,e_raw_correct_stop,-0.015716883848749027,0.8522027916527006,raw data,0.9857826517246808,concerta,143
+cog_symbol_digit,e_raw_no_response_on_go,0.13013280189263093,0.12135792668827361,raw data,0.834496231671103,concerta,143
+cog_symbol_digit,e_raw_stop_doesnot_stop,0.0110441233531411,0.8958438297238005,raw data,0.9857826517246808,concerta,143
+cog_tower_rearranging,e_as_correct_go,-0.06870711448176237,0.4148601492498496,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_tower_rearranging,e_as_correct_stop,-0.0039725532683279165,0.9624430277233604,"corrected for age, sex, and interaction",0.989210391884833,concerta,143
+cog_tower_rearranging,e_as_no_response_on_go,0.125496569158541,0.1353167147685741,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_tower_rearranging,e_as_stop_doesnot_stop,0.06117245844053669,0.46797606598856323,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_tower_rearranging,e_raw_correct_go,-0.01698463754842078,0.8404337787142135,raw data,0.9857826517246808,concerta,143
+cog_tower_rearranging,e_raw_correct_stop,-0.028356623575298272,0.7367295493733166,raw data,0.9857826517246808,concerta,143
+cog_tower_rearranging,e_raw_no_response_on_go,0.08871681630734822,0.29203542580604624,raw data,0.834496231671103,concerta,143
+cog_tower_rearranging,e_raw_stop_doesnot_stop,0.051030457129261964,0.5449967784890484,raw data,0.870489678338073,concerta,143
+cog_trail_making_testB,e_as_correct_go,-0.07368922157654552,0.38176386898894643,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_trail_making_testB,e_as_correct_stop,-0.09142207557700516,0.27751001012429,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_trail_making_testB,e_as_no_response_on_go,0.08253718112873043,0.3270802289812549,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_trail_making_testB,e_as_stop_doesnot_stop,-0.01727118551905264,0.8377784355516968,"corrected for age, sex, and interaction",0.9729039896729383,concerta,143
+cog_trail_making_testB,e_raw_correct_go,-0.0277008662662824,0.7426017380857064,raw data,0.9857826517246808,concerta,143
+cog_trail_making_testB,e_raw_correct_stop,-0.10067979501959412,0.23152832061344064,raw data,0.834496231671103,concerta,143
+cog_trail_making_testB,e_raw_no_response_on_go,0.05110068879780786,0.5444427902218081,raw data,0.870489678338073,concerta,143
+cog_trail_making_testB,e_raw_stop_doesnot_stop,-0.013135021375318514,0.8762693691660823,raw data,0.9857826517246808,concerta,143
+cog_verbal_numerical_reasoning,e_as_correct_go,-0.09956827210348337,0.23674733465776066,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_verbal_numerical_reasoning,e_as_correct_stop,-0.10133704323845169,0.22848060212435173,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,0.002125808463836633,0.9798971206911533,"corrected for age, sex, and interaction",0.989210391884833,concerta,143
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,-0.06278528389116939,0.4563027451784456,"corrected for age, sex, and interaction",0.7657790170721944,concerta,143
+cog_verbal_numerical_reasoning,e_raw_correct_go,-0.08088997773815866,0.33685962713703055,raw data,0.834496231671103,concerta,143
+cog_verbal_numerical_reasoning,e_raw_correct_stop,-0.11186118235133076,0.1834841448099076,raw data,0.834496231671103,concerta,143
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,-0.04962433701296857,0.5561461833826578,raw data,0.870489678338073,concerta,143
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,-0.05768996732989703,0.49373068075494553,raw data,0.870489678338073,concerta,143
+ADHD-Demontis,e_as_correct_go,0.02612373453318335,0.7715368013856012,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+ADHD-Demontis,e_as_correct_stop,-0.031001124859392576,0.7303939742809613,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+ADHD-Demontis,e_as_no_response_on_go,-0.15171203599550057,0.08991957460174271,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+ADHD-Demontis,e_as_stop_doesnot_stop,-0.05774895462779525,0.5206742869105783,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+ADHD-Demontis,e_raw_correct_go,-0.060372321455765474,0.5018787049290303,raw data,0.9988121911170473,vyvanse,126
+ADHD-Demontis,e_raw_correct_stop,-0.00572594350731568,0.9492620486751178,raw data,0.9988121911170473,vyvanse,126
+ADHD-Demontis,e_raw_no_response_on_go,-0.0750703872104069,0.4034674409284458,raw data,0.9988121911170473,vyvanse,126
+ADHD-Demontis,e_raw_stop_doesnot_stop,0.016374132801599012,0.8555987375672323,raw data,0.9988121911170473,vyvanse,126
+cog_gFactor,e_as_correct_go,-0.0446854143232096,0.6193005785827499,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_gFactor,e_as_correct_stop,0.05530408698912636,0.5385078704101456,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_gFactor,e_as_no_response_on_go,0.08949381327334083,0.31898046200633057,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_gFactor,e_as_stop_doesnot_stop,0.05321950722035858,0.5539487185568861,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_gFactor,e_raw_correct_go,0.02601143105011612,0.7724921472152309,raw data,0.9988121911170473,vyvanse,126
+cog_gFactor,e_raw_correct_stop,0.04724354966367243,0.5993636447302433,raw data,0.9988121911170473,vyvanse,126
+cog_gFactor,e_raw_no_response_on_go,0.017824067019031435,0.842969640327687,raw data,0.9988121911170473,vyvanse,126
+cog_gFactor,e_raw_stop_doesnot_stop,0.009134124310176617,0.9191451719478425,raw data,0.9988121911170473,vyvanse,126
+cog_matrix,e_as_correct_go,0.0035245594300712412,0.9687557237186823,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_matrix,e_as_correct_stop,0.12994675665541808,0.1469836972657652,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_matrix,e_as_no_response_on_go,0.11121709786276715,0.21504299569647234,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_matrix,e_as_stop_doesnot_stop,0.11497297329777499,0.1998559525158976,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_matrix,e_raw_correct_go,0.02326027969222033,0.7959987991789985,raw data,0.9988121911170473,vyvanse,126
+cog_matrix,e_raw_correct_stop,0.13060690490083252,0.14492337287519508,raw data,0.9988121911170473,vyvanse,126
+cog_matrix,e_raw_no_response_on_go,0.06742892368832848,0.4531349402677316,raw data,0.9988121911170473,vyvanse,126
+cog_matrix,e_raw_stop_doesnot_stop,0.09865290400080592,0.2717579686088647,raw data,0.9988121911170473,vyvanse,126
+cog_memory,e_as_correct_go,-0.16093888263967004,0.07181569370054897,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_memory,e_as_correct_stop,-0.08676415448068991,0.3340230960082704,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_memory,e_as_no_response_on_go,0.04250168728908887,0.6365419722684538,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_memory,e_as_stop_doesnot_stop,0.016216021645432222,0.8569781764003412,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_memory,e_raw_correct_go,-0.11613338921787138,0.19532412811524558,raw data,0.9988121911170473,vyvanse,126
+cog_memory,e_raw_correct_stop,-0.09526380459805331,0.2886482253678675,raw data,0.9988121911170473,vyvanse,126
+cog_memory,e_raw_no_response_on_go,8.540636128572512e-4,0.9924271544766325,raw data,0.9988121911170473,vyvanse,126
+cog_memory,e_raw_stop_doesnot_stop,0.012361597975027566,0.8907296975339338,raw data,0.9988121911170473,vyvanse,126
+cog_reaction_time,e_as_correct_go,-0.04369553805774278,0.6270911719373027,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_reaction_time,e_as_correct_stop,-0.021222347206599174,0.8135314790083656,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_reaction_time,e_as_no_response_on_go,0.06687064116985376,0.4568924850966909,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_reaction_time,e_as_stop_doesnot_stop,-0.08130508078051062,0.36543827022117203,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_reaction_time,e_raw_correct_go,-0.0363920021497011,0.6857994344499538,raw data,0.9988121911170473,vyvanse,126
+cog_reaction_time,e_raw_correct_stop,-0.011951627615164695,0.8943322644557521,raw data,0.9988121911170473,vyvanse,126
+cog_reaction_time,e_raw_no_response_on_go,0.07457118101415935,0.40661035461635153,raw data,0.9988121911170473,vyvanse,126
+cog_reaction_time,e_raw_stop_doesnot_stop,-0.10145669386409342,0.25830004582831645,raw data,0.9988121911170473,vyvanse,126
+cog_symbol_digit,e_as_correct_go,-0.04314360704911886,0.6314529969145364,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_symbol_digit,e_as_correct_stop,0.13616197975253094,0.12844273431088227,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_symbol_digit,e_as_no_response_on_go,0.049484814398200225,0.5821362062710658,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_symbol_digit,e_as_stop_doesnot_stop,0.0782124580804661,0.3840176584346424,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_symbol_digit,e_raw_correct_go,0.021985209542704835,0.8069571266201407,raw data,0.9988121911170473,vyvanse,126
+cog_symbol_digit,e_raw_correct_stop,0.12939668971158916,0.14871729388673405,raw data,0.9988121911170473,vyvanse,126
+cog_symbol_digit,e_raw_no_response_on_go,-0.009782637086706472,0.9134261358828113,raw data,0.9988121911170473,vyvanse,126
+cog_symbol_digit,e_raw_stop_doesnot_stop,0.02741483421881113,0.760578558384954,raw data,0.9988121911170473,vyvanse,126
+cog_tower_rearranging,e_as_correct_go,0.026153730783652043,0.7712816864350449,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_tower_rearranging,e_as_correct_stop,-9.568803899512561e-4,0.9915155266722173,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_tower_rearranging,e_as_no_response_on_go,0.007520059992500937,0.933396437211313,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_tower_rearranging,e_as_stop_doesnot_stop,0.058645845207148606,0.5142083001164368,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_tower_rearranging,e_raw_correct_go,0.048107646699955244,0.5926947654805492,raw data,0.9988121911170473,vyvanse,126
+cog_tower_rearranging,e_raw_correct_stop,0.0012914982989686787,0.9885487095749279,raw data,0.9988121911170473,vyvanse,126
+cog_tower_rearranging,e_raw_no_response_on_go,-0.01353570535729045,0.8804249361401104,raw data,0.9988121911170473,vyvanse,126
+cog_tower_rearranging,e_raw_stop_doesnot_stop,0.046776560885846495,0.6029816636441343,raw data,0.9988121911170473,vyvanse,126
+cog_trail_making_testB,e_as_correct_go,9.568803899512561e-4,0.9915155266722173,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_trail_making_testB,e_as_correct_stop,-0.029915260592425948,0.7394922795704717,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_trail_making_testB,e_as_no_response_on_go,0.02927934008248969,0.7448374335064867,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_trail_making_testB,e_as_stop_doesnot_stop,0.008989903231846164,0.9204175858367296,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_trail_making_testB,e_raw_correct_go,0.03149873294061928,0.7262369871422838,raw data,0.9988121911170473,vyvanse,126
+cog_trail_making_testB,e_raw_correct_stop,-0.027308114382155906,0.7614825820623876,raw data,0.9988121911170473,vyvanse,126
+cog_trail_making_testB,e_raw_no_response_on_go,0.002237406084386602,0.9801630028829378,raw data,0.9988121911170473,vyvanse,126
+cog_trail_making_testB,e_raw_stop_doesnot_stop,-1.339588490237362e-4,0.9988121911170473,raw data,0.9988121911170473,vyvanse,126
+cog_verbal_numerical_reasoning,e_as_correct_go,0.019056617922759655,0.8322651266359693,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_verbal_numerical_reasoning,e_as_correct_stop,0.06955830521184853,0.4389623821672357,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,0.06009748781402325,0.5038310250171665,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,-0.007070137443263734,0.9373729532304913,"corrected for age, sex, and interaction",0.9915155266722173,vyvanse,126
+cog_verbal_numerical_reasoning,e_raw_correct_go,0.10095855435610813,0.26065710448811474,raw data,0.9988121911170473,vyvanse,126
+cog_verbal_numerical_reasoning,e_raw_correct_stop,0.051458229427206584,0.5671594859504046,raw data,0.9988121911170473,vyvanse,126
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,-0.014600277607119558,0.8710987405883259,raw data,0.9988121911170473,vyvanse,126
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,-0.04730305031573048,0.5989033590350492,raw data,0.9988121911170473,vyvanse,126
+ADHD-Demontis,e_as_correct_go,0.08444444444444445,0.6817023729072629,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+ADHD-Demontis,e_as_correct_stop,-0.046153846153846156,0.8228474962556933,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+ADHD-Demontis,e_as_no_response_on_go,-0.15623931623931625,0.44594940615976864,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+ADHD-Demontis,e_as_stop_doesnot_stop,0.11078817053696245,0.5900307875917101,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+ADHD-Demontis,e_raw_correct_go,0.08454567080343663,0.6813404736648694,raw data,0.9933796210542216,dextroamphetamine,26
+ADHD-Demontis,e_raw_correct_stop,-0.08460367813156687,0.6811331197907611,raw data,0.9933796210542216,dextroamphetamine,26
+ADHD-Demontis,e_raw_no_response_on_go,-0.16149562844411655,0.4306004441334388,raw data,0.9933796210542216,dextroamphetamine,26
+ADHD-Demontis,e_raw_stop_doesnot_stop,-0.054546057557991516,0.7912795315535341,raw data,0.9933796210542216,dextroamphetamine,26
+cog_gFactor,e_as_correct_go,-0.026324786324786326,0.8984253577371875,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_gFactor,e_as_correct_stop,0.24307692307692308,0.23148379594390023,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_gFactor,e_as_no_response_on_go,-0.0652991452991453,0.7513008176232436,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_gFactor,e_as_stop_doesnot_stop,0.22567960664936795,0.26763425099286864,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_gFactor,e_raw_correct_go,0.08762628229020152,0.670359981585003,raw data,0.9933796210542216,dextroamphetamine,26
+cog_gFactor,e_raw_correct_stop,0.19318410715062231,0.3443770631144356,raw data,0.9933796210542216,dextroamphetamine,26
+cog_gFactor,e_raw_no_response_on_go,-0.12995083477774985,0.5269130549314274,raw data,0.9933796210542216,dextroamphetamine,26
+cog_gFactor,e_raw_stop_doesnot_stop,0.2499726611266896,0.21810002379024507,raw data,0.9933796210542216,dextroamphetamine,26
+cog_matrix,e_as_correct_go,-0.17196581196581195,0.4008992296832832,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_matrix,e_as_correct_stop,0.29777777777777775,0.1395536917922926,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_matrix,e_as_no_response_on_go,0.14256410256410257,0.4872138140155804,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_matrix,e_as_stop_doesnot_stop,0.05812959565210993,0.7778937579527412,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_matrix,e_raw_correct_go,-0.06674658221323944,0.7459643684860686,raw data,0.9933796210542216,dextroamphetamine,26
+cog_matrix,e_raw_correct_stop,0.23599973373542338,0.24577598305820247,raw data,0.9933796210542216,dextroamphetamine,26
+cog_matrix,e_raw_no_response_on_go,0.0421740176191642,0.8379154576707544,raw data,0.9933796210542216,dextroamphetamine,26
+cog_matrix,e_raw_stop_doesnot_stop,-0.011559429416263103,0.9553062557505223,raw data,0.9933796210542216,dextroamphetamine,26
+cog_memory,e_as_correct_go,-0.16512820512820514,0.4201630326808077,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_memory,e_as_correct_stop,-0.09128205128205129,0.6574145699161673,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_memory,e_as_no_response_on_go,0.1158974358974359,0.5728870738918022,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_memory,e_as_stop_doesnot_stop,0.07385878035797497,0.7199125034986276,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_memory,e_raw_correct_go,-0.08865315278578982,0.666714281055524,raw data,0.9933796210542216,dextroamphetamine,26
+cog_memory,e_raw_correct_stop,-0.1394076801601122,0.4970042511223811,raw data,0.9933796210542216,dextroamphetamine,26
+cog_memory,e_raw_no_response_on_go,0.008229076608617405,0.9681751498698943,raw data,0.9933796210542216,dextroamphetamine,26
+cog_memory,e_raw_stop_doesnot_stop,0.05743591491205729,0.7804802156951265,raw data,0.9933796210542216,dextroamphetamine,26
+cog_reaction_time,e_as_correct_go,0.16512820512820514,0.4201630326808077,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_reaction_time,e_as_correct_stop,0.3223931623931624,0.10821546241751379,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_reaction_time,e_as_no_response_on_go,-0.08034188034188035,0.6964265533973149,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_reaction_time,e_as_stop_doesnot_stop,0.17985980772358717,0.37928987196016006,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_reaction_time,e_raw_correct_go,0.12904339227892958,0.5298274655005701,raw data,0.9933796210542216,dextroamphetamine,26
+cog_reaction_time,e_raw_correct_stop,0.27196486006665627,0.17893256536756996,raw data,0.9933796210542216,dextroamphetamine,26
+cog_reaction_time,e_raw_no_response_on_go,-0.10732087410405199,0.6017893615704097,raw data,0.9933796210542216,dextroamphetamine,26
+cog_reaction_time,e_raw_stop_doesnot_stop,0.12643125924037768,0.5382593415426795,raw data,0.9933796210542216,dextroamphetamine,26
+cog_symbol_digit,e_as_correct_go,-0.13230769230769232,0.5193795608620917,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_symbol_digit,e_as_correct_stop,-0.26153846153846155,0.1968407049758305,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_symbol_digit,e_as_no_response_on_go,-0.13641025641025642,0.5063914522157806,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_symbol_digit,e_as_stop_doesnot_stop,0.049923064501223816,0.8086329881695287,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_symbol_digit,e_raw_correct_go,-0.018483668920589384,0.9285886170197584,raw data,0.9933796210542216,dextroamphetamine,26
+cog_symbol_digit,e_raw_correct_stop,-0.269224659965229,0.1835249955718381,raw data,0.9933796210542216,dextroamphetamine,26
+cog_symbol_digit,e_raw_no_response_on_go,-0.19852647318289487,0.3309371778780865,raw data,0.9933796210542216,dextroamphetamine,26
+cog_symbol_digit,e_raw_stop_doesnot_stop,0.054184825388733295,0.7926321301622499,raw data,0.9933796210542216,dextroamphetamine,26
+cog_tower_rearranging,e_as_correct_go,-0.01264957264957265,0.9510960223522145,"corrected for age, sex, and interaction",0.9782701944194205,dextroamphetamine,26
+cog_tower_rearranging,e_as_correct_stop,0.14324786324786326,0.4851058860330668,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_tower_rearranging,e_as_no_response_on_go,0.05504273504273504,0.7894207318868967,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_tower_rearranging,e_as_stop_doesnot_stop,0.03145836941173008,0.8787490312358608,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_tower_rearranging,e_raw_correct_go,0.07838444782990683,0.7034901174435104,raw data,0.9933796210542216,dextroamphetamine,26
+cog_tower_rearranging,e_raw_correct_stop,0.10995052906976908,0.5928623769332835,raw data,0.9933796210542216,dextroamphetamine,26
+cog_tower_rearranging,e_raw_no_response_on_go,-0.013372249489003282,0.9483056751913645,raw data,0.9933796210542216,dextroamphetamine,26
+cog_tower_rearranging,e_raw_stop_doesnot_stop,0.02348009100178443,0.909354654730415,raw data,0.9933796210542216,dextroamphetamine,26
+cog_trail_making_testB,e_as_correct_go,0.024273504273504273,0.9063046675571143,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_trail_making_testB,e_as_correct_stop,0.29777777777777775,0.1395536917922926,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_trail_making_testB,e_as_no_response_on_go,-0.03658119658119658,0.8591835535388535,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_trail_making_testB,e_as_stop_doesnot_stop,0.13609164158552794,0.5073943791742592,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_trail_making_testB,e_raw_correct_go,0.06914261336961214,0.737155737259753,raw data,0.9933796210542216,dextroamphetamine,26
+cog_trail_making_testB,e_raw_correct_stop,0.2942289858907528,0.14456040209448906,raw data,0.9933796210542216,dextroamphetamine,26
+cog_trail_making_testB,e_raw_no_response_on_go,0.0476600686915758,0.8171604258828447,raw data,0.9933796210542216,dextroamphetamine,26
+cog_trail_making_testB,e_raw_stop_doesnot_stop,0.2452766429263327,0.22715650054271985,raw data,0.9933796210542216,dextroamphetamine,26
+cog_verbal_numerical_reasoning,e_as_correct_go,0.03452991452991453,0.8670089011429889,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_verbal_numerical_reasoning,e_as_correct_stop,0.20683760683760682,0.310670370291831,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,-0.13846153846153847,0.499957929572453,"corrected for age, sex, and interaction",0.9596167068251799,dextroamphetamine,26
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,-0.0020516327877215267,0.9920637376472905,"corrected for age, sex, and interaction",0.9920637376472905,dextroamphetamine,26
+cog_verbal_numerical_reasoning,e_raw_correct_go,0.0017114508259804984,0.9933796210542216,raw data,0.9933796210542216,dextroamphetamine,26
+cog_verbal_numerical_reasoning,e_raw_correct_stop,0.18085320669419963,0.3766189155913593,raw data,0.9933796210542216,dextroamphetamine,26
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,-0.16698167951652818,0.41489158313680186,raw data,0.9933796210542216,dextroamphetamine,26
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,0.051294968034667515,0.8034736446908641,raw data,0.9933796210542216,dextroamphetamine,26
+ADHD-Demontis,e_as_correct_go,-0.1494684988332901,0.2671242075710003,"corrected for age, sex, and interaction",0.6975562571053483,ritalin,57
+ADHD-Demontis,e_as_correct_stop,-0.19347938812548612,0.14929076253082751,"corrected for age, sex, and interaction",0.6793408589962522,ritalin,57
+ADHD-Demontis,e_as_no_response_on_go,0.22686025408348456,0.08969356109847304,"corrected for age, sex, and interaction",0.645793639909006,ritalin,57
+ADHD-Demontis,e_as_stop_doesnot_stop,0.09842653661093613,0.4663611901775089,"corrected for age, sex, and interaction",0.7375620074130121,ritalin,57
+ADHD-Demontis,e_raw_correct_go,-0.20177984991675826,0.13227681845542838,raw data,0.5291072738217135,ritalin,57
+ADHD-Demontis,e_raw_correct_stop,-0.1801476404106744,0.17993567368152075,raw data,0.5310580882297598,ritalin,57
+ADHD-Demontis,e_raw_no_response_on_go,0.2129548974464024,0.11173163735974212,raw data,0.5291072738217135,ritalin,57
+ADHD-Demontis,e_raw_stop_doesnot_stop,0.08949294833318476,0.5079594698621603,raw data,0.7840939276120125,ritalin,57
+cog_gFactor,e_as_correct_go,-0.09126263935701322,0.4995716030376791,"corrected for age, sex, and interaction",0.7375620074130121,ritalin,57
+cog_gFactor,e_as_correct_stop,-0.12833808659579984,0.34139776739331906,"corrected for age, sex, and interaction",0.7234807560377763,ritalin,57
+cog_gFactor,e_as_no_response_on_go,-0.24319419237749546,0.06832274967237661,"corrected for age, sex, and interaction",0.645793639909006,ritalin,57
+cog_gFactor,e_as_stop_doesnot_stop,-0.05285929575648233,0.6961589402833703,"corrected for age, sex, and interaction",0.8950614946500476,ritalin,57
+cog_gFactor,e_raw_correct_go,-0.0065163479809235885,0.961630261360221,raw data,0.9836733760043519,ritalin,57
+cog_gFactor,e_raw_correct_stop,-0.13768333760960436,0.3070975576697068,raw data,0.5818690566373392,ritalin,57
+cog_gFactor,e_raw_no_response_on_go,-0.2579549718267521,0.052709171050793424,raw data,0.5291072738217135,ritalin,57
+cog_gFactor,e_raw_stop_doesnot_stop,-0.05098326149512185,0.7064466274062455,raw data,0.9082885209508872,ritalin,57
+cog_matrix,e_as_correct_go,0.020935960591133004,0.8771539401129989,"corrected for age, sex, and interaction",0.9476036039984873,ritalin,57
+cog_matrix,e_as_correct_stop,-0.14875550946331345,0.26943867822217027,"corrected for age, sex, and interaction",0.6975562571053483,ritalin,57
+cog_matrix,e_as_no_response_on_go,-0.14240342234897588,0.2906484404605618,"corrected for age, sex, and interaction",0.6975562571053483,ritalin,57
+cog_matrix,e_as_stop_doesnot_stop,0.20472849251606307,0.1265984296917959,"corrected for age, sex, and interaction",0.6793408589962522,ritalin,57
+cog_matrix,e_raw_correct_go,0.02256407062051153,0.8676832191914539,raw data,0.9761436215903856,ritalin,57
+cog_matrix,e_raw_correct_stop,-0.15539850687630843,0.24838997114404515,raw data,0.5673102751152481,ritalin,57
+cog_matrix,e_raw_no_response_on_go,-0.1541885665456571,0.2521379000512214,raw data,0.5673102751152481,ritalin,57
+cog_matrix,e_raw_stop_doesnot_stop,0.18885256021785266,0.15945302821293517,raw data,0.5310580882297598,ritalin,57
+cog_memory,e_as_correct_go,0.12827326938034742,0.34164369035117215,"corrected for age, sex, and interaction",0.7234807560377763,ritalin,57
+cog_memory,e_as_correct_stop,-0.11744879439979258,0.3842507323898887,"corrected for age, sex, and interaction",0.7244409108137054,ritalin,57
+cog_memory,e_as_no_response_on_go,-0.11304122374902774,0.4024671726742808,"corrected for age, sex, and interaction",0.7244409108137054,ritalin,57
+cog_memory,e_as_stop_doesnot_stop,-0.054771434597458694,0.6857289249504381,"corrected for age, sex, and interaction",0.8950614946500476,ritalin,57
+cog_memory,e_raw_correct_go,0.1806746631725729,0.17864399455073565,raw data,0.5310580882297598,ritalin,57
+cog_memory,e_raw_correct_stop,-0.11703734989804118,0.3859301627316558,raw data,0.6615945646828385,ritalin,57
+cog_memory,e_raw_no_response_on_go,-0.17467561339558543,0.19374758150753912,raw data,0.5310580882297598,ritalin,57
+cog_memory,e_raw_stop_doesnot_stop,-0.08454311712006614,0.531796135685501,raw data,0.7840939276120125,ritalin,57
+cog_reaction_time,e_as_correct_go,-0.16171895255379828,0.22942872352865962,"corrected for age, sex, and interaction",0.6975562571053483,ritalin,57
+cog_reaction_time,e_as_correct_stop,-0.15737619911848588,0.24234579334621298,"corrected for age, sex, and interaction",0.6975562571053483,ritalin,57
+cog_reaction_time,e_as_no_response_on_go,-0.1166709878143635,0.38742923852464717,"corrected for age, sex, and interaction",0.7244409108137054,ritalin,57
+cog_reaction_time,e_as_stop_doesnot_stop,-0.01338497188683458,0.9212812816651961,"corrected for age, sex, and interaction",0.9476036039984873,ritalin,57
+cog_reaction_time,e_raw_correct_go,-0.0798819971392822,0.5547350605880044,raw data,0.7840939276120125,ritalin,57
+cog_reaction_time,e_raw_correct_stop,-0.16985721120428013,0.2065225898671288,raw data,0.5310580882297598,ritalin,57
+cog_reaction_time,e_raw_no_response_on_go,-0.23766273049362183,0.07504902161153448,raw data,0.5291072738217135,ritalin,57
+cog_reaction_time,e_raw_stop_doesnot_stop,-0.031282933266909715,0.8173109448480975,raw data,0.9761436215903856,ritalin,57
+cog_symbol_digit,e_as_correct_go,0.08465128338086596,0.5312694176165365,"corrected for age, sex, and interaction",0.7375620074130121,ritalin,57
+cog_symbol_digit,e_as_correct_stop,-0.14596836919885922,0.27861426548109325,"corrected for age, sex, and interaction",0.6975562571053483,ritalin,57
+cog_symbol_digit,e_as_no_response_on_go,-0.19270158154005704,0.15096463533250049,"corrected for age, sex, and interaction",0.6793408589962522,ritalin,57
+cog_symbol_digit,e_as_stop_doesnot_stop,-0.17899564099512685,0.1827825773635221,"corrected for age, sex, and interaction",0.6975562571053483,ritalin,57
+cog_symbol_digit,e_raw_correct_go,0.1407985038863241,0.29617550529215064,raw data,0.5818690566373392,ritalin,57
+cog_symbol_digit,e_raw_correct_stop,-0.1460198878527592,0.27844280736095617,raw data,0.5818690566373392,ritalin,57
+cog_symbol_digit,e_raw_no_response_on_go,-0.20785748642352006,0.12077659828272869,raw data,0.5291072738217135,ritalin,57
+cog_symbol_digit,e_raw_stop_doesnot_stop,-0.2055829897181936,0.12498786854810229,raw data,0.5291072738217135,ritalin,57
+cog_tower_rearranging,e_as_correct_go,-0.039797770287788435,0.7688142087788647,"corrected for age, sex, and interaction",0.8990746476182442,ritalin,57
+cog_tower_rearranging,e_as_correct_stop,-0.2798807363235675,0.03498078069914956,"corrected for age, sex, and interaction",0.645793639909006,ritalin,57
+cog_tower_rearranging,e_as_no_response_on_go,-0.01432460461498574,0.915774531679014,"corrected for age, sex, and interaction",0.9476036039984873,ritalin,57
+cog_tower_rearranging,e_as_stop_doesnot_stop,-0.08436097293324556,0.5326836720205088,"corrected for age, sex, and interaction",0.7375620074130121,ritalin,57
+cog_tower_rearranging,e_raw_correct_go,-0.0067108658311004115,0.960485793844583,raw data,0.9836733760043519,ritalin,57
+cog_tower_rearranging,e_raw_correct_stop,-0.2965662619703564,0.025085822245796363,raw data,0.5291072738217135,ritalin,57
+cog_tower_rearranging,e_raw_no_response_on_go,-0.013051969625469395,0.9232337474897205,raw data,0.9836733760043519,ritalin,57
+cog_tower_rearranging,e_raw_stop_doesnot_stop,-0.129949568781741,0.3353190963130346,raw data,0.6035743733634623,ritalin,57
+cog_trail_making_testB,e_as_correct_go,0.0032408607726212083,0.9809116877069759,"corrected for age, sex, and interaction",0.9809116877069759,ritalin,57
+cog_trail_making_testB,e_as_correct_stop,-0.10280010370754472,0.4466879182540775,"corrected for age, sex, and interaction",0.7375620074130121,ritalin,57
+cog_trail_making_testB,e_as_no_response_on_go,-0.22886958776250974,0.08681238675790226,"corrected for age, sex, and interaction",0.645793639909006,ritalin,57
+cog_trail_making_testB,e_as_stop_doesnot_stop,-0.045599649987351706,0.7362541583076445,"corrected for age, sex, and interaction",0.8990746476182442,ritalin,57
+cog_trail_making_testB,e_raw_correct_go,0.061078604955522586,0.6517452927827945,raw data,0.8689937237103926,ritalin,57
+cog_trail_making_testB,e_raw_correct_stop,-0.10456508918269622,0.4388806902946545,raw data,0.7181684023003437,ritalin,57
+cog_trail_making_testB,e_raw_no_response_on_go,-0.21058476365869278,0.11587037300522773,raw data,0.5291072738217135,ritalin,57
+cog_trail_making_testB,e_raw_stop_doesnot_stop,-0.03715673297314382,0.7837718942585883,raw data,0.9729582135623855,ritalin,57
+cog_verbal_numerical_reasoning,e_as_correct_go,-0.034936479128856626,0.7964070873223865,"corrected for age, sex, and interaction",0.8990746476182442,ritalin,57
+cog_verbal_numerical_reasoning,e_as_correct_stop,0.08983666061705989,0.5063247615942927,"corrected for age, sex, and interaction",0.7375620074130121,ritalin,57
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,-0.23262898625875034,0.08161737761757659,"corrected for age, sex, and interaction",0.645793639909006,ritalin,57
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,-0.03445090827047254,0.7991774645495504,"corrected for age, sex, and interaction",0.8990746476182442,ritalin,57
+cog_verbal_numerical_reasoning,e_raw_correct_go,0.02301794560425745,0.8650462568272264,raw data,0.9761436215903856,ritalin,57
+cog_verbal_numerical_reasoning,e_raw_correct_stop,0.07756899484060492,0.5662900588308979,raw data,0.7840939276120125,ritalin,57
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,-0.22295491397536898,0.09550706888843097,raw data,0.5291072738217135,ritalin,57
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,0.0027719054793464305,0.9836733760043519,raw data,0.9836733760043519,ritalin,57
+ADHD-Demontis,e_as_correct_go,-0.08056628056628057,0.6404295357452503,"corrected for age, sex, and interaction",0.971144322985879,intuniv,36
+ADHD-Demontis,e_as_correct_stop,0.04968144678541766,0.7735409495052372,"corrected for age, sex, and interaction",0.971144322985879,intuniv,36
+ADHD-Demontis,e_as_no_response_on_go,0.22807130493202096,0.18094713734511525,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+ADHD-Demontis,e_as_stop_doesnot_stop,-0.2428727722385573,0.15349891173275454,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+ADHD-Demontis,e_raw_correct_go,0.0045068252179528995,0.9791881680962824,raw data,0.9875015652219044,intuniv,36
+ADHD-Demontis,e_raw_correct_stop,0.04433279398787954,0.7973830328304288,raw data,0.9875015652219044,intuniv,36
+ADHD-Demontis,e_raw_no_response_on_go,0.18176122858715058,0.2887133820886585,raw data,0.9202391063633101,intuniv,36
+ADHD-Demontis,e_raw_stop_doesnot_stop,-0.2501656919919617,0.14114633923244302,raw data,0.9202391063633101,intuniv,36
+cog_gFactor,e_as_correct_go,0.04993564993564994,0.7724126949061765,"corrected for age, sex, and interaction",0.971144322985879,intuniv,36
+cog_gFactor,e_as_correct_stop,-0.042087650515107704,0.80744636361619615,"corrected for age, sex, and interaction",0.971144322985879,intuniv,36
+cog_gFactor,e_as_no_response_on_go,-0.10283802067758732,0.5506155271084356,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_gFactor,e_as_stop_doesnot_stop,-0.1800630674942987,0.2933184363525061,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_gFactor,e_raw_correct_go,0.0994076876645611,0.5640554263692752,raw data,0.960355805036954,intuniv,36
+cog_gFactor,e_raw_correct_stop,-0.07075204621902868,0.6817728987706295,raw data,0.960355805036954,intuniv,36
+cog_gFactor,e_raw_no_response_on_go,-0.10613511285209859,0.537841313940983,raw data,0.960355805036954,intuniv,36
+cog_gFactor,e_raw_stop_doesnot_stop,-0.1730805155093992,0.31274547343478654,raw data,0.9202391063633101,intuniv,36
+cog_matrix,e_as_correct_go,-0.10373230373230373,0.5471366790621637,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_matrix,e_as_correct_stop,-0.006178003745336911,0.9714736368859445,"corrected for age, sex, and interaction",0.9714736368859445,intuniv,36
+cog_matrix,e_as_no_response_on_go,0.11892657209773554,0.4896695057085725,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_matrix,e_as_stop_doesnot_stop,-0.17053864505357097,0.3200138205791243,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_matrix,e_raw_correct_go,-0.16121557636791514,0.3475664298664416,raw data,0.9202391063633101,intuniv,36
+cog_matrix,e_raw_correct_stop,-0.0027063624236786927,0.9875015652219044,raw data,0.9875015652219044,intuniv,36
+cog_matrix,e_raw_no_response_on_go,0.15784527745726235,0.35787076358573167,raw data,0.9202391063633101,intuniv,36
+cog_matrix,e_raw_stop_doesnot_stop,-0.16690844856786524,0.33057548066310183,raw data,0.9202391063633101,intuniv,36
+cog_memory,e_as_correct_go,-0.11994851994851995,0.48591912331308107,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_memory,e_as_correct_stop,-0.18057790113974345,0.29191737233184956,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_memory,e_as_no_response_on_go,0.09846193469130701,0.5677871911959835,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_memory,e_as_stop_doesnot_stop,-0.014286633661091607,0.934091115489468,"corrected for age, sex, and interaction",0.971144322985879,intuniv,36
+cog_memory,e_raw_correct_go,-0.061807888703354054,0.7202668537777155,raw data,0.960355805036954,intuniv,36
+cog_memory,e_raw_correct_stop,-0.19614683851614143,0.251577204966976,raw data,0.9202391063633101,intuniv,36
+cog_memory,e_raw_no_response_on_go,0.017193629731216947,0.9207188664586621,raw data,0.9875015652219044,intuniv,36
+cog_memory,e_raw_stop_doesnot_stop,-0.01168753101694729,0.946062216025648,raw data,0.9875015652219044,intuniv,36
+cog_reaction_time,e_as_correct_go,0.16756756756756758,0.3286420193289139,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_reaction_time,e_as_correct_stop,0.03552352153568724,0.8370379412581095,"corrected for age, sex, and interaction",0.971144322985879,intuniv,36
+cog_reaction_time,e_as_no_response_on_go,0.01209859066795145,0.9441680917918269,"corrected for age, sex, and interaction",0.971144322985879,intuniv,36
+cog_reaction_time,e_as_stop_doesnot_stop,0.11957011415454147,0.4873060781331189,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_reaction_time,e_raw_correct_go,0.24439869324784583,0.15085158774074414,raw data,0.9202391063633101,intuniv,36
+cog_reaction_time,e_raw_correct_stop,0.03080098186948607,0.8584670350156545,raw data,0.9875015652219044,intuniv,36
+cog_reaction_time,e_raw_no_response_on_go,0.007368698456235834,0.9659786401286616,raw data,0.9875015652219044,intuniv,36
+cog_reaction_time,e_raw_stop_doesnot_stop,0.12436058284324814,0.4698994416062625,raw data,0.960355805036954,intuniv,36
+cog_symbol_digit,e_as_correct_go,0.09214929214929216,0.5929799830194369,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_symbol_digit,e_as_correct_stop,0.14865821512216942,0.38687785954252973,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_symbol_digit,e_as_no_response_on_go,-0.050324988842223584,0.770685545409519,"corrected for age, sex, and interaction",0.971144322985879,intuniv,36
+cog_symbol_digit,e_as_stop_doesnot_stop,0.10605573096161697,0.5381471918931724,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_symbol_digit,e_raw_correct_go,0.15812518193274744,0.3570080628955523,raw data,0.9202391063633101,intuniv,36
+cog_symbol_digit,e_raw_correct_stop,0.1318385123534906,0.4433973097668167,raw data,0.960355805036954,intuniv,36
+cog_symbol_digit,e_raw_no_response_on_go,-0.07329915832781961,0.6709488449739085,raw data,0.960355805036954,intuniv,36
+cog_symbol_digit,e_raw_stop_doesnot_stop,0.08719686062082024,0.6130797957222429,raw data,0.960355805036954,intuniv,36
+cog_tower_rearranging,e_as_correct_go,-0.34954954954954953,0.036643830161506186,"corrected for age, sex, and interaction",0.6606871350908019,intuniv,36
+cog_tower_rearranging,e_as_correct_stop,-0.21301242080276223,0.21227138507892462,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_tower_rearranging,e_as_no_response_on_go,0.21558658902998595,0.2066679948882011,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_tower_rearranging,e_as_stop_doesnot_stop,-0.0574039514670888,0.7394794428518034,"corrected for age, sex, and interaction",0.971144322985879,intuniv,36
+cog_tower_rearranging,e_raw_correct_go,-0.3141901009087164,0.06201595944655236,raw data,0.9202391063633101,intuniv,36
+cog_tower_rearranging,e_raw_correct_stop,-0.22553020197322438,0.18598862455752352,raw data,0.9202391063633101,intuniv,36
+cog_tower_rearranging,e_raw_no_response_on_go,0.23049805872751739,0.17622370043540458,raw data,0.9202391063633101,intuniv,36
+cog_tower_rearranging,e_raw_stop_doesnot_stop,-0.06474104259949455,0.707562839190575,raw data,0.960355805036954,intuniv,36
+cog_trail_making_testB,e_as_correct_go,0.03552123552123552,0.8370482877212528,"corrected for age, sex, and interaction",0.971144322985879,intuniv,36
+cog_trail_making_testB,e_as_correct_stop,-0.07272025241906989,0.6734033043862588,"corrected for age, sex, and interaction",0.971144322985879,intuniv,36
+cog_trail_making_testB,e_as_no_response_on_go,-0.014544050483813978,0.9329062217121504,"corrected for age, sex, and interaction",0.971144322985879,intuniv,36
+cog_trail_making_testB,e_as_stop_doesnot_stop,-0.10348156273439325,0.5481110369539886,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_trail_making_testB,e_raw_correct_go,0.0737831671396289,0.6688993018301994,raw data,0.960355805036954,intuniv,36
+cog_trail_making_testB,e_raw_correct_stop,-0.09240294560845821,0.5919583225320773,raw data,0.960355805036954,intuniv,36
+cog_trail_making_testB,e_raw_no_response_on_go,-0.031284649586124064,0.8562674831459347,raw data,0.9875015652219044,intuniv,36
+cog_trail_making_testB,e_raw_stop_doesnot_stop,-0.07262027699294216,0.6738275200885979,raw data,0.960355805036954,intuniv,36
+cog_verbal_numerical_reasoning,e_as_correct_go,0.12561132561132562,0.4654094229053738,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_verbal_numerical_reasoning,e_as_correct_stop,0.027672308442654912,0.8727198016598916,"corrected for age, sex, and interaction",0.971144322985879,intuniv,36
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,-0.26475320216995885,0.11865354262789474,"corrected for age, sex, and interaction",0.9703308813045332,intuniv,36
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,-0.349443336845619,0.036704840838377883,"corrected for age, sex, and interaction",0.6606871350908019,intuniv,36
+cog_verbal_numerical_reasoning,e_raw_correct_go,0.1160185577535875,0.500422307914234,raw data,0.960355805036954,intuniv,36
+cog_verbal_numerical_reasoning,e_raw_correct_stop,0.005154976045102271,0.9761959013478996,raw data,0.9875015652219044,intuniv,36
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,-0.19998906161047078,0.24222367469145611,raw data,0.9202391063633101,intuniv,36
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,-0.334342179428627,0.04625855957732283,raw data,0.9202391063633101,intuniv,36
+ADHD-Demontis,e_as_correct_go,0.30678046467520154,0.06477037801847163,"corrected for age, sex, and interaction",0.7043854914891583,strattera,37
+ADHD-Demontis,e_as_correct_stop,0.04504504504504504,0.7912187672690356,"corrected for age, sex, and interaction",0.8138250177624365,strattera,37
+ADHD-Demontis,e_as_no_response_on_go,-0.24917022285443338,0.13696384556733632,"corrected for age, sex, and interaction",0.7043854914891583,strattera,37
+ADHD-Demontis,e_as_stop_doesnot_stop,-0.09554291133238502,0.5737704744988621,"corrected for age, sex, and interaction",0.7944514262291936,strattera,37
+ADHD-Demontis,e_raw_correct_go,0.30149979728665266,0.06975991989434371,raw data,0.5022714232392748,strattera,37
+ADHD-Demontis,e_raw_correct_stop,0.03574668214649079,0.8336344847028025,raw data,0.9180142726429977,strattera,37
+ADHD-Demontis,e_raw_no_response_on_go,-0.22427128415554876,0.18206019577524568,raw data,0.5214986224175711,strattera,37
+ADHD-Demontis,e_raw_stop_doesnot_stop,-0.06970534872194728,0.6818443966164183,raw data,0.9180142726429977,strattera,37
+cog_gFactor,e_as_correct_go,-0.15457562825983878,0.36098895615739757,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_gFactor,e_as_correct_stop,0.16974869606448553,0.3151786312734477,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_gFactor,e_as_no_response_on_go,0.21882408724513988,0.19318793417777713,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_gFactor,e_as_stop_doesnot_stop,0.27453769559032715,0.10009364274616717,"corrected for age, sex, and interaction",0.7043854914891583,strattera,37
+cog_gFactor,e_raw_correct_go,-0.23356453034003372,0.16413902834349292,raw data,0.5214986224175711,strattera,37
+cog_gFactor,e_raw_correct_stop,0.1587152687304191,0.34811224125970686,raw data,0.6266020342674724,strattera,37
+cog_gFactor,e_raw_no_response_on_go,0.2211795273220152,0.18831894698412288,raw data,0.5214986224175711,strattera,37
+cog_gFactor,e_raw_stop_doesnot_stop,0.32822181076710877,0.04733415193243595,raw data,0.4260073673919236,strattera,37
+cog_matrix,e_as_correct_go,0.08463726884779517,0.6184463629798573,"corrected for age, sex, and interaction",0.800446869080694,strattera,37
+cog_matrix,e_as_correct_stop,0.02275960170697013,0.8936344541040988,"corrected for age, sex, and interaction",0.8936344541040988,strattera,37
+cog_matrix,e_as_no_response_on_go,-0.05689900426742532,0.7380059422939964,"corrected for age, sex, and interaction",0.800446869080694,strattera,37
+cog_matrix,e_as_stop_doesnot_stop,0.1415362731152205,0.40337959234400844,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_matrix,e_raw_correct_go,-0.00936629334866125,0.9561236345737283,raw data,0.9561236345737283,strattera,37
+cog_matrix,e_raw_correct_stop,0.032648636360461586,0.8478764351967398,raw data,0.9180142726429977,strattera,37
+cog_matrix,e_raw_no_response_on_go,-0.02378274487333497,0.8888819063365381,raw data,0.9180142726429977,strattera,37
+cog_matrix,e_raw_stop_doesnot_stop,0.2452687314710081,0.14342334208967045,raw data,0.5214986224175711,strattera,37
+cog_memory,e_as_correct_go,0.10218112849691798,0.5473144880080676,"corrected for age, sex, and interaction",0.7881328627316173,strattera,37
+cog_memory,e_as_correct_stop,0.41797060218112847,0.010047288923630715,"corrected for age, sex, and interaction",0.36170240125070574,strattera,37
+cog_memory,e_as_no_response_on_go,0.13157894736842105,0.437585400825935,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_memory,e_as_stop_doesnot_stop,0.25675675675675674,0.1250217394745785,"corrected for age, sex, and interaction",0.7043854914891583,strattera,37
+cog_memory,e_raw_correct_go,0.05513071401427192,0.7458746761442177,raw data,0.9180142726429977,strattera,37
+cog_memory,e_raw_correct_stop,0.3942859040757934,0.01574539886252535,raw data,0.4260073673919236,strattera,37
+cog_memory,e_raw_no_response_on_go,0.12188656747584171,0.472358880771125,raw data,0.7689494058788137,strattera,37
+cog_memory,e_raw_stop_doesnot_stop,0.2808023639456065,0.09227992893190251,raw data,0.5214986224175711,strattera,37
+cog_reaction_time,e_as_correct_go,0.05832147937411095,0.7316950120593788,"corrected for age, sex, and interaction",0.800446869080694,strattera,37
+cog_reaction_time,e_as_correct_stop,0.057610241820768134,0.7348483367274445,"corrected for age, sex, and interaction",0.800446869080694,strattera,37
+cog_reaction_time,e_as_no_response_on_go,0.1339497392128971,0.4292996896593029,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_reaction_time,e_as_stop_doesnot_stop,-0.0687529634898056,0.6859678243529179,"corrected for age, sex, and interaction",0.800446869080694,strattera,37
+cog_reaction_time,e_raw_correct_go,0.023000771008104843,0.8925138761806923,raw data,0.9180142726429977,strattera,37
+cog_reaction_time,e_raw_correct_stop,0.048615487719227475,0.7750805766266913,raw data,0.9180142726429977,strattera,37
+cog_reaction_time,e_raw_no_response_on_go,0.11677327732807469,0.4912732315336865,raw data,0.7689494058788137,strattera,37
+cog_reaction_time,e_raw_stop_doesnot_stop,-0.06054336682954213,0.7218722035481691,raw data,0.9180142726429977,strattera,37
+cog_symbol_digit,e_as_correct_go,-0.17828354670459934,0.29109511963910895,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_symbol_digit,e_as_correct_stop,-0.1337126600284495,0.43012431431273757,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_symbol_digit,e_as_no_response_on_go,0.07586533902323377,0.6553977944860876,"corrected for age, sex, and interaction",0.800446869080694,strattera,37
+cog_symbol_digit,e_as_stop_doesnot_stop,0.12304409672830725,0.46813104542850104,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_symbol_digit,e_raw_correct_go,-0.2594107575553268,0.12103294110750662,raw data,0.5214986224175711,strattera,37
+cog_symbol_digit,e_raw_correct_stop,-0.12773481087012709,0.4512054397368419,raw data,0.7689494058788137,strattera,37
+cog_symbol_digit,e_raw_no_response_on_go,0.03888478786790267,0.8192614265229685,raw data,0.9180142726429977,strattera,37
+cog_symbol_digit,e_raw_stop_doesnot_stop,0.19908739031064163,0.23748065076027114,raw data,0.5224579430263799,strattera,37
+cog_tower_rearranging,e_as_correct_go,0.18990042674253202,0.2602697169005901,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_tower_rearranging,e_as_correct_stop,0.20839260312944524,0.21581296844870668,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_tower_rearranging,e_as_no_response_on_go,-0.1073968705547653,0.5269414340594725,"corrected for age, sex, and interaction",0.7881328627316173,strattera,37
+cog_tower_rearranging,e_as_stop_doesnot_stop,-0.05286865813181603,0.7559775985762109,"corrected for age, sex, and interaction",0.800446869080694,strattera,37
+cog_tower_rearranging,e_raw_correct_go,0.20131602665856713,0.23216219830920126,raw data,0.5224579430263799,strattera,37
+cog_tower_rearranging,e_raw_correct_stop,0.19529604012699467,0.2467162508735683,raw data,0.5224579430263799,strattera,37
+cog_tower_rearranging,e_raw_no_response_on_go,-0.08026676394750552,0.6367489595989055,raw data,0.9180142726429977,strattera,37
+cog_tower_rearranging,e_raw_stop_doesnot_stop,-0.05881001890395197,0.7295315403532503,raw data,0.9180142726429977,strattera,37
+cog_trail_making_testB,e_as_correct_go,-0.12138454243717402,0.47419874257594974,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_trail_making_testB,e_as_correct_stop,0.343764817449028,0.03722994704343563,"corrected for age, sex, and interaction",0.6701390467818413,strattera,37
+cog_trail_making_testB,e_as_no_response_on_go,0.21289710763394973,0.205829145402874,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_trail_making_testB,e_as_stop_doesnot_stop,0.13110478899952585,0.4392530362867093,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_trail_making_testB,e_raw_correct_go,-0.16977888702889762,0.31509129456541896,raw data,0.5970150844397412,strattera,37
+cog_trail_making_testB,e_raw_correct_stop,0.34710028364242557,0.035308968040291155,raw data,0.4260073673919236,strattera,37
+cog_trail_making_testB,e_raw_no_response_on_go,0.23009805664951583,0.17066876250174268,raw data,0.5214986224175711,strattera,37
+cog_trail_making_testB,e_raw_stop_doesnot_stop,0.17828721520355967,0.29108502965225025,raw data,0.5821700593045005,strattera,37
+cog_verbal_numerical_reasoning,e_as_correct_go,-0.2702702702702703,0.1056984252403197,"corrected for age, sex, and interaction",0.7043854914891583,strattera,37
+cog_verbal_numerical_reasoning,e_as_correct_stop,-0.06685633001422475,0.6942060404099424,"corrected for age, sex, and interaction",0.800446869080694,strattera,37
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,0.20175438596491227,0.23112568432714875,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,0.18255097202465623,0.2795098359571795,"corrected for age, sex, and interaction",0.7422241188145301,strattera,37
+cog_verbal_numerical_reasoning,e_raw_correct_go,-0.3358823931235104,0.04210900169982512,raw data,0.4260073673919236,strattera,37
+cog_verbal_numerical_reasoning,e_raw_correct_stop,-0.07006349700712194,0.6802961055114001,raw data,0.9180142726429977,strattera,37
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,0.19763460989741358,0.24099156363687424,raw data,0.5224579430263799,strattera,37
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,0.22880192617790157,0.1731574186942315,raw data,0.5214986224175711,strattera,37
+ADHD-Demontis,e_as_correct_go,0.06225296442687747,0.7778062934206544,"corrected for age, sex, and interaction",0.9519367408918569,tenex,23
+ADHD-Demontis,e_as_correct_stop,0.06226834882459827,0.7777527214394513,"corrected for age, sex, and interaction",0.9519367408918569,tenex,23
+ADHD-Demontis,e_as_no_response_on_go,0.11860637871352052,0.5898839992703673,"corrected for age, sex, and interaction",0.9332332600031724,tenex,23
+ADHD-Demontis,e_as_stop_doesnot_stop,0.037549407114624504,0.8649333446053347,"corrected for age, sex, and interaction",0.9730500126810016,tenex,23
+ADHD-Demontis,e_raw_correct_go,0.05388038226245746,0.8071006184247151,raw data,0.8407447700637225,tenex,23
+ADHD-Demontis,e_raw_correct_stop,0.056206191270243906,0.7989360243212438,raw data,0.8407447700637225,tenex,23
+ADHD-Demontis,e_raw_no_response_on_go,0.16326985710022168,0.45665535321499684,raw data,0.7870225926087757,tenex,23
+ADHD-Demontis,e_raw_stop_doesnot_stop,0.05095694135901987,0.8173907486730636,raw data,0.8407447700637225,tenex,23
+cog_gFactor,e_as_correct_go,-0.24308300395256918,0.26372049125916486,"corrected for age, sex, and interaction",0.6701265454218137,tenex,23
+cog_gFactor,e_as_correct_stop,0.226834699289608,0.29794940114668567,"corrected for age, sex, and interaction",0.6701265454218137,tenex,23
+cog_gFactor,e_as_no_response_on_go,0.6399802518083711,0.0010060377082949934,"corrected for age, sex, and interaction",0.03621735749861976,tenex,23
+cog_gFactor,e_as_stop_doesnot_stop,-0.08300395256916997,0.7065268792142225,"corrected for age, sex, and interaction",0.9519367408918569,tenex,23
+cog_gFactor,e_raw_correct_go,-0.12456748926733285,0.5711879069563182,raw data,0.8407447700637225,tenex,23
+cog_gFactor,e_raw_correct_stop,0.2173637662397928,0.3191116493162556,raw data,0.7870225926087757,tenex,23
+cog_gFactor,e_raw_no_response_on_go,0.45446762052592193,0.029360091047331505,raw data,0.3888463597529745,tenex,23
+cog_gFactor,e_raw_stop_doesnot_stop,-0.057011231421477675,0.7961146787966009,raw data,0.8407447700637225,tenex,23
+cog_matrix,e_as_correct_go,0.17193675889328064,0.432767581662189,"corrected for age, sex, and interaction",0.8199806810441475,tenex,23
+cog_matrix,e_as_correct_stop,-0.04002965281581317,0.8560992577917113,"corrected for age, sex, and interaction",0.9730500126810016,tenex,23
+cog_matrix,e_as_no_response_on_go,-0.22288115333249064,0.3066751860082193,"corrected for age, sex, and interaction",0.6701265454218137,tenex,23
+cog_matrix,e_as_stop_doesnot_stop,-0.008893280632411068,0.9678756225555956,"corrected for age, sex, and interaction",0.9910722936480163,tenex,23
+cog_matrix,e_raw_correct_go,0.18487397216659718,0.39839256581681104,raw data,0.7870225926087757,tenex,23
+cog_matrix,e_raw_correct_stop,-0.07063078902986403,0.7487836752030033,raw data,0.8407447700637225,tenex,23
+cog_matrix,e_raw_no_response_on_go,-0.26680683965158175,0.21844867996629214,raw data,0.7870225926087757,tenex,23
+cog_matrix,e_raw_stop_doesnot_stop,-0.09333697179622451,0.6718629925784758,raw data,0.8407447700637225,tenex,23
+cog_memory,e_as_correct_go,0.09980237154150198,0.6504928119104103,"corrected for age, sex, and interaction",0.9519367408918569,tenex,23
+cog_memory,e_as_correct_stop,0.023721275742704103,0.9144448637241682,"corrected for age, sex, and interaction",0.9833112435557995,tenex,23
+cog_memory,e_as_no_response_on_go,0.43785521475074657,0.03665291333686049,"corrected for age, sex, and interaction",0.32987622003174444,tenex,23
+cog_memory,e_as_stop_doesnot_stop,-0.24802371541501977,0.2538330249039902,"corrected for age, sex, and interaction",0.6701265454218137,tenex,23
+cog_memory,e_raw_correct_go,0.17004450915858135,0.437924989500873,raw data,0.7870225926087757,tenex,23
+cog_memory,e_raw_correct_stop,0.059687990729462556,0.7867516253471121,raw data,0.8407447700637225,tenex,23
+cog_memory,e_raw_no_response_on_go,0.3534195077474311,0.09806530341168518,raw data,0.5740682386957032,tenex,23
+cog_memory,e_raw_stop_doesnot_stop,-0.2340992157483685,0.2823211285976637,raw data,0.7870225926087757,tenex,23
+cog_reaction_time,e_as_correct_go,-0.07806324110671936,0.7233078775886128,"corrected for age, sex, and interaction",0.9519367408918569,tenex,23
+cog_reaction_time,e_as_correct_stop,0.38448234432966233,0.07007221225159288,"corrected for age, sex, and interaction",0.42545096881991457,tenex,23
+cog_reaction_time,e_as_no_response_on_go,0.5416357961250771,0.007598716027214181,"corrected for age, sex, and interaction",0.13677688848985525,tenex,23
+cog_reaction_time,e_as_stop_doesnot_stop,0.019762845849802372,0.9286828411360328,"corrected for age, sex, and interaction",0.9833112435557995,tenex,23
+cog_reaction_time,e_raw_correct_go,-0.09391993238410017,0.6699257090239565,raw data,0.8407447700637225,tenex,23
+cog_reaction_time,e_raw_correct_stop,0.4068731368058364,0.054006438854579786,raw data,0.3888463597529745,tenex,23
+cog_reaction_time,e_raw_no_response_on_go,0.5231604262571128,0.010418825063435166,raw data,0.375077702283666,tenex,23
+cog_reaction_time,e_raw_stop_doesnot_stop,0.09182339928061006,0.6769022789072365,raw data,0.8407447700637225,tenex,23
+cog_symbol_digit,e_as_correct_go,-0.07608695652173914,0.7300554425086556,"corrected for age, sex, and interaction",0.9519367408918569,tenex,23
+cog_symbol_digit,e_as_correct_stop,-0.24166049662879807,0.2666122326555975,"corrected for age, sex, and interaction",0.6701265454218137,tenex,23
+cog_symbol_digit,e_as_no_response_on_go,0.35532494289592187,0.0961412371013306,"corrected for age, sex, and interaction",0.42545096881991457,tenex,23
+cog_symbol_digit,e_as_stop_doesnot_stop,-0.21047430830039526,0.33506327271090686,"corrected for age, sex, and interaction",0.6701265454218137,tenex,23
+cog_symbol_digit,e_raw_correct_go,0.043499758156846396,0.8437677197812468,raw data,0.8437677197812468,tenex,23
+cog_symbol_digit,e_raw_correct_stop,-0.2407415626088323,0.2684909870152037,raw data,0.7870225926087757,tenex,23
+cog_symbol_digit,e_raw_no_response_on_go,0.19910958182953864,0.3623945834538649,raw data,0.7870225926087757,tenex,23
+cog_symbol_digit,e_raw_stop_doesnot_stop,-0.2270358773421677,0.2975095371669707,raw data,0.7870225926087757,tenex,23
+cog_tower_rearranging,e_as_correct_go,0.3438735177865613,0.10813559417371388,"corrected for age, sex, and interaction",0.42545096881991457,tenex,23
+cog_tower_rearranging,e_as_correct_stop,0.1270076638723949,0.5636108871762695,"corrected for age, sex, and interaction",0.9332332600031724,tenex,23
+cog_tower_rearranging,e_as_no_response_on_go,-0.002470966223198344,0.9910722936480163,"corrected for age, sex, and interaction",0.9910722936480163,tenex,23
+cog_tower_rearranging,e_as_stop_doesnot_stop,-0.116600790513834,0.5962323605575823,"corrected for age, sex, and interaction",0.9332332600031724,tenex,23
+cog_tower_rearranging,e_raw_correct_go,0.4191794876932471,0.04648203933399664,raw data,0.3888463597529745,tenex,23
+cog_tower_rearranging,e_raw_correct_stop,0.15469137597385713,0.48095825103869627,raw data,0.7870225926087757,tenex,23
+cog_tower_rearranging,e_raw_no_response_on_go,-0.14087002914439858,0.5214426669295209,raw data,0.8161711308462066,tenex,23
+cog_tower_rearranging,e_raw_stop_doesnot_stop,-0.22299968396719586,0.3064113230231187,raw data,0.7870225926087757,tenex,23
+cog_trail_making_testB,e_as_correct_go,-0.24802371541501977,0.2538330249039902,"corrected for age, sex, and interaction",0.6701265454218137,tenex,23
+cog_trail_making_testB,e_as_correct_stop,-0.05782060962284125,0.7932806174098808,"corrected for age, sex, and interaction",0.9519367408918569,tenex,23
+cog_trail_making_testB,e_as_no_response_on_go,0.35532494289592187,0.0961412371013306,"corrected for age, sex, and interaction",0.42545096881991457,tenex,23
+cog_trail_making_testB,e_as_stop_doesnot_stop,-0.21640316205533597,0.3213076984569003,"corrected for age, sex, and interaction",0.6701265454218137,tenex,23
+cog_trail_making_testB,e_raw_correct_go,-0.1127039188609202,0.6086488722322181,raw data,0.8407447700637225,tenex,23
+cog_trail_making_testB,e_raw_correct_stop,-0.09152158578517591,0.6779087493683984,raw data,0.8407447700637225,tenex,23
+cog_trail_making_testB,e_raw_no_response_on_go,0.15580324778161397,0.47777200603685577,raw data,0.7870225926087757,tenex,23
+cog_trail_making_testB,e_raw_stop_doesnot_stop,-0.19171918531116386,0.3808406989418385,raw data,0.7870225926087757,tenex,23
+cog_verbal_numerical_reasoning,e_as_correct_go,-0.3349802371541502,0.11818082467219848,"corrected for age, sex, and interaction",0.42545096881991457,tenex,23
+cog_verbal_numerical_reasoning,e_as_correct_stop,0.34642946449240786,0.10536800913118616,"corrected for age, sex, and interaction",0.42545096881991457,tenex,23
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,0.5085248487342192,0.013220356133497368,"corrected for age, sex, and interaction",0.15864427360196842,tenex,23
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,0.1383399209486166,0.52902521634333,"corrected for age, sex, and interaction",0.9332332600031724,tenex,23
+cog_verbal_numerical_reasoning,e_raw_correct_go,-0.3054869379651258,0.15633289032818976,raw data,0.7034980064768539,tenex,23
+cog_verbal_numerical_reasoning,e_raw_correct_stop,0.34071894708068207,0.11162437974638673,raw data,0.5740682386957032,tenex,23
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,0.44052994979785426,0.03539099320217076,raw data,0.3888463597529745,tenex,23
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,0.19171918531116386,0.3808406989418385,raw data,0.7870225926087757,tenex,23
+ADHD-Demontis,e_as_correct_go,0.10017094017094016,0.6263427740468224,"corrected for age, sex, and interaction",0.8414460134683536,amphetamine,26
+ADHD-Demontis,e_as_correct_stop,-0.39965811965811965,0.04309064978316224,"corrected for age, sex, and interaction",0.668481829869287,amphetamine,26
+ADHD-Demontis,e_as_no_response_on_go,-0.10427350427350428,0.6122046666360923,"corrected for age, sex, and interaction",0.8414460134683536,amphetamine,26
+ADHD-Demontis,e_as_stop_doesnot_stop,-0.24277654654704733,0.23207891921038715,"corrected for age, sex, and interaction",0.6788912848956097,amphetamine,26
+ADHD-Demontis,e_raw_correct_go,0.2160591505050121,0.2891023685201808,raw data,0.9615823539872781,amphetamine,26
+ADHD-Demontis,e_raw_correct_stop,-0.4292575015475142,0.028644279281992313,raw data,0.5155970270758616,amphetamine,26
+ADHD-Demontis,e_raw_no_response_on_go,-0.22138588083002564,0.27708538594242293,raw data,0.9615823539872781,amphetamine,26
+ADHD-Demontis,e_raw_stop_doesnot_stop,-0.4456544834717676,0.02250605924228788,raw data,0.5155970270758616,amphetamine,26
+cog_gFactor,e_as_correct_go,-0.36273504273504276,0.06857249990922365,"corrected for age, sex, and interaction",0.668481829869287,amphetamine,26
+cog_gFactor,e_as_correct_stop,0.07965811965811966,0.698891198892913,"corrected for age, sex, and interaction",0.867589074487754,amphetamine,26
+cog_gFactor,e_as_no_response_on_go,0.12957264957264958,0.5281267315336438,"corrected for age, sex, and interaction",0.8414460134683536,amphetamine,26
+cog_gFactor,e_as_stop_doesnot_stop,-0.016413062301772214,0.9365715844699736,"corrected for age, sex, and interaction",0.9563777062903425,amphetamine,26
+cog_gFactor,e_raw_correct_go,-0.16675246639610283,0.4155414959141084,raw data,0.9615823539872781,amphetamine,26
+cog_gFactor,e_raw_correct_stop,0.023980866008241015,0.9074294600947395,raw data,0.9615823539872781,amphetamine,26
+cog_gFactor,e_raw_no_response_on_go,-0.059195915585153684,0.7739223743712806,raw data,0.9615823539872781,amphetamine,26
+cog_gFactor,e_raw_stop_doesnot_stop,-0.1525273252433787,0.45696192204096664,raw data,0.9615823539872781,amphetamine,26
+cog_matrix,e_as_correct_go,-0.2970940170940171,0.1405085039204912,"corrected for age, sex, and interaction",0.6788912848956097,amphetamine,26
+cog_matrix,e_as_correct_stop,0.22735042735042735,0.26401327745940373,"corrected for age, sex, and interaction",0.6788912848956097,amphetamine,26
+cog_matrix,e_as_no_response_on_go,0.15623931623931625,0.44594940615976864,"corrected for age, sex, and interaction",0.8027089310875836,amphetamine,26
+cog_matrix,e_as_stop_doesnot_stop,0.19490511483354506,0.3400123796729204,"corrected for age, sex, and interaction",0.7422682715068722,amphetamine,26
+cog_matrix,e_raw_correct_go,-0.14141430928458001,0.4907688564777972,raw data,0.9615823539872781,amphetamine,26
+cog_matrix,e_raw_correct_stop,0.17197706765909987,0.4008679342381809,raw data,0.9615823539872781,amphetamine,26
+cog_matrix,e_raw_no_response_on_go,0.06501285526693179,0.7523576479783558,raw data,0.9615823539872781,amphetamine,26
+cog_matrix,e_raw_stop_doesnot_stop,0.07987805421513434,0.6980981095768026,raw data,0.9615823539872781,amphetamine,26
+cog_memory,e_as_correct_go,-0.18837606837606838,0.3567470170788154,"corrected for age, sex, and interaction",0.7422682715068722,amphetamine,26
+cog_memory,e_as_correct_stop,-0.011282051282051283,0.9563777062903425,"corrected for age, sex, and interaction",0.9563777062903425,amphetamine,26
+cog_memory,e_as_no_response_on_go,0.028376068376068375,0.8905554093344163,"corrected for age, sex, and interaction",0.9563777062903425,amphetamine,26
+cog_memory,e_as_stop_doesnot_stop,0.11010429294105527,0.5923421521240662,"corrected for age, sex, and interaction",0.8414460134683536,amphetamine,26
+cog_memory,e_raw_correct_go,-0.013011486084295499,0.9496985564015854,raw data,0.9615823539872781,amphetamine,26
+cog_memory,e_raw_correct_stop,-0.06954451142389895,0.7356813484399634,raw data,0.9615823539872781,amphetamine,26
+cog_memory,e_raw_no_response_on_go,-0.15192477757114586,0.4587629056148024,raw data,0.9615823539872781,amphetamine,26
+cog_memory,e_raw_stop_doesnot_stop,-0.03939686836855042,0.8484633577813765,raw data,0.9615823539872781,amphetamine,26
+cog_reaction_time,e_as_correct_go,-0.3511111111111111,0.07861852220819188,"corrected for age, sex, and interaction",0.668481829869287,amphetamine,26
+cog_reaction_time,e_as_correct_stop,0.23076923076923078,0.2567030911411301,"corrected for age, sex, and interaction",0.6788912848956097,amphetamine,26
+cog_reaction_time,e_as_no_response_on_go,0.254017094017094,0.21049743394195009,"corrected for age, sex, and interaction",0.6788912848956097,amphetamine,26
+cog_reaction_time,e_as_stop_doesnot_stop,0.09984612900244763,0.6274677232470158,"corrected for age, sex, and interaction",0.8414460134683536,amphetamine,26
+cog_reaction_time,e_raw_correct_go,-0.3660336480029444,0.0659098861281533,raw data,0.7909186335378395,amphetamine,26
+cog_reaction_time,e_raw_correct_stop,0.20760578287134365,0.30883674543110984,raw data,0.9615823539872781,amphetamine,26
+cog_reaction_time,e_raw_no_response_on_go,0.24739102293679835,0.2230482763837991,raw data,0.9615823539872781,amphetamine,26
+cog_reaction_time,e_raw_stop_doesnot_stop,0.028192254428870946,0.8912602293754164,raw data,0.9615823539872781,amphetamine,26
+cog_symbol_digit,e_as_correct_go,-0.24649572649572649,0.22478171341939235,"corrected for age, sex, and interaction",0.6788912848956097,amphetamine,26
+cog_symbol_digit,e_as_correct_stop,0.04,0.8461703773460858,"corrected for age, sex, and interaction",0.9519416745143465,amphetamine,26
+cog_symbol_digit,e_as_no_response_on_go,0.09880341880341881,0.6310845101012652,"corrected for age, sex, and interaction",0.8414460134683536,amphetamine,26
+cog_symbol_digit,e_as_stop_doesnot_stop,0.3330483892067945,0.09640198258111154,"corrected for age, sex, and interaction",0.668481829869287,amphetamine,26
+cog_symbol_digit,e_raw_correct_go,-0.09792855316075033,0.634125501468092,raw data,0.9615823539872781,amphetamine,26
+cog_symbol_digit,e_raw_correct_stop,-0.009934930203414134,0.9615823539872781,raw data,0.9615823539872781,amphetamine,26
+cog_symbol_digit,e_raw_no_response_on_go,-0.08828061399404422,0.6680360603084261,raw data,0.9615823539872781,amphetamine,26
+cog_symbol_digit,e_raw_stop_doesnot_stop,0.1001186471384263,0.6265238305847292,raw data,0.9615823539872781,amphetamine,26
+cog_tower_rearranging,e_as_correct_go,-0.31965811965811963,0.11141363831154782,"corrected for age, sex, and interaction",0.668481829869287,amphetamine,26
+cog_tower_rearranging,e_as_correct_stop,-0.1623931623931624,0.4280085706187462,"corrected for age, sex, and interaction",0.8027089310875836,amphetamine,26
+cog_tower_rearranging,e_as_no_response_on_go,0.1829059829059829,0.3711341357534361,"corrected for age, sex, and interaction",0.7422682715068722,amphetamine,26
+cog_tower_rearranging,e_as_stop_doesnot_stop,0.04787143171350229,0.8163630923371166,"corrected for age, sex, and interaction",0.9480345588431032,amphetamine,26
+cog_tower_rearranging,e_raw_correct_go,-0.24037008503093263,0.23688342052711064,raw data,0.9615823539872781,amphetamine,26
+cog_tower_rearranging,e_raw_correct_stop,-0.15416271005297796,0.45209263566750657,raw data,0.9615823539872781,amphetamine,26
+cog_tower_rearranging,e_raw_no_response_on_go,0.1177074853253923,0.5668671790605189,raw data,0.9615823539872781,amphetamine,26
+cog_tower_rearranging,e_raw_stop_doesnot_stop,0.06542048784135437,0.7508530171568735,raw data,0.9615823539872781,amphetamine,26
+cog_trail_making_testB,e_as_correct_go,-0.1829059829059829,0.3711341357534361,"corrected for age, sex, and interaction",0.7422682715068722,amphetamine,26
+cog_trail_making_testB,e_as_correct_stop,0.08717948717948718,0.6719485163676726,"corrected for age, sex, and interaction",0.8639338067584362,amphetamine,26
+cog_trail_making_testB,e_as_no_response_on_go,-0.014017094017094018,0.9458163483898878,"corrected for age, sex, and interaction",0.9563777062903425,amphetamine,26
+cog_trail_making_testB,e_as_stop_doesnot_stop,-0.09984612900244763,0.6274677232470158,"corrected for age, sex, and interaction",0.8414460134683536,amphetamine,26
+cog_trail_making_testB,e_raw_correct_go,-0.017805191483772787,0.9312036989019432,raw data,0.9615823539872781,amphetamine,26
+cog_trail_making_testB,e_raw_correct_stop,0.03357321241153742,0.8706628040364472,raw data,0.9615823539872781,amphetamine,26
+cog_trail_making_testB,e_raw_no_response_on_go,-0.15226695049360342,0.45773971208476305,raw data,0.9615823539872781,amphetamine,26
+cog_trail_making_testB,e_raw_stop_doesnot_stop,-0.21867069140342207,0.28317037157347325,raw data,0.9615823539872781,amphetamine,26
+cog_verbal_numerical_reasoning,e_as_correct_go,-0.3203418803418803,0.11060763140762075,"corrected for age, sex, and interaction",0.668481829869287,amphetamine,26
+cog_verbal_numerical_reasoning,e_as_correct_stop,0.04957264957264957,0.8099520587665143,"corrected for age, sex, and interaction",0.9480345588431032,amphetamine,26
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,0.23076923076923078,0.2567030911411301,"corrected for age, sex, and interaction",0.6788912848956097,amphetamine,26
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,-0.27491879355468457,0.17407218065221564,"corrected for age, sex, and interaction",0.6788912848956097,amphetamine,26
+cog_verbal_numerical_reasoning,e_raw_correct_go,-0.215716742976478,0.28988589721411806,raw data,0.9615823539872781,amphetamine,26
+cog_verbal_numerical_reasoning,e_raw_correct_stop,0.03220287721106651,0.8759009693292295,raw data,0.9615823539872781,amphetamine,26
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,0.11976052286013751,0.5600737173694266,raw data,0.9615823539872781,amphetamine,26
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,-0.273609443623786,0.17621506054227076,raw data,0.9615823539872781,amphetamine,26
+ADHD-Demontis,e_as_correct_go,-0.32620320855614976,0.059727669351460566,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+ADHD-Demontis,e_as_correct_stop,-0.03529411764705882,0.8429182308296879,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+ADHD-Demontis,e_as_no_response_on_go,0.03896103896103896,0.8268328554271034,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+ADHD-Demontis,e_as_stop_doesnot_stop,-0.199694423223835,0.2575060060252954,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+ADHD-Demontis,e_raw_correct_go,-0.28248245097970764,0.10551340726728942,raw data,0.9680693991936896,dexmethylphenidate,34
+ADHD-Demontis,e_raw_correct_stop,0.018124822487089715,0.9189629751614841,raw data,0.9680693991936896,dexmethylphenidate,34
+ADHD-Demontis,e_raw_no_response_on_go,0.06997688347422376,0.694133080227592,raw data,0.9680693991936896,dexmethylphenidate,34
+ADHD-Demontis,e_raw_stop_doesnot_stop,-0.1085439117792349,0.5411662441368972,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_gFactor,e_as_correct_go,0.04048892284186402,0.820150594045137,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_gFactor,e_as_correct_stop,0.0774637127578304,0.6632376426417506,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_gFactor,e_as_no_response_on_go,0.07532467532467532,0.6720118720799031,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_gFactor,e_as_stop_doesnot_stop,0.14469060351413293,0.41425083543811914,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_gFactor,e_raw_correct_go,0.013145828346458256,0.9411785825494206,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_gFactor,e_raw_correct_stop,0.0869377078618032,0.6249155603347427,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_gFactor,e_raw_no_response_on_go,0.08271390393115484,0.6418892105486063,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_gFactor,e_raw_stop_doesnot_stop,0.11889636579286136,0.5030304341374621,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_matrix,e_as_correct_go,0.1599694423223835,0.3661420095290504,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_matrix,e_as_correct_stop,-0.19297173414820473,0.27420121639553496,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_matrix,e_as_no_response_on_go,0.09121466768525592,0.6079192426050848,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_matrix,e_as_stop_doesnot_stop,-0.06371275783040489,0.7203626573597188,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_matrix,e_raw_correct_go,0.03240599545871105,0.8556317324111857,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_matrix,e_raw_correct_stop,-0.17341461515190074,0.3266876135591814,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_matrix,e_raw_no_response_on_go,0.12875132726945995,0.46802846391851616,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_matrix,e_raw_stop_doesnot_stop,-0.09474063976106631,0.5940569377963567,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_memory,e_as_correct_go,-0.014514896867838044,0.9350649313227428,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_memory,e_as_correct_stop,-0.13430099312452254,0.44889907985746413,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_memory,e_as_no_response_on_go,-0.20977845683728036,0.2337476236861038,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_memory,e_as_stop_doesnot_stop,-0.014820473644003056,0.9337008467350494,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_memory,e_raw_correct_go,-0.104096617487652,0.5579601930586688,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_memory,e_raw_correct_stop,-0.10567693111116715,0.5519650265009488,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_memory,e_raw_no_response_on_go,-0.1304393661251978,0.4621648444628299,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_memory,e_raw_stop_doesnot_stop,0.03842956414149213,0.8291601089910483,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_reaction_time,e_as_correct_go,-0.14774637127578305,0.40435498000041603,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_reaction_time,e_as_correct_stop,0.14255156608097785,0.4212583146549935,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_reaction_time,e_as_no_response_on_go,0.15263559969442322,0.3888050762895381,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_reaction_time,e_as_stop_doesnot_stop,0.1676088617265088,0.34338961385897493,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_reaction_time,e_raw_correct_go,-0.21140326282734612,0.23006279115814032,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_reaction_time,e_raw_correct_stop,0.19476504164093014,0.26968043316404033,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_reaction_time,e_raw_no_response_on_go,0.17448183445217635,0.3236730846647724,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_reaction_time,e_raw_stop_doesnot_stop,0.17426630922937858,0.324280474384401,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_symbol_digit,e_as_correct_go,-0.06096256684491978,0.731980289542691,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_symbol_digit,e_as_correct_stop,0.04079449961802903,0.8188156166976333,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_symbol_digit,e_as_no_response_on_go,0.04843391902215432,0.7856128969070442,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_symbol_digit,e_as_stop_doesnot_stop,-0.1095492742551566,0.5374033954573787,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_symbol_digit,e_raw_correct_go,-0.03408743861930454,0.8482254763534798,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_symbol_digit,e_raw_correct_stop,0.06528008099163668,0.713769021924139,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_symbol_digit,e_raw_no_response_on_go,0.04741854603845426,0.7900059598412867,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_symbol_digit,e_raw_stop_doesnot_stop,-0.09521120585259478,0.5922173786334795,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_tower_rearranging,e_as_correct_go,0.12880061115355232,0.4678567159461524,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_tower_rearranging,e_as_correct_stop,-0.12605042016806722,0.477491429713903,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_tower_rearranging,e_as_no_response_on_go,-0.052406417112299465,0.7684892444986764,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_tower_rearranging,e_as_stop_doesnot_stop,-0.04965622612681436,0.7803331455068383,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_tower_rearranging,e_raw_correct_go,0.15408133689802234,0.38427432922312743,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_tower_rearranging,e_raw_correct_stop,-0.1104385370187924,0.5340855502458817,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_tower_rearranging,e_raw_no_response_on_go,-0.056472572628320936,0.7510726502518446,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_tower_rearranging,e_raw_stop_doesnot_stop,-0.09144667712036698,0.607002891831594,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_trail_making_testB,e_as_correct_go,0.022765469824293352,0.8983107875450476,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_trail_making_testB,e_as_correct_stop,-0.03407181054239878,0.848294255667402,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_trail_making_testB,e_as_no_response_on_go,0.011153552330022918,0.9500810079018995,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_trail_making_testB,e_as_stop_doesnot_stop,-0.10863254392666158,0.5408340106837151,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_trail_making_testB,e_raw_correct_go,0.05564048276873029,0.7546272430405998,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_trail_making_testB,e_raw_correct_stop,-0.022886428394714976,0.8977733051271559,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_trail_making_testB,e_raw_no_response_on_go,0.023172169746946903,0.8965037840959356,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_trail_making_testB,e_raw_stop_doesnot_stop,-0.10305397404473603,0.561932061688446,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_verbal_numerical_reasoning,e_as_correct_go,0.038044308632543926,0.8308479828883852,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_verbal_numerical_reasoning,e_as_correct_stop,0.11657754010695187,0.5114531948747556,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,0.21619556913674562,0.21942439895810817,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,0.19877769289533995,0.25974216232538816,"corrected for age, sex, and interaction",0.9500810079018995,dexmethylphenidate,34
+cog_verbal_numerical_reasoning,e_raw_correct_go,-0.005961480296649674,0.9733068626175814,raw data,0.9733068626175814,dexmethylphenidate,34
+cog_verbal_numerical_reasoning,e_raw_correct_stop,0.09707532043932796,0.5849546862291002,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,0.2309544070804973,0.1887916953866151,raw data,0.9680693991936896,dexmethylphenidate,34
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,0.10352454013626451,0.5601378666397376,raw data,0.9680693991936896,dexmethylphenidate,34
+ADHD-Demontis,e_as_correct_go,0.2571428571428571,0.6227871720116618,"corrected for age, sex, and interaction",0.9051428571428571,lisdexamfetamine,6
+ADHD-Demontis,e_as_correct_stop,-0.2,0.704,"corrected for age, sex, and interaction",0.9051428571428571,lisdexamfetamine,6
+ADHD-Demontis,e_as_no_response_on_go,-0.02857142857142857,0.9571545189504373,"corrected for age, sex, and interaction",0.9571545189504373,lisdexamfetamine,6
+ADHD-Demontis,e_as_stop_doesnot_stop,-0.4857142857142857,0.328723032069971,"corrected for age, sex, and interaction",0.7889352769679304,lisdexamfetamine,6
+ADHD-Demontis,e_raw_correct_go,0.2571428571428571,0.6227871720116618,raw data,0.8464803059069064,lisdexamfetamine,6
+ADHD-Demontis,e_raw_correct_stop,-0.3188740696088466,0.537900560470205,raw data,0.8464803059069064,lisdexamfetamine,6
+ADHD-Demontis,e_raw_no_response_on_go,-0.2571428571428571,0.6227871720116618,raw data,0.8464803059069064,lisdexamfetamine,6
+ADHD-Demontis,e_raw_stop_doesnot_stop,-0.5217939320872036,0.28834323380039373,raw data,0.845287796751354,lisdexamfetamine,6
+cog_gFactor,e_as_correct_go,0.7142857142857143,0.11078717201166155,"corrected for age, sex, and interaction",0.5697625989171166,lisdexamfetamine,6
+cog_gFactor,e_as_correct_stop,0.5428571428571428,0.2657026239067053,"corrected for age, sex, and interaction",0.7889352769679304,lisdexamfetamine,6
+cog_gFactor,e_as_no_response_on_go,-0.7714285714285715,0.07239650145772591,"corrected for age, sex, and interaction",0.5697625989171166,lisdexamfetamine,6
+cog_gFactor,e_as_stop_doesnot_stop,0.2,0.704,"corrected for age, sex, and interaction",0.9051428571428571,lisdexamfetamine,6
+cog_gFactor,e_raw_correct_go,0.7142857142857143,0.11078717201166155,raw data,0.5615520184812919,lisdexamfetamine,6
+cog_gFactor,e_raw_correct_stop,0.6087595874350709,0.19966018946036268,raw data,0.6534333473248234,lisdexamfetamine,6
+cog_gFactor,e_raw_no_response_on_go,-0.7142857142857143,0.11078717201166155,raw data,0.5615520184812919,lisdexamfetamine,6
+cog_gFactor,e_raw_stop_doesnot_stop,0.14494275891311212,0.7841083696021083,raw data,0.9392212647383927,lisdexamfetamine,6
+cog_matrix,e_as_correct_go,0.7714285714285715,0.07239650145772591,"corrected for age, sex, and interaction",0.5697625989171166,lisdexamfetamine,6
+cog_matrix,e_as_correct_stop,0.14285714285714285,0.7871720116618075,"corrected for age, sex, and interaction",0.9141352393491958,lisdexamfetamine,6
+cog_matrix,e_as_no_response_on_go,-0.7142857142857143,0.11078717201166155,"corrected for age, sex, and interaction",0.5697625989171166,lisdexamfetamine,6
+cog_matrix,e_as_stop_doesnot_stop,-0.14285714285714285,0.7871720116618075,"corrected for age, sex, and interaction",0.9141352393491958,lisdexamfetamine,6
+cog_matrix,e_raw_correct_go,0.7714285714285715,0.07239650145772591,raw data,0.5212548104956266,lisdexamfetamine,6
+cog_matrix,e_raw_correct_stop,0.11595420713048969,0.826848213385815,raw data,0.9392212647383927,lisdexamfetamine,6
+cog_matrix,e_raw_no_response_on_go,-0.7714285714285715,0.07239650145772591,raw data,0.5212548104956266,lisdexamfetamine,6
+cog_matrix,e_raw_stop_doesnot_stop,-0.2608969660436018,0.6175338174259972,raw data,0.8464803059069064,lisdexamfetamine,6
+cog_memory,e_as_correct_go,0.7714285714285715,0.07239650145772591,"corrected for age, sex, and interaction",0.5697625989171166,lisdexamfetamine,6
+cog_memory,e_as_correct_stop,-0.02857142857142857,0.9571545189504373,"corrected for age, sex, and interaction",0.9571545189504373,lisdexamfetamine,6
+cog_memory,e_as_no_response_on_go,-0.6,0.20799999999999996,"corrected for age, sex, and interaction",0.7487999999999999,lisdexamfetamine,6
+cog_memory,e_as_stop_doesnot_stop,-0.2571428571428571,0.6227871720116618,"corrected for age, sex, and interaction",0.9051428571428571,lisdexamfetamine,6
+cog_memory,e_raw_correct_go,0.7714285714285715,0.07239650145772591,raw data,0.5212548104956266,lisdexamfetamine,6
+cog_memory,e_raw_correct_stop,0.057977103565244846,0.9131317851623264,raw data,0.9392212647383927,lisdexamfetamine,6
+cog_memory,e_raw_no_response_on_go,-0.7714285714285715,0.07239650145772591,raw data,0.5212548104956266,lisdexamfetamine,6
+cog_memory,e_raw_stop_doesnot_stop,-0.23190841426097938,0.6583735712609271,raw data,0.8464803059069064,lisdexamfetamine,6
+cog_reaction_time,e_as_correct_go,0.2571428571428571,0.6227871720116618,"corrected for age, sex, and interaction",0.9051428571428571,lisdexamfetamine,6
+cog_reaction_time,e_as_correct_stop,0.7714285714285715,0.07239650145772591,"corrected for age, sex, and interaction",0.5697625989171166,lisdexamfetamine,6
+cog_reaction_time,e_as_no_response_on_go,-0.4857142857142857,0.328723032069971,"corrected for age, sex, and interaction",0.7889352769679304,lisdexamfetamine,6
+cog_reaction_time,e_as_stop_doesnot_stop,-0.2,0.704,"corrected for age, sex, and interaction",0.9051428571428571,lisdexamfetamine,6
+cog_reaction_time,e_raw_correct_go,0.2571428571428571,0.6227871720116618,raw data,0.8464803059069064,lisdexamfetamine,6
+cog_reaction_time,e_raw_correct_stop,0.8116794499134278,0.04985758510134053,raw data,0.5212548104956266,lisdexamfetamine,6
+cog_reaction_time,e_raw_no_response_on_go,-0.2571428571428571,0.6227871720116618,raw data,0.8464803059069064,lisdexamfetamine,6
+cog_reaction_time,e_raw_stop_doesnot_stop,-0.23190841426097938,0.6583735712609271,raw data,0.8464803059069064,lisdexamfetamine,6
+cog_symbol_digit,e_as_correct_go,-0.08571428571428572,0.871743440233236,"corrected for age, sex, and interaction",0.9509928438908029,lisdexamfetamine,6
+cog_symbol_digit,e_as_correct_stop,0.6571428571428571,0.1561749271137025,"corrected for age, sex, and interaction",0.7027871720116613,lisdexamfetamine,6
+cog_symbol_digit,e_as_no_response_on_go,-0.2,0.704,"corrected for age, sex, and interaction",0.9051428571428571,lisdexamfetamine,6
+cog_symbol_digit,e_as_stop_doesnot_stop,0.7142857142857143,0.11078717201166155,"corrected for age, sex, and interaction",0.5697625989171166,lisdexamfetamine,6
+cog_symbol_digit,e_raw_correct_go,-0.08571428571428572,0.871743440233236,raw data,0.9392212647383927,lisdexamfetamine,6
+cog_symbol_digit,e_raw_correct_stop,0.6377481392176932,0.17307111024125965,raw data,0.6534333473248234,lisdexamfetamine,6
+cog_symbol_digit,e_raw_no_response_on_go,0.08571428571428572,0.871743440233236,raw data,0.9392212647383927,lisdexamfetamine,6
+cog_symbol_digit,e_raw_stop_doesnot_stop,0.6087595874350709,0.19966018946036268,raw data,0.6534333473248234,lisdexamfetamine,6
+cog_tower_rearranging,e_as_correct_go,0.3142857142857143,0.5440932944606414,"corrected for age, sex, and interaction",0.9051428571428571,lisdexamfetamine,6
+cog_tower_rearranging,e_as_correct_stop,-0.42857142857142855,0.3965014577259476,"corrected for age, sex, and interaction",0.8396501457725949,lisdexamfetamine,6
+cog_tower_rearranging,e_as_no_response_on_go,-0.14285714285714285,0.7871720116618075,"corrected for age, sex, and interaction",0.9141352393491958,lisdexamfetamine,6
+cog_tower_rearranging,e_as_stop_doesnot_stop,0.08571428571428572,0.871743440233236,"corrected for age, sex, and interaction",0.9509928438908029,lisdexamfetamine,6
+cog_tower_rearranging,e_raw_correct_go,0.3142857142857143,0.5440932944606414,raw data,0.8464803059069064,lisdexamfetamine,6
+cog_tower_rearranging,e_raw_correct_stop,-0.46381682852195877,0.35416429843623076,raw data,0.8464803059069064,lisdexamfetamine,6
+cog_tower_rearranging,e_raw_no_response_on_go,-0.3142857142857143,0.5440932944606414,raw data,0.8464803059069064,lisdexamfetamine,6
+cog_tower_rearranging,e_raw_stop_doesnot_stop,0.028988551782622423,0.9565293523898406,raw data,0.9565293523898406,lisdexamfetamine,6
+cog_trail_making_testB,e_as_correct_go,-0.3142857142857143,0.5440932944606414,"corrected for age, sex, and interaction",0.9051428571428571,lisdexamfetamine,6
+cog_trail_making_testB,e_as_correct_stop,0.3142857142857143,0.5440932944606414,"corrected for age, sex, and interaction",0.9051428571428571,lisdexamfetamine,6
+cog_trail_making_testB,e_as_no_response_on_go,0.2571428571428571,0.6227871720116618,"corrected for age, sex, and interaction",0.9051428571428571,lisdexamfetamine,6
+cog_trail_making_testB,e_as_stop_doesnot_stop,0.42857142857142855,0.3965014577259476,"corrected for age, sex, and interaction",0.8396501457725949,lisdexamfetamine,6
+cog_trail_making_testB,e_raw_correct_go,-0.3142857142857143,0.5440932944606414,raw data,0.8464803059069064,lisdexamfetamine,6
+cog_trail_making_testB,e_raw_correct_stop,0.20291986247835694,0.699797968157019,raw data,0.8687147190914719,lisdexamfetamine,6
+cog_trail_making_testB,e_raw_no_response_on_go,0.3142857142857143,0.5440932944606414,raw data,0.8464803059069064,lisdexamfetamine,6
+cog_trail_making_testB,e_raw_stop_doesnot_stop,0.3768511731740915,0.46148284035080467,raw data,0.8464803059069064,lisdexamfetamine,6
+cog_verbal_numerical_reasoning,e_as_correct_go,0.4857142857142857,0.328723032069971,"corrected for age, sex, and interaction",0.7889352769679304,lisdexamfetamine,6
+cog_verbal_numerical_reasoning,e_as_correct_stop,0.6,0.20799999999999996,"corrected for age, sex, and interaction",0.7487999999999999,lisdexamfetamine,6
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,-0.5428571428571428,0.2657026239067053,"corrected for age, sex, and interaction",0.7889352769679304,lisdexamfetamine,6
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,0.02857142857142857,0.9571545189504373,"corrected for age, sex, and interaction",0.9571545189504373,lisdexamfetamine,6
+cog_verbal_numerical_reasoning,e_raw_correct_go,0.4857142857142857,0.328723032069971,raw data,0.845287796751354,lisdexamfetamine,6
+cog_verbal_numerical_reasoning,e_raw_correct_stop,0.6957252427829381,0.12478933744028708,raw data,0.5615520184812919,lisdexamfetamine,6
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,-0.4857142857142857,0.328723032069971,raw data,0.845287796751354,lisdexamfetamine,6
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,0.057977103565244846,0.9131317851623264,raw data,0.9392212647383927,lisdexamfetamine,6
+ADHD-Demontis,e_as_correct_go,-0.040293040293040296,0.8418384605614526,"corrected for age, sex, and interaction",0.9261212103850707,atomoxetine,27
+ADHD-Demontis,e_as_correct_stop,-0.3064713064713065,0.11999303680236073,"corrected for age, sex, and interaction",0.8277775391221631,atomoxetine,27
+ADHD-Demontis,e_as_no_response_on_go,0.08791208791208792,0.6628112255941978,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+ADHD-Demontis,e_as_stop_doesnot_stop,-0.09401709401709402,0.6408961377481244,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+ADHD-Demontis,e_raw_correct_go,0.013133783757813636,0.9481592795435883,raw data,0.991532056653833,atomoxetine,27
+ADHD-Demontis,e_raw_correct_stop,-0.3107399389280469,0.11465949900841865,raw data,0.8226427417278396,atomoxetine,27
+ADHD-Demontis,e_raw_no_response_on_go,-0.04104158055037949,0.838937669096822,raw data,0.991532056653833,atomoxetine,27
+ADHD-Demontis,e_raw_stop_doesnot_stop,-0.11783516492897765,0.5583042292082339,raw data,0.991532056653833,atomoxetine,27
+cog_gFactor,e_as_correct_go,-0.07753357753357754,0.7006877655047206,"corrected for age, sex, and interaction",0.8894428504598961,atomoxetine,27
+cog_gFactor,e_as_correct_stop,-0.3089133089133089,0.11691996999921472,"corrected for age, sex, and interaction",0.8277775391221631,atomoxetine,27
+cog_gFactor,e_as_no_response_on_go,0.14346764346764346,0.4752822632600837,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_gFactor,e_as_stop_doesnot_stop,-0.29304029304029305,0.1379629231870272,"corrected for age, sex, and interaction",0.8277775391221631,atomoxetine,27
+cog_gFactor,e_raw_correct_go,-0.14233356351491058,0.47881545847538565,raw data,0.991532056653833,atomoxetine,27
+cog_gFactor,e_raw_correct_stop,-0.27822420987930757,0.15995831089152435,raw data,0.8226427417278396,atomoxetine,27
+cog_gFactor,e_raw_no_response_on_go,0.15007742141556682,0.4549596560912983,raw data,0.991532056653833,atomoxetine,27
+cog_gFactor,e_raw_stop_doesnot_stop,-0.23952325078206357,0.2288527117284085,raw data,0.991532056653833,atomoxetine,27
+cog_matrix,e_as_correct_go,-0.21184371184371184,0.2887881243128012,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_matrix,e_as_correct_stop,-0.10744810744810745,0.5937245659320936,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_matrix,e_as_no_response_on_go,0.21794871794871795,0.2747884952659345,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_matrix,e_as_stop_doesnot_stop,-0.2490842490842491,0.2102433159723478,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_matrix,e_raw_correct_go,-0.07635920789426533,0.7050200223740639,raw data,0.991532056653833,atomoxetine,27
+cog_matrix,e_raw_correct_stop,-0.11288479518807627,0.5750647444491606,raw data,0.991532056653833,atomoxetine,27
+cog_matrix,e_raw_no_response_on_go,0.002143963163079526,0.991532056653833,raw data,0.991532056653833,atomoxetine,27
+cog_matrix,e_raw_stop_doesnot_stop,-0.3008489088241201,0.12729334602948938,raw data,0.8226427417278396,atomoxetine,27
+cog_memory,e_as_correct_go,-0.038461538461538464,0.8489444428529815,"corrected for age, sex, and interaction",0.9261212103850707,atomoxetine,27
+cog_memory,e_as_correct_stop,-0.1575091575091575,0.43267025300922013,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_memory,e_as_no_response_on_go,0.11660561660561661,0.5624462437016788,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_memory,e_as_stop_doesnot_stop,0.12759462759462759,0.525931104539334,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_memory,e_raw_correct_go,0.029016498999820825,0.8857613513429592,raw data,0.991532056653833,atomoxetine,27
+cog_memory,e_raw_correct_stop,-0.11963334272649388,0.5522718456579039,raw data,0.991532056653833,atomoxetine,27
+cog_memory,e_raw_no_response_on_go,-0.013476339882214163,0.9468090246596546,raw data,0.991532056653833,atomoxetine,27
+cog_memory,e_raw_stop_doesnot_stop,0.09792840682108497,0.6270071579096719,raw data,0.991532056653833,atomoxetine,27
+cog_reaction_time,e_as_correct_go,-0.11355311355311355,0.5727890341903643,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_reaction_time,e_as_correct_stop,0.09218559218559219,0.6474409189284991,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_reaction_time,e_as_no_response_on_go,0.10073260073260074,0.6171250034863558,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_reaction_time,e_as_stop_doesnot_stop,-0.07326007326007326,0.7164956295371385,"corrected for age, sex, and interaction",0.8894428504598961,atomoxetine,27
+cog_reaction_time,e_raw_correct_go,-0.08460600234684598,0.6747945748341655,raw data,0.991532056653833,atomoxetine,27
+cog_reaction_time,e_raw_correct_stop,0.03987778090883129,0.8434485723426994,raw data,0.991532056653833,atomoxetine,27
+cog_reaction_time,e_raw_no_response_on_go,0.1745798575650471,0.38378969513394146,raw data,0.991532056653833,atomoxetine,27
+cog_reaction_time,e_raw_stop_doesnot_stop,-0.04912474178238033,0.8077514979517204,raw data,0.991532056653833,atomoxetine,27
+cog_symbol_digit,e_as_correct_go,-0.018315018315018316,0.9277533978634778,"corrected for age, sex, and interaction",0.9542606378024342,atomoxetine,27
+cog_symbol_digit,e_as_correct_stop,-0.304029304029304,0.12312504198893448,"corrected for age, sex, and interaction",0.8277775391221631,atomoxetine,27
+cog_symbol_digit,e_as_no_response_on_go,-0.057387057387057384,0.7761681541609327,"corrected for age, sex, and interaction",0.9261212103850707,atomoxetine,27
+cog_symbol_digit,e_as_stop_doesnot_stop,-0.18986568986568986,0.34284721412910124,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_symbol_digit,e_raw_correct_go,-0.09529629145204313,0.6363404445461234,raw data,0.991532056653833,atomoxetine,27
+cog_symbol_digit,e_raw_correct_stop,-0.3153412213406044,0.10910856777883704,raw data,0.8226427417278396,atomoxetine,27
+cog_symbol_digit,e_raw_no_response_on_go,0.03951017829103698,0.8448744143205174,raw data,0.991532056653833,atomoxetine,27
+cog_symbol_digit,e_raw_stop_doesnot_stop,-0.11783516492897765,0.5583042292082339,raw data,0.991532056653833,atomoxetine,27
+cog_tower_rearranging,e_as_correct_go,0.12637362637362637,0.52993141099972,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_tower_rearranging,e_as_correct_stop,0.2612942612942613,0.18801025480768763,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_tower_rearranging,e_as_no_response_on_go,0.1349206349206349,0.5022378185587082,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_tower_rearranging,e_as_stop_doesnot_stop,-0.336996336996337,0.08562952995585871,"corrected for age, sex, and interaction",0.8277775391221631,atomoxetine,27
+cog_tower_rearranging,e_raw_correct_go,0.006719610294695349,0.9734638937702174,raw data,0.991532056653833,atomoxetine,27
+cog_tower_rearranging,e_raw_correct_stop,0.28405250093521367,0.15102736828717722,raw data,0.8226427417278396,atomoxetine,27
+cog_tower_rearranging,e_raw_no_response_on_go,0.17733638163186363,0.3762065023514385,raw data,0.991532056653833,atomoxetine,27
+cog_tower_rearranging,e_raw_stop_doesnot_stop,-0.29860137161839023,0.13030051806122955,raw data,0.8226427417278396,atomoxetine,27
+cog_trail_making_testB,e_as_correct_go,-0.04822954822954823,0.8111921189959941,"corrected for age, sex, and interaction",0.9261212103850707,atomoxetine,27
+cog_trail_making_testB,e_as_correct_stop,-0.21733821733821734,0.27616853068968616,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_trail_making_testB,e_as_no_response_on_go,0.13675213675213677,0.4963985300260745,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_trail_making_testB,e_as_stop_doesnot_stop,-0.3894993894993895,0.04461826103438127,"corrected for age, sex, and interaction",0.8277775391221631,atomoxetine,27
+cog_trail_making_testB,e_raw_correct_go,-0.11514968550455211,0.5673688076692867,raw data,0.991532056653833,atomoxetine,27
+cog_trail_making_testB,e_raw_correct_stop,-0.22239531660694375,0.2648704659745955,raw data,0.991532056653833,atomoxetine,27
+cog_trail_making_testB,e_raw_no_response_on_go,0.1568155913566739,0.43472493960935443,raw data,0.991532056653833,atomoxetine,27
+cog_trail_making_testB,e_raw_stop_doesnot_stop,-0.4206105342151518,0.028916734947736167,raw data,0.8226427417278396,atomoxetine,27
+cog_verbal_numerical_reasoning,e_as_correct_go,-0.018925518925518924,0.925351678279271,"corrected for age, sex, and interaction",0.9542606378024342,atomoxetine,27
+cog_verbal_numerical_reasoning,e_as_correct_stop,-0.1568986568986569,0.43447857998641215,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,-0.003663003663003663,0.9855328397301535,"corrected for age, sex, and interaction",0.9855328397301535,atomoxetine,27
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,-0.10805860805860806,0.5916162959213753,"corrected for age, sex, and interaction",0.8837483007922637,atomoxetine,27
+cog_verbal_numerical_reasoning,e_raw_correct_go,-0.06536348195749112,0.7460031719454245,raw data,0.991532056653833,atomoxetine,27
+cog_verbal_numerical_reasoning,e_raw_correct_stop,-0.10828351277551881,0.5908404365188609,raw data,0.991532056653833,atomoxetine,27
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,0.025421277505085806,0.8998408463076335,raw data,0.991532056653833,atomoxetine,27
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,-0.044308590627245,0.8263016408767943,raw data,0.991532056653833,atomoxetine,27
+ADHD-Demontis,e_as_correct_go,-0.0411976911976912,0.7652152150352256,"corrected for age, sex, and interaction",0.8505094752312965,clonidine,55
+ADHD-Demontis,e_as_correct_stop,0.25945165945165943,0.05576761135886077,"corrected for age, sex, and interaction",0.260349838101984,clonidine,55
+ADHD-Demontis,e_as_no_response_on_go,-0.07914862914862915,0.5656958211293668,"corrected for age, sex, and interaction",0.7542610948391557,clonidine,55
+ADHD-Demontis,e_as_stop_doesnot_stop,0.0020563141474151,0.9881121473512275,"corrected for age, sex, and interaction",0.9881121473512275,clonidine,55
+ADHD-Demontis,e_raw_correct_go,-0.0438830775598249,0.7503910329350563,raw data,0.8186083995655159,clonidine,55
+ADHD-Demontis,e_raw_correct_stop,0.23326258767996158,0.08654356023430543,raw data,0.40765547218578624,clonidine,55
+ADHD-Demontis,e_raw_no_response_on_go,-0.09504206261398979,0.49005202001246007,raw data,0.6785335661710985,clonidine,55
+ADHD-Demontis,e_raw_stop_doesnot_stop,-0.06054957276221234,0.6605623804141572,raw data,0.7749710129375521,clonidine,55
+cog_gFactor,e_as_correct_go,-0.34025974025974026,0.011027878154758586,"corrected for age, sex, and interaction",0.260349838101984,clonidine,55
+cog_gFactor,e_as_correct_stop,-0.12647907647907647,0.35749341784517985,"corrected for age, sex, and interaction",0.5597719371952603,clonidine,55
+cog_gFactor,e_as_no_response_on_go,0.22907647907647907,0.09250917998217201,"corrected for age, sex, and interaction",0.31042907369607925,clonidine,55
+cog_gFactor,e_as_stop_doesnot_stop,0.04556359242430301,0.7411590200024278,"corrected for age, sex, and interaction",0.8505094752312965,clonidine,55
+cog_gFactor,e_raw_correct_go,-0.36762903873514496,0.005758864768603544,raw data,0.1890246580138899,clonidine,55
+cog_gFactor,e_raw_correct_stop,-0.13028983685986376,0.34307288421204385,raw data,0.5613919923469809,clonidine,55
+cog_gFactor,e_raw_no_response_on_go,0.232979535236651,0.08693717920574073,raw data,0.40765547218578624,clonidine,55
+cog_gFactor,e_raw_stop_doesnot_stop,0.10065038630209859,0.4646826117639282,raw data,0.6691429609400567,clonidine,55
+cog_matrix,e_as_correct_go,0.12467532467532468,0.3644464312910556,"corrected for age, sex, and interaction",0.5597719371952603,clonidine,55
+cog_matrix,e_as_correct_stop,-0.17763347763347764,0.19447535330999077,"corrected for age, sex, and interaction",0.43756954494747924,clonidine,55
+cog_matrix,e_as_no_response_on_go,-0.21053391053391055,0.12286764535518158,"corrected for age, sex, and interaction",0.3402488640605028,clonidine,55
+cog_matrix,e_as_stop_doesnot_stop,-0.2674290662243533,0.04839694634857916,"corrected for age, sex, and interaction",0.260349838101984,clonidine,55
+cog_matrix,e_raw_correct_go,0.0513533054010122,0.7096363364401657,raw data,0.7983408784951864,clonidine,55
+cog_matrix,e_raw_correct_stop,-0.20334042853441664,0.13649246514396518,raw data,0.4375483859089217,clonidine,55
+cog_matrix,e_raw_no_response_on_go,-0.1459238968955478,0.28776077046329274,raw data,0.5613919923469809,clonidine,55
+cog_matrix,e_raw_stop_doesnot_stop,-0.2433364409128007,0.07342240511106723,raw data,0.40765547218578624,clonidine,55
+cog_memory,e_as_correct_go,-0.2505050505050505,0.065087459525496,"corrected for age, sex, and interaction",0.260349838101984,clonidine,55
+cog_memory,e_as_correct_stop,-0.1329004329004329,0.3334055216464,"corrected for age, sex, and interaction",0.5597719371952603,clonidine,55
+cog_memory,e_as_no_response_on_go,0.1987012987012987,0.1458611980243747,"corrected for age, sex, and interaction",0.3500668752584993,clonidine,55
+cog_memory,e_as_stop_doesnot_stop,0.14653943976842346,0.28571005581424336,"corrected for age, sex, and interaction",0.5413453689111979,clonidine,55
+cog_memory,e_raw_correct_go,-0.19003970923522856,0.16461941373187639,raw data,0.4375483859089217,clonidine,55
+cog_memory,e_raw_correct_stop,-0.13792414832263278,0.31528794462211907,raw data,0.5613919923469809,clonidine,55
+cog_memory,e_raw_no_response_on_go,0.1882411042419288,0.16872643714985536,raw data,0.4375483859089217,clonidine,55
+cog_memory,e_raw_stop_doesnot_stop,0.14177553471954105,0.3018322780640377,raw data,0.5613919923469809,clonidine,55
+cog_reaction_time,e_as_correct_go,0.2772727272727273,0.04041781536152955,"corrected for age, sex, and interaction",0.260349838101984,clonidine,55
+cog_reaction_time,e_as_correct_stop,0.20404040404040405,0.1351189611222825,"corrected for age, sex, and interaction",0.3474487571715836,clonidine,55
+cog_reaction_time,e_as_no_response_on_go,-0.166017316017316,0.22575543601392667,"corrected for age, sex, and interaction",0.4780703350883153,clonidine,55
+cog_reaction_time,e_as_stop_doesnot_stop,0.15516152891284818,0.2579940738262989,"corrected for age, sex, and interaction",0.5159881476525978,clonidine,55
+cog_reaction_time,e_raw_correct_go,0.2212919667737223,0.10445050256489297,raw data,0.41780201025957187,clonidine,55
+cog_reaction_time,e_raw_correct_stop,0.1800033152951464,0.18849333918671896,raw data,0.45238401404812545,clonidine,55
+cog_reaction_time,e_raw_no_response_on_go,-0.12615659337849366,0.3587305169736039,raw data,0.5614912439586844,clonidine,55
+cog_reaction_time,e_raw_stop_doesnot_stop,0.1329738424383172,0.33313616964603243,raw data,0.5613919923469809,clonidine,55
+cog_symbol_digit,e_as_correct_go,-0.2909090909090909,0.03118334509842624,"corrected for age, sex, and interaction",0.260349838101984,clonidine,55
+cog_symbol_digit,e_as_correct_stop,0.05173160173160173,0.7075927095421091,"corrected for age, sex, and interaction",0.8505094752312965,clonidine,55
+cog_symbol_digit,e_as_no_response_on_go,0.2274891774891775,0.09485332807380198,"corrected for age, sex, and interaction",0.31042907369607925,clonidine,55
+cog_symbol_digit,e_as_stop_doesnot_stop,0.25271018601127676,0.062681913942238765,"corrected for age, sex, and interaction",0.260349838101984,clonidine,55
+cog_symbol_digit,e_raw_correct_go,-0.2736196497192372,0.04324214100530499,raw data,0.3891792690477449,clonidine,55
+cog_symbol_digit,e_raw_correct_stop,0.059265413156472324,0.6673361500295587,raw data,0.7749710129375521,clonidine,55
+cog_symbol_digit,e_raw_no_response_on_go,0.17013613337895966,0.21428836808918783,raw data,0.4821488282006726,clonidine,55
+cog_symbol_digit,e_raw_stop_doesnot_stop,0.2303994707925536,0.09059010493017472,raw data,0.40765547218578624,clonidine,55
+cog_tower_rearranging,e_as_correct_go,-0.12243867243867244,0.37318129146350687,"corrected for age, sex, and interaction",0.5597719371952603,clonidine,55
+cog_tower_rearranging,e_as_correct_stop,0.11594516594516595,0.3992450215488921,"corrected for age, sex, and interaction",0.5670040286584259,clonidine,55
+cog_tower_rearranging,e_as_no_response_on_go,0.03961038961038961,0.7740174530419213,"corrected for age, sex, and interaction",0.8505094752312965,clonidine,55
+cog_tower_rearranging,e_as_stop_doesnot_stop,-0.04873825286241755,0.7238181784081414,"corrected for age, sex, and interaction",0.8505094752312965,clonidine,55
+cog_tower_rearranging,e_raw_correct_go,-0.14467702133004773,0.29194429043286796,raw data,0.5613919923469809,clonidine,55
+cog_tower_rearranging,e_raw_correct_stop,0.10669945262419835,0.4381351281141286,raw data,0.6572026921711929,clonidine,55
+cog_tower_rearranging,e_raw_no_response_on_go,0.07408221610596162,0.5909024727736196,raw data,0.7597317507089396,clonidine,55
+cog_tower_rearranging,e_raw_stop_doesnot_stop,-0.0874857862090612,0.5253442500170384,raw data,0.7004590000227179,clonidine,55
+cog_trail_making_testB,e_as_correct_go,-0.12554112554112554,0.3610988003991007,"corrected for age, sex, and interaction",0.5597719371952603,clonidine,55
+cog_trail_making_testB,e_as_correct_stop,-0.0386002886002886,0.7796336856286885,"corrected for age, sex, and interaction",0.8505094752312965,clonidine,55
+cog_trail_making_testB,e_as_no_response_on_go,0.0033910533910533913,0.9803970361700329,"corrected for age, sex, and interaction",0.9881121473512275,clonidine,55
+cog_trail_making_testB,e_as_stop_doesnot_stop,0.008117029529270132,0.9530988474195599,"corrected for age, sex, and interaction",0.9881121473512275,clonidine,55
+cog_trail_making_testB,e_raw_correct_go,-0.18762180940257372,0.17015770563124732,raw data,0.4375483859089217,clonidine,55
+cog_trail_making_testB,e_raw_correct_stop,-0.03335940838233668,0.808946953447196,raw data,0.8320597235456872,clonidine,55
+cog_trail_making_testB,e_raw_no_response_on_go,0.02410382348423239,0.8613325223742527,raw data,0.8613325223742527,clonidine,55
+cog_trail_making_testB,e_raw_stop_doesnot_stop,0.06817517685068646,0.6209081705668287,raw data,0.7707825565657184,clonidine,55
+cog_verbal_numerical_reasoning,e_as_correct_go,-0.32366522366522366,0.015930258340652204,"corrected for age, sex, and interaction",0.260349838101984,clonidine,55
+cog_verbal_numerical_reasoning,e_as_correct_stop,-0.2932178932178932,0.029809212305613286,"corrected for age, sex, and interaction",0.260349838101984,clonidine,55
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,0.21233766233766233,0.11961889974051942,"corrected for age, sex, and interaction",0.3402488640605028,clonidine,55
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,-0.11345803497579807,0.40950290958664093,"corrected for age, sex, and interaction",0.5670040286584259,clonidine,55
+cog_verbal_numerical_reasoning,e_raw_correct_go,-0.3424034867496864,0.01050136988966055,raw data,0.1890246580138899,clonidine,55
+cog_verbal_numerical_reasoning,e_raw_correct_stop,-0.28174589270418193,0.03716814609107155,raw data,0.3891792690477449,clonidine,55
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,0.1945651958607304,0.15460997367661244,raw data,0.4375483859089217,clonidine,55
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,-0.03968349192310408,0.7736114407549586,raw data,0.8191179960934856,clonidine,55
+ADHD-Demontis,e_as_correct_go,0.007784557121817799,0.9396766943560326,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+ADHD-Demontis,e_as_correct_stop,-0.08138281085630128,0.42809675160226535,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+ADHD-Demontis,e_as_no_response_on_go,0.03230854197349043,0.7534001266649084,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+ADHD-Demontis,e_as_stop_doesnot_stop,-4.602356406480118e-4,0.9964302498003361,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+ADHD-Demontis,e_raw_correct_go,-0.014837030058507238,0.8853098724419943,raw data,0.9855340473783767,guanfacine,97
+ADHD-Demontis,e_raw_correct_stop,-0.0931476956824091,0.36415269760873814,raw data,0.9855340473783767,guanfacine,97
+ADHD-Demontis,e_raw_no_response_on_go,0.0474835166328203,0.6441842270803924,raw data,0.9855340473783767,guanfacine,97
+ADHD-Demontis,e_raw_stop_doesnot_stop,-0.009414516497806943,0.9270776428794338,raw data,0.9855340473783767,guanfacine,97
+cog_gFactor,e_as_correct_go,-0.03610877340626972,0.7254874816230863,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+cog_gFactor,e_as_correct_stop,-0.061987166000420785,0.5463963288237452,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_gFactor,e_as_no_response_on_go,0.022801388596675784,0.8245589324760818,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+cog_gFactor,e_as_stop_doesnot_stop,0.04043498842836103,0.6941446537759635,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+cog_gFactor,e_raw_correct_go,0.024649463058193766,0.8105951747494262,raw data,0.9855340473783767,guanfacine,97
+cog_gFactor,e_raw_correct_stop,-0.061492368024584944,0.5496097041496071,raw data,0.9855340473783767,guanfacine,97
+cog_gFactor,e_raw_no_response_on_go,-0.026960421975052946,0.7932175363545333,raw data,0.9855340473783767,guanfacine,97
+cog_gFactor,e_raw_stop_doesnot_stop,0.039782822617365626,0.6988382158606758,raw data,0.9855340473783767,guanfacine,97
+cog_matrix,e_as_correct_go,0.06543235851041447,0.5242794339871646,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_matrix,e_as_correct_stop,-0.07217809804334105,0.4823216043160903,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_matrix,e_as_no_response_on_go,-0.04423521986114033,0.667028877253478,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+cog_matrix,e_as_stop_doesnot_stop,0.01634494003787082,0.8737455237345837,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+cog_matrix,e_raw_correct_go,0.07215952739447758,0.4824345918267068,raw data,0.9855340473783767,guanfacine,97
+cog_matrix,e_raw_correct_stop,-0.05327713522764286,0.6042594483530275,raw data,0.9855340473783767,guanfacine,97
+cog_matrix,e_raw_no_response_on_go,-0.05454614670587494,0.5956625473691377,raw data,0.9855340473783767,guanfacine,97
+cog_matrix,e_raw_stop_doesnot_stop,0.005171835260406281,0.959901912324562,raw data,0.9855340473783767,guanfacine,97
+cog_memory,e_as_correct_go,0.013096991373869136,0.8986842318715751,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+cog_memory,e_as_correct_stop,-0.07227014517147065,0.48176178036694495,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_memory,e_as_no_response_on_go,-0.07341415947822429,0.47483308583867956,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_memory,e_as_stop_doesnot_stop,-0.06589259415106248,0.521359452213807,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_memory,e_raw_correct_go,0.022959251743904598,0.8233639408861015,raw data,0.9855340473783767,guanfacine,97
+cog_memory,e_raw_correct_stop,-0.06364005518721776,0.5357288197308652,raw data,0.9855340473783767,guanfacine,97
+cog_memory,e_raw_no_response_on_go,-0.10087120770695468,0.3255594539652229,raw data,0.9855340473783767,guanfacine,97
+cog_memory,e_raw_stop_doesnot_stop,-0.08879569733091207,0.38708862711384007,raw data,0.9855340473783767,guanfacine,97
+cog_reaction_time,e_as_correct_go,0.07538659793814433,0.46301457808474167,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_reaction_time,e_as_correct_stop,-0.0015779507679360403,0.9877612886169016,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+cog_reaction_time,e_as_no_response_on_go,-0.08180359772775089,0.4257043925496904,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_reaction_time,e_as_stop_doesnot_stop,-0.08626130864717022,0.4008359113525535,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_reaction_time,e_raw_correct_go,0.022130587831062438,0.8296411889810305,raw data,0.9855340473783767,guanfacine,97
+cog_reaction_time,e_raw_correct_stop,0.015152394092194705,0.8828892342040091,raw data,0.9855340473783767,guanfacine,97
+cog_reaction_time,e_raw_no_response_on_go,-0.07024453694281373,0.49416141176033324,raw data,0.9855340473783767,guanfacine,97
+cog_reaction_time,e_raw_stop_doesnot_stop,-0.033634009229828433,0.7436264121855201,raw data,0.9855340473783767,guanfacine,97
+cog_symbol_digit,e_as_correct_go,-0.07521565327161793,0.4640324180592752,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_symbol_digit,e_as_correct_stop,-0.1952451083526194,0.05530137921183487,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_symbol_digit,e_as_no_response_on_go,0.006351251840942563,0.9507680698308874,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+cog_symbol_digit,e_as_stop_doesnot_stop,9.467704607616243e-4,0.9926565917931467,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+cog_symbol_digit,e_raw_correct_go,-0.029213691276546612,0.7763703788671372,raw data,0.9855340473783767,guanfacine,97
+cog_symbol_digit,e_raw_correct_stop,-0.1983514266642601,0.05146192173646025,raw data,0.9263145912562845,guanfacine,97
+cog_symbol_digit,e_raw_no_response_on_go,-0.028151788278149768,0.7842976021646264,raw data,0.9855340473783767,guanfacine,97
+cog_symbol_digit,e_raw_stop_doesnot_stop,-0.0018651400608862812,0.9855340473783767,raw data,0.9855340473783767,guanfacine,97
+cog_tower_rearranging,e_as_correct_go,0.10588049652850831,0.3019839501454016,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_tower_rearranging,e_as_correct_stop,0.08641910372396382,0.39997165114058664,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_tower_rearranging,e_as_no_response_on_go,-0.05820008415737429,0.5712212285348377,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_tower_rearranging,e_as_stop_doesnot_stop,0.024366189774879025,0.8127318141805291,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+cog_tower_rearranging,e_raw_correct_go,0.06724673419691335,0.5128160929860501,raw data,0.9855340473783767,guanfacine,97
+cog_tower_rearranging,e_raw_correct_stop,0.1105795368858644,0.2809112869283026,raw data,0.9855340473783767,guanfacine,97
+cog_tower_rearranging,e_raw_no_response_on_go,-0.06973113046965598,0.4973306685739223,raw data,0.9855340473783767,guanfacine,97
+cog_tower_rearranging,e_raw_stop_doesnot_stop,0.029473312170928266,0.7744357280513763,raw data,0.9855340473783767,guanfacine,97
+cog_trail_making_testB,e_as_correct_go,-0.08694508731327583,0.39709875769928793,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_trail_making_testB,e_as_correct_stop,-0.10599884283610352,0.3014408462770639,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_trail_making_testB,e_as_no_response_on_go,-0.060304018514622346,0.5573644677408194,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_trail_making_testB,e_as_stop_doesnot_stop,-0.0195271407532085,0.8494306332909232,"corrected for age, sex, and interaction",0.9964302498003361,guanfacine,97
+cog_trail_making_testB,e_raw_correct_go,0.005932181344314507,0.9540128406319608,raw data,0.9855340473783767,guanfacine,97
+cog_trail_making_testB,e_raw_correct_stop,-0.11463115530616863,0.26354979854633975,raw data,0.9855340473783767,guanfacine,97
+cog_trail_making_testB,e_raw_no_response_on_go,-0.10418202124539502,0.3098489970466687,raw data,0.9855340473783767,guanfacine,97
+cog_trail_making_testB,e_raw_stop_doesnot_stop,-0.029780752840305128,0.7721465146694739,raw data,0.9855340473783767,guanfacine,97
+cog_verbal_numerical_reasoning,e_as_correct_go,-0.0701662108142226,0.4946442304381158,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_verbal_numerical_reasoning,e_as_correct_stop,0.08135651167683568,0.42824652927842366,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_verbal_numerical_reasoning,e_as_no_response_on_go,0.11622922364822218,0.25690671113805563,"corrected for age, sex, and interaction",0.9347256466933709,guanfacine,97
+cog_verbal_numerical_reasoning,e_as_stop_doesnot_stop,0.23314222596254996,0.021551265655471497,"corrected for age, sex, and interaction",0.7758455635969739,guanfacine,97
+cog_verbal_numerical_reasoning,e_raw_correct_go,-0.0045313447297479995,0.9648643570528121,raw data,0.9855340473783767,guanfacine,97
+cog_verbal_numerical_reasoning,e_raw_correct_stop,0.07696098599348632,0.4536981612414126,raw data,0.9855340473783767,guanfacine,97
+cog_verbal_numerical_reasoning,e_raw_no_response_on_go,0.07721501713607082,0.4522047488760039,raw data,0.9855340473783767,guanfacine,97
+cog_verbal_numerical_reasoning,e_raw_stop_doesnot_stop,0.24740775466987142,0.014557409247015318,raw data,0.5240667328925515,guanfacine,97
