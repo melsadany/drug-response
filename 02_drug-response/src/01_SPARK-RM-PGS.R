@@ -100,6 +100,7 @@ corr.table(pgs.rm %>% select(colnames(spark.pgs)[-1]),
 
 ####
 # supplementary figures ---------------------------------------------------
+# barplot for SPARM RM answers
 pgs.rm %>% 
   pivot_longer(cols = c(starts_with("ch_med"), -contains("PM")), names_to = "q", values_to = "answer") %>%
   select(IID, q, answer) %>%
@@ -109,6 +110,14 @@ pgs.rm %>%
   geom_bar(position = "identity") +
   facet_wrap("q", scales = "free_y", ncol = 4)+
   theme(axis.text.x.bottom = element_text(angle = 0, hjust = 0.5))
-
+# histogram for PGS distribution
+pgs.rm %>% 
+  pivot_longer(cols = c(colnames(spark.pgs)[-1]), names_to = "pgs", values_to = "score") %>%
+  select(IID, pgs, score) %>%
+  drop_na() %>%
+  ggplot(aes(x=score))+
+  geom_histogram() +
+  facet_wrap("pgs", scales = "free_y", ncol = 3)+
+  theme(axis.text.x.bottom = element_text(angle = 0, hjust = 0.5))
 
 ####
