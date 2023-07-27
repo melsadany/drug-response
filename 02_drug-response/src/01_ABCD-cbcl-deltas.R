@@ -33,8 +33,8 @@ all.adhd.meds <- data.frame(drug = c("methylphenidate", "adderall", "concerta", 
 ))
 adhd.meds <- data.frame(drug = c("methylphenidate",
                                  "concerta",
-                                 "dextroamphetamine", 
-                                 "amphetamine", "dexmethylphenidate", "lisdexamfetamine",
+                                 # "dextroamphetamine", "dexmethylphenidate", 
+                                 "amphetamine", "lisdexamfetamine",
                                  "atomoxetine", "clonidine", "guanfacine"
 ))
 abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
@@ -366,6 +366,25 @@ pgs.pred %>%
   labs(caption = paste0("n(samples): ", nrow(pgs.pred)
                         ,"\n\tmethylphenidate/ritalin"),
        title = "correlation between predicted MPH response and PGS")
+####
+# supplementary tables ----------------------------------------------------
+# samples included per drug
+cbcl.mph.demo <- inner_join(demo, 
+                            inner_join(cbcl.meds.deltas%>%distinct(IID,drug),
+                                       cbcl.all%>%select(IID, eventname))) %>%
+  filter(IID %in% abcd.pgs$IID)
+write_csv(inner_join(cbcl.mph.demo %>% 
+                       group_by(sex,drug) %>%
+                       summarise(avg = mean(interview_age), 
+                                 sd = sd(interview_age), 
+                                 min = min(interview_age), 
+                                 max = max(interview_age)),
+                     cbcl.mph.demo %>% 
+                       distinct(IID ,sex, drug)%>% 
+                       group_by(sex, drug) %>%
+                       summarise(count = n())) %>%
+            mutate(measure = "CBCL", data = "ABCD"),
+          file = "figs/paper/tmp/abcd-cbcl-data-stats.csv")
 ####
 # Extras ------------------------------------------------------------------
 as.cap <- paste0("delta per question = score_on_the_drug - score_off_the_drug", "\n", 

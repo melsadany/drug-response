@@ -33,15 +33,15 @@ all.adhd.meds <- data.frame(drug = c("methylphenidate", "adderall", "concerta", 
 ))
 adhd.meds <- data.frame(drug = c("methylphenidate",
                                  "concerta",
-                                 "dextroamphetamine", 
-                                 "amphetamine", "dexmethylphenidate", "lisdexamfetamine",
+                                 # "dextroamphetamine", "dexmethylphenidate", 
+                                 "amphetamine", "lisdexamfetamine",
                                  "atomoxetine", "clonidine", "guanfacine"
 ))
 abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
   as.data.frame() %>%
   select(c(1:2), any_of(all.adhd.meds$drug)) %>%
-  mutate(methylphenidate = ifelse((methylphenidate+ritalin+concerta)>=1,1,0),
-  # mutate(methylphenidate = ifelse((methylphenidate+ritalin)>=1,1,0),
+  # mutate(methylphenidate = ifelse((methylphenidate+ritalin+concerta)>=1,1,0),
+  mutate(methylphenidate = ifelse((methylphenidate+ritalin)>=1,1,0),
          amphetamine = ifelse((adderall+amphetamine)>=1,1,0),
          lisdexamfetamine = ifelse((vyvanse+lisdexamfetamine)>=1,1,0),
          # guanfacine = ifelse((guanfacine+tenex+intuniv)>=1,1,0),
@@ -356,6 +356,25 @@ pgs.pred %>%
   labs(caption = paste0("n(samples): ", nrow(pgs.pred)
                         ,"\n\tmethylphenidate/ritalin"),
        title = "correlation between predicted MPH response and PGS")
+####
+# supplementary tables ----------------------------------------------------
+# samples included per drug
+sst.mph.demo <- inner_join(demo, 
+                            inner_join(sst.meds.deltas%>%distinct(IID,drug),
+                                       sst.all%>%select(IID, eventname))) %>%
+  filter(IID %in% abcd.pgs$IID)
+write_csv(inner_join(sst.mph.demo %>% 
+                       group_by(sex,drug) %>%
+                       summarise(avg = mean(interview_age), 
+                                 sd = sd(interview_age), 
+                                 min = min(interview_age), 
+                                 max = max(interview_age)),
+                     sst.mph.demo %>% 
+                       distinct(IID ,sex, drug)%>% 
+                       group_by(sex, drug) %>%
+                       summarise(count = n())) %>%
+            mutate(measure = "SST", data = "ABCD"),
+          file = "figs/paper/tmp/abcd-sst-data-stats.csv")
 ####
 # Extras ------------------------------------------------------------------
 as.cap <- paste0("delta per question = score_on_the_drug - score_off_the_drug", "\n", 
