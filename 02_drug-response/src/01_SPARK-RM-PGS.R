@@ -180,4 +180,14 @@ write_csv(inner_join(mph.scq%>%select(IID, interview_age, sex), pgs.rm) %>%
                       max = max(interview_age),
                       count = n()),
           file = "figs/paper/tmp/spark-mph-scq-data-stats.csv")
+write_csv(do.call(rbind,
+                  lapply(mph.scq %>% select(starts_with("q")), 
+                         function(x) {
+                           t <- fisher.test(mph.scq$methyl_effect, x)
+                           data.frame(pval = t$p.value,
+                                      OR = t$estimate[[1]],
+                                      confint_min = as.data.frame(t$conf.int)[1,1],
+                                      confint_max = as.data.frame(t$conf.int)[2,1])})) %>%
+            rownames_to_column("question"),
+          file = "figs/paper/tmp/spark-mph-scq-fisher-data-stats.csv")
 ####
