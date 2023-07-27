@@ -40,11 +40,12 @@ adhd.meds <- data.frame(drug = c("methylphenidate",
 abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
   as.data.frame() %>%
   select(c(1:2), any_of(all.adhd.meds$drug)) %>%
-  # mutate(methylphenidate = ifelse((methylphenidate+ritalin+concerta)>=1,1,0),
-  mutate(methylphenidate = ifelse((methylphenidate+ritalin)>=1,1,0),
+  mutate(methylphenidate = ifelse((methylphenidate+ritalin+concerta)>=1,1,0),
+  # mutate(methylphenidate = ifelse((methylphenidate+ritalin)>=1,1,0),
          amphetamine = ifelse((adderall+amphetamine)>=1,1,0),
          lisdexamfetamine = ifelse((vyvanse+lisdexamfetamine)>=1,1,0),
-         guanfacine = ifelse((guanfacine+tenex+intuniv)>=1,1,0),
+         # guanfacine = ifelse((guanfacine+tenex+intuniv)>=1,1,0),
+         guanfacine = ifelse((guanfacine+tenex)>=1,1,0),
          atomoxetine = ifelse((atomoxetine+strattera)>=1,1,0)) %>% 
   select(-c(ritalin, adderall, tenex, strattera,intuniv, vyvanse))
 ####
@@ -242,7 +243,8 @@ sst.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) 
 }
 sst.meds.deltas.pgs %>%
   filter(drug == "methylphenidate") %>%
-  filter(grepl("as", V2)) %>%
+  # filter(drug == "lisdexamfetamine") %>%
+  # filter(grepl("as", V2)) %>%
   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
   geom_text(size = 3)+
@@ -255,6 +257,10 @@ sst.meds.deltas.pgs %>%
                         # "methylphenidate/ritalin: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="methylphenidate")%>%distinct(n_samples), "\n",
                         # "concerta: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="concerta")%>%distinct(n_samples), "\n",
                         # "guanfacine/tenex/intuniv: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="guanfacine")%>%distinct(n_samples), "\n",
+                        # "guanfacine/tenex: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="guanfacine")%>%distinct(n_samples), "\n",
+                        # "clonidine: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="clonidine")%>%distinct(n_samples), "\n",
+                        # "atomoxetine: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="atomoxetine")%>%distinct(n_samples), "\n",
+                        # "lisdexamfetamine/vyvanse: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="lisdexamfetamine")%>%distinct(n_samples), "\n",
                         # "amphetamine/adderall: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="amphetamine")%>%distinct(n_samples), "\n",
                         "* pval < 0.05 & not FDR sig", "\n", 
                         "** pval < 0.01 & not FDR sig", "\n", 
@@ -337,6 +343,19 @@ sst.meds.deltas %>%
   labs(y="score delta")+
   labs(title = "distribution of SST deltas for MPH samples", x="",
        caption = paste0("n(samples): ", nrow(sst.meds.deltas %>% filter(drug=="methylphenidate")%>% distinct(IID))))
+# correlation between predicted MPH response and PGS
+pgs.pred <- inner_join(abcd.pred, abcd.pgs)
+# pgs.pred <- inner_join(inner_join(abcd.pred, abcd.pgs), sst.meds.deltas %>% select(IID, drug)%>%filter(drug=="methylphenidate"))%>%distinct(IID ,.keep_all = T)
+pgs.pred %>% 
+  pivot_longer(cols = colnames(abcd.pgs)[-1], names_to = "PGS", values_to = "score") %>%
+  ggplot(aes(x=predicted, y=score))+
+  geom_point(size=0.3)+
+  geom_smooth(method = "glm") +
+  stat_cor() +
+  facet_wrap("PGS", scales = "free_y") +
+  labs(caption = paste0("n(samples): ", nrow(pgs.pred)
+                        ,"\n\tmethylphenidate/ritalin"),
+       title = "correlation between predicted MPH response and PGS")
 ####
 # Extras ------------------------------------------------------------------
 as.cap <- paste0("delta per question = score_on_the_drug - score_off_the_drug", "\n", 
