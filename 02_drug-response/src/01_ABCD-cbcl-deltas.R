@@ -33,6 +33,7 @@ all.adhd.meds <- data.frame(drug = c("methylphenidate", "adderall", "concerta", 
 ))
 adhd.meds <- data.frame(drug = c("methylphenidate",
                                  "concerta",
+                                 "stim", "non_stim",
                                  # "dextroamphetamine", "dexmethylphenidate", 
                                  "amphetamine", "lisdexamfetamine",
                                  "atomoxetine", "clonidine", "guanfacine"
@@ -44,6 +45,8 @@ abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/ab
   mutate(methylphenidate = ifelse((methylphenidate+ritalin)>=1,1,0),
          amphetamine = ifelse((adderall+amphetamine)>=1,1,0),
          lisdexamfetamine = ifelse((vyvanse+lisdexamfetamine)>=1,1,0),
+         stim = ifelse((methylphenidate+adderall+amphetamine+concerta+ritalin)>=1,1,0),
+         non_stim = ifelse((vyvanse+intuniv+strattera+tenex+lisdexamfetamine+atomoxetine+clonidine+guanfacine)>=1,1,0),
          # guanfacine = ifelse((guanfacine+tenex+intuniv)>=1,1,0),
          guanfacine = ifelse((guanfacine+tenex)>=1,1,0),
          atomoxetine = ifelse((atomoxetine+strattera)>=1,1,0)) %>% 
@@ -255,6 +258,7 @@ cbcl.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind)
 }
 cbcl.meds.deltas.pgs %>%
   filter(drug == "methylphenidate") %>%
+  # filter(drug == "non_stim") %>%
   # filter(drug == "lisdexamfetamine") %>%
   filter(grepl("as", V2)) %>%
   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
@@ -274,6 +278,8 @@ cbcl.meds.deltas.pgs %>%
                         # "amphetamine/adderall: ", cbcl.meds.deltas.pgs %>%ungroup()%>% filter(drug=="amphetamine")%>%distinct(n_samples), "\n",
                         # "clonidine: ", cbcl.meds.deltas.pgs %>%ungroup()%>% filter(drug=="clonidine")%>%distinct(n_samples), "\n",
                         # "atomoxetine/strattera: ", cbcl.meds.deltas.pgs %>%ungroup()%>% filter(drug=="atomoxetine")%>%distinct(n_samples), "\n",
+                        # "stim = methylphenidate/ritalin/concerta/amphetamine/adderall: ", cbcl.meds.deltas.pgs %>%ungroup()%>% filter(drug=="stim")%>%distinct(n_samples), "\n",
+                        # "non_stim = vyvanse/intuniv/strattera/tenex/lisdexamfetamine/atomoxetine/clonidine/guanfacine: ", cbcl.meds.deltas.pgs %>%ungroup()%>% filter(drug=="non_stim")%>%distinct(n_samples), "\n",
                         "* pval < 0.05 & not FDR sig", "\n", 
                         "** pval < 0.01 & not FDR sig", "\n", 
                         "*** FDR < 0.05"), 
