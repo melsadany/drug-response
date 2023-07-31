@@ -59,16 +59,34 @@ abcd.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
 ####
 # correlation between PGS and drug type -----------------------------------
 pgs.med <- right_join(abcd.pgs, abcd.meds)
-pgs.med %>%
+p1 <- pgs.med %>%
   pivot_longer(cols = adhd.meds$drug, names_to = "drug", values_to = "status") %>%
   filter(status >=1) %>%
-  pivot_longer(cols = colnames(abcd.pgs)[-1], names_to = "PGS", values_to = "score") %>%
+  pivot_longer(cols = c(contains("gFact"), contains("ADHD")), names_to = "PGS", values_to = "score") %>%
   ggplot(aes(x=score, y=drug)) +
   geom_boxplot(outlier.size = 0.3)+
   facet_wrap("PGS") +
   geom_vline(xintercept = 0, linetype = "dashed", color = "red")+
-  labs(title = "distribution of PGS by drug/drug-category",
+  labs(
+    # title = "distribution of PGS by drug",
        x="", y="")
+p2 <- corr.table(pgs.med %>% select(contains("ADHD"), contains("gFa")), 
+           pgs.med %>% select(adhd.meds$drug), 
+           method = "spearman") %>%
+  filter(V2 %in% adhd.meds$drug, !V1 %in% adhd.meds$drug) %>%
+  mutate(FDR = p.adjust(pval, method = "fdr")) %>%
+  ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
+  geom_tile()+
+  geom_text(size = 3)+
+  redblu.col.gradient+my.guides+null_labs +
+  labs(caption = paste0("n(samples): ", "\n\t",
+                        "stim = methylphenidate/ritalin/concerta/amphetamine/adderall/vyvanse/lisdexamfetamine: ", nrow(pgs.med%>% filter(stim==1)%>%distinct(IID)), "\n",
+                        "\tnon_stim = intuniv/strattera/tenex/atomoxetine/clonidine/guanfacine: ", nrow(pgs.med%>% filter(non_stim==1)%>%distinct(IID)), "\n",
+                        "* pval < 0.05 & not FDR sig", "\n", 
+                        "** pval < 0.01 & not FDR sig", "\n", 
+                        "*** FDR < 0.05"), 
+       title = "correlation between taking ADHD medication and PGS")
+patchwork::wrap_plots(p2,p1, widths = c(1,2))
 ####
 # correlation between age and drug type -----------------------------------
 demo.med <- right_join(demo, abcd.meds)

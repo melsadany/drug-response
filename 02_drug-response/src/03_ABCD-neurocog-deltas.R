@@ -83,25 +83,26 @@ abcd.nihtbx.filt <- inner_join(inner_join(demo, abcd.nihtbx.filt), abcd.meds) %>
 # nihtbx performance based on PGS and categorized by drug -----------------
 pgs.nihtbx.drug <- inner_join(abcd.nihtbx.filt, abcd.pgs)
 pgs.nihtbx.drug %>% 
+  # distinct(IID, .keep_all = T) %>%
   pivot_longer(cols = starts_with("nih"), names_to = "task", values_to = "task_score") %>%
   pivot_longer(cols = colnames(abcd.pgs)[-1], names_to = "pgs", values_to = "pg_score") %>%
   pivot_longer(cols = adhd.meds$drug, names_to = "drug", values_to = "drug_status") %>%
-  filter(drug_status == 1) %>% 
+  # filter(drug_status == 1) %>% 
+  mutate(drug = ifelse(drug_status == 0, "noth", drug)) %>%
   filter(drug %in% c("stim", "non_stim")) %>%
+  # filter(drug %in% c("methylphenidate", "amphetamine", "noth")) %>%
+  # filter(drug %in% c("clonidine", "guanfacine", "noth")) %>%
   filter(grepl("ADHD", pgs) | grepl("gFa", pgs)) %>%
   mutate(task =sub("_agecorrected", "", task)) %>% mutate(task =sub("nihtbx_", "", task)) %>%
   ggplot(aes(x=pg_score, y=task_score, color = drug)) +
   # geom_point(size=0.1)+
-  geom_smooth(method = "glm", se = F) +
-  stat_cor(show.legend = F)+
+  geom_smooth(method = "glm", se = F, na.rm = T) +
+  stat_cor(show.legend = F, size = 3, na.rm = T)+
   # facet_wrap("task", scales = "free")
   facet_grid2(rows = vars(task), cols = vars(pgs), scales = "free_y") +
   labs(x="PGS", caption = paste0("n(samples):\n",
                                  "\tstim: ", sum(pgs.nihtbx.drug$stim), "\n",
                                  "\tnon_stim: ", sum(pgs.nihtbx.drug$non_stim), "\n"))
-
-
-
 ####
 # nihtbx deltas by drug status for participants -----------------------------
 registerDoMC(cores = 3)
@@ -175,13 +176,9 @@ nihtbx.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbin
   }else {
     return(NULL)
   }
-  
 }
 nihtbx.meds.deltas.pgs %>%
-  # filter(drug == "methylphenidate") %>%
   filter(drug %in% c("stim", "non_stim")) %>%
-  # filter(drug == "guanfacine") %>%
-  # filter(grepl("as", V2)) %>% mutate(V2 = sub("as_", "", V2)) %>%
   filter(grepl("ADHD", V1) | grepl("cog_gFa", V1)) %>%
   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
@@ -189,23 +186,11 @@ nihtbx.meds.deltas.pgs %>%
   facet_grid2(rows = vars(value_type), cols = vars(drug), scales = "free_y") +
   redblu.col.gradient+my.guides+null_labs +
   labs(caption = paste0("n(samples): ", "\n\t",
-                        # paste(apply(nihtbx.meds.deltas.pgs%>%ungroup()%>%select(drug, n_samples)%>%distinct(), 
-                        # "methylphenidate: ", nihtbx.meds.deltas.pgs %>%ungroup()%>% filter(drug=="methylphenidate")%>%distinct(n_samples), "\n",
-                        # "methylphenidate/ritalin/concerta: ", nihtbx.meds.deltas.pgs %>%ungroup()%>% filter(drug=="methylphenidate")%>%distinct(n_samples), "\n",
-                        # "methylphenidate/ritalin: ", nihtbx.meds.deltas.pgs %>%ungroup()%>% filter(drug=="methylphenidate")%>%distinct(n_samples), "\n",
-                        # "concerta: ", nihtbx.meds.deltas.pgs %>%ungroup()%>% filter(drug=="concerta")%>%distinct(n_samples), "\n",
-                        # "guanfacine/tenex/intuniv: ", nihtbx.meds.deltas.pgs %>%ungroup()%>% filter(drug=="guanfacine")%>%distinct(n_samples), "\n",
-                        # "guanfacine/tenex: ", nihtbx.meds.deltas.pgs %>%ungroup()%>% filter(drug=="guanfacine")%>%distinct(n_samples), "\n",
-                        # "lisdexamfetamine/vyvanse: ", nihtbx.meds.deltas.pgs %>%ungroup()%>% filter(drug=="lisdexamfetamine")%>%distinct(n_samples), "\n",
-                        # "amphetamine/adderall: ", nihtbx.meds.deltas.pgs %>%ungroup()%>% filter(drug=="amphetamine")%>%distinct(n_samples), "\n",
-                        # "clonidine: ", nihtbx.meds.deltas.pgs %>%ungroup()%>% filter(drug=="clonidine")%>%distinct(n_samples), "\n",
-                        # "atomoxetine/strattera: ", nihtbx.meds.deltas.pgs %>%ungroup()%>% filter(drug=="atomoxetine")%>%distinct(n_samples), "\n",
                         "stim = methylphenidate/ritalin/concerta/amphetamine/adderall/vyvanse/lisdexamfetamine: ", nihtbx.meds.deltas.pgs %>%ungroup()%>% filter(drug=="stim")%>%distinct(n_samples), "\n",
                         "\tnon_stim = intuniv/strattera/tenex/atomoxetine/clonidine/guanfacine: ", nihtbx.meds.deltas.pgs %>%ungroup()%>% filter(drug=="non_stim")%>%distinct(n_samples), "\n",
                         "* pval < 0.05 & not FDR sig", "\n", 
                         "** pval < 0.01 & not FDR sig", "\n", 
                         "*** FDR < 0.05"), 
-       # title = "correlation of nihtbx score change (delta) per drug with PGS")
        title = "correlation of nihtbx score change (delta) with PGS")
 ####
 
