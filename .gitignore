@@ -1,4 +1,4 @@
 data/
-archive/
+archive/*
 02_drug-response/data/
-02_drug-response/archive/
+02_drug-response/archive/*
