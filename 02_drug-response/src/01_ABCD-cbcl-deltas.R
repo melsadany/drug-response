@@ -237,22 +237,22 @@ cbcl.meds.deltas %>%
 t <- inner_join(cbcl.meds.deltas %>% 
                   filter(drug == "methylphenidate") ,
                 abcd.pgs) %>%
-  filter(grepl("attention", question) | grepl("adhd", question)) %>%
-  # filter(grepl("attention", question) | grepl("adhd", question) | grepl("social", question) | grepl("conduct", question)) %>%
+  # filter(grepl("attention", question) | grepl("adhd", question)) %>%
+  filter(grepl("attention", question) | grepl("adhd", question) | grepl("social", question) | grepl("conduct", question)) %>%
   filter(grepl("as", question)) %>%  mutate(question = sub("as_", "", question)) %>%
   pivot_longer(cols = c("ADHD-Demontis", "cog_gFactor"), names_to = "PGS", values_to = "score") %>%
   select(IID, sex, question, delta, n_samples, PGS, score, drug)
 t %>%
-  ggplot(aes(x=delta, y=score))+
-  geom_point(size=1) +
-  facet_grid2(rows = vars(PGS), cols = vars(question), scales = "free") +
+  ggplot(aes(y=delta, x=score))+
+  geom_point(size=0.3) +
+  facet_grid2(cols = vars(PGS), rows = vars(question), scales = "free") +
   stat_cor(method = "spearman") + geom_smooth(method = "glm") +
-  labs(x="CBCL delta (on-drug - off-drug)", y = "polygenic score",
+  labs(y="CBCL delta (on-drug - off-drug)", x = "polygenic score",
        title = "correlation between PGS and CBCL deltas",
        caption = paste0("n(samples): ", length(unique(t$IID)), "\n",
                         # unique(t$drug)
-                        # "guanfacine = guanfacine/tenex"
-                        "methylphenidate = methylphenidate/ritalin"
+                        # "\tguanfacine = guanfacine / tenex"
+                        "\tmethylphenidate = methylphenidate / ritalin"
                         # "non_stim =intuniv/strattera/tenex/atomoxetine/clonidine/guanfacine"
                         # "stim = methylphenidate/ritalin/concerta/amphetamine/adderall/vyvanse/lisdexamfetamine"
                         ))
