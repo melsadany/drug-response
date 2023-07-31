@@ -58,11 +58,14 @@ colnames(spark.rm.filt)[5:ncol(spark.rm.filt)] <- data.dict$human_friendly_name[
 # correlation between PGS and meds history --------------------------------
 spark.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
   rename_all(.funs = function(x) sub("corrected_", "", x)) %>%
-  select(IID, "ADHD-Demontis", contains("cog")&contains("UKB")) %>%
+  select(IID, "ADHD-Demontis", contains("cog")&contains("UKB")&contains("gFactor")) %>%
   rename_all(.funs = function(x) str_replace_all(x, "-UKB-2020", ""))
-pgs.rm <- inner_join(spark.rm.filt %>% select(IID = ParticipantID, ends_with("yn"), ends_with("effect")),
+pgs.rm <- inner_join(spark.rm.filt %>% select(IID = ParticipantID, ch_med_methyl_yn, ch_med_methyl_effect,
+                                              ch_med_amph_yn, ch_med_amph_effect)  %>%
+                       mutate(stim_effect = ifelse(ch_med_methyl_effect==1 | ch_med_amph_effect ==1, 1, 
+                                                   ifelse(ch_med_methyl_effect==0 | ch_med_amph_effect ==0, 0,NA))),
                      spark.pgs) %>%
-  filter(!is.na(ch_med_antihist_yn))
+  filter(!(is.na(ch_med_methyl_yn)&is.na(ch_med_amph_yn)))
 samples <- colSums(pgs.rm %>% select(starts_with("ch_med"), -contains("PM")), na.rm = T) %>% as.data.frame() %>% rename(count = 1) %>% rownames_to_column("q")
 corr.table(pgs.rm %>% select(colnames(spark.pgs)[-1]), 
            pgs.rm %>% select(ends_with("yn"), ends_with("effect")),

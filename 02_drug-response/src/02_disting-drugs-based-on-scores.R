@@ -27,7 +27,7 @@ demo <- full_join(age, sex)
 all.adhd.meds <- data.frame(drug = c("methylphenidate", "adderall", "concerta", "vyvanse", 
                                      "dextroamphetamine",  "ritalin", "intuniv", "strattera",
                                      "tenex", "amphetamine", "dexmethylphenidate", "lisdexamfetamine",
-                                     "atomoxetine", "clonidine", "guanfacine"
+                                     "atomoxetine", "clonidine", "guanfacine", "albuterol"
 ))
 adhd.meds <- data.frame(drug = c("methylphenidate",
                                  "concerta",
@@ -35,7 +35,7 @@ adhd.meds <- data.frame(drug = c("methylphenidate",
                                  # "dextroamphetamine", "dexmethylphenidate", 
                                  "amphetamine", "lisdexamfetamine",
                                  "intuniv",
-                                 "atomoxetine", "clonidine", "guanfacine"
+                                 "atomoxetine", "clonidine", "guanfacine", "albuterol"
 ))
 abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
   as.data.frame() %>%
