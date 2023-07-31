@@ -42,13 +42,13 @@ abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/ab
   as.data.frame() %>%
   select(c(1:2), any_of(all.adhd.meds$drug)) %>%
   # mutate(methylphenidate = ifelse((methylphenidate+ritalin+concerta)>=1,1,0),
-  mutate(methylphenidate = ifelse((methylphenidate+ritalin)>=1 & concerta ==0,1,0),
+  mutate(methylphenidate = ifelse((methylphenidate+ritalin)>=1 & concerta == 0,1,0),
          amphetamine = ifelse((adderall+amphetamine)>=1,1,0),
          lisdexamfetamine = ifelse((vyvanse+lisdexamfetamine)>=1,1,0),
-         stim = ifelse((methylphenidate+adderall+amphetamine+concerta+ritalin)>=1,1,0),
-         non_stim = ifelse((vyvanse+intuniv+strattera+tenex+lisdexamfetamine+atomoxetine+clonidine+guanfacine)>=1,1,0),
+         stim = ifelse((methylphenidate+adderall+amphetamine+concerta+ritalin+vyvanse+lisdexamfetamine)>=1,1,0),
+         non_stim = ifelse((intuniv+strattera+tenex+atomoxetine+clonidine+guanfacine)>=1,1,0),
          # guanfacine = ifelse((guanfacine+tenex+intuniv)>=1,1,0),
-         guanfacine = ifelse((guanfacine+tenex)>=1 & intuniv ==0,1,0),
+         guanfacine = ifelse((guanfacine+tenex)>=1 & intuniv == 0,1,0),
          atomoxetine = ifelse((atomoxetine+strattera)>=1,1,0)) %>% 
   select(-c(ritalin, adderall, tenex, strattera,intuniv, vyvanse))
 ####
@@ -221,6 +221,28 @@ sst.meds.deltas %>%
        title = "sst age-sex corrected score change (delta) per drug")
 ####
 # SST deltas per drug with PGS -------------------------------------------
+# scatterplot
+t <- inner_join(sst.meds.deltas %>% 
+                  filter(drug == "concerta") ,
+                abcd.pgs) %>%
+  filter(grepl("as", question)) %>% mutate(question = sub("e_as_", "", question)) %>%
+  pivot_longer(cols = c("ADHD-Demontis", "cog_gFactor"), names_to = "PGS", values_to = "score") %>%
+  select(IID, sex, question, delta, n_samples, PGS, score, drug)
+t %>%
+  ggplot(aes(x=delta, y=score))+
+  geom_point(size=1) +
+  facet_grid2(rows = vars(PGS), cols = vars(question), scales = "free") +
+  stat_cor(method = "spearman") + geom_smooth(method = "glm") +
+  labs(x="CBCL delta (on-drug - off-drug)", y = "polygenic score",
+       title = "correlation between PGS and SST deltas",
+       caption = paste0("n(samples): ", length(unique(t$IID)), "\n",
+                        unique(t$drug)
+                        # "guanfacine = guanfacine/tenex"
+                        # "methylphenidate = methylphenidate/ritalin"
+                        # "non_stim =intuniv/strattera/tenex/atomoxetine/clonidine/guanfacine"
+                        # "stim = methylphenidate/ritalin/concerta/amphetamine/adderall/vyvanse/lisdexamfetamine"
+       ))
+# heatmaps
 sst.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) %dopar% {
   d <- adhd.meds$drug[i]
   t <- inner_join(sst.meds.deltas %>% 
@@ -246,9 +268,10 @@ sst.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) 
 }
 sst.meds.deltas.pgs %>%
   # filter(drug == "methylphenidate") %>%
-  # filter(drug == "stim") %>%
-  filter(drug == "guanfacine") %>%
-  filter(grepl("as", V2)) %>%
+  filter(drug %in% c("stim", "non_stim")) %>%
+  # filter(drug == "guanfacine") %>%
+  filter(grepl("as", V2)) %>% mutate(V2 = sub("e_as_", "", V2)) %>%
+  filter(grepl("ADHD", V1) | grepl("cog_gFa", V1)) %>%
   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
   geom_text(size = 3)+
@@ -261,13 +284,13 @@ sst.meds.deltas.pgs %>%
                         # "methylphenidate/ritalin: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="methylphenidate")%>%distinct(n_samples), "\n",
                         # "concerta: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="concerta")%>%distinct(n_samples), "\n",
                         # "guanfacine/tenex/intuniv: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="guanfacine")%>%distinct(n_samples), "\n",
-                        "guanfacine/tenex: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="guanfacine")%>%distinct(n_samples), "\n",
+                        # "guanfacine/tenex: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="guanfacine")%>%distinct(n_samples), "\n",
                         # "clonidine: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="clonidine")%>%distinct(n_samples), "\n",
                         # "atomoxetine/strattera: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="atomoxetine")%>%distinct(n_samples), "\n",
                         # "lisdexamfetamine/vyvanse: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="lisdexamfetamine")%>%distinct(n_samples), "\n",
                         # "amphetamine/adderall: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="amphetamine")%>%distinct(n_samples), "\n",
-                        # "stim = methylphenidate/ritalin/concerta/amphetamine/adderall: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="stim")%>%distinct(n_samples), "\n",
-                        # "non_stim = vyvanse/intuniv/strattera/tenex/lisdexamfetamine/atomoxetine/clonidine/guanfacine: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="non_stim")%>%distinct(n_samples), "\n",
+                        "stim = methylphenidate/ritalin/concerta/amphetamine/adderall: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="stim")%>%distinct(n_samples), "\n",
+                        "\tnon_stim = vyvanse/intuniv/strattera/tenex/lisdexamfetamine/atomoxetine/clonidine/guanfacine: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="non_stim")%>%distinct(n_samples), "\n",
                         "* pval < 0.05 & not FDR sig", "\n", 
                         "** pval < 0.01 & not FDR sig", "\n", 
                         "*** FDR < 0.05"), 
@@ -281,6 +304,13 @@ sst.pred <- inner_join(sst.meds.deltas %>%
                                       values_from = delta, 
                                       id_cols = c(IID, sex)),
                         abcd.pred)
+sst.pred %>%
+  pivot_longer(cols = starts_with("e_as"), names_to = "question", values_to = "delta") %>%
+  ggplot(aes(x=predicted, y=delta))+
+  geom_point()+
+  geom_smooth(method = "glm")+stat_cor(method = "spearman") +
+  facet_wrap("question", scales = "free_y")+
+  labs(title = "correlation scatter of SST change (delta) of MPH with predicted MPH response")
 corr.table(sst.pred %>% select(predicted),
            sst.pred %>% select(starts_with("e_")),
            method = "spearman") %>%
