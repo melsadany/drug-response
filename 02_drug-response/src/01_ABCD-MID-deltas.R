@@ -1,5 +1,5 @@
 ################################################################################
-#                  check nback change by status of taking ADHD drugs             #
+#                  check mid change by status of taking ADHD drugs             #
 ################################################################################
 # packages setup ----------------------------------------------------------
 # there's an "Extras" section at the end of this file.
@@ -62,72 +62,70 @@ abcd.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
 # ABCD predicted MPH response ---------------------------------------------
 abcd.pred <- read_rds("../data/derivatives/m-outputs/abcd/all-samples/model-celltype-all-FALSE-TRUE-1.rds") %>%
   rename(predicted = m) %>%
-  # filter(IID %in% nback.r1.deltas$IID) %>%
+  # filter(IID %in% mid.r1.deltas$IID) %>%
   mutate(predicted = scale(-predicted, scale = T, center = T)[,1])
 ####
-# ABCD nback data -----------------------------------------------------------
-nback.raw <- read_csv(paste0(abcd.raw.dir, "/imaging/mri_y_tfmr_nback_beh.csv"))
+# ABCD mid data -----------------------------------------------------------
+mid.raw <- read_csv(paste0(abcd.raw.dir, "/imaging/mri_y_tfmr_mid_qtn.csv"))
 # only keeping questions of interest for the first run of the task only
-nback.r1 <- left_join(nback.raw %>%
-                        filter(tfmri_nback_beh_performflag == 1) %>%
+mid.r1 <- left_join(mid.raw %>%
+                        # filter(tfmri_mid_beh_performflag == 1) %>%
                         select(IID = src_subject_id, eventname,
-                               tfmri_nb_r1_beh_cplace_nt,
-                               tfmri_nb_r1_beh_cpf_nt,
-                               tfmri_nb_r1_beh_cngf_nt,
-                               tfmri_nb_r1_beh_cnf_nt),
+                               starts_with("mid"),
+                               -contains("rescan")),
                       left_join(abcd.meds, demo)) %>% drop_na()
-# combine nback, age, sex, meds data 
-abcd.nback.filt <- inner_join(inner_join(demo, nback.r1), abcd.meds) %>% 
+# combine mid, age, sex, meds data 
+abcd.mid.filt <- inner_join(inner_join(demo, mid.r1), abcd.meds) %>% 
   # keep this order for OCD pref
   select(IID, eventname, interview_age,sex, 
-         ends_with("nt"), 
+         starts_with("mid"), 
          colnames(abcd.meds)) %>%
   drop_na()
 ####
-# nback correction for age and sex -----------------------------------------
-nback.as.corrected <- cbind(abcd.nback.filt %>% 
+# mid correction for age and sex -----------------------------------------
+mid.as.corrected <- cbind(abcd.mid.filt %>% 
                             select(IID, interview_age, sex, eventname), 
-                          apply(abcd.nback.filt %>% 
-                                  select(ends_with("nt")), 
+                          apply(abcd.mid.filt %>% 
+                                  select(starts_with("mid")), 
                                 MARGIN = 2, FUN = function(x) {
                                   residuals(glm(y ~ interview_age + sex + interview_age:sex, 
-                                                data = abcd.nback.filt %>% mutate(y = x), 
+                                                data = abcd.mid.filt %>% mutate(y = x), 
                                                 family = poisson()))
                                  }))
-# combine nback raw with nback corrected
-nback.all <- inner_join(abcd.nback.filt,
-                      nback.as.corrected %>% 
-                        rename_at(.vars = vars(ends_with("nt")), 
-                                  .funs = function(x) sub("tfmri", "tfmri_as", x)))
+# combine mid raw with mid corrected
+mid.all <- inner_join(abcd.mid.filt,
+                      mid.as.corrected %>% 
+                        rename_at(.vars = vars(starts_with("mid")), 
+                                  .funs = function(x) sub("midq", "midq_as", x)))
 ####
-# nback deltas by drug status for participants -----------------------------
+# mid deltas by drug status for participants -----------------------------
 registerDoMC(cores = 3)
-nback.meds.deltas <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) %dopar% {
+mid.meds.deltas <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) %dopar% {
   d <- adhd.meds$drug[i]
   # print(i)
   # get number of participants that match this criteria
   # keep participants of 2 events and 2 distinct drug status at least
-  n <- nrow(nback.all %>%
-              rename(drug = which(colnames(nback.all)==d)) %>%
+  n <- nrow(mid.all %>%
+              rename(drug = which(colnames(mid.all)==d)) %>%
               group_by(IID) %>%
               filter(n_distinct(eventname) >= 2 & n_distinct(drug) > 1) %>%
               ungroup() %>%
               distinct(IID))
-  # calculate the delta of each nback question
+  # calculate the delta of each mid question
   # delta defines as (score_on_the_drug - score_off_the_drug)
-  t <- nback.all %>%
-    rename(drug = which(colnames(nback.all)==d)) %>%
+  t <- mid.all %>%
+    rename(drug = which(colnames(mid.all)==d)) %>%
     group_by(IID) %>%
     filter(n_distinct(eventname) >= 2 & n_distinct(drug) > 1) %>%
     ungroup() %>%
-    # some participants have multiple nback datapoints for the same drug status
+    # some participants have multiple mid datapoints for the same drug status
     # get the average by drug status after being grouped based on IID and drug binary status
     group_by(IID, drug) %>%
-    mutate_at(.vars = vars(ends_with("nt")), .funs = function(x) mean(x)) %>%
+    mutate_at(.vars = vars(starts_with("mid")), .funs = function(x) mean(x)) %>%
     ungroup() %>%
     # make sure to keep one data point per distinct IID, drug status
     distinct(IID, drug, .keep_all = T) %>%
-    pivot_longer(cols = c(ends_with("nt")), 
+    pivot_longer(cols = c(starts_with("mid")), 
                  names_to = "question", values_to = "val") %>%
     arrange(IID, question, drug) %>%
     mutate(drug = as.factor(drug)) %>%
@@ -140,21 +138,21 @@ nback.meds.deltas <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) %d
   return(t)
 }
 ####
-# nback deltas per drug with PGS -------------------------------------------
+# mid deltas per drug with PGS -------------------------------------------
 # heatmaps
-nback.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) %dopar% {
+mid.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) %dopar% {
   d <- adhd.meds$drug[i]
-  t <- inner_join(nback.meds.deltas %>% 
+  t <- inner_join(mid.meds.deltas %>% 
                     filter(drug == d) %>% 
                     pivot_wider(names_from = question, 
                                 values_from = delta, 
                                 id_cols = c(IID, sex)),
                   abcd.pgs)
   ret <- corr.table(t %>% select(colnames(abcd.pgs)[-1]),
-                    t %>% select(starts_with("tfmri")),
+                    t %>% select(starts_with("mid")),
                     method = "spearman") %>%
     filter(V1 %in% colnames(abcd.pgs)[-1], !V2 %in% colnames(abcd.pgs)[-1]) %>%
-    mutate(value_type = factor(ifelse(grepl("tfmri_nb", V2), 
+    mutate(value_type = factor(ifelse(!grepl("as", V2), 
                                       "raw data", 
                                       "corrected for age, sex, and interaction"), 
                                levels = c("raw data", 
@@ -165,12 +163,12 @@ nback.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind
     mutate(n_samples = nrow(t))
   return(ret)
 }
-nback.meds.deltas.pgs %>%
+mid.meds.deltas.pgs %>%
   # filter(drug == "methylphenidate") %>%
   # filter(drug %in% c("stim", "non_stim")) %>%
   # filter(drug == "guanfacine") %>%
   filter(grepl("as", V2)) %>% 
-  mutate(V2 = sub("tfmri_as_nb_r1_beh_", "", sub("_nt", "", V2))) %>%
+  mutate(V2 = sub("midq_as_", "", V2)) %>%
   # filter(grepl("ADHD", V1) | grepl("cog_gFa", V1)) %>%
   ggplot(aes(y=V1, x=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
@@ -178,24 +176,36 @@ nback.meds.deltas.pgs %>%
   facet_grid2(rows = vars(value_type), cols = vars(drug), scales = "free_x", independent = "x") +
   redblu.col.gradient+my.guides+null_labs +
   labs(caption = paste0("n(samples): ", "\n",
-                        "\tmethylphenidate/ritalin: ", nback.meds.deltas.pgs %>%ungroup()%>% filter(drug=="methylphenidate")%>%distinct(n_samples), "\n",
-                        "\tconcerta: ", nback.meds.deltas.pgs %>%ungroup()%>% filter(drug=="concerta")%>%distinct(n_samples), "\n",
-                        "\tguanfacine/tenex: ", nback.meds.deltas.pgs %>%ungroup()%>% filter(drug=="guanfacine")%>%distinct(n_samples), "\n",
-                        "\tclonidine: ", nback.meds.deltas.pgs %>%ungroup()%>% filter(drug=="clonidine")%>%distinct(n_samples), "\n",
-                        "\tatomoxetine/strattera: ", nback.meds.deltas.pgs %>%ungroup()%>% filter(drug=="atomoxetine")%>%distinct(n_samples), "\n",
-                        "\tlisdexamfetamine/vyvanse: ", nback.meds.deltas.pgs %>%ungroup()%>% filter(drug=="lisdexamfetamine")%>%distinct(n_samples), "\n",
-                        "\tamphetamine/adderall: ", nback.meds.deltas.pgs %>%ungroup()%>% filter(drug=="amphetamine")%>%distinct(n_samples), "\n",
-                        "\tstim = methylphenidate/ritalin/concerta/amphetamine/adderall: ", nback.meds.deltas.pgs %>%ungroup()%>% filter(drug=="stim")%>%distinct(n_samples), "\n",
-                        "\tnon_stim = vyvanse/intuniv/strattera/tenex/lisdexamfetamine/atomoxetine/clonidine/guanfacine: ", nback.meds.deltas.pgs %>%ungroup()%>% filter(drug=="non_stim")%>%distinct(n_samples), "\n",
+                        "\tmethylphenidate/ritalin: ", mid.meds.deltas.pgs %>%ungroup()%>% filter(drug=="methylphenidate")%>%distinct(n_samples), "\n",
+                        "\tconcerta: ", mid.meds.deltas.pgs %>%ungroup()%>% filter(drug=="concerta")%>%distinct(n_samples), "\n",
+                        "\tguanfacine/tenex: ", mid.meds.deltas.pgs %>%ungroup()%>% filter(drug=="guanfacine")%>%distinct(n_samples), "\n",
+                        "\tclonidine: ", mid.meds.deltas.pgs %>%ungroup()%>% filter(drug=="clonidine")%>%distinct(n_samples), "\n",
+                        "\tatomoxetine/strattera: ", mid.meds.deltas.pgs %>%ungroup()%>% filter(drug=="atomoxetine")%>%distinct(n_samples), "\n",
+                        "\tlisdexamfetamine/vyvanse: ", mid.meds.deltas.pgs %>%ungroup()%>% filter(drug=="lisdexamfetamine")%>%distinct(n_samples), "\n",
+                        "\tamphetamine/adderall: ", mid.meds.deltas.pgs %>%ungroup()%>% filter(drug=="amphetamine")%>%distinct(n_samples), "\n",
+                        "\tstim = methylphenidate/ritalin/concerta/amphetamine/adderall: ", mid.meds.deltas.pgs %>%ungroup()%>% filter(drug=="stim")%>%distinct(n_samples), "\n",
+                        "\tnon_stim = vyvanse/intuniv/strattera/tenex/lisdexamfetamine/atomoxetine/clonidine/guanfacine: ", mid.meds.deltas.pgs %>%ungroup()%>% filter(drug=="non_stim")%>%distinct(n_samples), "\n",
                         "variables description:\n",
-                        "\tcnf: correct neutral face\n",
-                        "\tcngf: correct negative face\n",
-                        "\tcpf: correct positive face\n",
-                        "\tcplace: correct place\n",
+                        "\t2: While the game was being explained to you, did you think about what you would like to do with the money you might win during the game?\n",
+                        "\texc_1a: How EXCITED were you when: You saw a circle saying you could win $5?\n",
+                        "\texc_1b: circle with winning $0.2\n",
+                        "\texc_1c: How EXCITED were you when: You saw a square saying you could lose $5\n",
+                        "\texc_1d: square with losing $0.2\n",
+                        "\texc_1e: How EXCITED were you when: You saw a triangle saying there was no money at stake?\n",
+                        "\tnerv_1a: How NERVOUS were you when: You saw a circle saying you could win $5?\n",
+                        "\tnerv_1b: circle with winning $0.2\n",
+                        "\tnerv_1c: How NERVOUS were you when: You saw a square saying you could lose $5\n",
+                        "\tnerv_1d: square with losing $0.2\n",
+                        "\tnerv_1e: How NERVOUS were you when: You saw a triangle saying there was no money at stake?\n",
+                        "\ttry_1a: How hard did you try: to win $5?\n",
+                        "\ttry_1b: hard with winning $0.2\n",
+                        "\ttry_1c: How hard did you try: to not lose $5\n",
+                        "\ttry_1d: hard to not lose $0.2\n",
+                        "\ttry_1e: How hard did you try: on the `no money at stake` trials?\n",
                         "* pval < 0.05 & not FDR sig", "\n", 
                         "** pval < 0.01 & not FDR sig", "\n", 
                         "*** FDR < 0.05"), 
-       title = "correlation of nback score change (delta) with PGS")
+       title = "correlation of mid score change (delta) with PGS")
 ####
 
 ####
