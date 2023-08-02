@@ -322,7 +322,10 @@ cbcl.pred %>%
   ggplot(aes(x=predicted, y=dsm5_as_adhd))+
   geom_point()+
   geom_smooth(method = "glm")+stat_cor(method = "spearman") +
-  labs(title = "correlation of cbcl adhd change (delta) of MPH with predicted MPH response")
+  labs(y = "delta of DSM5_ADHD_symptoms", x = "predicted MPH response",
+       title = "correlation of cbcl adhd change (delta) of MPH with predicted MPH response",
+       caption = paste0("n(samples): ", length(unique(cbcl.pred$IID)), "\n",
+                        "\tmethylphenidate = methylphenidate / ritalin"))
 corr.table(cbcl.pred %>% select(predicted),
            cbcl.pred %>% select(starts_with("syn"), starts_with("dsm5")),
            method = "spearman") %>%
@@ -394,13 +397,15 @@ pgs.pred <- inner_join(abcd.pred, abcd.pgs)
 # pgs.pred <- inner_join(inner_join(abcd.pred, abcd.pgs), cbcl.meds.deltas %>% select(IID, drug)%>%filter(drug=="methylphenidate"))%>%distinct(IID ,.keep_all = T)
 pgs.pred %>% 
   pivot_longer(cols = colnames(abcd.pgs)[-1], names_to = "PGS", values_to = "score") %>%
+  filter(grepl("gF", PGS)) %>%
   ggplot(aes(x=predicted, y=score))+
   geom_point(size=0.3)+
   geom_smooth(method = "glm") +
   stat_cor() +
-  facet_wrap("PGS", scales = "free_y") +
-  labs(caption = paste0("n(samples): ", nrow(pgs.pred)
-                        ,"\n\tmethylphenidate/ritalin"),
+  # facet_wrap("PGS", scales = "free_y") +
+  labs(y="cognitive gFactor PGS", x="predicted MPH response",
+       caption = paste0("n(samples): ", nrow(pgs.pred)
+                        ,"\n\tmethylphenidate = methylphenidate / ritalin"),
        title = "correlation between predicted MPH response and PGS")
 ####
 # supplementary tables ----------------------------------------------------

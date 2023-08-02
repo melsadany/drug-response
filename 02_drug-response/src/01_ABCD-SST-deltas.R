@@ -223,7 +223,7 @@ sst.meds.deltas %>%
 # SST deltas per drug with PGS -------------------------------------------
 # scatterplot
 t <- inner_join(sst.meds.deltas %>% 
-                  filter(drug == "methylphenidate") ,
+                  filter(drug == "stim") ,
                 abcd.pgs) %>%
   filter(grepl("as", question)) %>% mutate(question = sub("e_as_", "", question)) %>%
   pivot_longer(cols = c("ADHD-Demontis", "cog_gFactor"), names_to = "PGS", values_to = "score") %>%
@@ -233,7 +233,7 @@ t %>%
   ggplot(aes(x=delta, y=score))+
   geom_point(size=1) +
   # facet_grid2(rows = vars(PGS), cols = vars(question), scales = "free") +
-  stat_cor(method = "spearman") + geom_smooth(method = "glm") +
+  stat_cor() + geom_smooth(method = "glm") +
   labs(x="SST delta (on-drug - off-drug)", y = "cognitive gFactor polygenic score",
        title = "correlation between PGS and SST deltas",
        caption = paste0("n(samples): ", length(unique(t$IID)), "\n",
@@ -255,7 +255,7 @@ sst.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) 
                   abcd.pgs)
   ret <- corr.table(t %>% select(colnames(abcd.pgs)[-1]),
                     t %>% select(starts_with("e_")),
-                    method = "spearman") %>%
+                    method = "pearson") %>%
     filter(V1 %in% colnames(abcd.pgs)[-1], !V2 %in% colnames(abcd.pgs)[-1]) %>%
     mutate(value_type = factor(ifelse(grepl("raw_", V2), 
                                       "raw data", 
@@ -270,10 +270,10 @@ sst.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) 
 }
 sst.meds.deltas.pgs %>%
   # filter(drug == "methylphenidate") %>%
-  filter(drug %in% c("stim", "non_stim", "methylphenidate", "lisdexamfetamine", "clonidine")) %>%
+  # filter(drug %in% c("stim", "non_stim", "methylphenidate", "lisdexamfetamine", "clonidine")) %>%
   # filter(drug == "guanfacine") %>%
   filter(grepl("as", V2)) %>% mutate(V2 = sub("e_as_", "", V2)) %>%
-  filter(grepl("correct_stop", V2) | grepl("no_response", V2)) %>%
+  filter(!grepl("correct_go", V2)) %>%
   filter(grepl("ADHD", V1) | grepl("cog_gFa", V1)) %>%
   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
@@ -286,13 +286,13 @@ sst.meds.deltas.pgs %>%
                         # "methylphenidate: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="methylphenidate")%>%distinct(n_samples), "\n",
                         # "methylphenidate/ritalin/concerta: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="methylphenidate")%>%distinct(n_samples), "\n",
                         "\tmethylphenidate/ritalin: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="methylphenidate")%>%distinct(n_samples), "\n",
-                        # "concerta: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="concerta")%>%distinct(n_samples), "\n",
+                        "\tconcerta: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="concerta")%>%distinct(n_samples), "\n",
                         # "guanfacine/tenex/intuniv: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="guanfacine")%>%distinct(n_samples), "\n",
-                        # "guanfacine/tenex: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="guanfacine")%>%distinct(n_samples), "\n",
+                        "\tguanfacine/tenex: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="guanfacine")%>%distinct(n_samples), "\n",
                         "\tclonidine: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="clonidine")%>%distinct(n_samples), "\n",
-                        # "atomoxetine/strattera: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="atomoxetine")%>%distinct(n_samples), "\n",
+                        "\tatomoxetine/strattera: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="atomoxetine")%>%distinct(n_samples), "\n",
                         "\tlisdexamfetamine/vyvanse: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="lisdexamfetamine")%>%distinct(n_samples), "\n",
-                        # "amphetamine/adderall: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="amphetamine")%>%distinct(n_samples), "\n",
+                        "\tamphetamine/adderall: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="amphetamine")%>%distinct(n_samples), "\n",
                         "\tstim = methylphenidate/ritalin/concerta/amphetamine/adderall: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="stim")%>%distinct(n_samples), "\n",
                         "\tnon_stim = vyvanse/intuniv/strattera/tenex/lisdexamfetamine/atomoxetine/clonidine/guanfacine: ", sst.meds.deltas.pgs %>%ungroup()%>% filter(drug=="non_stim")%>%distinct(n_samples), "\n",
                         "* pval < 0.05 & not FDR sig", "\n", 
