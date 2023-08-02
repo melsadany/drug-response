@@ -211,5 +211,35 @@ sst.all %>%
   labs(title = "distribution of SST by drug/drug-category",
        x="", y="")
 ####
+# correlation between predicted MPH and PGS -------------------------------
+pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
+  rename_all(.funs = function(x) sub("corrected_", "", x)) %>%
+  select(IID, contains("cog")&contains("gFa"), contains("PGC")) %>%
+  rename_all(.funs = function(x) str_replace_all(x, "-UKB-2020", "")) %>%
+  rename_all(.funs = function(x) str_replace_all(x, "-PGC-20[0-9]+", ""))
+pred <- read_rds("../data/derivatives/m-outputs/abcd/all-samples/model-celltype-all-FALSE-TRUE-1.rds") %>%
+  rename(predicted = m) %>%
+  mutate(predicted = scale(-predicted, scale = T, center = T)[,1])
+pgs.pred.all <- inner_join(pred, pgs)
+pgs.pred.all %>%
+  pivot_longer(cols = colnames(pgs)[-1], names_to = "PGS", values_to = "score") %>%
+  ggplot(aes(x=predicted, y=score)) +
+  geom_point()+
+  geom_smooth(method = "glm")+
+  stat_cor()+
+  facet_wrap("PGS")
+corr.table(pgs.pred.all %>% select(predicted), 
+           pgs.pred.all %>% select(colnames(pgs)[-1]),
+           method = "spearman") %>%
+  filter(V1 == "predicted", V2 != V1) %>%
+  mutate(FDR = p.adjust(pval, method = "fdr")) %>%
+  ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
+  geom_tile()+
+  geom_text(size=3)+
+  redblu.col.gradient+null_labs+my.guides+
+  labs(caption = paste0("* pval < 0.05 & not FDR sig", "\n", 
+                        "** pval < 0.01 & not FDR sig", "\n", 
+                        "*** FDR < 0.05"))
+####
 
 ####
