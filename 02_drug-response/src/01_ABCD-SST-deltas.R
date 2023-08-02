@@ -66,9 +66,9 @@ abcd.pred <- read_rds("../data/derivatives/m-outputs/abcd/all-samples/model-cell
 ####
 # ABCD SST data -----------------------------------------------------------
 sst.raw <- read_csv(paste0(abcd.raw.dir, "/imaging/mri_y_tfmr_sst_beh.csv"))
-question.dict <- data.frame(q0 = colnames(sst.raw), description = t(sst.raw)[,1], row.names = NULL)
 # only keeping 4 questions of interest for the first run of the task only
-sst.r1 <- left_join(sst.raw[-1,] %>%
+sst.r1 <- left_join(sst.raw %>%
+                      filter(tfmri_sst_beh_performflag==1 & tfmri_sst_beh_glitchflag ==0) %>%
                       select(IID = src_subject_id, eventname,
                              e_raw_correct_go = tfmri_sst_r1_beh_crgo_nt,
                              e_raw_correct_stop = tfmri_sst_r1_beh_crs_nt,
@@ -223,22 +223,23 @@ sst.meds.deltas %>%
 # SST deltas per drug with PGS -------------------------------------------
 # scatterplot
 t <- inner_join(sst.meds.deltas %>% 
-                  filter(drug == "concerta") ,
+                  filter(drug == "guanfacine") ,
                 abcd.pgs) %>%
   filter(grepl("as", question)) %>% mutate(question = sub("e_as_", "", question)) %>%
   pivot_longer(cols = c("ADHD-Demontis", "cog_gFactor"), names_to = "PGS", values_to = "score") %>%
   select(IID, sex, question, delta, n_samples, PGS, score, drug)
 t %>%
+  # filter(PGS == "cog_gFactor", grepl("no_res",question))%>%
   ggplot(aes(x=delta, y=score))+
   geom_point(size=1) +
   facet_grid2(rows = vars(PGS), cols = vars(question), scales = "free") +
   stat_cor(method = "spearman") + geom_smooth(method = "glm") +
-  labs(x="CBCL delta (on-drug - off-drug)", y = "polygenic score",
+  labs(x="CBCL delta (on-drug - off-drug)", y = "cognitive gFactor polygenic score",
        title = "correlation between PGS and SST deltas",
        caption = paste0("n(samples): ", length(unique(t$IID)), "\n",
-                        unique(t$drug)
+                        # unique(t$drug)
                         # "guanfacine = guanfacine/tenex"
-                        # "methylphenidate = methylphenidate/ritalin"
+                        "\tmethylphenidate = methylphenidate / ritalin"
                         # "non_stim =intuniv/strattera/tenex/atomoxetine/clonidine/guanfacine"
                         # "stim = methylphenidate/ritalin/concerta/amphetamine/adderall/vyvanse/lisdexamfetamine"
        ))
@@ -268,7 +269,7 @@ sst.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) 
 }
 sst.meds.deltas.pgs %>%
   # filter(drug == "methylphenidate") %>%
-  filter(drug %in% c("stim", "non_stim")) %>%
+  # filter(drug %in% c("stim", "non_stim")) %>%
   # filter(drug == "guanfacine") %>%
   filter(grepl("as", V2)) %>% mutate(V2 = sub("e_as_", "", V2)) %>%
   filter(grepl("ADHD", V1) | grepl("cog_gFa", V1)) %>%
