@@ -314,7 +314,10 @@ sst.pred %>%
   geom_point()+
   geom_smooth(method = "glm")+stat_cor(method = "spearman") +
   facet_wrap("question", scales = "free_y")+
-  labs(title = "correlation scatter of SST change (delta) of MPH with predicted MPH response")
+  labs(x = "predcited MPH response", y="SST performance delta",
+       caption = paste0("n(samples): ", length(unique(sst.pred$IID)), "\n",
+                        "\tmethylphenidate = methylphenidate / ritalin"),
+       title = "correlation of SST change (delta) of MPH with predicted MPH response")
 corr.table(sst.pred %>% select(predicted),
            sst.pred %>% select(starts_with("e_")),
            method = "spearman") %>%
