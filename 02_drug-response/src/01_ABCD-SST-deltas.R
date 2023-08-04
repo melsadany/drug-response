@@ -177,7 +177,7 @@ sst.meds.deltas.pgs <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) 
                   abcd.pgs)
   ret <- corr.table(t %>% select(colnames(abcd.pgs)[-1]),
                     t %>% select(starts_with("e_")),
-                    method = "pearson") %>%
+                    method = "spearman") %>%
     filter(V1 %in% colnames(abcd.pgs)[-1], !V2 %in% colnames(abcd.pgs)[-1]) %>%
     mutate(value_type = factor(ifelse(grepl("raw_", V2), 
                                       "raw data", 
