@@ -68,7 +68,7 @@ abcd.pred <- read_rds("../data/derivatives/m-outputs/abcd/all-samples/model-cell
 sst.raw <- read_csv(paste0(abcd.raw.dir, "/imaging/mri_y_tfmr_sst_beh.csv"))
 # only keeping 4 questions of interest for the first run of the task only
 sst.r1 <- left_join(sst.raw %>%
-                      filter(tfmri_sst_beh_performflag==1 & tfmri_sst_beh_glitchflag ==0) %>%
+                      filter(tfmri_sst_beh_glitchflag ==0) %>%
                       select(IID = src_subject_id, eventname,
                              e_raw_correct_go = tfmri_sst_r1_beh_crgo_nt,
                              e_raw_correct_stop = tfmri_sst_r1_beh_crs_nt,
@@ -101,30 +101,6 @@ sst.all <- inner_join(abcd.sst.filt,
                       sst.as.corrected %>% 
                         rename_at(.vars = vars(starts_with("e_")), 
                                   .funs = function(x) sub("raw", "as", x)))
-####
-# correlation between taking drug and SST --------------------------------
-corr.table(sst.all %>% select(adhd.meds$drug),
-           sst.all %>% select(starts_with("e_")),
-           method = "spearman") %>%
-  filter(V1 %in% adhd.meds$drug, ! V2 %in% adhd.meds$drug) %>%
-  mutate(value_type = factor(ifelse(grepl("raw", V2), "raw data", 
-                                    "corrected for age, sex, and interaction"), 
-                             levels = c("raw data", 
-                                        "corrected for age, sex, and interaction"))) %>%
-  group_by(value_type) %>%
-  mutate(FDR = p.adjust(pval, method = "fdr")) %>%
-  ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
-  geom_tile()+
-  geom_text(size = 3)+
-  facet_grid2(rows = vars(value_type), scales = "free_y", independent = "y") +
-  redblu.col.gradient+my.guides+null_labs +
-  labs(caption = paste0("n(samples): ", nrow(sst.all), "\n",
-                        "corrected for:", "\n",
-                        "\tinterview_age + sex + interview_age:sex", "\n",
-                        "* pval < 0.05 & not FDR sig", "\n", 
-                        "** pval < 0.01 & not FDR sig", "\n", 
-                        "*** FDR < 0.05"), 
-       title = "correlation of taking a medication with sst scores")
 ####
 # SST deltas by drug status for participants -----------------------------
 registerDoMC(cores = 3)
@@ -165,60 +141,6 @@ sst.meds.deltas <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) %dop
     mutate(n_samples = n)
   return(t)
 }
-####
-# SST deltas average by drug ---------------------------------------------
-sst.meds.deltas %>%
-  group_by(question, drug) %>%
-  summarise_at(.vars = vars(delta, n_samples), 
-               .funs = function(x) mean(x)) %>%
-  mutate(value_type = factor(ifelse(grepl("raw", question), 
-                                    "raw data", "corrected for age, sex, and interaction"),
-                             levels = c("raw data", 
-                                        "corrected for age, sex, and interaction"))) %>%
-  ggplot(aes(x=drug, y=question, fill = delta)) +
-  geom_tile()+
-  my.guides+null_labs+
-  facet_grid2(rows = vars(value_type), scales = "free_y", independent = "y") +
-  scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], 
-                       name = "average delta (on_drug - off_drug)")+
-  labs(caption = paste0("n(samples): ", "\n\t",
-                        paste(apply(sst.meds.deltas%>%ungroup()%>%select(drug, n_samples)%>%distinct(), 
-                                    1, function(x) paste(x[1], ":", x[2])), collapse = "\n\t")), 
-       title = "average deltas for sst performance measures per drug")
-# sst deltas per drug in a boxplot for raw sst
-sst.meds.deltas %>%
-  filter(!grepl("totprob", question)) %>%
-  mutate(value_type = factor(ifelse(grepl("raw", question), 
-                                    "raw data", "corrected for age, sex, and interaction"),
-                             levels = c("raw data", 
-                                        "corrected for age, sex, and interaction"))) %>%
-  filter(grepl("raw", question)) %>%
-  ggplot(aes(x=question, y=delta, fill=question))+
-  geom_boxplot(outlier.size = 0.5)+
-  geom_hline(yintercept = 0, linetype = "dashed", color = "red")+
-  my.guides+null_labs+ labs(y="score delta")+
-  facet_wrap("drug", scales = "free_y", ncol = 3)+
-  labs(caption = paste0("n(samples): ", "\n\t",
-                        paste(apply(sst.meds.deltas%>%ungroup()%>%select(drug, n_samples)%>%distinct(), 
-                                    1, function(x) paste(x[1], ":", x[2])), collapse = "\n\t")), 
-       title = "sst raw score change (delta) per drug")
-# sst deltas per drug in a boxplot for age-sex corrected sst
-sst.meds.deltas %>%
-  filter(!grepl("totprob", question)) %>%
-  mutate(value_type = factor(ifelse(grepl("raw", question), 
-                                    "raw data", "corrected for age, sex, and interaction"),
-                             levels = c("raw data", 
-                                        "corrected for age, sex, and interaction"))) %>%
-  filter(grepl("as", question)) %>%
-  ggplot(aes(x=question, y=delta, fill=question))+
-  geom_boxplot(outlier.size = 0.5)+
-  geom_hline(yintercept = 0, linetype = "dashed", color = "red")+
-  my.guides+null_labs+ labs(y="score delta")+
-  facet_wrap("drug", scales = "free_y", ncol = 3)+
-  labs(caption = paste0("n(samples): ", "\n\t",
-                        paste(apply(sst.meds.deltas%>%ungroup()%>%select(drug, n_samples)%>%distinct(), 
-                                    1, function(x) paste(x[1], ":", x[2])), collapse = "\n\t")), 
-       title = "sst age-sex corrected score change (delta) per drug")
 ####
 # SST deltas per drug with PGS -------------------------------------------
 # scatterplot
@@ -341,6 +263,109 @@ corr.table(sst.pred %>% select(predicted),
        title = "correlation of sst score change (delta) of MPH with predicted MPH response") + 
   theme(plot.title = element_text(hjust = 1, size = 9),axis.text.x.bottom = element_text(angle = 0))
 ####
+####
+# models for predicting deltas by PGS, predicted, or combination ----------
+pgs.predicted.deltas <- inner_join(sst.meds.deltas %>% pivot_wider(names_from = "question", values_from = "delta", 
+                                                                   id_cols = c(IID,sex,drug, n_samples)), 
+                                   inner_join(abcd.pgs, abcd.pred))
+
+registerDoMC(cores = 3)
+drug.deltas.rsquared <- foreach (i = 1:length(unique(pgs.predicted.deltas$drug)), .combine = rbind) %dopar% {
+  dname <- unique(pgs.predicted.deltas$drug)[i]
+  nsamples <- pgs.predicted.deltas %>% filter(drug == dname) %>% distinct(n_samples)
+  models.r.squared <- do.call(rbind, lapply(pgs.predicted.deltas %>% filter(drug == dname) %>% select(contains("_as_")), function(x) {
+    m1 <- lm(y ~ `ADHD-Demontis`, data = pgs.predicted.deltas %>% filter(drug == dname) %>% mutate(y=x))
+    m2 <- lm(y ~ cog_gFactor, data = pgs.predicted.deltas %>% filter(drug == dname) %>% mutate(y=x))
+    m3 <- lm(y ~ predicted, data = pgs.predicted.deltas %>% filter(drug == dname) %>% mutate(y=x))
+    m12 <- lm(y ~ `ADHD-Demontis` + cog_gFactor, data = pgs.predicted.deltas %>% filter(drug == dname) %>% mutate(y=x))
+    m13 <- lm(y ~ `ADHD-Demontis` + predicted, data = pgs.predicted.deltas %>% filter(drug == dname) %>% mutate(y=x))
+    m23 <- lm(y ~ cog_gFactor + predicted, data = pgs.predicted.deltas %>% filter(drug == dname) %>% mutate(y=x))
+    m232 <- lm(y ~ cog_gFactor + predicted + cog_gFactor:predicted, data = pgs.predicted.deltas %>% filter(drug == dname) %>% mutate(y=x))
+    m123 <- lm(y ~ `ADHD-Demontis` + cog_gFactor + predicted, data = pgs.predicted.deltas %>% filter(drug == dname) %>% mutate(y=x))
+    mall <- lm(y ~ `ADHD-Demontis` + cog_gFactor + predicted + cog_gFactor:predicted , data = pgs.predicted.deltas %>% filter(drug == dname) %>% mutate(y=x))
+    df <- data.frame(m1 = summary(m1)$adj.r.squared,
+                     m2 = summary(m2)$adj.r.squared,
+                     m3 = summary(m3)$adj.r.squared,
+                     m12 = summary(m12)$adj.r.squared,
+                     m13 = summary(m13)$adj.r.squared,
+                     m23 = summary(m23)$adj.r.squared,
+                     m232 = summary(m232)$adj.r.squared,
+                     m123 = summary(m123)$adj.r.squared)
+    # changed the model from mall to m123
+    mm <- mall
+    df3 <- summary(mm)$coefficients %>% 
+      as.data.frame() %>% 
+      rownames_to_column("var") %>% 
+      mutate(var = str_remove_all(pattern = "`",string = var), 
+             confint_min = confint(mm)[,1], 
+             confint_max = confint(mm)[,2]) %>% 
+      filter(!grepl("Intercept", var)) %>%
+      rename(pval = 5)
+    # return(df)
+    return(df3)
+  }))
+  df2 <- models.r.squared %>%
+    rownames_to_column("question") %>%
+    mutate(drug = dname, n = nsamples$n_samples)
+  return(df2)
+}
+drug.deltas.rsquared %>%
+  pivot_longer(cols = starts_with("m"), names_to = "model", values_to = "rsquared") %>%
+  mutate(model = factor(model, levels = c("m1", "m2", "m3", "m12", "m13", "m23", "m232", "m123"))) %>%
+  mutate(question = sub("e_as_", "", question)) %>%
+  # filter(!(grepl("3", model)&drug %in% c("amphetamine", "atomoxetine", "clonidine", "guanfacine", "lisdexamfetamine", "non_stim"))) %>%
+  ggplot(aes(x=model, y=rsquared, fill=model))+
+  geom_bar(stat = "identity", show.legend = F)+
+  facet_grid2(rows = vars(question), cols = vars(drug), scales = "free_y", independent = "y")+
+  theme(strip.text.y.right = element_text(angle = 0))+
+  scale_fill_manual(values = c(six.colors, boxplot.colors)) +
+  labs(title = "predicting SST deltas by PGS or predicted MPH response",
+       caption = paste0("all models are for predicting the delta using different variables\n",
+                        "\tm1\t\tADHD_PGS\n",
+                        "\tm2\t\tgFactor_PGS\n",
+                        "\tm3\t\tpredcited MPH response\n",
+                        "\tm12\t\tADHD_PGS + gFactor\n",
+                        "\tm13\t\tADHD_PGS + predicted\n",
+                        "\tm23\t\tgFactor_PGS + predicted\n",
+                        "\tm232\tgFactor_PGS + predicted + gFactor_PGS:predicted\n",
+                        "\tm123\tADHD_PGS + gFactor_PGS + predicted\n"))
+drug.deltas.rsquared %>%
+  mutate(question = sub("\\.[0-9]", "", question)) %>%
+  mutate(sig = ifelse(pval<0.05, "pval < 0.05", "pval \u2265 0.05")) %>%
+  mutate(question = sub("e_as_", "", question)) %>%
+  mutate(var = factor(var, levels = c("ADHD-Demontis", "cog_gFactor", "predicted", "cog_gFactor:predicted"))) %>%
+  ggplot(aes(x=Estimate, y = var)) +
+  geom_point(aes(alpha = sig, color = var),  position = position_dodge(width = 0.6), size =2.5) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.2, color = "red") +
+  scale_alpha_manual(values = c(1, 0.5)) +
+  # scale_shape_manual(values = c(1, 2)) + 
+  geom_errorbarh(aes(xmin = confint_min, xmax = confint_max, alpha = sig, color = var), 
+                 linewidth = 0.8, height = 0, show.legend = F, 
+                 position = position_dodge(width = 0.6)) +
+  scale_color_manual(values = six.colors[c(1:4)]) +
+  facet_grid2(rows = vars(question), cols = vars(drug))+
+  theme(strip.text.y.right = element_text(angle = 0)) +
+  labs(x = "Estimate", y="", 
+       # title = "predicting SST deltas by PGS or predicted MPH response",
+       # title = "predicting SST deltas by PGS",
+       title = "predicting SST deltas",
+       # title = "predicting SST deltas by predicted MPH response",
+       caption = paste0("n(samples): \n", 
+                        "\tmethylphenidate/ritalin: ", drug.deltas.rsquared%>% filter(drug=="methylphenidate")%>%distinct(n), "\n",
+                        "\tconcerta: ", drug.deltas.rsquared%>% filter(drug=="concerta")%>%distinct(n), "\n",
+                        "\tguanfacine/tenex: ", drug.deltas.rsquared%>% filter(drug=="guanfacine")%>%distinct(n), "\n",
+                        "\tlisdexamfetamine/vyvanse: ", drug.deltas.rsquared%>% filter(drug=="lisdexamfetamine")%>%distinct(n), "\n",
+                        "\tamphetamine/adderall: ", drug.deltas.rsquared%>% filter(drug=="amphetamine")%>%distinct(n), "\n",
+                        "\tclonidine: ", drug.deltas.rsquared%>% filter(drug=="clonidine")%>%distinct(n), "\n",
+                        "\tatomoxetine/strattera: ", drug.deltas.rsquared%>% filter(drug=="atomoxetine")%>%distinct(n), "\n",
+                        "\tstim = methylphenidate/ritalin/concerta/amphetamine/adderall/vyvanse/lisdexamfetamine: ", drug.deltas.rsquared%>% filter(drug=="stim")%>%distinct(n), "\n",
+                        "\tnon_stim = intuniv/strattera/tenex/atomoxetine/clonidine/guanfacine: ", drug.deltas.rsquared%>% filter(drug=="non_stim")%>%distinct(n)
+       ))
+####
+
+
+
+
 
 
 ####
