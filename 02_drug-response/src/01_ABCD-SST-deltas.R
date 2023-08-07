@@ -35,10 +35,12 @@ adhd.meds <- data.frame(drug = c("methylphenidate",
                                  "amphetamine", "lisdexamfetamine",
                                  "atomoxetine", "clonidine", "guanfacine"
 ))
-abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
+missing.samples <- read_csv("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/subjects-missing-med-name.csv") %>%
+  mutate(drop = T)
+abcd.meds.r <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
   as.data.frame() %>%
   select(c(1:2), any_of(all.adhd.meds$drug)) %>%
-  filter(!(grepl("3", eventname) | grepl("4", eventname))) %>%
+  # filter(!(grepl("3", eventname) | grepl("4", eventname))) %>%
   mutate(methylphenidate = ifelse((methylphenidate+ritalin)>=1 & concerta == 0,1,0),
          amphetamine = ifelse((adderall+amphetamine)>=1,1,0),
          lisdexamfetamine = ifelse((vyvanse+lisdexamfetamine)>=1,1,0),
@@ -47,6 +49,9 @@ abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/ab
          guanfacine = ifelse((guanfacine+tenex)>=1 & intuniv == 0,1,0),
          atomoxetine = ifelse((atomoxetine+strattera)>=1,1,0)) %>% 
   select(-c(ritalin, adderall, tenex, strattera,intuniv, vyvanse))
+abcd.meds <- left_join(abcd.meds.r, missing.samples) %>%
+  filter(is.na(drop)) %>%
+  select(-drop)
 ####
 # ABCD PGS file -----------------------------------------------------------
 abcd.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
