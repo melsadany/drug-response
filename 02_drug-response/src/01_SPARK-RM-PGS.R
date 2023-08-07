@@ -66,8 +66,8 @@ pgs.rm <- inner_join(spark.rm.filt %>% select(IID = ParticipantID, ch_med_methyl
                                                    ifelse(ch_med_methyl_effect==0 | ch_med_amph_effect ==0, 0,NA))),
                      spark.pgs) %>%
   filter(!(is.na(ch_med_methyl_yn)&is.na(ch_med_amph_yn)))
-samples <- colSums(pgs.rm %>% select(starts_with("ch_med"), -contains("PM")), na.rm = T) %>% as.data.frame() %>% rename(count = 1) %>% rownames_to_column("q")
-corr.table(pgs.rm %>% select(colnames(spark.pgs)[-1]), 
+samples <- colSums(pgs.rm %>% select(starts_with("ch_med"), -contains("PM"), contains("stim")), na.rm = T) %>% as.data.frame() %>% rename(count = 1) %>% rownames_to_column("q")
+p1 <- corr.table(pgs.rm %>% select(colnames(spark.pgs)[-1]), 
            pgs.rm %>% select(ends_with("yn"), ends_with("effect")),
            method = "spearman") %>%
   filter(V1 %in% colnames(spark.pgs)[-1], !V2 %in% colnames(spark.pgs)[-1]) %>%
@@ -78,12 +78,23 @@ corr.table(pgs.rm %>% select(colnames(spark.pgs)[-1]),
   geom_tile()+
   geom_text(size = 3) +
   redblu.col.gradient+my.guides+null_labs +
-  labs(caption = paste0("n(samples): ", nrow(pgs.rm), "\n\t",
-                        paste(apply(samples, 
-                                    1, function(x) paste(sub("ch_med_", "", x[1]), " answering yes:", x[2])), collapse = "\n\t"), "\n",
+  labs(caption = paste0("n(samples): ", nrow(pgs.rm), "\n",
+                        # paste(apply(samples, 
+                        #             1, function(x) paste(sub("ch_med_", "", x[1]), " answering yes:", x[2])), collapse = "\n\t"), "\n",
                         "* pval < 0.05 & not FDR sig", "\n", 
                         "** pval < 0.01 & not FDR sig", "\n", 
-                        "*** FDR < 0.05"))
+                        "*** FDR < 0.05"))+
+  theme(axis.text.x.bottom = element_text(angle = 0, hjust = 0.5))
+p2 <- samples %>%
+  mutate(q = sub("ch_med_", "", q)) %>%
+  ggplot(aes(x=q, y=count, fill = q, label = count))+
+  geom_bar(stat = "identity", show.legend = F, width = 0.3) +
+  geom_text(size=3, nudge_y = -10) +
+  theme(axis.text.y.left = element_text(angle = 0, hjust = 0.5), 
+        axis.text.x.bottom = element_blank()) +
+  labs(x="", y="n(samples answering yes)") +
+  coord_flip()
+p3 <- patchwork::wrap_plots(p1+labs(title = "B"),p2+labs(title = "C"), ncol = 1)
 # correlation between SPARK methyl effect and PGS
 corr.table(pgs.rm %>% select(colnames(spark.pgs)[-1]), 
            pgs.rm %>% select(ch_med_methyl_effect),
@@ -108,7 +119,7 @@ mph.scq <- inner_join(spark.rm.filt%>%select(IID=ParticipantID,
                         drop_na(methyl_effect), 
                       spark.scq%>%rename(IID=subject_sp_id))
 # figure for 
-do.call(rbind,
+p4 <- do.call(rbind,
         lapply(mph.scq %>% select(starts_with("q")), 
                function(x) {
                  t <- fisher.test(mph.scq$methyl_effect, x)
@@ -140,17 +151,18 @@ spark.cog <- inner_join(spark.rm.filt%>%select(IID=ParticipantID,
                           drop_na(methyl_effect), 
                         spark.iq)
 t <- fisher.test(spark.cog$methyl_effect, spark.cog$derived_cog_impair)
-spark.cog %>% 
+p5 <- spark.cog %>% 
   mutate(methyl_effect = ifelse(methyl_effect==1, "yes", "no"), 
          derived_cog_impair = ifelse(derived_cog_impair==1, "yes", "no")) %>%
   ggplot(aes(methyl_effect, fill=derived_cog_impair))+
-  geom_bar() +
+  geom_bar(width = 0.5) +
   scale_fill_manual(values = boxplot.colors, name = "cognitive impairment")+
   labs(subtitle = paste0("Fisher's Exact test", "\n",
                          "OR: ", round(t$estimate[[1]],4), 
                          "\npvalue: ", round(t$p.value,4))) +
   theme(axis.text.x.bottom = element_text(angle = 0, hjust = 0.5))
-
+###
+patchwork::wrap_plots(p4+labs(title = "A"), patchwork::wrap_plots(p3,p5+labs(title = "D"),ncol = 1, heights = c(3,1)), ncol = 2)
 ###
 # supplementary figures ---------------------------------------------------
 # barplot for SPARM RM answers

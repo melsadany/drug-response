@@ -25,28 +25,24 @@ demo <- full_join(age, sex)
 # ABCD meds ---------------------------------------------------------------
 # list of adhd meds of interest
 all.adhd.meds <- data.frame(drug = c("methylphenidate", "adderall", "concerta", "vyvanse", 
-                                     "dextroamphetamine",  "ritalin", "intuniv", "strattera",
-                                     "tenex", "amphetamine", "dexmethylphenidate", "lisdexamfetamine",
+                                     "ritalin", "intuniv", "strattera",
+                                     "tenex", "amphetamine", "lisdexamfetamine",
                                      "atomoxetine", "clonidine", "guanfacine", "albuterol"
 ))
 adhd.meds <- data.frame(drug = c("methylphenidate",
                                  "concerta",
                                  "stim", "non_stim",
-                                 # "dextroamphetamine", "dexmethylphenidate", 
                                  "amphetamine", "lisdexamfetamine",
-                                 "intuniv",
                                  "atomoxetine", "clonidine", "guanfacine", "albuterol"
 ))
 abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
   as.data.frame() %>%
   select(c(1:2), any_of(all.adhd.meds$drug)) %>%
-  # mutate(methylphenidate = ifelse((methylphenidate+ritalin+concerta)>=1,1,0),
   mutate(methylphenidate = ifelse((methylphenidate+ritalin)>=1 & concerta == 0,1,0),
          amphetamine = ifelse((adderall+amphetamine)>=1,1,0),
          lisdexamfetamine = ifelse((vyvanse+lisdexamfetamine)>=1,1,0),
          stim = ifelse((methylphenidate+adderall+amphetamine+concerta+ritalin+vyvanse+lisdexamfetamine)>=1,1,0),
          non_stim = ifelse((intuniv+strattera+tenex+atomoxetine+clonidine+guanfacine)>=1,1,0),
-         # guanfacine = ifelse((guanfacine+tenex+intuniv)>=1,1,0),
          guanfacine = ifelse((guanfacine+tenex)>=1 & intuniv == 0,1,0),
          atomoxetine = ifelse((atomoxetine+strattera)>=1,1,0)) %>% 
   select(-c(ritalin, adderall, tenex, strattera, vyvanse))
@@ -64,12 +60,11 @@ p1 <- pgs.med %>%
   filter(status >=1) %>%
   pivot_longer(cols = c(contains("gFact"), contains("ADHD")), names_to = "PGS", values_to = "score") %>%
   ggplot(aes(x=score, y=drug)) +
-  geom_boxplot(outlier.size = 0.3)+
+  geom_boxplot(outlier.size = 0.3,width = 0.4)+
   facet_wrap("PGS") +
   geom_vline(xintercept = 0, linetype = "dashed", color = "red")+
-  labs(
-    # title = "distribution of PGS by drug",
-       x="", y="")
+  labs(x="", y="") +
+  theme(axis.text.y.left = element_blank())
 p2 <- corr.table(pgs.med %>% select(contains("ADHD"), contains("gFa")), 
            pgs.med %>% select(adhd.meds$drug), 
            method = "spearman") %>%
@@ -79,14 +74,25 @@ p2 <- corr.table(pgs.med %>% select(contains("ADHD"), contains("gFa")),
   geom_tile()+
   geom_text(size = 3)+
   redblu.col.gradient+my.guides+null_labs +
-  labs(caption = paste0("n(samples): ", "\n\t",
-                        "stim = methylphenidate/ritalin/concerta/amphetamine/adderall/vyvanse/lisdexamfetamine: ", nrow(pgs.med%>% filter(stim==1)%>%distinct(IID)), "\n",
-                        "\tnon_stim = intuniv/strattera/tenex/atomoxetine/clonidine/guanfacine: ", nrow(pgs.med%>% filter(non_stim==1)%>%distinct(IID)), "\n",
-                        "* pval < 0.05 & not FDR sig", "\n", 
+  labs(caption = paste0("* pval < 0.05 & not FDR sig", "\n", 
                         "** pval < 0.01 & not FDR sig", "\n", 
                         "*** FDR < 0.05"), 
-       title = "correlation between taking ADHD medication and PGS")
-patchwork::wrap_plots(p2,p1, widths = c(1,2))
+       title = "correlation between taking ADHD medication and PGS") +
+  theme(axis.text.x.bottom = element_text(angle = 0, hjust = 0.5))
+samples <- colSums(pgs.med %>% select(adhd.meds$drug), na.rm = T) %>% 
+  as.data.frame() %>% 
+  rename(count = 1) %>% 
+  rownames_to_column("q")
+p3 <- samples %>% 
+  ggplot(aes(x=q, y=count, fill = q, label = count))+
+  geom_bar(stat = "identity", show.legend = F, width = 0.3) +
+  geom_text(size=3, nudge_y = -39) +
+  theme(axis.text.y.left = element_text(angle = 0, hjust = 0.5), 
+        axis.text.x.bottom = element_blank()) +
+  labs(x="", y="n(samples taking the med)") +
+  coord_flip() +
+  theme(axis.text.y.left = element_blank())
+patchwork::wrap_plots(p2,p1,p3, widths = c(1,1.7,1))
 ####
 # correlation between age and drug type -----------------------------------
 demo.med <- right_join(demo, abcd.meds)
@@ -154,6 +160,7 @@ cbcl.all %>%
   pivot_longer(cols = adhd.meds$drug, names_to = "drug", values_to = "status") %>%
   filter(status >=1) %>%
   pivot_longer(cols = c(contains("as"),-contains("totprob")), names_to = "CBCL", values_to = "score") %>%
+  mutate(CBCL = sub("as_", "", CBCL)) %>%
   ggplot(aes(x=score, y=drug)) +
   geom_boxplot(outlier.size = 0.3)+
   facet_wrap("CBCL", scales = "free_x") +
@@ -204,6 +211,8 @@ sst.all %>%
   pivot_longer(cols = adhd.meds$drug, names_to = "drug", values_to = "status") %>%
   filter(status >=1) %>%
   pivot_longer(cols = contains("as"), names_to = "SST", values_to = "score") %>%
+  mutate(SST = sub("e_as_", "", SST)) %>%
+  filter(!grepl("correct_go", SST)) %>%
   ggplot(aes(x=score, y=drug)) +
   geom_boxplot(outlier.size = 0.3)+
   facet_wrap("SST", scales = "free_x") +
@@ -212,34 +221,26 @@ sst.all %>%
        x="", y="")
 ####
 # correlation between predicted MPH and PGS -------------------------------
-pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
+abcd.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
   rename_all(.funs = function(x) sub("corrected_", "", x)) %>%
-  select(IID, contains("cog")&contains("gFa"), contains("PGC")) %>%
-  rename_all(.funs = function(x) str_replace_all(x, "-UKB-2020", "")) %>%
-  rename_all(.funs = function(x) str_replace_all(x, "-PGC-20[0-9]+", ""))
-pred <- read_rds("../data/derivatives/m-outputs/abcd/all-samples/model-celltype-all-FALSE-TRUE-1.rds") %>%
+  select(IID, "ADHD-Demontis", contains("cog")&contains("UKB")) %>%
+  rename_all(.funs = function(x) str_replace_all(x, "-UKB-2020", ""))
+abcd.pred <- read_rds("../data/derivatives/m-outputs/abcd/all-samples/model-celltype-all-FALSE-TRUE-1.rds") %>%
   rename(predicted = m) %>%
   mutate(predicted = scale(-predicted, scale = T, center = T)[,1])
-pgs.pred.all <- inner_join(pred, pgs)
-pgs.pred.all %>%
-  pivot_longer(cols = colnames(pgs)[-1], names_to = "PGS", values_to = "score") %>%
-  ggplot(aes(x=predicted, y=score)) +
-  geom_point()+
-  geom_smooth(method = "glm")+
-  stat_cor()+
-  facet_wrap("PGS")
-corr.table(pgs.pred.all %>% select(predicted), 
-           pgs.pred.all %>% select(colnames(pgs)[-1]),
-           method = "spearman") %>%
-  filter(V1 == "predicted", V2 != V1) %>%
-  mutate(FDR = p.adjust(pval, method = "fdr")) %>%
-  ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
-  geom_tile()+
-  geom_text(size=3)+
-  redblu.col.gradient+null_labs+my.guides+
-  labs(caption = paste0("* pval < 0.05 & not FDR sig", "\n", 
-                        "** pval < 0.01 & not FDR sig", "\n", 
-                        "*** FDR < 0.05"))
+pgs.pred <- inner_join(abcd.pred, abcd.pgs)
+pgs.pred %>% 
+  pivot_longer(cols = colnames(abcd.pgs)[-1], names_to = "PGS", values_to = "score") %>%
+  filter(grepl("gF", PGS)) %>%
+  ggplot(aes(x=predicted, y=score))+
+  geom_point(size=0.3)+
+  geom_smooth(method = "glm") +
+  stat_cor() +
+  # facet_wrap("PGS", scales = "free_y") +
+  labs(y="cognitive gFactor PGS", x="predicted MPH response",
+       caption = paste0("n(samples): ", nrow(pgs.pred)
+                        ,"\n\tmethylphenidate = methylphenidate / ritalin"),
+       title = "correlation between predicted MPH response and PGS")
 ####
 
 ####
