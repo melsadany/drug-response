@@ -5,7 +5,7 @@
 rm(list = ls())
 gc()
 source("/Dedicated/jmichaelson-wdata/msmuhammad/msmuhammad-source.R")
-library(ggpubr);library(ggExtra);library(ggh4x)
+library(ggpubr);library(ggExtra);library(ggh4x);library(pwr)
 ####
 # project dir setup -------------------------------------------------------
 project.dir <- "/Dedicated/jmichaelson-wdata/msmuhammad/projects/drug-response/02_drug-response"

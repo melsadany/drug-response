@@ -27,18 +27,20 @@ demo <- full_join(age, sex)
 all.adhd.meds <- data.frame(drug = c("methylphenidate", "adderall", "concerta", "vyvanse", 
                                      "ritalin", "intuniv", "strattera",
                                      "tenex", "amphetamine", "lisdexamfetamine",
-                                     "atomoxetine", "clonidine", "guanfacine", "albuterol"
+                                     "atomoxetine", "clonidine", "guanfacine"
 ))
 adhd.meds <- data.frame(drug = c("methylphenidate",
                                  "concerta",
                                  "stim", "non_stim", "neither",
                                  "amphetamine", "lisdexamfetamine",
-                                 "intuniv",
-                                 "atomoxetine", "clonidine", "guanfacine", "albuterol"
+                                 "atomoxetine", "clonidine", "guanfacine"
 ))
-abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
+missing.samples <- read_csv("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/subjects-missing-med-name.csv") %>%
+  mutate(drop = T)
+abcd.meds.r <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
   as.data.frame() %>%
   select(c(1:2), any_of(all.adhd.meds$drug)) %>%
+  # filter(!(grepl("3", eventname) | grepl("4", eventname))) %>%
   mutate(methylphenidate = ifelse((methylphenidate+ritalin)>=1 & concerta == 0,1,0),
          amphetamine = ifelse((adderall+amphetamine)>=1,1,0),
          lisdexamfetamine = ifelse((vyvanse+lisdexamfetamine)>=1,1,0),
@@ -46,8 +48,11 @@ abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/ab
          non_stim = ifelse((intuniv+strattera+tenex+atomoxetine+clonidine+guanfacine)>=1,1,0),
          guanfacine = ifelse((guanfacine+tenex)>=1 & intuniv == 0,1,0),
          atomoxetine = ifelse((atomoxetine+strattera)>=1,1,0),
-         neither = ifelse(stim >= 1 | non_stim >= 1, 0, 1)) %>% 
-  select(-c(ritalin, adderall, tenex, strattera, vyvanse))
+         neither = ifelse((stim+non_stim)>=1, 0,1)) %>% 
+  select(-c(ritalin, adderall, tenex, strattera,intuniv, vyvanse))
+abcd.meds <- left_join(abcd.meds.r, missing.samples) %>%
+  filter(is.na(drop)) %>%
+  select(-drop)
 ####
 # ABCD PGS file -----------------------------------------------------------
 abcd.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
@@ -67,7 +72,7 @@ abcd.nihtbx <- read_csv(paste0(abcd.raw.dir, "/neurocognition/nc_y_nihtb.csv"))
 # only keeping the anxiety/frustration/irritability/happiness statuses pre and post task
 abcd.nihtbx.filt <- abcd.nihtbx %>%
   select(IID = src_subject_id, eventname, 
-         contains("agecorrected")) %>%
+         (contains("pivocab") | contains("flanker") | contains("pattern") | contains("picture") | contains("reading")) &contains("agecorrected")) %>%
   filter(rowSums(is.na(abcd.nihtbx%>%select(contains("agecorrected"))))<=5)
 # combine nihtbx, age, sex, meds data 
 abcd.nihtbx.filt <- inner_join(inner_join(demo, abcd.nihtbx.filt), abcd.meds) %>% 
@@ -90,8 +95,8 @@ pgs.nihtbx.drug %>%
   pivot_longer(cols = c(adq, cogq), names_to = "quantile", values_to = "q") %>%
   mutate(drug = ifelse(drug_status == 0, "noth", drug)) %>%
   # filter(drug %in% c("stim", "non_stim", "neither", "methylphenidate", "guanfacine")) %>%
-  # filter(drug %in% c("stim", "non_stim", "neither")) %>%
-  filter(drug %in% c("neither", "methylphenidate", "guanfacine")) %>%
+  filter(drug %in% c("stim", "non_stim", "neither")) %>%
+  # filter(drug %in% c("neither", "methylphenidate", "guanfacine")) %>%
   filter(grepl("ADHD", pgs) | grepl("gFa", pgs)) %>%
   mutate(task =sub("_agecorrected", "", task)) %>% mutate(task =sub("nihtbx_", "", task)) %>%
   # ggplot(aes(x=pg_score, y=task_score, color = drug, group = interaction(q,drug))) +
