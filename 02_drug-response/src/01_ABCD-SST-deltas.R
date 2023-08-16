@@ -145,12 +145,17 @@ sst.meds.deltas <- foreach (i = 1:length(adhd.meds$drug), .combine = rbind) %dop
 # models for predicting deltas by PGS, predicted, or combination ----------
 pgs.predicted.deltas <- inner_join(sst.meds.deltas %>% pivot_wider(names_from = "question", values_from = "delta", 
                                                                    id_cols = c(IID,sex,drug, n_samples)), 
-                                   inner_join(abcd.pgs, abcd.pred))
+                                   inner_join(abcd.pgs, abcd.pred)) %>% 
+  mutate(group = ifelse(cog_gFactor > 0 & `ADHD-Demontis` > 0, 1, 
+                        ifelse(cog_gFactor > 0 & `ADHD-Demontis` < 0, 2, 
+                               ifelse(cog_gFactor < 0 & `ADHD-Demontis` > 0, 4, 
+                                      3)))) %>%
+  filter(group == 4)
 
 registerDoMC(cores = 3)
 drug.deltas.rsquared <- foreach (i = 1:length(unique(pgs.predicted.deltas$drug)), .combine = rbind) %dopar% {
   dname <- unique(pgs.predicted.deltas$drug)[i]
-  nsamples <- pgs.predicted.deltas %>% filter(drug == dname) %>% distinct(n_samples)
+  nsamples <- nrow(pgs.predicted.deltas %>% filter(drug == dname))
   models.r.squared <- do.call(rbind, lapply(pgs.predicted.deltas %>% filter(drug == dname) %>% select(contains("_as_")), function(x) {
     m1 <- lm(y ~ `ADHD-Demontis`, data = pgs.predicted.deltas %>% filter(drug == dname) %>% mutate(y=x))
     m2 <- lm(y ~ cog_gFactor, data = pgs.predicted.deltas %>% filter(drug == dname) %>% mutate(y=x))
@@ -171,6 +176,7 @@ drug.deltas.rsquared <- foreach (i = 1:length(unique(pgs.predicted.deltas$drug))
                      m123 = summary(m123)$adj.r.squared)
     # changed the model based on the wanted figure
     mm <- m12
+    # mm <- m3
     df3 <- summary(mm)$coefficients %>% 
       as.data.frame() %>% 
       rownames_to_column("var") %>% 
@@ -184,45 +190,70 @@ drug.deltas.rsquared <- foreach (i = 1:length(unique(pgs.predicted.deltas$drug))
   }))
   df2 <- models.r.squared %>%
     rownames_to_column("question") %>%
-    mutate(drug = dname, n = nsamples$n_samples)
+    mutate(drug = dname, n = nsamples)
   return(df2)
 }
 # write_csv(drug.deltas.rsquared, "data/figs-data/predicting-sst-deltas-m12-012.csv")
 p1 <- drug.deltas.rsquared %>%
   filter(!drug %in% c("lisdexamfetamine", "concerta", "atomoxetine"), !grepl("correct_go", question)) %>%
+  mutate(drug = factor(drug, levels = c("clonidine", "guanfacine", "atomoxetine", 
+                                        "amphetamine", "methylphenidate", "concerta", "lisdexamfetamine",
+                                        "non_stim", "stim"))) %>%
   mutate(question = sub("\\.[0-9]", "", question)) %>%
   mutate(sig = ifelse(pval<0.05, "pval < 0.05", "pval \u2265 0.05")) %>%
-  mutate(m_sig = ifelse(pval<0.08, "pval < 0.1", "pval \u2265 0.1")) %>%
+  mutate(fdr = p.adjust(pval, method = "fdr")) %>%
+  mutate(m_sig = ifelse(fdr<0.05, "FDR < 0.05", "FDR \u2265 0.05")) %>%
   mutate(question = sub("e_as_", "", question)) %>%
   mutate(var = factor(var, levels = c("ADHD-Demontis", "cog_gFactor", "predicted", "cog_gFactor:predicted"))) %>%
   ggplot(aes(x=Estimate, y = var)) +
   # ggplot(aes(x=Estimate, y = question)) +
   geom_point(aes(alpha = sig, color = var, shape = m_sig),  position = position_dodge(width = 0.6), size =2.5) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.2, color = "red") +
-  scale_alpha_manual(values = c(1, 0.3)) +
-  scale_shape_manual(values = c(8,1)) +
+  scale_alpha_manual(values = c("pval < 0.05" = 1, "pval \u2265 0.05" = 0.3), name = "") +
+  scale_shape_manual(values = c("FDR < 0.05" = 8, "FDR \u2265 0.05" = 1), name = "") +
   geom_errorbarh(aes(xmin = confint_min, xmax = confint_max, alpha = sig, color = var), 
                  linewidth = 0.8, height = 0, show.legend = F, 
                  position = position_dodge(width = 0.6)) +
-  scale_color_manual(values = six.colors[c(1,4)]) +
+  scale_color_manual(values = c("ADHD-Demontis" = six.colors[1], 
+                                "cog_gFactor" = six.colors[4], 
+                                "predicted" = six.colors[3]), name = "") +
   facet_grid2(rows = vars(question), cols = vars(drug), remove_labels = "y")+
   # facet_grid2(cols = vars(drug), remove_labels = "y")+
   annotate("segment", x=-Inf, xend=Inf, y=0, yend=0)+
   annotate("segment", x=-Inf, xend=-Inf, y=0, yend=0) +
-  theme(strip.text.y.right = element_text(angle = 0),
-        axis.line.x.bottom = element_line(colour = "black")) +
+  theme(
+    strip.text.y.right = element_text(angle = 0),
+    # strip.text.y.right = element_blank(),
+    # strip.text.y.left = element_blank(),
+    # axis.text.y.left = element_blank(), 
+    axis.line.x.bottom = element_line(colour = "black")
+    # title = element_text(colour = six.colors[4])
+    ) +
   labs(x = "Estimate", 
        y="")
 p2<- drug.deltas.rsquared %>%
   filter(!drug %in% c("lisdexamfetamine", "concerta", "atomoxetine")) %>%
+  mutate(drug = factor(drug, levels = c("clonidine", "guanfacine", "atomoxetine", 
+                                        "amphetamine", "methylphenidate", "concerta", "lisdexamfetamine",
+                                        "non_stim", "stim"))) %>%
   distinct(drug, n) %>%
   ggplot(aes(x=drug, y=n, fill = drug, label = n))+
   geom_bar(stat = "identity", show.legend = F, width = 0.3) +
   geom_text(size=3, nudge_y = -10) +
   theme(axis.text.x.bottom = element_text(angle = 0, hjust = 0.5), 
-        axis.text.y.left = element_blank()) +
+        axis.text.y.left = element_blank(),
+        axis.title.y.left = element_blank(),
+        axis.line.y.left = element_blank()) +
   labs(x="", y="n(samples)")
 patchwork::wrap_plots(p1,p2, heights = c(6,1)) # predicting SST deltas
+# hh <- patchwork::wrap_plots(p1+labs(title = "HIGH cognitive PGS & HIGH ADHD PGS"),p2, heights = c(4,1))
+# hh3 <- patchwork::wrap_plots(p1+labs(title = "HIGH cognitive PGS & HIGH ADHD PGS"),p2, heights = c(2,1))
+####
+# try this
+# patchwork::wrap_plots(hh1, hh, ncol = 1, heights = c(1,8))
+patchwork::wrap_plots(hl,hh,ll,lh, ncol = 2, nrow = 2)
+patchwork::wrap_plots(hl3,hh3,ll3,lh3, ncol = 2, nrow = 2)
+
 ####
 
 

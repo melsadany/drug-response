@@ -73,7 +73,8 @@ abcd.nihtbx <- read_csv(paste0(abcd.raw.dir, "/neurocognition/nc_y_nihtb.csv"))
 abcd.nihtbx.filt <- abcd.nihtbx %>%
   select(IID = src_subject_id, eventname, 
          (contains("pivocab") | contains("flanker") | contains("pattern") | contains("picture") | contains("reading")) &contains("agecorrected")) %>%
-  filter(rowSums(is.na(abcd.nihtbx%>%select(contains("agecorrected"))))<=5)
+  # filter(rowSums(is.na(abcd.nihtbx%>%select(contains("agecorrected"))))<=5)
+  filter(grepl("2", eventname))
 # combine nihtbx, age, sex, meds data 
 abcd.nihtbx.filt <- inner_join(inner_join(demo, abcd.nihtbx.filt), abcd.meds) %>% 
   # keep this order for OCD pref
@@ -99,11 +100,12 @@ pgs.nihtbx.drug %>%
   # filter(drug %in% c("neither", "methylphenidate", "guanfacine")) %>%
   filter(grepl("ADHD", pgs) | grepl("gFa", pgs)) %>%
   mutate(task =sub("_agecorrected", "", task)) %>% mutate(task =sub("nihtbx_", "", task)) %>%
+  # filter(pg_score>0) %>%
   # ggplot(aes(x=pg_score, y=task_score, color = drug, group = interaction(q,drug))) +
   ggplot(aes(x=pg_score, y=task_score, color = drug)) +
   # geom_point(size=0.1)+
-  geom_smooth(method = "gam", se = F, na.rm = T) +
-  # stat_cor(show.legend = F, size = 3, na.rm = T)+
+  geom_smooth(method = "gam", se = T, na.rm = T) +
+  stat_cor(show.legend = F, size = 3, na.rm = T, method = "spearman")+
   facet_grid2(rows = vars(task), cols = vars(pgs)) +
   # facet_grid2(rows = vars(task), cols = vars(q)) +
   labs(x="PGS", caption = paste0("n(samples):\n",
