@@ -183,8 +183,23 @@ pgs.predicted.deltas <- inner_join(cbcl.meds.deltas %>% pivot_wider(names_from =
                          ifelse(cog_gFactor > 0 & `ADHD-Demontis` < 0, 2, 
                                 ifelse(cog_gFactor < 0 & `ADHD-Demontis` > 0, 4, 
                                        3)))) %>%
-  filter(group == 4)
+  filter(group %in% c(3,4))
+  filter(group == 2)
 
+pgs.predicted.deltas %>%
+  filter(drug == "methylphenidate") %>%
+  mutate(resp = ifelse(dsm5_as_adhd > 0, "no", "yes")) %>%
+  # filter(dsm5_as_adhd>0) %>%
+  # ggplot(aes(x=cog_gFactor, y=`ADHD-Demontis`, color = dsm5_as_adhd)) +
+  ggplot(aes(x=cog_gFactor, y=`ADHD-Demontis`, color = resp)) +
+  geom_point(size=0.5)+
+  geom_smooth(method = "loess")+
+  stat_cor(method = "spearman", show.legend = F)
+  # geom_smooth(method = "glm", color = "red")+
+  # geom_smooth(color = "blue")+
+  scale_color_gradient2(low = redblu.col[2], high = redblu.col[1])
+  
+  
 registerDoMC(cores = 3)
 drug.deltas.rsquared <- foreach (i = 1:length(unique(pgs.predicted.deltas$drug)), .combine = rbind) %dopar% {
   dname <- unique(pgs.predicted.deltas$drug)[i]
@@ -263,7 +278,7 @@ p1 <- drug.deltas.rsquared %>%
     strip.text.y.left = element_blank(),
     axis.text.y.left = element_blank(),
     axis.line.x.bottom = element_line(colour = "black")
-    ,title = element_text(colour = six.colors[4])
+    ,title = element_text(colour = six.colors[2])
     ) +
   labs(x = "Estimate", 
        y="")

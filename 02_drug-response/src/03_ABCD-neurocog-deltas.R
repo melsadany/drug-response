@@ -142,6 +142,32 @@ pgs.nihtbx.drug %>%
                                  "\tnon_stim: ", sum(pgs.nihtbx.drug$non_stim), "\n",
                                  "\tneither: ", sum(pgs.nihtbx.drug$neither)))
 
+
+####
+
+# get reponding status based on cbcl deltas
+cbcl.deltas <- read_csv("data/pgs-predicted-deltas-per-drug.csv") %>%
+  select(IID, sex, drug, dsm5_as_adhd, syn_as_attention, n_samples, predicted) 
+cbcl.deltas.filt <- cbcl.deltas %>%
+  filter(drug == "methylphenidate") %>%
+  mutate(resp = ifelse(dsm5_as_adhd>0, "no", "yes")) %>%
+  mutate(predicted_resp = ifelse(predicted <0, "no", "yes"))
+tmp <- inner_join(cbcl.deltas.filt, pgs.nihtbx.drug)
+tmp %>%
+  pivot_longer(cols = c(`ADHD-Demontis`, cog_gFactor), names_to = "PGS", values_to = "pg_score") %>%
+  ggplot(aes(x = pg_score, y= nihtbx_flanker_agecorrected, color = resp)) +
+  geom_point(size = 0.5) +
+  facet_grid2(rows = vars(PGS), cols = vars(methylphenidate), scales = "free", space = "free") +
+  geom_smooth()+
+  stat_cor(method = "spearman", show.legend = F)
+inner_join(pgs.nihtbx.drug, abcd.pred) %>%
+  mutate(predicted_resp = ifelse(predicted <0, "no", "yes")) %>%
+  pivot_longer(cols = c(`ADHD-Demontis`, cog_gFactor), names_to = "PGS", values_to = "pg_score") %>%
+  ggplot(aes(x=pg_score, y=nihtbx_flanker_agecorrected, color = predicted_resp))+
+  geom_point(size = 0.5) +
+  facet_grid2(rows = vars(PGS), cols = vars(methylphenidate), scales = "free", space = "free") +
+  geom_smooth()+
+  stat_cor(method = "spearman", show.legend = F)
 ####
 # neurocog questionnaire by parents 
 ncq <- read_csv(paste0(abcd.raw.dir, "/neurocognition/nc_p_bdef.csv")) %>%
