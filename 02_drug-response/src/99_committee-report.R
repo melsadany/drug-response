@@ -172,7 +172,8 @@ corr.table(deltas.pgs %>% select(starts_with("SST"), starts_with("dsm5"), starts
   ggh4x::facet_grid2(cols = vars(cat), scales = "free", space = "free") +
   redblack.col.gradient + my.guides +
   labs(x="", y="", 
-       caption = paste0("n(samples): ", nrow(deltas.pgs), "\n",
+       caption = paste0("n(CBCL samples): ", nrow(deltas.pgs %>% drop_na(syn_attention)), "\n",
+                        "n(SST samples): ", nrow(deltas.pgs %>% drop_na(SST_no_response_on_go)), "\n",
                         "**    FDR < 0.05", "\n",
                         "*     pval < 0.05", "\n",
                         ".     pval < 0.1", "\n",
@@ -180,7 +181,7 @@ corr.table(deltas.pgs %>% select(starts_with("SST"), starts_with("dsm5"), starts
                         "    higher delta value means higher problems off-MPH (i.e., improvement on medication)", "\n",
                         "Predicted MPH response is calculate by imputing transcriptome in excitatory neurons", "\n",
                         "    then correlating it with MPH transcriptomic signature", "\n",
-                        "    positie value means the participant is expected to respond/in need of MPH", "\n"))
+                        "    positive value means the participant is expected to respond/in need of MPH", "\n"))
 ggsave("figs/0724_report/ABCD-MPH-CBCL-and-SST-deltas-w-PGS-and-predicted.png", bg = "white",
        width = 8, height = 8, units = "in", dpi = 360)
 ################################################################################
