@@ -162,7 +162,7 @@ abcd.deltas <- full_join(sst.r1.tom.asmeds.corrected %>%
 # correlation between PGS and 
 deltas.pgs <- inner_join(abcd.deltas, abcd.pgs) %>% left_join(abcd.pred)
 corr.table(deltas.pgs %>% select(starts_with("SST"), starts_with("dsm5"), starts_with("syn")),
-           deltas.pgs %>% select(colnames(abcd.pgs)[-1], "predicted")) %>%
+           deltas.pgs %>% select(colnames(abcd.pgs)[-1], "predicted"), method = "spearman") %>%
   mutate(FDR = p.adjust(pval, method = "fdr"),
          cat = ifelse(grepl("SST", V1), "SST", ifelse(grepl("syn", V1), "CBCL subscales", "DSM5 subscales"))) %>%
   filter(V1 %in% c(sub("_raw", "", cbcl.tom.asmeds.corrected$question),
@@ -175,7 +175,12 @@ corr.table(deltas.pgs %>% select(starts_with("SST"), starts_with("dsm5"), starts
   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "**", ifelse(pval < 0.05, "*",ifelse(pval < 0.1, ".", ""))))) +
   geom_tile() + geom_text(color = "white") +
   ggh4x::facet_grid2(cols = vars(cat), scales = "free", space = "free") +
-  redblack.col.gradient + my.guides
+  redblack.col.gradient + my.guides +
+  labs(x="", y="", 
+       caption = paste0("n(samples): ", nrow(deltas.pgs), "\n",
+                        "**    FDR < 0.05", "\n",
+                        "*     pval < 0.05", "\n",
+                        ".     pval < 0.1"))
 ggsave("figs/0724_report/ABCD-MPH-CBCL-and-SST-deltas-w-PGS-and-predicted.png", bg = "white",
        width = 8, height = 8, units = "in", dpi = 360)
 ################################################################################
