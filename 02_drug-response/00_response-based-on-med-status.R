@@ -40,6 +40,12 @@ mph.inc <- abcd.meds %>%
   group_by(IID) %>%
   mutate(responsive = ifelse(sum(methylphenidate)>1, 1, 0)) %>%
   mutate(coded_eventname = recode_events(eventname))
+clon.inc <- abcd.meds %>%
+  select(IID, eventname, clonidine) %>%
+  filter(clonidine == 1) %>%
+  group_by(IID) %>%
+  mutate(responsive = ifelse(sum(clonidine)>1, 1, 0)) %>%
+  mutate(coded_eventname = recode_events(eventname))
 ################################################################################
 # check correlation between responsiveness and PGS
 mph.pgs <- inner_join(mph.inc %>% 

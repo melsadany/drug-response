@@ -35,9 +35,9 @@ adhd.meds <- data.frame(drug = c("methylphenidate",
                                  "amphetamine", "lisdexamfetamine",
                                  "atomoxetine", "clonidine", "guanfacine"
 ))
-missing.samples <- read_csv("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/subjects-missing-med-name.csv") %>%
+# missing.samples <- read_csv("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/subjects-missing-med-name.csv") %>%
   mutate(drop = T)
-abcd.meds.r <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
+abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
   as.data.frame() %>%
   select(c(1:2), any_of(all.adhd.meds$drug)) %>%
   # filter(!(grepl("3", eventname) | grepl("4", eventname))) %>%
@@ -49,14 +49,14 @@ abcd.meds.r <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/
          guanfacine = ifelse((guanfacine+tenex)>=1 & intuniv == 0,1,0),
          atomoxetine = ifelse((atomoxetine+strattera)>=1,1,0)) %>% 
   select(-c(ritalin, adderall, tenex, strattera,intuniv, vyvanse))
-abcd.meds <- left_join(abcd.meds.r, missing.samples) %>%
-  filter(is.na(drop)) %>%
-  select(-drop)
+# abcd.meds <- left_join(abcd.meds.r, missing.samples) %>%
+#   filter(is.na(drop)) %>%
+#   select(-drop)
 ####
 # ABCD PGS file -----------------------------------------------------------
 abcd.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
   rename_all(.funs = function(x) sub("corrected_", "", x)) %>%
-  select(IID, "ADHD-Demontis", contains("cog")&contains("UKB")) %>%
+  select(IID, "ADHD-Demontis", contains("cog")&contains("UKB"), contains("EXTRA")) %>%
   rename_all(.funs = function(x) str_replace_all(x, "-UKB-2020", ""))
 ####
 # ABCD predicted MPH response ---------------------------------------------
@@ -393,4 +393,54 @@ write_csv(inner_join(cbcl.mph.demo %>%
                        summarise(count = n())) %>%
             mutate(measure = "CBCL", data = "ABCD"),
           file = "figs/paper/tmp/abcd-cbcl-data-stats.csv")
+####
+####
+####
+####
+####
+####
+####
+####
+####
+####
+####
+####
+####
+####
+####
+####
+####
+####
+####
+####
+####
+pgs.predicted.deltas %>%
+  filter(drug=="methylphenidate") %>%
+  pivot_longer(cols = c(starts_with("dsm")&contains("as"), starts_with("syn")&contains("as")), 
+               names_to = "beh") %>% 
+  pivot_longer(cols = c(starts_with("cog"), starts_with("ADHD"), contains("EXTRA")), 
+               names_to = "PGS", values_to = "pg_score") %>%
+  ggplot(aes(x = pg_score, y = value)) +
+  geom_point(size = 1) +
+  geom_smooth(method = "glm") + stat_cor(color = "red") +
+  ggh4x::facet_grid2(rows = vars(beh), cols = vars(PGS), 
+                     scales = "free") +
+  theme(strip.text.y.right = element_text(angle = 0))
+
+corr.table(pgs.predicted.deltas %>% filter(drug == "methylphenidate") %>% select(c(starts_with("dsm")&contains("as"), starts_with("syn")&contains("as"))),
+           pgs.predicted.deltas %>% filter(drug == "methylphenidate") %>% select(c(starts_with("cog"), starts_with("ADHD"), contains("EXTRA"))),
+           method = "spearman") %>%
+  mutate(FDR = p.adjust(pval, method = "fdr")) %>%
+  filter(grepl("cog", V2)|grepl("ADHD", V2),
+         grepl("dsm", V1)|grepl("syn", V1)) %>%
+  ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "**", ifelse(pval < 0.05, "*", "")))) +
+  geom_tile() + geom_text(color = "white") +
+  redblack.col.gradient + my.guides +
+  labs(x = "CBCL delta (on MPH score - off MPH score)",
+       y = "PGS",
+       caption = paste0("n(samples): ", nrow(pgs.predicted.deltas %>% filter(drug == "methylphenidate") %>% distinct(IID)), "\n",
+                        "**   FDR < 0.05", "\n", 
+                        "*      pval < 0.05"))
+ggsave("figs/0724_report/ABCD-MPH-CBCL-deltas-w-PGS.png", bg = "white",
+       width = 10, height = 8, units = "in", dpi = 360)
 ####

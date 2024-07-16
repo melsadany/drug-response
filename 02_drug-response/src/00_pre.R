@@ -66,27 +66,16 @@ tmp <- inner_join(spark.rm%>%select(IID, mph_effect),
 #                   spark.scq%>%select(IID, starts_with("corr"), starts_with("q"))) %>% 
 #   filter(q01_phrases==1) %>% 
 #   select(-c(q01_phrases))
-
-merge(merge(apply(tmp %>% select(starts_with("q")), 
-                  function(x) fisher.test(tmp$mph_effect, x)$p.value, MARGIN = 2) %>% 
-              as.data.frame() %>% 
-              rename(pval = 1) %>% 
-              rownames_to_column("V2"),
-            apply(tmp %>% select(starts_with("q")), 
-                  function(x) fisher.test(tmp$mph_effect, x)$estimate[[1]], MARGIN = 2) %>% 
-              as.data.frame() %>% 
-              rename(OR = 1) %>% 
-              rownames_to_column("V2")),
-      merge(apply(tmp %>% select(starts_with("q")), 
-                  function(x) as.data.frame(fisher.test(tmp$mph_effect, x)$conf.int)[1,1], MARGIN = 2) %>% 
-              as.data.frame() %>% 
-              rename(confint_min = 1) %>% 
-              rownames_to_column("V2"),
-            apply(tmp %>% select(starts_with("q")), 
-                  function(x) as.data.frame(fisher.test(tmp$mph_effect, x)$conf.int)[2,1], MARGIN = 2) %>% 
-              as.data.frame() %>% 
-              rename(confint_max = 1) %>% 
-              rownames_to_column("V2"))) %>%
+p1 <- do.call(rbind,
+        lapply(tmp %>% select(starts_with("q")), function(x) {
+          test <- fisher.test(tmp$mph_effect, x)
+          df <- data.frame(pval = test$p.value,
+                           OR = test$estimate[[1]],
+                           confint_min = test$conf.int[1],
+                           confint_max = test$conf.int[2])
+          return(df)})) %>% 
+  as.data.frame() %>% 
+  rownames_to_column("V2") %>%
   mutate(V1 = "mph_effect") %>%
   mutate(sig = ifelse(pval<0.05, "pval < 0.05", "pval \u2265 0.05")) %>%
   mutate(V2 = as.factor(V2)) %>%
@@ -101,26 +90,28 @@ merge(merge(apply(tmp %>% select(starts_with("q")),
   scale_color_manual(values = six.colors[1:4]) +
   labs(x = "", y="", caption = paste0("n(samples): ", nrow(tmp), "\n", 
                                       "odds ratio from Fisher's Exact test"))
-corr.table(tmp%>%select(mph_effect), tmp%>%select(starts_with("q"))) %>%
+p2 <- corr.table(tmp%>%select(mph_effect), tmp%>%select(starts_with("q"))) %>%
   filter(V1 == "mph_effect", V2 !=V1) %>%
   ggplot(aes(x=V1, y=V2, fill=r, label=ifelse(pval<0.05, paste0("r: ", round(r, 4), ",  p: ", round(pval, 4)),"")))+
   geom_tile() +
   geom_text(size=3)+
   scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1])+
-  my.guides+labs(x="", y="", caption = paste0("n(samples): ", nrow(tmp)))
+  my.guides + labs(x="", y="", caption = paste0("n(samples): ", nrow(tmp))) +
+  theme(axis.text.x.bottom = element_text(hjust = 0.5, angle = 0))
 # conclusion: some sig correlations were found
 ################################################################################
 # corr w cog impairment
 tmp2 <- inner_join(spark.rm%>%select(IID, mph_effect), spark.iq)
 t<- fisher.test(tmp2$mph_effect, tmp2$derived_cog_impair)
-tmp2 %>% 
+p3 <- tmp2 %>% 
   mutate(mph_effect = as.factor(mph_effect), derived_cog_impair = as.factor(derived_cog_impair)) %>%
   ggplot(aes(mph_effect, fill=derived_cog_impair))+
   geom_bar() +
   scale_fill_manual(values = boxplot.colors)+
   labs(subtitle = paste0("Fisher's Exact test", "\n",
                          "OR: ", round(t$estimate[[1]],4), 
-                        "\npvalue: ", round(t$p.value,4)))
+                        "\npvalue: ", round(t$p.value,4))) +
+  theme(axis.text.x.bottom = element_text(angle = 0, hjust = 0.5))
 # conclusion: sig correlation
 ################################################################################
 # corr w child background data
@@ -153,21 +144,29 @@ cor.test(tmp4$mph_effect, tmp4$m)
 # corr w pgs
 spark.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv")
 tmp5 <- inner_join(spark.rm%>%select(IID, mph_effect), spark.pgs)
-corr.table(tmp5%>%select(mph_effect), scale(tmp5%>%select(starts_with("corrected")), scale = T, center = T), method = "spearman") %>%
+p4 <- corr.table(tmp5%>%select(mph_effect), scale(tmp5%>%select(starts_with("corrected")), scale = T, center = T), method = "spearman") %>%
   filter(V1 == "mph_effect", V2 !=V1) %>%
   mutate(V2 = sub("corrected_", "", V2)) %>%
-  filter(V2 %in% c("ADHD-Demontis", "cog_memory-UKB-2020", "cog_reaction_time-UKB-2020",
-                   "cog_gFactor-UKB-2020", "cog_matrix-UKB-2020", "cog_symbol_digit-UKB-2020",
-                   "cog_tower_rearranging-UKB-2020", "cog_trail_making_testB-UKB-2020",
-                   "cog_verbal_numerical_reasoning-UKB-2020", "EA-Lee")) %>%
+  # filter(V2 %in% c("ADHD-Demontis", "cog_memory-UKB-2020", "cog_reaction_time-UKB-2020",
+  #                  "cog_gFactor-UKB-2020", "cog_matrix-UKB-2020", "cog_symbol_digit-UKB-2020",
+  #                  "cog_tower_rearranging-UKB-2020", "cog_trail_making_testB-UKB-2020",
+  #                  "cog_verbal_numerical_reasoning-UKB-2020", "EA-Lee", "CP-Lee")) %>%
   mutate(V2 = sub("cog_", "", sub("-UKB-2020", "", sub("-Lee", "", sub("-Demontis", "", V2))))) %>%
   rename(corr = r) %>%
   ggplot(aes(x=V1, y=V2, fill=corr, label=ifelse(pval<0.1, paste0("ρ: ", round(corr, 4), ",  p: ", round(pval, 4)),"")))+
   geom_tile() +
   geom_text(size=3)+
   scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1])+
-  my.guides+labs(x="", y="", fill = "ρ", caption = paste0("n(samples): ", nrow(tmp)))
+  my.guides+labs(x="", y="", fill = "ρ", caption = paste0("n(samples): ", nrow(tmp))) +
+  theme(axis.text.x.bottom = element_text(angle = 0, hjust = 0.5))
 # conclusion: sig correlation was found for a few number of PGS
+################################################################################
+################################################################################
+# combine
+patchwork::wrap_plots(p1,patchwork::wrap_plots(p4,p3, nrow = 2))
+ggsave("figs/0724_report/SPARK-mph-eff-results.png", bg = "white",
+       width = 9, height = 12, units = "in", dpi = 360)
+################################################################################
 ################################################################################
 # supplementary figs
 # SCQ dist
