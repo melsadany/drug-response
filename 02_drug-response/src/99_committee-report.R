@@ -83,12 +83,7 @@ sst.r1.tom.asmeds.corrected <- cbind(sst.r1.tom %>%
   arrange(IID, question, methylphenidate) %>%
   mutate(methylphenidate = as.factor(methylphenidate)) %>%
   pivot_wider(names_from = methylphenidate, values_from = val, id_cols = c(IID, sex, question)) %>%
-  mutate(value_type = factor(ifelse(grepl("e_raw_", question), "raw data", ifelse(grepl("e_as_", question), 
-                                                                                  "corrected for age, sex, and interaction", 
-                                                                                  "corrected for age, sex, interaction, and other ADHD meds")), 
-                             levels = c("raw data", "corrected for age, sex, and interaction", 
-                                        "corrected for age, sex, interaction, and other ADHD meds"))) %>%
-  mutate(delta = `1` - `0`)
+  mutate(delta = `0` - `1`)
 
 
 ################################################################################
@@ -148,7 +143,7 @@ cbcl.tom.asmeds.corrected <- cbind(cbcl.tom %>% select(IID, interview_age, sex, 
   mutate(methylphenidate = as.factor(methylphenidate)) %>%
   pivot_wider(names_from = methylphenidate, values_from = val, id_cols = c(IID, sex, question)) %>%
   mutate(subscale = ifelse(grepl("dsm5", question), "dsm5", "syn")) %>%
-  mutate(delta = `1` - `0`) # being on MPH - not being on MPH
+  mutate(delta = `0` - `1`) # being on MPH - not being on MPH
 
 ################################################################################
 ################################################################################
@@ -180,7 +175,12 @@ corr.table(deltas.pgs %>% select(starts_with("SST"), starts_with("dsm5"), starts
        caption = paste0("n(samples): ", nrow(deltas.pgs), "\n",
                         "**    FDR < 0.05", "\n",
                         "*     pval < 0.05", "\n",
-                        ".     pval < 0.1"))
+                        ".     pval < 0.1", "\n",
+                        "CBCL and SST deltas are calculated as: score off MPH - score on MPH", "\n",
+                        "    higher delta value means higher problems off-MPH (i.e., improvement on medication)", "\n",
+                        "Predicted MPH response is calculate by imputing transcriptome in excitatory neurons", "\n",
+                        "    then correlating it with MPH transcriptomic signature", "\n",
+                        "    positie value means the participant is expected to respond/in need of MPH", "\n"))
 ggsave("figs/0724_report/ABCD-MPH-CBCL-and-SST-deltas-w-PGS-and-predicted.png", bg = "white",
        width = 8, height = 8, units = "in", dpi = 360)
 ################################################################################
