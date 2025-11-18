@@ -34,6 +34,9 @@ This repository contains a computational framework that predicts individual-spec
 ### Ethical Considerations
 
 **Clinical Use**: Research tool only - not for direct clinical decision-making
+
 **Genetic Privacy**: Local processing option to avoid data transfer
+
 **Bias Mitigation**: Population-specific models for diverse ancestry groups
+
 **Interpretability**: Transparent feature importance and confidence scores
