@@ -167,7 +167,7 @@ p1.b <- sst.r1.tom.all %>%
   stat_compare_means(paired = T, size = 3, method = "t.test")
 # correlation between predicted response to MPH and participants performance in SST whether data is corrected or not
 abcd.c.1 <- inner_join(abcd.pred, sst.r1.tom.all %>% select(-c(`0`,`1`))%>% pivot_wider(names_from = "question", values_from = "delta"))
-p1.p <- corr.table(abcd.c.1%>%select(predicted), abcd.c.1 %>% select(starts_with("e_")), method = "spearman") %>%
+p1.p <- corr.table(abcd.c.1%>%select(predicted,starts_with("e_")), method = "spearman") %>%
   filter(V1 == "predicted", V1 != V2) %>%
   mutate(question = as.factor(sub("e_.*?_","",V2))) %>%
   mutate(value_type = factor(ifelse(grepl("e_raw_", V2), "raw data", ifelse(grepl("e_as_", V2), 
@@ -182,6 +182,16 @@ p1.p <- corr.table(abcd.c.1%>%select(predicted), abcd.c.1 %>% select(starts_with
   facet_grid2(rows = vars(value_type), scales = "free_y", independent = "y") +
   my.guides+labs(x="", y="", caption = paste0("n(samples): ", nrow(abcd.c.1%>%distinct(IID)), "\n",
                                               det.cap))
+
+abcd.c.1 %>% pivot_longer(cols = starts_with("e_asmed")) %>%
+drop_na(predicted,value) %>% mutate(name = sub("e_asmeds_","",name)) %>%
+ggplot(aes(predicted,value))+geom_point(shape=1)+geom_smooth(method="lm",se=F,color=palette.1[2])+
+ci_ribbon1+ggpubr::stat_cor(method="spearman",color="red")+bw.theme+
+ggh4x::facet_grid2(rows=vars(name),scales="free")+
+labs(x="SST delta (on MPH - off MPH)", y="predicted MPH responsiveness",
+caption = paste0("n(samples): ", nrow(abcd.c.1%>%distinct(IID)), "\n",det.cap))
+ggsave2("../2026/figs/abcd-SST-task-differences-by-MPH-status-vs-predicted-MPH-responsiveness.png",3.8,12)
+                                              
 ################################################################################
 # cbcl
 abcd.cbcl <- read_csv(paste0(abcd.raw.dir, "/mental-health/mh_p_cbcl.csv"))
@@ -352,7 +362,7 @@ p2.b.dsm5 <- cbcl.tom.all %>%
   stat_compare_means(paired = T, size = 3, method = "t.test")
 # correlation between predicted response to MPH and participants performance in SST whether data is corrected or not
 abcd.c.2 <- inner_join(abcd.pred, cbcl.tom.all %>% select(-c(`0`,`1`))%>% pivot_wider(names_from = "question", values_from = "delta", id_cols = c("IID", "sex")))
-p2.p <- corr.table(abcd.c.2%>%select(predicted), abcd.c.2 %>% select(starts_with("syn"), starts_with("dsm5")), method = "spearman") %>%
+p2.p <- corr.table(abcd.c.2%>%select(predicted,starts_with("syn"), starts_with("dsm5")), method = "spearman") %>%
   filter(V1 == "predicted", V1 != V2) %>%
   mutate(question = as.factor(ifelse(grepl("syn", V2), sub("syn_.*?_", "syn_", V2),
                                      sub("dsm5_.*?_", "dsm5_", V2)))) %>%
@@ -367,6 +377,17 @@ p2.p <- corr.table(abcd.c.2%>%select(predicted), abcd.c.2 %>% select(starts_with
   scale_fill_gradient2(low = redblu.col[2], high = redblu.col[1], name = "ρ")+
   facet_grid2(rows = vars(value_type), scales = "free_y", independent = "y") +
   my.guides+labs(x="", y="", caption = paste0("n(samples): ", nrow(abcd.c.2%>%distinct(IID))))
+  
+  
+abcd.c.2 %>% pivot_longer(cols = starts_with("dsm5_asmeds")) %>%
+drop_na(predicted,value) %>% mutate(name = sub("dsm5_asmeds_","",name)) %>%
+ggplot(aes(predicted,value))+geom_point(shape=1)+geom_smooth(method="lm",se=F,color=palette.1[2])+
+ci_ribbon1+ggpubr::stat_cor(method="spearman",color="red")+bw.theme+
+ggh4x::facet_grid2(rows=vars(name),scales="free")+
+labs(x="DSM5 CBCL delta (on MPH - off MPH)", y="predicted MPH responsiveness",
+caption = paste0("n(samples): ", nrow(abcd.c.2%>%distinct(IID)), "\n",det.cap))
+ggsave2("../2026/figs/abcd-CBCL-differences-by-MPH-status-vs-predicted-MPH-responsiveness.png",3.8,16)
+   
 # 
 # inner_join(abcd.pred, cbcl.tom.all) %>%
 #   filter(subscale=="dsm5") %>%

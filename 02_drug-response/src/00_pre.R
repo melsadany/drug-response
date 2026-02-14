@@ -68,29 +68,26 @@ tmp <- inner_join(spark.rm%>%select(IID, mph_effect),
 #   select(-c(q01_phrases))
 p1 <- do.call(rbind,
         lapply(tmp %>% select(starts_with("q")), function(x) {
-          test <- fisher.test(tmp$mph_effect, x)
-          df <- data.frame(pval = test$p.value,
-                           OR = test$estimate[[1]],
-                           confint_min = test$conf.int[1],
-                           confint_max = test$conf.int[2])
+          df <- fisher_table(tmp$mph_effect, x)
           return(df)})) %>% 
   as.data.frame() %>% 
   rownames_to_column("V2") %>%
-  mutate(V1 = "mph_effect") %>%
-  mutate(sig = ifelse(pval<0.05, "pval < 0.05", "pval \u2265 0.05")) %>%
-  mutate(V2 = as.factor(V2)) %>%
-  ggplot(aes(x=OR, y = V2)) +
+  mutate(V1 = "mph_effect",
+         sig = ifelse(pval<0.05, "pval < 0.05", "pval \u2265 0.05"),
+         V2 = sub("q.._","",V2)) %>%
+  ggplot(aes(x=OR, y = reorder(V2,desc(OR)))) +
   geom_point(aes(alpha = sig),  position = position_dodge(width = 0.6), size =2.5) +
   geom_vline(xintercept = 1, linetype = "dashed", size = 0.2, color = "red") +
   scale_alpha_manual(values = c(1, 0.5)) +
   scale_shape_manual(values = c(1, 2)) + 
-  geom_errorbarh(aes(xmin = confint_min, xmax = confint_max, alpha = sig), 
+  geom_errorbarh(aes(xmin = conf_min, xmax = conf_max, alpha = sig), 
                  size = 0.8, height = 0, show.legend = F, 
                  position = position_dodge(width = 0.6)) +
-  scale_color_manual(values = six.colors[1:4]) +
-  labs(x = "", y="", caption = paste0("n(samples): ", nrow(tmp), "\n", 
-                                      "odds ratio from Fisher's Exact test"))
-p2 <- corr.table(tmp%>%select(mph_effect), tmp%>%select(starts_with("q"))) %>%
+  bw.theme +
+  labs(x = "OR (methylphenidate effectiveness and SCQ items)", y="", alpha="",
+       caption = paste0("n(samples): ", nrow(tmp), "\n", "odds ratio from Fisher's Exact test"))
+ggsave2("../2026/figs/spark-scq-to-mph-effectiveness-RM.png",4,14)
+p2 <- corr.table(tmp%>%select(mph_effect,starts_with("q"))) %>%
   filter(V1 == "mph_effect", V2 !=V1) %>%
   ggplot(aes(x=V1, y=V2, fill=r, label=ifelse(pval<0.05, paste0("r: ", round(r, 4), ",  p: ", round(pval, 4)),"")))+
   geom_tile() +
@@ -103,15 +100,15 @@ p2 <- corr.table(tmp%>%select(mph_effect), tmp%>%select(starts_with("q"))) %>%
 # corr w cog impairment
 tmp2 <- inner_join(spark.rm%>%select(IID, mph_effect), spark.iq)
 t<- fisher.test(tmp2$mph_effect, tmp2$derived_cog_impair)
-p3 <- tmp2 %>% 
-  mutate(mph_effect = as.factor(mph_effect), derived_cog_impair = as.factor(derived_cog_impair)) %>%
+p3 <- tmp2 %>% mutate(mph_effect = ifelse(mph_effect==1,"yes","no"), derived_cog_impair=ifelse(derived_cog_impair==1,T,F)) %>%
   ggplot(aes(mph_effect, fill=derived_cog_impair))+
   geom_bar() +
-  scale_fill_manual(values = boxplot.colors)+
+  scale_fill_manual(values = palette.1)+
   labs(subtitle = paste0("Fisher's Exact test", "\n",
                          "OR: ", round(t$estimate[[1]],4), 
                         "\npvalue: ", round(t$p.value,4))) +
-  theme(axis.text.x.bottom = element_text(angle = 0, hjust = 0.5))
+  bw.theme+labs(x="effective methylphenidate",fill="cognitive impairment")
+ggsave2("../2026/figs/spark-cognitive-impairment-to-mph-effectiveness-RM.png",4,5)
 # conclusion: sig correlation
 ################################################################################
 # corr w child background data
@@ -137,14 +134,21 @@ summary(m)$coefficients %>% as.data.frame() %>%
 ################################################################################
 # corr w predicted mph response
 spark.tt.pred <- read_rds("../data/derivatives/m-outputs/spark/mph-samples/model-celltype-all-FALSE-TRUE-1.rds")
-tmp4 <- inner_join(spark.rm%>%select(IID, mph_effect), spark.tt.pred)
+tmp4 <- inner_join(spark.rm%>%select(IID, mph_effect), spark.tt.pred %>% mutate(m=scale(-m)))
+tmp4 %>% mutate(mph_effect = case_when(mph_effect==1~"yes",mph_effect==0~"no"))%>%
+  ggplot(aes(mph_effect,m,fill=mph_effect)) +
+  geom_violin(show.legend = F)+geom_boxplot(fill="white",width=0.2)+
+  ggpubr::stat_compare_means(color="red",label.x.npc = 0.25)+
+  scale_fill_manual(values=palette.1)+bw.theme+
+  labs(x="effective methylphenidate",y="predicted response to methylphenidate")
+ggsave2("../2026/figs/spark-mph-effect-w-predicted.png",4,5)
 cor.test(tmp4$mph_effect, tmp4$m)
 # conclusion: no sig correlation
 ################################################################################
 # corr w pgs
 spark.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv")
 tmp5 <- inner_join(spark.rm%>%select(IID, mph_effect), spark.pgs)
-p4 <- corr.table(tmp5%>%select(mph_effect), scale(tmp5%>%select(starts_with("corrected")), scale = T, center = T), method = "spearman") %>%
+p4 <- corr.table(cbind(tmp5%>%select(mph_effect), scale(tmp5%>%select(starts_with("corrected")),T,T)), method = "spearman") %>%
   filter(V1 == "mph_effect", V2 !=V1) %>%
   mutate(V2 = sub("corrected_", "", V2)) %>%
   # filter(V2 %in% c("ADHD-Demontis", "cog_memory-UKB-2020", "cog_reaction_time-UKB-2020",
@@ -160,6 +164,13 @@ p4 <- corr.table(tmp5%>%select(mph_effect), scale(tmp5%>%select(starts_with("cor
   my.guides+labs(x="", y="", fill = "ρ", caption = paste0("n(samples): ", nrow(tmp))) +
   theme(axis.text.x.bottom = element_text(angle = 0, hjust = 0.5))
 # conclusion: sig correlation was found for a few number of PGS
+tmp5 %>% mutate(mph_effect=mph_effect==1) %>%
+  ggplot(aes(mph_effect, `corrected_cog_symbol_digit-UKB-2020`, fill=mph_effect))+
+  geom_violin(show.legend = F) + geom_boxplot(width=0.2,fill="white")+
+  ggpubr::stat_compare_means(color="red",method = "t.test")+
+  scale_fill_manual(values = redblu.col.2)+
+  bw.theme+labs(y = "cognitive PGS for symbol-digit matching", x="effective methylphenidate")
+ggsave2("../2026/figs/spark-symbol-digit-PGS-to-mph-effectiveness-RM.png",3,4)
 ################################################################################
 ################################################################################
 # combine

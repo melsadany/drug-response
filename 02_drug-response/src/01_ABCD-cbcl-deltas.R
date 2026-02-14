@@ -24,11 +24,14 @@ demo <- full_join(age, sex)
 ####
 # ABCD meds ---------------------------------------------------------------
 # list of adhd meds of interest
-all.adhd.meds <- data.frame(drug = c("methylphenidate", "adderall", "concerta", "vyvanse", 
-                                 "ritalin", "intuniv", "strattera",
+mph.equv <- c("methylphenidate","ritalin","concerta", "methylin", "aptensio", 
+              "daytrana","quillivant", "quillichew", "jornay", "adhansia", 
+              "metadate","relexxii") # https://www.drugs.com/medical-answers/brands-methylphenidate-3510739/
+all.adhd.meds <- data.frame(drug = unique(c(mph.equv, "adderall", "vyvanse", 
+                                 "intuniv", "strattera",
                                  "tenex", "amphetamine", "lisdexamfetamine",
                                  "atomoxetine", "clonidine", "guanfacine"
-))
+)))
 adhd.meds <- data.frame(drug = c("methylphenidate",
                                  "concerta",
                                  "stim", "non_stim",
@@ -36,8 +39,8 @@ adhd.meds <- data.frame(drug = c("methylphenidate",
                                  "atomoxetine", "clonidine", "guanfacine"
 ))
 # missing.samples <- read_csv("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/subjects-missing-med-name.csv") %>%
-  mutate(drop = T)
-abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds") %>%
+#   mutate(drop = T)
+abcd.meds <- read_rds(correct_path("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds")) %>%
   as.data.frame() %>%
   select(c(1:2), any_of(all.adhd.meds$drug)) %>%
   # filter(!(grepl("3", eventname) | grepl("4", eventname))) %>%
@@ -49,6 +52,24 @@ abcd.meds <- read_rds("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/ab
          guanfacine = ifelse((guanfacine+tenex)>=1 & intuniv == 0,1,0),
          atomoxetine = ifelse((atomoxetine+strattera)>=1,1,0)) %>% 
   select(-c(ritalin, adderall, tenex, strattera,intuniv, vyvanse))
+
+abcd.mph <- read_rds(correct_path("/Dedicated/jmichaelson-wdata/msmuhammad/data/ABCD/meds/abcd5/abcd5-meds-matrix.rds")) %>%
+  as.data.frame() %>% select(c(1:2), any_of(mph.equv)) %>% ungroup() %>%
+  mutate(MPH_only = methylphenidate) %>%
+  pivot_longer(cols = -c(1:2, MPH_only)) %>% group_by(IID, eventname, MPH_only) %>% 
+  summarise(MPH = sum(value))
+
+length(unique(abcd.mph$IID[abcd.mph$MPH==0]))
+length(unique(abcd.mph$IID[abcd.mph$MPH>0]))
+length(unique(abcd.mph$IID[abcd.mph$MPH==1]))
+length(unique(abcd.mph$IID[abcd.mph$MPH==2]))
+length(unique(abcd.mph$IID[abcd.mph$MPH==3]))
+length(unique(abcd.mph$IID[abcd.mph$MPH==4]))
+
+
+
+
+
 # abcd.meds <- left_join(abcd.meds.r, missing.samples) %>%
 #   filter(is.na(drop)) %>%
 #   select(-drop)
@@ -192,13 +213,15 @@ pgs.predicted.deltas %>%
   # filter(dsm5_as_adhd>0) %>%
   # ggplot(aes(x=cog_gFactor, y=`ADHD-Demontis`, color = dsm5_as_adhd)) +
   ggplot(aes(x=cog_gFactor, y=`ADHD-Demontis`, color = resp)) +
-  geom_point(size=0.5)+
-  geom_smooth(method = "loess")+
-  stat_cor(method = "spearman", show.legend = F)
+  geom_point(alpha=0.4,size=0.75)+
+  geom_smooth(method = "loess",se=F)+
+  geom_ribbon(stat="smooth",method="loess",aes(ymin = after_stat(ymin), ymax = after_stat(ymax)),
+                          fill = NA, alpha = 1, linetype = 2,show.legend=F)+
+  stat_cor(method = "spearman", show.legend = F)+
   # geom_smooth(method = "glm", color = "red")+
   # geom_smooth(color = "blue")+
-  scale_color_gradient2(low = redblu.col[2], high = redblu.col[1])
-  
+  scale_color_manual(values=palette.1)+bw.theme+labs(x="cognition gFactor PGS", y="ADHD PGS (Demontis)",color="less attention problems on MPH")
+ggsave2("../2026/figs/abcd-mph-effectiveness-by-cbcl-adhd-on-off-average-delta-cog-ADHD-PGS-disc.png",4,4)
   
 registerDoMC(cores = 3)
 drug.deltas.rsquared <- foreach (i = 1:length(unique(pgs.predicted.deltas$drug)), .combine = rbind) %dopar% {
@@ -338,12 +361,16 @@ inner_join(cbcl.meds.deltas %>%
 # deltas boxplot for distribution
 cbcl.meds.deltas %>% 
   filter(drug == "methylphenidate", grepl("_as_", question), !grepl("totprob", question)) %>%
+  mutate(g = ifelse(grepl("syn",question),"syn scale", "DSM5 scale"), question = sub("syn_as_|dsm5_as_","",question))%>%
   ggplot(aes(x=question, y=delta, fill = question))+
-  geom_boxplot(outlier.size = 0.3, show.legend = F, width = 0.3) +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "red")+
-  labs(y="score delta")+
-  labs(title = "distribution of CBCL deltas for MPH samples", x="",
-       caption = paste0("n(samples): ", nrow(cbcl.meds.deltas %>% filter(drug=="methylphenidate")%>% distinct(IID))))
+  geom_boxplot(outlier.size = 0.3, show.legend = F, width = 0.3) +scale_fill_manual(values=c(palette.1,palette.2))+
+  ggh4x::facet_grid2(cols=vars(g),space="free",scales="free")+
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red")+bw.theme+
+  labs(y="score delta",
+  title = "distribution of CBCL deltas for MPH samples", x="",
+       caption = paste0("n(samples): ", nrow(cbcl.meds.deltas %>% filter(drug=="methylphenidate")%>% distinct(IID))))+
+  theme(axis.text.x.bottom=element_text(angle=90,hjust=1,vjust=0.5))
+ggsave2("../2026/figs/abcd-mph-samples-deltas-for-cbcl.png",8,4)
 # on and off mph fig
 p1 <- cbcl.meds.deltas %>% 
   filter(grepl("_as_", question), !grepl("totp", question), !drug %in% c("atomoxetine", "lisdexamfetamine", "concerta")) %>%
@@ -427,15 +454,14 @@ pgs.predicted.deltas %>%
                      scales = "free") +
   theme(strip.text.y.right = element_text(angle = 0))
 
-corr.table(pgs.predicted.deltas %>% filter(drug == "methylphenidate") %>% select(c(starts_with("dsm")&contains("as"), starts_with("syn")&contains("as"))),
-           pgs.predicted.deltas %>% filter(drug == "methylphenidate") %>% select(c(starts_with("cog"), starts_with("ADHD"), contains("EXTRA"))),
+corr.table(pgs.predicted.deltas %>% filter(drug == "methylphenidate") %>% select(c(starts_with("dsm")&contains("as"), starts_with("syn")&contains("as")),starts_with("cog"), starts_with("ADHD"), contains("EXTRA")),
            method = "spearman") %>%
   mutate(FDR = p.adjust(pval, method = "fdr")) %>%
   filter(grepl("cog", V2)|grepl("ADHD", V2),
          grepl("dsm", V1)|grepl("syn", V1)) %>%
   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "**", ifelse(pval < 0.05, "*", "")))) +
   geom_tile() + geom_text(color = "white") +
-  redblack.col.gradient + my.guides +
+  redblack.col.gradient() + my.guides +
   labs(x = "CBCL delta (on MPH score - off MPH score)",
        y = "PGS",
        caption = paste0("n(samples): ", nrow(pgs.predicted.deltas %>% filter(drug == "methylphenidate") %>% distinct(IID)), "\n",

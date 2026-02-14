@@ -57,8 +57,7 @@ spark.pgs <- read_tsv("../data/derivatives/spark-abcd-corrected-pgs.tsv") %>%
   rename_all(.funs = function(x) str_replace_all(x, "-UKB-2020", ""))
 pgs.rm <- inner_join(spark.rm.filt %>% select(IID = ParticipantID, ends_with("yn"), ends_with("effect")),
                      spark.pgs)
-corr.table(pgs.rm %>% select(colnames(spark.pgs)[-1]), 
-           pgs.rm %>% select(ends_with("yn"), ends_with("effect")),
+corr.table(pgs.rm %>% select(colnames(spark.pgs)[-1],ends_with("yn"), ends_with("effect")),
            method = "spearman") %>%
   filter(V1 %in% colnames(spark.pgs)[-1], !V2 %in% colnames(spark.pgs)[-1]) %>%
   mutate(FDR = p.adjust(pval, method = "fdr")) %>%
@@ -67,18 +66,31 @@ corr.table(pgs.rm %>% select(colnames(spark.pgs)[-1]),
   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
   geom_text(size = 3) +
-  redblu.col.gradient+my.guides+null_labs +
+  redblu.col.gradient()+my.guides+null_labs +
   labs(caption = paste0("n(samples): ", nrow(pgs.rm), "\n",
                         "* pval < 0.05", "\n", 
                         "** pval < 0.01", "\n", 
                         "*** FDR < 0.05"))
+
+pgs.rm %>% pivot_longer(cols = c(ends_with("yn"), ends_with("effect"))) %>% 
+  filter(!is.na(value)) %>% 
+  mutate(value=ifelse(value==1,"yes","no"),name = sub("ch_med_","",name),
+         type=case_when(grepl("_yn",name)~"taking the drug", 
+                        grepl("_effect",name)~"drug effective", T~""), 
+         name = sub("_yn|_effect","",name))%>%
+  ggplot(aes(as.factor(value),`ADHD-Demontis`,fill=value)) +
+  geom_violin(show.legend=F)+geom_boxplot(width=0.2,fill="white")+
+  ggpubr::stat_compare_means(label.y.npc = 0.9,color="red")+
+  scale_fill_manual(values=palette.1)+
+  ggh4x::facet_nested(rows=vars(type,name),scales="free",nest_line=element_line(linewidth=0.6))+
+  bw.theme+labs(x="",y="ADHD PGS (Demontis)")
+ggsave2("../2026/figs/spark-ADHD-PGS-to-meds-taking-and-effect.png",4,18)                        
 ################################################################################
 # correlation between taking mph/amph and its effectiveness
 spark.rm.filt.2 <- spark.rm.filt %>% select(IID = ParticipantID, contains("amph"), contains("methyl"))%>%
   select(IID, ends_with("yn"), ends_with("effect")) %>%
   filter_at(.vars = vars(ends_with("yn")), function(x) !is.na(x))
-corr.table(spark.rm.filt.2 %>% select(contains("amph")), 
-           spark.rm.filt.2 %>% select(contains("methyl")),
+corr.table(spark.rm.filt.2 %>% select(contains("amph"),contains("methyl")),
            method = "spearman") %>%
   mutate(FDR = p.adjust(pval, method = "fdr")) %>%
   filter(grepl("amph", V1), grepl("methyl", V2)) %>%
@@ -86,7 +98,7 @@ corr.table(spark.rm.filt.2 %>% select(contains("amph")),
   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(FDR < 0.05, "***", ifelse(pval<0.01, "**", ifelse(pval<0.05, "*", ""))))) +
   geom_tile()+
   geom_text(size = 3) +
-  redblu.col.gradient+my.guides+null_labs +
+  redblu.col.gradient()+my.guides+null_labs +
   labs(caption = paste0("n(samples): ", nrow(spark.rm.filt.2), "\n",
                         "* pval < 0.05", "\n", 
                         "** pval < 0.01", "\n", 

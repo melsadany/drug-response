@@ -4,6 +4,7 @@
 rm(list = ls())
 gc()
 source("~/LSS/jmichaelson-wdata/msmuhammad/msmuhammad-source.R")
+library(ggpubr, lib.loc = "~/LSS/jmichaelson-wdata/msmuhammad/workbench/miniconda3/envs/theone/lib/R/library")
 ################################################################################
 project.dir <- "~/LSS/jmichaelson-wdata/msmuhammad/projects/drug-response/02_drug-response"
 setwd(project.dir)
@@ -147,6 +148,47 @@ cbcl.tom.asmeds.corrected <- cbind(cbcl.tom %>% select(IID, interview_age, sex, 
 
 ################################################################################
 ################################################################################
+# ABCD NIH-TB
+abcd.nih <- read_csv(paste0(abcd.raw.dir, "/neurocognition/nc_y_nihtb.csv")) %>%
+  select(IID = src_subject_id, eventname, 
+         raw_flanker = nihtbx_flanker_agecorrected,
+         raw_patterncomparison = nihtbx_pattern_agecorrected) %>%
+  drop_na()
+
+abcd.nih.filt <- inner_join(inner_join(abcd.nih,abcd.meds),demo) %>% 
+  select(IID, eventname, interview_age,sex, 
+         starts_with("raw_"), 
+         colnames(abcd.meds)) %>%
+  drop_na()
+#########################
+# get participants with 2 or more measurements
+nih.tom <- abcd.nih.filt %>%
+  group_by(IID) %>%
+  filter(n_distinct(eventname) >= 2& n_distinct(methylphenidate) >1) %>%
+  ungroup()
+
+# correct for age, sex, their interaction, other meds than MPH
+# then get the delta of on MPH - off MPH
+nih.tom.asmeds.corrected <- cbind(nih.tom %>% select(IID, interview_age, sex, eventname, methylphenidate), 
+                                   apply(nih.tom %>% 
+                                           select(starts_with("raw_")), 
+                                         MARGIN = 2, FUN = function(x) {
+                                           residuals(glm(y ~ interview_age + sex + interview_age:sex, 
+                                                         data = nih.tom %>% mutate(y = x), 
+                                                         family = poisson()))
+                                         })) %>%
+  group_by(IID, methylphenidate) %>%
+  mutate_at(.vars = vars(starts_with("raw_")), .funs = function(x) mean(x)) %>%
+  ungroup() %>%
+  distinct(IID, methylphenidate, .keep_all = T) %>%
+  pivot_longer(cols = c(starts_with("raw_")), names_to = "question", values_to = "val") %>%
+  arrange(IID, question, methylphenidate) %>%
+  mutate(methylphenidate = as.factor(methylphenidate)) %>%
+  pivot_wider(names_from = methylphenidate, values_from = val, id_cols = c(IID, sex, question)) %>%
+  mutate(delta = `0` - `1`) # being on MPH - not being on MPH
+
+################################################################################
+################################################################################
 # combine deltas
 abcd.deltas <- full_join(sst.r1.tom.asmeds.corrected %>%
                            pivot_wider(names_from = "question", values_from = "delta", id_cols = "IID"),
@@ -186,6 +228,29 @@ ggsave("figs/0724_report/ABCD-MPH-CBCL-and-SST-deltas-w-PGS-and-predicted.png", 
        width = 8, height = 8, units = "in", dpi = 360)
 ################################################################################
 ################################################################################
+# correlation between predicted response and NIH deltas
+left_join(nih.tom.asmeds.corrected, abcd.pred) %>%
+  ggplot(aes(x=predicted, y = delta)) +
+  geom_point() + geom_smooth(method = "lm") +
+  ggpubr::stat_cor(color = "red") +
+  facet_wrap(~question)
+
+tmp <- inner_join(nih.tom.asmeds.corrected, abcd.pred)
+tt <- left_join(nih.tom.asmeds.corrected, abcd.pred) %>% 
+  filter(IID %in% tmp$IID) %>%
+  mutate(responder = ifelse(predicted > median(predicted), T, F)) %>%
+  pivot_longer(cols = c(`0`, `1`), names_to = "methylphenidate") %>% 
+  mutate(methylphenidate = as.numeric(methylphenidate)) %>%
+  mutate(m_responder = paste0(responder, "-responder_", ifelse(methylphenidate == 1, "on", "off"), "-MPH"))
+ggpaired(tt, x = "m_responder", y = "value", 
+         id = "IID", fill = "methylphenidate", facet.by = "question") +
+  stat_compare_means(paired = T, aes(group = m_responder), 
+                     comparisons = list(c("TRUE-responder_on-MPH", "TRUE-responder_off-MPH"),
+                                        c("FALSE-responder_on-MPH", "FALSE-responder_off-MPH")),
+                     method = "t.test") +
+  # scale_fill_manual(values = c(redblu.col[2], redblu.col[1])) +
+  geom_point(shape = 1, color = "grey") 
+  
 ################################################################################
 ################################################################################
 ################################################################################
